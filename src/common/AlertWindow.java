@@ -9,12 +9,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-public class AlertBox {
+public class AlertWindow {
     public static void display(String title, String msg){
 
         Stage stage = new Stage();
 
-        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle(title);
         stage.setMinWidth(300);
 
