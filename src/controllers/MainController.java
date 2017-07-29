@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 
 import java.util.Random;
 
-public class Controller {
+public class MainController {
 
     @FXML
     private Label myMsg;
