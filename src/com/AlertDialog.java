@@ -1,4 +1,4 @@
-package common;
+package com;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
