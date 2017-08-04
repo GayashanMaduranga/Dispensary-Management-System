@@ -1,6 +1,5 @@
-package common;
+package com;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,11 +10,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Created by Damma on 7/29/2017.
+ * Created by Damsith on 7/29/2017.
  */
 public class ConfirmDialog {
 
-    public static boolean answer = false;
+    private static boolean answer = false;
 
     public static boolean show(String title, String msg) {
 
