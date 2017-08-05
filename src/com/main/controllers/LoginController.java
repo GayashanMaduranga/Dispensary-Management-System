@@ -1,13 +1,14 @@
-package controllers;
+package com.main.controllers;
 
 
-import common.AlertDialog;
-import common.ConfirmDialog;
+import com.AlertDialog;
+import com.ConfirmDialog;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -15,7 +16,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
+
+
     private Stage s;
+
+    @FXML
+    public Button btnLogin;
 
     @FXML
     private TextField txtUsername;
@@ -24,7 +30,7 @@ public class LoginController {
     private PasswordField txtPassword;
 
     @FXML
-    public void login(){
+    public void login(ActionEvent actionEvent){
 
         if (txtUsername.getText().equals("user") && txtPassword.getText().equals("pass")) {
 
