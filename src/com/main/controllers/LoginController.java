@@ -54,7 +54,7 @@ public class LoginController {
                     primaryStage.close();
             }); // code to be run on stage close ~ Damsith
 
-            Parent layout = FXMLLoader.load(getClass().getResource("../views/main.fxml"));
+            Parent layout = FXMLLoader.load(getClass().getResource("/com/patientmanagement/views/DoctorsAssistant.fxml"));
             primaryStage.setTitle("Title");
             primaryStage.setScene(new Scene(layout));
             primaryStage.show();
