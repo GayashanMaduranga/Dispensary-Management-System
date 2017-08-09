@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="346.0" prefWidth="339.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controllers.LoginController">
    <children>
-      <JFXButton fx:id="btnLogin" buttonType="RAISED" focusTraversable="false" layoutX="101.0" layoutY="241.0" onAction="#login" prefHeight="45.0" prefWidth="137.0" ripplerFill="#0b335e" text="Login" textFill="#f8f8f8">
+      <JFXButton fx:id="btnLogin" buttonType="RAISED" focusTraversable="false" layoutX="100.0" layoutY="226.0" onAction="#login" prefHeight="45.0" prefWidth="137.0" ripplerFill="#0b335e" text="Login" textFill="#f8f8f8">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -21,7 +21,7 @@
          <effect>
             <BoxBlur height="15.94" width="15.94" />
          </effect></JFXButton>
-      <JFXTextField fx:id="txtUsername" focusColor="#132149" layoutX="43.0" layoutY="56.0" prefHeight="35.0" prefWidth="250.0" promptText="Username" style="-fx-background-color: ##636476;" stylesheets="@main.css">
+      <JFXTextField fx:id="txtUsername" focusColor="#132149" layoutX="43.0" layoutY="56.0" prefHeight="35.0" prefWidth="250.0" promptText="Username" stylesheets="@main.css">
          <font>
             <Font name="Segoe UI Light" size="18.0" />
          </font></JFXTextField>
