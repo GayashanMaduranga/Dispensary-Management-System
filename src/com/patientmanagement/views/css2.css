@@ -4,7 +4,11 @@
 
 .button{
     -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #146bbe, #1bda99);
-    -fx-text-fill: linear-gradient(from 0% 100% to 0% 0%, #146bbe, #1bda99);
+    -fx-text-fill: #dedede;
+}
+
+.label{
+    -fx-font: segoe;
 }
 
 .button:hover{
