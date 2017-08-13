@@ -1,4 +1,4 @@
-package com;
+package com.main;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -46,6 +46,7 @@ public class ConfirmDialog {
         vBox.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(vBox);
+        scene.getStylesheets().add("com/patientmanagement/views/css2.css");
         stage.setScene(scene);
         stage.showAndWait();
 

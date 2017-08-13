@@ -6,3 +6,6 @@
     -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #362ac2, #1ddfcc);
 }
 
+#closebtn:hover{
+    -fx-text-fill: linear-gradient(to top, #360500 0%, #c90700 40%);
+}
