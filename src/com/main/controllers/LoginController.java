@@ -1,8 +1,10 @@
 package com.main.controllers;
 
 
-import com.AlertDialog;
-import com.ConfirmDialog;
+import com.main.AlertDialog;
+import com.main.ConfirmDialog;
+import com.main.Main;
+import com.main.models.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +16,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginController {
 
-
-    private Stage s;
+    private LoginModel loginModel = new LoginModel();
 
     @FXML
     public Button btnLogin;
@@ -30,20 +33,33 @@ public class LoginController {
     private PasswordField txtPassword;
 
     @FXML
-    public void login(ActionEvent actionEvent){
-
-        if (txtUsername.getText().equals("user") && txtPassword.getText().equals("pass")) {
-
-            makeStage();
-            s = (Stage)txtUsername.getScene().getWindow();
-            s.close();
-
-        } else {
-            AlertDialog.show("", "wrong credentials");
-        } // Password validation has to be refined ~ Damsith
+    public void closeWindow(ActionEvent actionEvent){
+        Stage s = (Stage) txtUsername.getScene().getWindow();
+        s.close();
     }
 
-    private void makeStage(){
+    @FXML
+    public void login(ActionEvent actionEvent){
+
+        ResultSet rs = loginModel.getValidatedUser(txtUsername.getText(), txtPassword.getText());
+
+        try {
+            if(rs.next()){
+
+                makeStage(rs.getInt(3));
+                Stage s = (Stage) txtUsername.getScene().getWindow();
+                s.close();
+
+            }
+            else
+                AlertDialog.show("", "Wrong Credentials");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void makeStage(int AccessLevel){
         try {
 
             Stage primaryStage = new Stage();
@@ -54,9 +70,21 @@ public class LoginController {
                     primaryStage.close();
             }); // code to be run on stage close ~ Damsith
 
-            Parent layout = FXMLLoader.load(getClass().getResource("/com/patientmanagement/views/DoctorsAssistant.fxml"));
-            primaryStage.setTitle("Title");
-            primaryStage.setScene(new Scene(layout));
+            if(AccessLevel == 1){
+
+                Parent layout = FXMLLoader.load(getClass().getResource("/com/patientmanagement/views/DoctorsAssistant.fxml"));
+                primaryStage.setTitle("Title");
+                primaryStage.setScene(new Scene(layout));
+
+            }
+            else if(AccessLevel == 2){
+
+                Parent layout = FXMLLoader.load(getClass().getResource("/com/patientmanagement/views/Doctor.fxml"));
+                primaryStage.setTitle("Title");
+                primaryStage.setScene(new Scene(layout));
+
+            }
+
             primaryStage.show();
 
         } catch (IOException e) {
