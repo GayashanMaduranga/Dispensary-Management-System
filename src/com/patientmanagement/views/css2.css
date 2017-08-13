@@ -7,10 +7,6 @@
     -fx-text-fill: #dedede;
 }
 
-.label{
-    -fx-font: segoe;
-}
-
 .button:hover{
     -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #0d1675, #0e7c74);
     -fx-text-fill: whitesmoke;
