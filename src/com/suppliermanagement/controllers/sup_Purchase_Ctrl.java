@@ -15,6 +15,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Created by Naveen Luke Fernando on 2017-08-14.
+ */
+
+
+
 public class sup_Purchase_Ctrl implements Initializable,ControlledScreen {
 
     ScreenController controller;
