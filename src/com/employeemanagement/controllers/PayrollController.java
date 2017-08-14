@@ -53,7 +53,7 @@ public class PayrollController implements Initializable,ControlledScreen {
 
                 break;
             case "reportsBtn":
-                //ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.R);
+                //ScreenController.changeScreen(controller, SupplierScreens.ADDEMPLOYEE_SCREEN, SupplierScreens.R);
                 System.out.println("null");
                 break;
         }
