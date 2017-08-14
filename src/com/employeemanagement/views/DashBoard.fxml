@@ -39,7 +39,7 @@
                         <Insets bottom="10.0" top="10.0" />
                     </VBox.margin>
                 </JFXButton>
-                <JFXButton alignment="TOP_LEFT" prefHeight="100.0" prefWidth="250.0" text="Update Employee" textFill="WHITE">
+                <JFXButton fx:id="updateEmployeeBtn" alignment="TOP_LEFT" onMouseClicked="#changeScene" prefHeight="100.0" prefWidth="250.0" text="Update Employee" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -50,7 +50,7 @@
                         <Insets bottom="10.0" top="10.0" />
                     </VBox.margin>
                 </JFXButton>
-                <JFXButton alignment="TOP_LEFT" prefHeight="100.0" prefWidth="250.0" text="Attendence" textFill="WHITE">
+                <JFXButton fx:id="attendenceBtn" alignment="TOP_LEFT" onMouseClicked="#changeScene" prefHeight="100.0" prefWidth="250.0" text="Attendence" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -61,7 +61,7 @@
                         <Insets bottom="10.0" top="10.0" />
                     </VBox.margin>
                 </JFXButton>
-                <JFXButton alignment="TOP_LEFT" prefHeight="100.0" prefWidth="250.0" text="Payroll" textFill="WHITE">
+                <JFXButton fx:id="payrollBtn" alignment="TOP_LEFT" onMouseClicked="#changeScene" prefHeight="100.0" prefWidth="250.0" text="Payroll" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -72,7 +72,7 @@
                         <Insets bottom="10.0" top="10.0" />
                     </VBox.margin>
                 </JFXButton>
-                <JFXButton alignment="TOP_LEFT" prefHeight="100.0" prefWidth="250.0" text="Reports" textFill="WHITE">
+                <JFXButton fx:id="reportsBtn" alignment="TOP_LEFT" onMouseClicked="#changeScene" prefHeight="100.0" prefWidth="250.0" text="Reports" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>

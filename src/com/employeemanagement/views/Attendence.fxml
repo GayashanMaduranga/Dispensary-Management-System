@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.AddEmpoyeeController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.AttendenceController">
     <center>
         <AnchorPane id="AnchorPane" prefHeight="715.0" prefWidth="1299.0">
 
