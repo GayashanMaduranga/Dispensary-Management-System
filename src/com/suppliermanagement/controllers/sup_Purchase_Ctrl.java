@@ -45,14 +45,7 @@ public class sup_Purchase_Ctrl implements Initializable,ControlledScreen {
 
     }
 
-    @FXML
-    void load_sup(ActionEvent event) throws IOException {
 
-        BorderPane parent = FXMLLoader.load(getClass().getResource("supView_Suppliers.fxml"));
-        rootpane.getChildren().setAll(parent);
-        System.out.println("Workedddd");
-
-    }
 
 
     @Override
