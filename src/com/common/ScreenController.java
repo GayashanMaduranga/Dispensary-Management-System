@@ -1,6 +1,8 @@
-package com.test;
+package com.common;
 
 import java.util.HashMap;
+
+import com.employeemanagement.controllers.MyScreens;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -65,7 +67,7 @@ public class ScreenController extends StackPane{
                 Timeline fade = new Timeline(
 
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-                        new KeyFrame(new Duration(1000), event ->  {
+                        new KeyFrame(new Duration(400), event ->  {
 
 
                                 getChildren().remove(0);
@@ -74,7 +76,7 @@ public class ScreenController extends StackPane{
                                 Timeline fadeIn = new Timeline(
 
                                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                                        new KeyFrame(new Duration(800), new KeyValue(opacity, 1.0)));
+                                        new KeyFrame(new Duration(300), new KeyValue(opacity, 1.0)));
                                 fadeIn.play();
 
                         }, new KeyValue(opacity, 0.0)));
@@ -88,7 +90,7 @@ public class ScreenController extends StackPane{
 
                 Timeline fadeIn = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                        new KeyFrame(new Duration(2500), new KeyValue(opacity, 1.0)));
+                        new KeyFrame(new Duration(5000), new KeyValue(opacity, 1.0)));
 
                 fadeIn.play();
             }
@@ -109,6 +111,14 @@ public class ScreenController extends StackPane{
         } else {
             return true;
         }
+
+    }
+
+    public static void changeScreen(ScreenController controller, MyScreens oldScreen, MyScreens newScreen){
+
+        controller.loadScreen(newScreen.getId(),newScreen.getPath());
+        controller.setScreen(newScreen.getId());
+        controller.unloadScreen(oldScreen.getId());
 
     }
 
