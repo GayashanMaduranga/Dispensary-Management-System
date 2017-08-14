@@ -6,7 +6,7 @@ package com.employeemanagement;
 
 
 import com.employeemanagement.controllers.MyScreens;
-import com.test.ScreenController;
+import com.common.ScreenController;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,11 +20,11 @@ public class TestStage extends Application {
 
 
         ScreenController mainContainer = new ScreenController();
-        mainContainer.loadScreen(MyScreens.DASHBOARD_SCREEN, MyScreens.DASHBOARD_SCREEN_FXML);
+        mainContainer.loadScreen(MyScreens.DASHBOARD_SCREEN.getId(), MyScreens.DASHBOARD_SCREEN.getPath());
 
-        mainContainer.setScreen(MyScreens.DASHBOARD_SCREEN);
+        mainContainer.setScreen(MyScreens.DASHBOARD_SCREEN.getId());
 
-        Parent root = mainContainer.getScreen(MyScreens.DASHBOARD_SCREEN).getParent();
+        Parent root = mainContainer.getScreen(MyScreens.DASHBOARD_SCREEN.getId()).getParent();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

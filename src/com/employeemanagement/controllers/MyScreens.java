@@ -1,11 +1,32 @@
 package com.employeemanagement.controllers;
 
 /**
- * Created by gayashan on 8/13/2017.
+ * Created by gayashan on 8/14/2017.
  */
-public class MyScreens {
-    public static String DASHBOARD_SCREEN = "dashboard";
-    public static String DASHBOARD_SCREEN_FXML = "/com/employeemanagement/views/DashBoard.fxml";
-    public static String ADDEMPLOYEE_SCREEN = "addEmployee";
-    public static String ADDEMPLOYEE_SCREEN_FXML = "/com/employeemanagement/views/AddEmployee.fxml";
+public enum MyScreens {
+
+    DASHBOARD_SCREEN("dashboard", "/com/employeemanagement/views/DashBoard.fxml"),
+    ADDEMPLOYEE_SCREEN("addEmployee", "/com/employeemanagement/views/AddEmployee.fxml"),
+    ATTENDENCE_SCREEN("attendence", "/com/employeemanagement/views/Attendence.fxml"),
+    UPDATEADDEMPLOYEE_SCREEN("updateEmployee", "/com/employeemanagement/views/UpdateEmployee.fxml"),
+    PAYROLL_SCREEN("payroll", "/com/employeemanagement/views/Payroll.fxml");
+
+
+    String path;
+    String id;
+
+    MyScreens(String id, String path) {
+        this.path = path;
+        this.id = id;
+    }
+
+    ;
+
+    public String getPath() {
+        return path;
+    }
+
+    public String getId() {
+        return id;
+    }
 }

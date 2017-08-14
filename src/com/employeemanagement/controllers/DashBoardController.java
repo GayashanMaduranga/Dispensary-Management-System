@@ -1,8 +1,8 @@
 package com.employeemanagement.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import com.test.ControlledScreen;
-import com.test.ScreenController;
+import com.common.ControlledScreen;
+import com.common.ScreenController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
@@ -36,10 +36,26 @@ public class DashBoardController implements Initializable,ControlledScreen {
 
     @FXML
     void changeScene(MouseEvent event) {
-        if(addEmployeeBtn == (JFXButton)event.getSource()){
-            controller.loadScreen(MyScreens.ADDEMPLOYEE_SCREEN,MyScreens.ADDEMPLOYEE_SCREEN_FXML );
-            controller.setScreen(MyScreens.ADDEMPLOYEE_SCREEN);
-            controller.unloadScreen(MyScreens.DASHBOARD_SCREEN);
+        switch (((JFXButton) event.getSource()).getId()){
+            case "dashBoardBtn":
+
+                break;
+            case "addEmployeeBtn":
+                ScreenController.changeScreen(controller, MyScreens.DASHBOARD_SCREEN, MyScreens.ADDEMPLOYEE_SCREEN);
+                break;
+            case "updateEmployeeBtn":
+                ScreenController.changeScreen(controller, MyScreens.DASHBOARD_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
+                break;
+            case "attendenceBtn":
+                ScreenController.changeScreen(controller, MyScreens.DASHBOARD_SCREEN, MyScreens.ATTENDENCE_SCREEN);
+                break;
+            case "payrollBtn":
+                ScreenController.changeScreen(controller, MyScreens.DASHBOARD_SCREEN, MyScreens.PAYROLL_SCREEN);
+                break;
+            case "reportsBtn":
+                //ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.R);
+                System.out.println("null");
+                break;
         }
     }
 }

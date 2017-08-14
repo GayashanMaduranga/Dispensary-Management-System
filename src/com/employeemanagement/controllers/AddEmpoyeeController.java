@@ -1,8 +1,8 @@
 package com.employeemanagement.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import com.test.ControlledScreen;
-import com.test.ScreenController;
+import com.common.ControlledScreen;
+import com.common.ScreenController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
@@ -23,6 +23,22 @@ public class AddEmpoyeeController implements Initializable,ControlledScreen {
     @FXML
     private JFXButton dashBoardBtn;
 
+    @FXML
+    private JFXButton addEmployeeBtn;
+
+    @FXML
+    private JFXButton updateEmployeeBtn;
+
+    @FXML
+    private JFXButton attendenceBtn;
+
+    @FXML
+    private JFXButton payrollBtn;
+
+    @FXML
+    private JFXButton reportsBtn;
+
+
     @Override
     public void setScreenParent(ScreenController screenParent) {
             controller = screenParent;
@@ -36,10 +52,30 @@ public class AddEmpoyeeController implements Initializable,ControlledScreen {
 
     @FXML
     void changeScene(MouseEvent event) {
-        if(dashBoardBtn == (JFXButton)event.getSource()){
-            controller.loadScreen(MyScreens.DASHBOARD_SCREEN,MyScreens.DASHBOARD_SCREEN_FXML );
-            controller.setScreen(MyScreens.DASHBOARD_SCREEN);
-            controller.unloadScreen(MyScreens.ADDEMPLOYEE_SCREEN);
+
+
+        switch (((JFXButton) event.getSource()).getId()){
+            case "dashBoardBtn":
+                ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.DASHBOARD_SCREEN);
+                break;
+            case "addEmployeeBtn":
+
+                break;
+            case "updateEmployeeBtn":
+                ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
+                break;
+            case "attendenceBtn":
+                ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.ATTENDENCE_SCREEN);
+                break;
+            case "payrollBtn":
+                ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.PAYROLL_SCREEN);
+                break;
+            case "reportsBtn":
+                //ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.R);
+                System.out.println("null");
+                break;
         }
+
+
     }
 }

@@ -1,6 +1,8 @@
-package com.test;
+package com.common;
 
 import java.util.HashMap;
+
+import com.employeemanagement.controllers.MyScreens;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -109,6 +111,14 @@ public class ScreenController extends StackPane{
         } else {
             return true;
         }
+
+    }
+
+    public static void changeScreen(ScreenController controller, MyScreens oldScreen, MyScreens newScreen){
+
+        controller.loadScreen(newScreen.getId(),newScreen.getPath());
+        controller.setScreen(newScreen.getId());
+        controller.unloadScreen(oldScreen.getId());
 
     }
 
