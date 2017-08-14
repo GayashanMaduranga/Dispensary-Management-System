@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.DashBoardController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.AddEmpoyeeController">
     <center>
-        <AnchorPane id="AnchorPane" prefHeight="715.0" prefWidth="1299.0">
+        <AnchorPane id="AnchorPane" prefHeight="715.0" prefWidth="1299.0" style="-fx-background-color: yellow;">
 
         </AnchorPane>
     </center>
@@ -28,7 +28,7 @@
                         <Insets bottom="10.0" top="10.0" />
                     </VBox.margin>
                 </JFXButton>
-                <JFXButton fx:id="addEmployeeBtn" alignment="TOP_LEFT" onMouseClicked="#changeScene" prefHeight="100.0" prefWidth="250.0" text="Add Employee" textFill="WHITE">
+                <JFXButton alignment="TOP_LEFT" prefHeight="100.0" prefWidth="250.0" text="Add Employee" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
