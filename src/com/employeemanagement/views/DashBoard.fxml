@@ -3,16 +3,89 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.DashBoardController">
     <center>
-        <AnchorPane id="AnchorPane" prefHeight="715.0" prefWidth="1299.0">
-
-        </AnchorPane>
+        <GridPane hgap="20.0" prefHeight="700.0" prefWidth="1000.0" vgap="20.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            </rowConstraints>
+            <children>
+                <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Add Employee" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="USER_PLUS" size="100" />
+                    </graphic>
+                    <font>
+                        <Font size="30.0" />
+                    </font></JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Update Employee" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="USER" size="100" />
+                    </graphic>
+                    <font>
+                        <Font size="30.0" />
+                    </font></JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="265.0" layoutY="190.0" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Remove Employee" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="USER_TIMES" size="100" />
+                    </graphic>
+                    <font>
+                        <Font size="30.0" />
+                    </font></JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="520.0" layoutY="190.0" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Employee Details" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="GROUP" size="100" />
+                    </graphic>
+                    <font>
+                        <Font size="30.0" />
+                    </font></JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="775.0" layoutY="190.0" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Attendence" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CHILD" size="100" />
+                    </graphic>
+                    <font>
+                        <Font size="30.0" />
+                    </font></JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="370.0" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Payroll" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CC_VISA" size="100" />
+                    </graphic>
+                    <font>
+                        <Font size="30.0" />
+                    </font></JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="265.0" layoutY="370.0" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Report" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="FILE_TEXT" size="100" />
+                    </graphic>
+                    <font>
+                        <Font size="30.0" />
+                    </font></JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="520.0" layoutY="370.0" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Scanner" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CAMERA" size="100" />
+                    </graphic>
+                    <font>
+                        <Font size="30.0" />
+                    </font></JFXButton>
+            </children>
+        </GridPane>
     </center>
     <left>
         <VBox fx:id="aside" alignment="CENTER" prefHeight="715.0" prefWidth="280.0" styleClass="aside-background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
