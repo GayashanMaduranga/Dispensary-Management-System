@@ -13,24 +13,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="rootpane" prefHeight="600.0" prefWidth="1200.0" stylesheets="@supView.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.suppliermanagement.controllers.sup_Purchase_Ctrl">
    <left>
-      <GridPane prefHeight="559.0" prefWidth="134.0" style="-fx-background-color: #263042;" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="250.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="409.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="310.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <VBox style="-fx-background-color: #263042;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="169.0" prefWidth="134.0" ripplerFill="#ff3939" text="Purchasing" textFill="WHITE" GridPane.rowIndex="1">
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="169.0" prefWidth="134.0" ripplerFill="#ff3939" text="Purchasing" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -38,7 +28,7 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="45" />
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="133.0" prefWidth="134.0" ripplerFill="#ff3939" text="Suppliers" textFill="WHITE" GridPane.rowIndex="2">
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="133.0" prefWidth="134.0" ripplerFill="#ff3939" text="Suppliers" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -46,29 +36,32 @@
                   <FontAwesomeIconView fill="WHITE" fontSmoothingType="LCD" glyphName="USERS" size="45" />
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="133.0" prefWidth="134.0" ripplerFill="#ff3939" text="Returns" textFill="WHITE" GridPane.rowIndex="3">
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="133.0" prefWidth="134.0" ripplerFill="#ff3939" text="Returns" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="REPLY" size="45" />
-               </graphic></JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="155.0" prefWidth="134.0" ripplerFill="#ff3939" text="Warehouse" textFill="WHITE" GridPane.rowIndex="4">
+               </graphic>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="155.0" prefWidth="134.0" ripplerFill="#ff3939" text="Warehouse" textFill="WHITE">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="CUBES" size="45" />
                </graphic>
                <font>
                   <Font size="20.0" />
-               </font></JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="151.0" prefWidth="134.0" ripplerFill="#ff3939" text="Reports" textFill="WHITE" GridPane.rowIndex="5">
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="151.0" prefWidth="134.0" ripplerFill="#ff3939" text="Reports" textFill="WHITE">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="LINE_CHART" size="45" />
                </graphic>
                <font>
                   <Font size="20.0" />
-               </font></JFXButton>
+               </font>
+            </JFXButton>
          </children>
-      </GridPane>
+      </VBox>
    </left>
    <right>
       <GridPane prefHeight="600.0" prefWidth="144.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
