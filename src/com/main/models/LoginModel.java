@@ -1,13 +1,11 @@
 package com.main.models;
 
-import com.main.AlertDialog;
-import com.main.DBConnect;
+import com.common.AlertDialog;
+import com.common.DBConnect;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Created by Damsith on 8/12/2017.
