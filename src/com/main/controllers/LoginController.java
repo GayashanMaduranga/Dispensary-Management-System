@@ -1,6 +1,7 @@
 package com.main.controllers;
 
 
+import com.appointmentscheduling.controllers.AppointmentScreens;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
@@ -116,6 +117,14 @@ public class LoginController implements ControlledScreen{
                 mainContainer.loadScreen(SupplierScreens.PURCHASE_SCREEN.getId(), SupplierScreens.PURCHASE_SCREEN.getPath());
                 mainContainer.setScreen(SupplierScreens.PURCHASE_SCREEN.getId());
                 Parent layout = mainContainer.getScreen(SupplierScreens.PURCHASE_SCREEN.getId()).getParent();
+                primaryStage.setScene(new Scene(layout));
+            }
+
+            else if(AccessLevel == 5){
+
+                mainContainer.loadScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId(), AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getPath());
+                mainContainer.setScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
             }
 
