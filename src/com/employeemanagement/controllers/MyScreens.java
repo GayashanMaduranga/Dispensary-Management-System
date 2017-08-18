@@ -20,8 +20,6 @@ public enum MyScreens {
         this.id = id;
     }
 
-    ;
-
     public String getPath() {
         return path;
     }

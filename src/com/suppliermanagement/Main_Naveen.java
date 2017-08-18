@@ -1,6 +1,8 @@
 package com.suppliermanagement;
 
 import com.common.ScreenController;
+
+
 import com.employeemanagement.controllers.MyScreens;
 import com.suppliermanagement.controllers.SupplierScreens;
 import javafx.application.Application;
@@ -8,6 +10,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+
+
+/**
+ * Created by Naveen Luke Fernando on 2017-08-14.
+ */
+
+
 
 public class Main_Naveen extends Application {
 

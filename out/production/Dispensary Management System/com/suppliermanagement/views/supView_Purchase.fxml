@@ -30,7 +30,7 @@
           <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="169.0" prefWidth="134.0" ripplerFill="#ff3939" text="Purchasing" textFill="WHITE" GridPane.rowIndex="1">
+            <JFXButton fx:id="pur_btn" buttonType="RAISED" contentDisplay="TOP" onAction="#load_pur" prefHeight="169.0" prefWidth="134.0" ripplerFill="#ff3939" text="Purchasing" textFill="WHITE" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
@@ -38,13 +38,13 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="45" />
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="133.0" prefWidth="134.0" ripplerFill="#ff3939" text="Suppliers" textFill="WHITE" GridPane.rowIndex="2">
+            <JFXButton fx:id="sup_btn" buttonType="RAISED" contentDisplay="TOP" onAction="#load_sup" prefHeight="127.0" prefWidth="134.0" ripplerFill="#ff3939" text="Suppliers" textFill="WHITE" GridPane.rowIndex="2">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="45" />
+               </graphic>
                <font>
                   <Font size="20.0" />
                </font>
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" fontSmoothingType="LCD" glyphName="USERS" size="45" />
-               </graphic>
             </JFXButton>
             <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="133.0" prefWidth="134.0" ripplerFill="#ff3939" text="Returns" textFill="WHITE" GridPane.rowIndex="3">
                <font>

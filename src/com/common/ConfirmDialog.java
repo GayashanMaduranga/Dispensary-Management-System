@@ -1,4 +1,4 @@
-package com.main;
+package com.common;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,7 +26,9 @@ public class ConfirmDialog {
 
         Label lbl = new Label(msg);
         Button btnYes = new Button("Yes");
+        btnYes.setMinWidth(80);
         Button btnNo = new Button("No");
+        btnNo.setMinWidth(80);
 
         btnYes.setOnAction(e -> {
             answer = true;
@@ -38,8 +40,8 @@ public class ConfirmDialog {
             stage.close();
         });
 
-        VBox vBox = new VBox(10);
-        HBox hBox = new HBox(10);
+        VBox vBox = new VBox(20);
+        HBox hBox = new HBox(30);
         hBox.getChildren().addAll(btnYes, btnNo);
         vBox.getChildren().addAll(lbl, hBox);
         hBox.setAlignment(Pos.CENTER);

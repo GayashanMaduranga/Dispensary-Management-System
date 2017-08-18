@@ -1,10 +1,15 @@
 package com.main.controllers;
 
 
-import com.main.AlertDialog;
-import com.main.ConfirmDialog;
+import com.common.ControlledScreen;
+import com.common.ScreenController;
+import com.employeemanagement.controllers.MyScreens;
+import com.common.AlertDialog;
+import com.common.ConfirmDialog;
 import com.main.Main;
 import com.main.models.LoginModel;
+import com.patientmanagement.controllers.PatientScreens;
+import com.suppliermanagement.controllers.SupplierScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +24,14 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginController {
+public class LoginController implements ControlledScreen{
 
     private LoginModel loginModel = new LoginModel();
+    ScreenController mainContainer = new ScreenController();
+
+    @Override
+    public void setScreenParent(ScreenController screenParent) {
+    }
 
     @FXML
     public Button btnLogin;
@@ -66,14 +76,21 @@ public class LoginController {
 
             primaryStage.setOnCloseRequest(event -> {
                 event.consume(); // stop the close event from happening ~ Damsith
-                if(ConfirmDialog.show("", "Are you sure?")) //if confirm dialog returns true, close ~ Damsith
+                if(ConfirmDialog.show("", "Are you sure?")){
+                    Main.createLogin(new Stage());
                     primaryStage.close();
+                }
+
+
             }); // code to be run on stage close ~ Damsith
+
+
 
             if(AccessLevel == 1){
 
-                Parent layout = FXMLLoader.load(getClass().getResource("/com/patientmanagement/views/DoctorsAssistant.fxml"));
-                primaryStage.setTitle("Title");
+                mainContainer.loadScreen(PatientScreens.VIEW_PATIENTS_SCREEN.getId(), PatientScreens.VIEW_PATIENTS_SCREEN.getPath());
+                mainContainer.setScreen(PatientScreens.VIEW_PATIENTS_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(PatientScreens.VIEW_PATIENTS_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
 
             }
@@ -85,10 +102,30 @@ public class LoginController {
 
             }
 
+            else if(AccessLevel == 3){
+
+                mainContainer.loadScreen(MyScreens.DASHBOARD_SCREEN.getId(), MyScreens.DASHBOARD_SCREEN.getPath());
+                mainContainer.setScreen(MyScreens.DASHBOARD_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(MyScreens.DASHBOARD_SCREEN.getId()).getParent();
+                primaryStage.setScene(new Scene(layout));
+
+            }
+
+            else if(AccessLevel == 4){
+
+                mainContainer.loadScreen(SupplierScreens.PURCHASE_SCREEN.getId(), SupplierScreens.PURCHASE_SCREEN.getPath());
+                mainContainer.setScreen(SupplierScreens.PURCHASE_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(SupplierScreens.PURCHASE_SCREEN.getId()).getParent();
+                primaryStage.setScene(new Scene(layout));
+            }
+
             primaryStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+
 }
