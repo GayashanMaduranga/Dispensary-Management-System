@@ -27,7 +27,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
             </rowConstraints>
             <children>
-                <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
+                <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
                 <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Add Employee" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <graphic>
                         <FontAwesomeIconView glyphName="USER_PLUS" size="100" />
