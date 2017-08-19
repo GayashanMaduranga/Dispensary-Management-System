@@ -1160,7 +1160,7 @@
       <workItem from="1502635313902" duration="23000" />
       <workItem from="1502691931070" duration="4710000" />
       <workItem from="1502953380544" duration="1431000" />
-      <workItem from="1503153590235" duration="13000" />
+      <workItem from="1503153590235" duration="282000" />
     </task>
     <task id="LOCAL-00001" summary="check if changes in master are seen in fork">
       <created>1501007501382</created>
@@ -1260,11 +1260,18 @@
       <option name="project" value="LOCAL" />
       <updated>1502719595719</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added patient registration fxml">
+      <created>1503153625952</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1503153625952</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64324000" />
+    <option name="totallyTimeSpent" value="64593000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1365,7 +1372,8 @@
     <MESSAGE value="resolving merge conflicts" />
     <MESSAGE value="creating a dash board and a testing stage" />
     <MESSAGE value="naveen's first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="naveen's first commit" />
+    <MESSAGE value="added patient registration fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="added patient registration fxml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
