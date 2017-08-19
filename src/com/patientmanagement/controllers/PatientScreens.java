@@ -7,8 +7,7 @@ package com.patientmanagement.controllers;
 
 public enum PatientScreens {
 
-    VIEW_PATIENTS_SCREEN("ViewPatients", "/com/patientmanagement/views/ViewPatients.fxml"),
-    REGISTER_PATIENTS_SCREEN("RegisterPatients", "/com/patientmanagement/views/PatientRegistration.fxml");
+    VIEW_PATIENTS_SCREEN("ViewPatients", "/com/patientmanagement/views/ViewPatients.fxml");
 
 
     String path;
