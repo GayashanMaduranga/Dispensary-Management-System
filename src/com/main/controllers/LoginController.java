@@ -1,6 +1,7 @@
 package com.main.controllers;
 
 
+import com.appointmentscheduling.controllers.AppointmentScreens;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
@@ -26,7 +27,7 @@ import java.sql.SQLException;
 
 public class LoginController implements ControlledScreen{
 
-    private LoginModel loginModel = new LoginModel();
+    public LoginModel loginModel = new LoginModel();
     ScreenController mainContainer = new ScreenController();
 
     @Override
@@ -80,10 +81,11 @@ public class LoginController implements ControlledScreen{
                     Main.createLogin(new Stage());
                     primaryStage.close();
                 }
-
-
             }); // code to be run on stage close ~ Damsith
 
+            primaryStage.setFullScreen(true);
+            primaryStage.setMinHeight(715.0);
+            primaryStage.setMinWidth(1299.0);
 
 
             if(AccessLevel == 1){
@@ -96,8 +98,9 @@ public class LoginController implements ControlledScreen{
             }
             else if(AccessLevel == 2){
 
-                Parent layout = FXMLLoader.load(getClass().getResource("/com/patientmanagement/views/Doctor.fxml"));
-                primaryStage.setTitle("Title");
+                mainContainer.loadScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId(), PatientScreens.REGISTER_PATIENTS_SCREEN.getPath());
+                mainContainer.setScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
 
             }
@@ -119,9 +122,17 @@ public class LoginController implements ControlledScreen{
                 primaryStage.setScene(new Scene(layout));
             }
 
+            else if(AccessLevel == 5){
+
+                mainContainer.loadScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId(), AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getPath());
+                mainContainer.setScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId()).getParent();
+                primaryStage.setScene(new Scene(layout));
+            }
+
             primaryStage.show();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
