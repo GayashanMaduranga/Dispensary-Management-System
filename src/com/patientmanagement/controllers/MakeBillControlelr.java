@@ -1,12 +1,15 @@
 package com.patientmanagement.controllers;
 
 
+import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.jfoenix.controls.JFXButton;
+import com.main.Main;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,6 +45,9 @@ public class MakeBillControlelr implements Initializable,ControlledScreen {
     private JFXButton titlebtn;
 
     @FXML
+    private JFXButton logoutBtn;
+
+    @FXML
     void changeScene(Event event){
 
         switch(((JFXButton)event.getSource()).getId()){
@@ -58,6 +64,16 @@ public class MakeBillControlelr implements Initializable,ControlledScreen {
 //            case "sidebarBillBtn":
 //                ScreenController.changeScreen(controller, PatientScreens.BILL_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
 //                break;
+        }
+    }
+
+    @FXML
+    void logout(){
+
+        if(ConfirmDialog.show("", "Are you sure you want to logout?")){
+            Main.createLogin(new Stage());
+            Stage s = (Stage)logoutBtn.getScene().getWindow();
+            s.close();
         }
     }
 
