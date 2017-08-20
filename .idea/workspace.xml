@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/patientmanagement/views/DoctorPortal.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/appointmentscheduling/views/css2.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/patientmanagement/controllers/MakeBillControlelr.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/Laboratory/views/main.class" afterPath="$PROJECT_DIR$/out/production/Dispensary Management System/com/Laboratory/views/main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/appointmentscheduling/controllers/AppointmentController.class" afterPath="$PROJECT_DIR$/out/production/Dispensary Management System/com/appointmentscheduling/controllers/AppointmentController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -1129,7 +1126,7 @@
       <workItem from="1503210225588" duration="13000" />
       <workItem from="1503210578674" duration="15906000" />
       <workItem from="1503239555963" duration="262000" />
-      <workItem from="1503244069707" duration="6916000" />
+      <workItem from="1503244069707" duration="6932000" />
     </task>
     <task id="LOCAL-00001" summary="check if changes in master are seen in fork">
       <created>1501007501382</created>
@@ -1285,11 +1282,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503230064420</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="ui changes">
+      <created>1503256727460</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1503256727460</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97735000" />
+    <option name="totallyTimeSpent" value="97751000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1301,7 +1305,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
+    <frame x="-9" y="-9" width="1932" height="1048" extended-state="1" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1412,7 +1416,8 @@
     <MESSAGE value="added inner UI for patient registration" />
     <MESSAGE value="added topbar" />
     <MESSAGE value="modified topbar to hold admin credentials" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified topbar to hold admin credentials" />
+    <MESSAGE value="ui changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="ui changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
