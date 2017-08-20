@@ -15,6 +15,9 @@ import javafx.stage.Stage;
         @Override
         public void start(Stage primaryStage) throws Exception{
             Parent root = FXMLLoader.load(getClass().getResource("orderTest.fxml"));
+
+            //Parent root = FXMLLoader.load(getClass().getResource("dashBoard.fxml"));
+
             primaryStage.setTitle("MainWindow");
             primaryStage.setScene(new Scene(root, 1579, 715));
             primaryStage.show();

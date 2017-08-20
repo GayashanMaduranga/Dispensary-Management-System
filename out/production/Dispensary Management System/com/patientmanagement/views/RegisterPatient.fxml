@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -21,17 +22,16 @@
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="32.0" prefWidth="32.0" />
             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="60.0" prefWidth="60.0" />
-            <ColumnConstraints hgrow="SOMETIMES" prefWidth="400.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="726.0" minWidth="0.0" prefWidth="51.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="180.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="180.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="51.0" minWidth="0.0" prefWidth="51.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="200.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="50.0" prefWidth="50.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="68.0" prefHeight="68.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="605.0" minHeight="106.0" prefHeight="106.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="106.0" prefHeight="106.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="97.0" prefHeight="97.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="61.0" prefHeight="61.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="61.0" prefHeight="61.0" vgrow="SOMETIMES" />
@@ -68,21 +68,11 @@
                   <Font name="Segoe UI Semilight" size="16.0" />
                </font>
             </JFXTextArea>
-            <JFXDatePicker defaultColor="#4273a5" editable="false" prefHeight="29.0" prefWidth="378.0" promptText=" Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <JFXDatePicker defaultColor="#4273a5" editable="false" prefHeight="29.0" prefWidth="164.0" promptText=" Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </JFXDatePicker>
-            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="130.0" styleClass="cancel-btn" text="Clear" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="9">
-               <font>
-                  <Font name="Verdana" size="17.0" />
-               </font>
-            </JFXButton>
-            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="130.0" styleClass="accept-btn" text="Register" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="9">
-               <font>
-                  <Font name="Verdana" size="17.0" />
-               </font>
-            </JFXButton>
             <JFXTextField labelFloat="true" promptText=" Phone" GridPane.columnIndex="2" GridPane.rowIndex="6" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="15.0" right="44.0" />
@@ -115,12 +105,12 @@
                               <Insets left="15.0" />
                            </HBox.margin>
                         </MaterialDesignIconView>
-                        <Label text="&lt;username&gt;" textFill="#cdcdcd">
+                        <Label fx:id="userLbl" text="&lt;username&gt;" textFill="#cdcdcd">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
                         </Label>
-                        <Label text="Logged in" textFill="#cdcdcd">
+                        <Label text="logged in" textFill="#cdcdcd">
                            <padding>
                               <Insets left="5.0" />
                            </padding>
@@ -129,6 +119,34 @@
                   </HBox>
                </children>
             </GridPane>
+            <JFXTextField maxWidth="-Infinity" prefHeight="29.0" prefWidth="395.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="15.0" right="44.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <HBox alignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+               <children>
+                  <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="130.0" styleClass="cancel-btn" text="Cancel" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="Verdana" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <Region prefHeight="50.0" prefWidth="50.0" HBox.hgrow="NEVER" />
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="130.0" styleClass="accept-btn" text="Register">
+                     <font>
+                        <Font name="Verdana" size="17.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <JFXTextArea labelFloat="true" prefHeight="320.0" prefWidth="433.0" promptText="  Past Illnesses" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.rowSpan="4">
+               <GridPane.margin>
+                  <Insets bottom="35.0" top="20.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Verdana" size="15.0" />
+               </font>
+            </JFXTextArea>
          </children>
       </GridPane>
    </center>
