@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  * Created by Damsith on 8/1/2017.
  */
 
-public class ViewPatientsController implements Initializable,ControlledScreen {
+public class DoctorsAssistantController implements Initializable,ControlledScreen {
 
     ScreenController controller;
 

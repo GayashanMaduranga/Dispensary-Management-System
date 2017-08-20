@@ -35,7 +35,7 @@ public class AlertDialog {
         vBox.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(vBox);
-        scene.getStylesheets().add("com/patientmanagement/views/css2.css");
+        scene.getStylesheets().add("com/patientmanagement/views/styles.css");
         stage.setScene(scene);
         stage.showAndWait();
 
