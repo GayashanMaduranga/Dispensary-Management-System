@@ -6,9 +6,11 @@ import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
+import com.main.models.LoginModel;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -30,7 +32,11 @@ public class MakeBillControlelr implements Initializable,ControlledScreen {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        userLbl.setText(LoginModel.user);
     }
+
+    @FXML
+    private Label userLbl;
 
     @FXML
     private JFXButton sidebarRegisterBtn;

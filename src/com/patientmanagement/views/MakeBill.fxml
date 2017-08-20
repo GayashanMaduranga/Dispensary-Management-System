@@ -62,12 +62,12 @@
                                         <Insets left="15.0" />
                                     </HBox.margin>
                                 </MaterialDesignIconView>
-                                <Label text="&lt;username&gt;" textFill="#cdcdcd">
+                                <Label fx:id="userLbl" text="&lt;username&gt;" textFill="#cdcdcd">
                                     <HBox.margin>
                                         <Insets left="5.0" />
                                     </HBox.margin>
                                 </Label>
-                                <Label text="Logged in" textFill="#cdcdcd">
+                                <Label text="logged in" textFill="#cdcdcd">
                                     <padding>
                                         <Insets left="5.0" />
                                     </padding>
