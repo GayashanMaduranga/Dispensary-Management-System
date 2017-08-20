@@ -14,11 +14,12 @@ public class LoginModel {
 
     private Connection connection;
     private ResultSet rs;
+    public static String user;
 
     public LoginModel(){
         connection = DBConnect.getConnection();
         if(connection == null){
-            AlertDialog.show("", "Connection to database unsuccessful");
+            AlertDialog.show("", "Connection to the database was unsuccessful!");
             System.exit(1);
         }
     }
@@ -30,6 +31,10 @@ public class LoginModel {
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
+            if(rs.next()){
+                user = rs.getString(1);
+                rs.previous();
+            }
 
         } catch (Exception e) {
             AlertDialog.show("Exception", e.toString());
