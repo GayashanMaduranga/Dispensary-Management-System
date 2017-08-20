@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  * Created by Damsith on 8/1/2017.
  */
 
-public class MakeBillControlelr implements Initializable,ControlledScreen {
+public class MakeBillController implements Initializable,ControlledScreen {
 
     ScreenController controller;
 
