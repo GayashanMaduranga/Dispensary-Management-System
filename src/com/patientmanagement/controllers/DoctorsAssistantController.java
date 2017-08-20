@@ -1,15 +1,20 @@
 package com.patientmanagement.controllers;
 
 
+import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
+import com.main.Main;
+import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +27,8 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
 
     ScreenController controller;
 
+
+
     @Override
     public void setScreenParent(ScreenController screenParent) {
         controller = screenParent;
@@ -30,7 +37,11 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        userLbl.setText(LoginModel.user);
     }
+
+    @FXML
+    private Label userLbl;
 
     @FXML
     private JFXButton sidebarRegisterBtn;
@@ -43,6 +54,9 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
 
     @FXML
     private JFXButton titlebtn;
+
+    @FXML
+    private JFXButton logoutBtn;
 
     @FXML
     void changeScene(Event event){
@@ -61,6 +75,16 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
             case "sidebarBillBtn":
                 ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.BILL_SCREEN);
                 break;
+        }
+    }
+
+    @FXML
+    void logout(){
+
+        if(ConfirmDialog.show("", "Are you sure you want to logout?")){
+            Main.createLogin(new Stage());
+            Stage s = (Stage)logoutBtn.getScene().getWindow();
+            s.close();
         }
     }
 
