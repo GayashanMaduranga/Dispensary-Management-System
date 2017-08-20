@@ -4,8 +4,16 @@
 
 #topPane{
 
-    -fx-background-color: #2b2e33;
+    -fx-background-color: #2b2e3c;
+    -fx-effect: dropshadow(gaussian, #858485, 7,0.01,-2, 5);
 }
+
+#topPane .glyph-icon{
+
+    -fx-fill: #cdcdcd;
+}
+
+
 #leftPane .button{
     -fx-background-color: none;
     -fx-effect: none;
@@ -70,6 +78,15 @@
     -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #4f0905, #6a400c);
     -fx-text-fill: whitesmoke;
 
+}
+
+#leftPane .logout-btn{
+    -fx-background-color: #eba108;
+}
+
+#leftPane .logout-btn:hover{
+    -fx-background-color: #eb7715;
+    -fx-font-size:17px;
 }
 
 .glyph-icon{
