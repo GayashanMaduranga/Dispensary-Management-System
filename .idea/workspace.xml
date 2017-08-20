@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/controllers/DoctorsAssistantController.java" afterPath="$PROJECT_DIR$/src/com/patientmanagement/controllers/DoctorsAssistantController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/controllers/MakeBillControlelr.java" afterPath="$PROJECT_DIR$/src/com/patientmanagement/controllers/MakeBillControlelr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/controllers/MakePrescriptionController.java" afterPath="$PROJECT_DIR$/src/com/patientmanagement/controllers/MakePrescriptionController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/controllers/RegisterPatientController.java" afterPath="$PROJECT_DIR$/src/com/patientmanagement/controllers/RegisterPatientController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/views/DoctorsAssistant.fxml" afterPath="$PROJECT_DIR$/src/com/patientmanagement/views/DoctorsAssistant.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/views/MakeBill.fxml" afterPath="$PROJECT_DIR$/src/com/patientmanagement/views/MakeBill.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/views/MakePrescription.fxml" afterPath="$PROJECT_DIR$/src/com/patientmanagement/views/MakePrescription.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/views/RegisterPatient.fxml" afterPath="$PROJECT_DIR$/src/com/patientmanagement/views/RegisterPatient.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/patientmanagement/views/styles.css" afterPath="$PROJECT_DIR$/src/com/patientmanagement/views/styles.css" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1318,7 +1309,7 @@
       <workItem from="1503166446384" duration="1408000" />
       <workItem from="1503198756671" duration="7814000" />
       <workItem from="1503210225588" duration="13000" />
-      <workItem from="1503210578674" duration="7469000" />
+      <workItem from="1503210578674" duration="7551000" />
     </task>
     <task id="LOCAL-00001" summary="check if changes in master are seen in fork">
       <created>1501007501382</created>
@@ -1453,11 +1444,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503214256608</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added topbar">
+      <created>1503219310767</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1503219310767</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82120000" />
+    <option name="totallyTimeSpent" value="82202000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1563,7 +1561,8 @@
     <MESSAGE value="new UI + cleanup" />
     <MESSAGE value="added fxml" />
     <MESSAGE value="added inner UI for patient registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="added inner UI for patient registration" />
+    <MESSAGE value="added topbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="added topbar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
