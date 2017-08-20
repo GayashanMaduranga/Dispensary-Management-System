@@ -115,7 +115,7 @@ public class ScreenController extends StackPane{
 
     }
 
-    public static void changeScreen(ScreenController controller, MyScreens oldScreen, MyScreens newScreen){
+    public static void changeScreen(ScreenController controller, BaseEnum oldScreen, BaseEnum newScreen){
 
         controller.loadScreen(newScreen.getId(),newScreen.getPath());
         controller.setScreen(newScreen.getId());

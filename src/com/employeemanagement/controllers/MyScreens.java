@@ -1,9 +1,11 @@
 package com.employeemanagement.controllers;
 
+import com.common.BaseEnum;
+
 /**
  * Created by gayashan on 8/14/2017.
  */
-public enum MyScreens {
+public enum MyScreens implements BaseEnum{
 
     DASHBOARD_SCREEN("dashboard", "/com/employeemanagement/views/DashBoard.fxml"),
     ADDEMPLOYEE_SCREEN("addEmployee", "/com/employeemanagement/views/AddEmployee.fxml"),

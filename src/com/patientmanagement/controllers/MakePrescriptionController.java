@@ -3,13 +3,10 @@ package com.patientmanagement.controllers;
 
 import com.common.ControlledScreen;
 import com.common.ScreenController;
-import com.employeemanagement.controllers.MyScreens;
-import com.patientmanagement.controllers.PatientScreens;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +15,7 @@ import java.util.ResourceBundle;
  * Created by Damsith on 8/1/2017.
  */
 
-public class DoctorsAssistantController implements Initializable,ControlledScreen {
+public class MakePrescriptionController implements Initializable,ControlledScreen {
 
     ScreenController controller;
 
@@ -50,18 +47,14 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
         switch(((JFXButton)event.getSource()).getId()){
 
             case "sidebarRegisterBtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.PRESCRIPTION_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
                 break;
-//            case "titlebtn":
-//                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.DASHBOARD_SCREEN);
-//                break;
-            case "sidebarPrescriptionBtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.PRESCRIPTION_SCREEN);
+            case "titlebtn":
+                ScreenController.changeScreen(controller, PatientScreens.PRESCRIPTION_SCREEN, PatientScreens.DASHBOARD_SCREEN);
                 break;
             case "sidebarBillBtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.BILL_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.PRESCRIPTION_SCREEN, PatientScreens.BILL_SCREEN);
                 break;
         }
     }
-
 }
