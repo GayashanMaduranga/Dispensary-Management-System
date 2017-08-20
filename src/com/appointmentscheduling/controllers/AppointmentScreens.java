@@ -1,11 +1,17 @@
 package com.appointmentscheduling.controllers;
 
+import com.common.BaseEnum;
+
+import javax.swing.text.View;
+
 /**
  * Created by gayashan on 8/14/2017.
  */
-public enum AppointmentScreens {
+public enum AppointmentScreens implements BaseEnum{
 
-    VIEW_APPOINTMENTS_SCREEN("view", "/com/appointmentscheduling/views/AppointmentScheduling.fxml");
+    VIEW_APPOINTMENTS_SCREEN("view", "/com/appointmentscheduling/views/AppointmentScheduling.fxml"),
+    VIEW_ADD_APPOINTMENTS("AddAppointment", "/com/appointmentscheduling/views/AddAppointment.fxml");
+
 
 
     String path;
