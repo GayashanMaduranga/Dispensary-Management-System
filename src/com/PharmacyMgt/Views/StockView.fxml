@@ -27,7 +27,7 @@
             <TableColumn prefWidth="75.0" text="Batch" />
             <TableColumn prefWidth="75.0" text="MRP" />
             <TableColumn prefWidth="75.0" text="Exp. Date" />
-        </columns>
+        </columns>//
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
