@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,56 +17,76 @@
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="32.0" prefWidth="32.0" />
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="726.0" minWidth="10.0" prefWidth="125.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="726.0" minWidth="10.0" prefWidth="302.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="60.0" prefWidth="60.0" />
+            <ColumnConstraints hgrow="SOMETIMES" prefWidth="400.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="726.0" minWidth="0.0" prefWidth="51.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="807.0" minWidth="10.0" prefWidth="265.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="769.0" minWidth="10.0" prefWidth="228.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="32.0" prefWidth="32.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="180.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="180.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="50.0" prefWidth="50.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="-Infinity" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="-Infinity" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="68.0" prefHeight="68.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="605.0" minHeight="106.0" prefHeight="106.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="97.0" prefHeight="97.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="61.0" prefHeight="61.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="61.0" prefHeight="61.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="605.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="0.0" prefWidth="106.0" text="Patient Name :" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
-            </Label>
-            <Label text="Label :" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
-            </Label>
-            <Label text="Label :" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
-            </Label>
-            <JFXTextField prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #d5d5d5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <JFXTextField focusColor="#4273a5" labelFloat="true" prefHeight="29.0" prefWidth="100.0" promptText=" Patient Name" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="15.0" />
+                  <Insets left="15.0" right="44.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Segoe UI Semilight" size="15.0" />
+               </font>
             </JFXTextField>
-            <JFXTextField GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <JFXTextField focusColor="#4273a5" labelFloat="true" promptText=" e-mail" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets left="15.0" />
+                  <Insets left="15.0" right="44.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Segoe UI Semilight" size="15.0" />
+               </font>
             </JFXTextField>
-            <JFXTextField GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <JFXTextArea focusColor="#4273a5" labelFloat="true" prefHeight="405.0" prefWidth="285.0" promptText="  Address" style="-fx-: red;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="15.0" right="44.0" top="20.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Segoe UI Semilight" size="15.0" />
+               </font>
+            </JFXTextArea>
+            <JFXDatePicker defaultColor="#4273a5" editable="false" prefHeight="29.0" prefWidth="378.0" promptText=" Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
+            </JFXDatePicker>
+            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="130.0" styleClass="cancel-btn" text="Clear" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+            </JFXButton>
+            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="130.0" styleClass="accept-btn" text="Register" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+               <font>
+                  <Font name="Verdana" size="17.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField labelFloat="true" promptText=" Phone" GridPane.columnIndex="2" GridPane.rowIndex="6" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="15.0" right="44.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Segoe UI Semilight" size="15.0" />
+               </font>
             </JFXTextField>
          </children>
       </GridPane>
