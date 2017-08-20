@@ -5,14 +5,27 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.UpdateEmpoyeeController">
     <center>
-        <AnchorPane id="AnchorPane" prefHeight="715.0" prefWidth="1299.0">
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+              <AnchorPane id="AnchorPane" prefHeight="715.0" prefWidth="1299.0">
 
         </AnchorPane>
+         </children>
+      </GridPane>
     </center>
     <left>
         <VBox fx:id="aside" alignment="CENTER" prefHeight="715.0" prefWidth="280.0" styleClass="aside-background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">

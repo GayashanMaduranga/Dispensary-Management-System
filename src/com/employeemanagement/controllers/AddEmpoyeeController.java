@@ -59,7 +59,6 @@ public class AddEmpoyeeController implements Initializable,ControlledScreen {
                 ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.DASHBOARD_SCREEN);
                 break;
             case "addEmployeeBtn":
-
                 break;
             case "updateEmployeeBtn":
                 ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
