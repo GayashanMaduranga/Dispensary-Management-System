@@ -46,8 +46,6 @@ public class sup_Purchase_Ctrl implements Initializable,ControlledScreen {
     }
 
 
-
-
     @Override
     public void setScreenParent(ScreenController screenParent) {
         controller = screenParent;
