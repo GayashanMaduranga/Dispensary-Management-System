@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1579.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox prefHeight="715.0" prefWidth="228.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="a" prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Dash Board">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></JFXButton>
+            <JFXButton fx:id="b" prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Order Test" />
+            <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Enter Results" />
+            <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="View Database" />
+            <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="About" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="443.0" BorderPane.alignment="CENTER">
+         <children>
+            <TitledPane animated="false" collapsible="false" layoutX="24.0" layoutY="40.0" prefHeight="329.0" prefWidth="750.0" text="Patient Details">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="748.0">
+                     <children>
+                        <Label layoutX="23.0" layoutY="22.0" text="No." />
+                        <JFXTextField layoutX="115.0" layoutY="14.0" />
+                        <Label layoutX="23.0" layoutY="68.0" text="Name" />
+                        <JFXTextField layoutX="115.0" layoutY="60.0" />
+                        <Label layoutX="23.0" layoutY="111.0" text="Age" />
+                        <JFXTextField layoutX="115.0" layoutY="103.0" />
+                        <Label layoutX="23.0" layoutY="157.0" text="Address" />
+                        <JFXTextField layoutX="115.0" layoutY="149.0" />
+                        <Label layoutX="382.0" layoutY="35.0" text="Date" />
+                        <DatePicker layoutX="474.0" layoutY="29.0" prefHeight="38.0" prefWidth="193.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" collapsible="false" layoutX="24.0" layoutY="404.0" prefHeight="277.0" prefWidth="750.0" text="Test Details">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXTreeTableView layoutX="398.0" layoutY="14.0" prefHeight="212.0" prefWidth="335.0">
+                           <columns>
+                              <TreeTableColumn prefWidth="111.0" text="Test ID" />
+                              <TreeTableColumn prefWidth="110.0" text="Test Name" />
+                              <TreeTableColumn prefWidth="113.0" text="Column X" />
+                           </columns>
+                        </JFXTreeTableView>
+                        <Pane layoutX="43.0" layoutY="14.0" prefHeight="212.0" prefWidth="227.0" style="-fx-background-color: gray;">
+                           <children>
+                              <JFXButton fx:id="selectTest" layoutX="62.0" layoutY="96.0" stylesheets="@stylesheet.css" text="Select Test" textFill="WHITE" />
+                              <Label layoutX="13.0" layoutY="14.0" text=" Tests Selecting tools " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" collapsible="false" layoutX="813.0" layoutY="40.0" prefHeight="465.0" prefWidth="520.0" text="Cost calculation">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="518.0">
+                     <children>
+                        <TableView layoutX="1.0" layoutY="-1.0" prefHeight="341.0" prefWidth="517.0">
+                          <columns>
+                            <TableColumn minWidth="3.0" prefWidth="104.0" text="Test ID" />
+                            <TableColumn prefWidth="255.0" text="Test Name" />
+                              <TableColumn prefWidth="134.0" text="Price" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="333.0" layoutY="354.0" prefHeight="38.0" prefWidth="171.0" />
+                        <Label layoutX="221.0" layoutY="360.0" text="Total Cost" />
+                        <Button layoutX="65.0" layoutY="354.0" mnemonicParsing="false" text="Delete" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <JFXButton fx:id="selectTest1" layoutX="954.0" layoutY="638.0" stylesheets="@stylesheet.css" text="Select Test" />
+            <JFXButton fx:id="selectTest11" layoutX="1073.0" layoutY="638.0" stylesheets="@stylesheet.css" text="Select Test" />
+            <JFXButton fx:id="selectTest12" layoutX="1192.0" layoutY="638.0" stylesheets="@stylesheet.css" text="Select Test" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

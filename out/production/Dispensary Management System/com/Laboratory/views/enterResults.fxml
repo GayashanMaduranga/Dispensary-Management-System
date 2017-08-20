@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1579.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <VBox prefHeight="715.0" prefWidth="228.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Dash Board" />
+                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Order Test" />
+                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Enter Results" />
+                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="View Database" />
+                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="About" />
+            </children>
+        </VBox>
+    </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="278.0" layoutY="68.0" prefHeight="38.0" prefWidth="267.0">
+               <tooltip>
+                  <Tooltip text="Search by patient ID or name" />
+               </tooltip>
+            </TextField>
+            <JFXButton fx:id="selectTest" layoutX="602.0" layoutY="68.0" stylesheets="@stylesheet.css" text="Search" />
+            <TableView layoutX="114.0" layoutY="142.0" prefHeight="525.0" prefWidth="832.0">
+              <columns>
+                <TableColumn prefWidth="98.0" text="Patient ID" />
+                <TableColumn prefWidth="274.0" text="Patient Name" />
+                  <TableColumn prefWidth="102.0" text="Test ID" />
+                  <TableColumn prefWidth="210.0" text="Test Name" />
+                  <TableColumn prefWidth="125.0" text="Status" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
