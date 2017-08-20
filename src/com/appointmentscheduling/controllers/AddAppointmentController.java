@@ -8,16 +8,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Kalan on 8/12/2017.
+ * Created by Kalan on 8/20/2017.
  */
-public class AppointmentController implements Initializable, ControlledScreen {
+public class AddAppointmentController implements Initializable, ControlledScreen {
 
     private ScreenController controller;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     @Override
     public void setScreenParent(ScreenController screenParent) {
@@ -25,10 +20,8 @@ public class AppointmentController implements Initializable, ControlledScreen {
         this.controller = screenParent;
     }
 
-
-    public void setadd(){
-        //ScreenController.changeScreen(controller, AppointmentScreens.VIEW_ADD_APPOINTMENTS, AppointmentScreens.VIEW_ADD_APPOINTMENTS};
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 }
-
