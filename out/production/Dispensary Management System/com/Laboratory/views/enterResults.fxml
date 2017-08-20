@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,26 +13,53 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1579.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+
     <left>
-        <VBox prefHeight="715.0" prefWidth="228.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="715.0" prefWidth="308.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Dash Board" />
-                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Order Test" />
-                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Enter Results" />
-                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="View Database" />
-                <JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="About" />
+                <JFXButton fx:id="dashboardBT" contentDisplay="TOP" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="Dash Board" textFill="WHITE">
+                    <graphic>
+                        <MaterialDesignIconView glyphName="VIEW_MODULE" size="80" />
+                    </graphic></JFXButton>
+                <JFXButton fx:id="ordertestBT" contentDisplay="TOP" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text=" Order Test">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="LIST_ALT" size="70" />
+                    </graphic></JFXButton>
+                <JFXButton fx:id="enter_resultBT" contentDisplay="TOP" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="Enter Results">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" size="80" />
+                    </graphic></JFXButton>
+                <JFXButton fx:id="viewDB_BT" contentDisplay="TOP" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="View Database">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="DATABASE" size="70" />
+                    </graphic></JFXButton>
+                <JFXButton fx:id="extraBT" contentDisplay="TOP" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="Extras">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="PIE_CHART" size="70" />
+                    </graphic></JFXButton>
             </children>
         </VBox>
     </left>
+    <!--<left>-->
+        <!--<VBox prefHeight="715.0" prefWidth="228.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">-->
+            <!--<children>-->
+                <!--<JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Dash Board" />-->
+                <!--<JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Order Test" />-->
+                <!--<JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Enter Results" />-->
+                <!--<JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="View Database" />-->
+                <!--<JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="About" />-->
+            <!--</children>-->
+        <!--</VBox>-->
+    <!--</left>-->
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="278.0" layoutY="68.0" prefHeight="38.0" prefWidth="267.0">
+            <TextField layoutX="278.0" layoutY="68.0" prefHeight="38.0" prefWidth="378.0" promptText="patient ID or Name">
                <tooltip>
                   <Tooltip text="Search by patient ID or name" />
                </tooltip>
             </TextField>
-            <JFXButton fx:id="selectTest" layoutX="602.0" layoutY="68.0" stylesheets="@stylesheet.css" text="Search" />
+            <JFXButton fx:id="selectTest" layoutX="706.0" layoutY="68.0" prefHeight="38.0" prefWidth="146.0" stylesheets="@stylesheet.css" text="Search" textFill="WHITE" />
             <TableView layoutX="114.0" layoutY="142.0" prefHeight="525.0" prefWidth="832.0">
               <columns>
                 <TableColumn prefWidth="98.0" text="Patient ID" />
@@ -39,6 +69,9 @@
                   <TableColumn prefWidth="125.0" text="Status" />
               </columns>
             </TableView>
+            <JFXButton layoutX="1068.0" layoutY="380.0" prefHeight="67.0" prefWidth="177.0" stylesheets="@stylesheet.css" text="Delete" />
+            <JFXButton layoutX="1064.0" layoutY="265.0" prefHeight="67.0" prefWidth="184.0" stylesheets="@stylesheet.css" text="Print" />
+            <Separator layoutX="1006.0" layoutY="91.0" orientation="VERTICAL" prefHeight="529.0" prefWidth="6.0" />
          </children>
       </AnchorPane>
    </center>
