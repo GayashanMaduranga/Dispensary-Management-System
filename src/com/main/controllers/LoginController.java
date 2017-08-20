@@ -13,7 +13,6 @@ import com.patientmanagement.controllers.PatientScreens;
 import com.suppliermanagement.controllers.SupplierScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,13 +20,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginController implements ControlledScreen{
 
-    private LoginModel loginModel = new LoginModel();
+    public LoginModel loginModel = new LoginModel();
     ScreenController mainContainer = new ScreenController();
 
     @Override
@@ -81,25 +79,27 @@ public class LoginController implements ControlledScreen{
                     Main.createLogin(new Stage());
                     primaryStage.close();
                 }
-
-
             }); // code to be run on stage close ~ Damsith
 
+            primaryStage.setFullScreen(true);
+            primaryStage.setMinHeight(715.0);
+            primaryStage.setMinWidth(1299.0);
 
 
             if(AccessLevel == 1){
 
-                mainContainer.loadScreen(PatientScreens.VIEW_PATIENTS_SCREEN.getId(), PatientScreens.VIEW_PATIENTS_SCREEN.getPath());
-                mainContainer.setScreen(PatientScreens.VIEW_PATIENTS_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(PatientScreens.VIEW_PATIENTS_SCREEN.getId()).getParent();
+                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
+                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
 
             }
             else if(AccessLevel == 2){
 
-                Parent layout = FXMLLoader.load(getClass().getResource("/com/patientmanagement/views/Doctor.fxml"));
-                primaryStage.setTitle("Title");
-                primaryStage.setScene(new Scene(layout));
+//                mainContainer.loadScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId(), PatientScreens.REGISTER_PATIENTS_SCREEN.getPath());
+//                mainContainer.setScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId());
+//                Parent layout = mainContainer.getScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId()).getParent();
+//                primaryStage.setScene(new Scene(layout));
 
             }
 
@@ -130,7 +130,7 @@ public class LoginController implements ControlledScreen{
 
             primaryStage.show();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
