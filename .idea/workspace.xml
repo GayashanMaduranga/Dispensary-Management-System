@@ -1219,7 +1219,7 @@
       <workItem from="1503198756671" duration="7814000" />
       <workItem from="1503210225588" duration="13000" />
       <workItem from="1503210578674" duration="7551000" />
-      <workItem from="1503220302715" duration="11269000" />
+      <workItem from="1503220302715" duration="11385000" />
     </task>
     <task id="LOCAL-00001" summary="check if changes in master are seen in fork">
       <created>1501007501382</created>
@@ -1375,11 +1375,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503242909899</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="third commit">
+      <created>1503242996674</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1503242996674</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93471000" />
+    <option name="totallyTimeSpent" value="93587000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
