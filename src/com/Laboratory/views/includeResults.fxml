@@ -22,7 +22,7 @@
                   <Label layoutX="35.0" layoutY="77.0" text="Patient Name" />
                   <TextField disable="true" layoutX="697.0" layoutY="14.0" prefHeight="38.0" prefWidth="86.0" />
                   <Label layoutX="634.0" layoutY="20.0" text="Age" />
-                  <Label layoutX="35.0" layoutY="130.0" text="Patient Name" />
+                  <Label layoutX="35.0" layoutY="130.0" text="Doctor Name" />
                   <TextField disable="true" layoutX="162.0" layoutY="126.0" />
                   <TextField layoutX="572.0" layoutY="124.0" />
                   <Label layoutX="426.0" layoutY="132.0" text="Main Test Name" />
@@ -47,9 +47,9 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <JFXButton fx:id="selectTest" layoutX="987.0" layoutY="757.0" prefHeight="48.0" prefWidth="88.0" stylesheets="@stylesheet.css" text="Done" textFill="WHITE" />
-      <JFXButton fx:id="selectTest" layoutX="1089.0" layoutY="757.0" prefHeight="48.0" prefWidth="88.0" stylesheets="@stylesheet.css" text="Cancel" textFill="WHITE" />
-      <JFXButton fx:id="selectTest" layoutX="887.0" layoutY="757.0" prefHeight="48.0" prefWidth="88.0" stylesheets="@stylesheet.css" text="Print" textFill="WHITE" />
+      <JFXButton fx:id="selectTest" layoutX="964.0" layoutY="757.0" prefHeight="48.0" prefWidth="98.0" stylesheets="@stylesheet.css" text="Done" textFill="WHITE" />
+      <JFXButton fx:id="selectTest" layoutX="1071.0" layoutY="757.0" prefHeight="48.0" prefWidth="106.0" stylesheets="@stylesheet.css" text="Cancel" textFill="WHITE" />
+      <JFXButton fx:id="selectTest" layoutX="856.0" layoutY="757.0" prefHeight="48.0" prefWidth="98.0" stylesheets="@stylesheet.css" text="Print" textFill="WHITE" />
       <TableView layoutX="890.0" layoutY="130.0" prefHeight="165.0" prefWidth="295.0">
         <columns>
           <TableColumn prefWidth="199.0" text="Test name" />
