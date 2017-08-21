@@ -1,19 +1,45 @@
 
 
-.button{
-    -fx-background-color: grey;
+#aside {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);
+    -fx-text-fill: white;
 }
+
+/*Button*/
+#ordertestBT1 , #enter_resultBT1 , #extraBT1 ,#viewDB_BT1,#DB1,#DB2,#selectTest{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);
+    -fx-text-fill: white;
+}
+
+#labicon{
+    -fx-background-color: #154687;
+    -fx-effect: dropshadow(gaussian, #003344, 7,0.01,-2, 5);
+}
+
+
 
 .button:hover{
-    -fx-background-color: #ffa221;
+    -fx-background-color: #134a79;
+    -fx-text-fill: #ebeef3;
+    -fx-font-size: 23px;
+}
+#topPane .glyph-icon {
+
+    -fx-fill: #cdcdcd;
+}
+
+#topPane{
+
+    -fx-background-color: #2b2e3c;
+    -fx-effect: dropshadow(gaussian, #3d404a, 7,0.01,-2, 5);
 }
 
 
 
-#selectTest{
-    -fx-background-color: firebrick;
-}
-#selectTest:hover{
-    -fx-background-color: #ed0000;
-}
+/*#selectTest{*/
+    /*-fx-background-color: #0076b2;*/
+/*}*/
+/*#selectTest:hover{*/
+    /*-fx-background-color: #27ebed;*/
+/*}*/
 

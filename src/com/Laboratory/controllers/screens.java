@@ -3,22 +3,17 @@ package com.Laboratory.controllers;
 import com.common.BaseEnum;
 
 /**
- * Created by gayashan on 8/14/2017.
+ * Created by AmilaWC on 8/20/2017.
  */
 public enum screens implements BaseEnum{
 
-//    DASHBOARD_SCREEN("dashboardBT", "/com/employeemanagement/views/DashBoard.fxml"),
-//    ADDEMPLOYEE_SCREEN("addEmployee", "/com/employeemanagement/views/AddEmployee.fxml"),
-//    ATTENDENCE_SCREEN("attendence", "/com/employeemanagement/views/Attendence.fxml"),
-//    UPDATEADDEMPLOYEE_SCREEN("updateEmployee", "/com/employeemanagement/views/UpdateEmployee.fxml"),
-//    PAYROLL_SCREEN("payroll", "/com/employeemanagement/views/Payroll.fxml");
 
 
-    DASHBOARD_SCREEN("dashBoard", "/com/Laboratory/views/dashboard.fxml"),
+    DASHBOARD_SCREEN("dashBoard", "/com/Laboratory/views/dashBoard.fxml"),
     ORDERTEST_SCREEN("orderTest", "/com/Laboratory/views/orderTest.fxml"),
     ENTERRESULTS_SCREEN("enterResults", "/com/Laboratory/views/enterResults.fxml"),
     VIEWDB_SCREEN("viewDB", "/com/Laboratory/views/viewDB.fxml"),
-    EXTRA_SCREEN("extra", "/com/Laboratory/views");
+    EXTRA_SCREEN("extra", "/com/Laboratory/views/extra.fxml");
 
     String path;
     String id;
