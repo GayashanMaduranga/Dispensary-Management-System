@@ -3,6 +3,7 @@ package com.employeemanagement.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
@@ -57,5 +58,27 @@ public class PayrollController implements Initializable,ControlledScreen {
                 System.out.println("null");
                 break;
         }
+    }
+
+
+    @FXML
+    void changeSubScene(MouseEvent event) {
+        switch (((JFXButton) event.getSource()).getId()){
+            case "advancedPaymentBtn":
+                // ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.DASHBOARD_SCREEN);
+                break;
+            case "applyLoanBtn":
+
+                ScreenController.changeScreen(controller, MyScreens.PAYROLL_SCREEN, MyScreens.LOAN_SCREEN);
+                break;
+            case "calculatePayrollBtn":
+                //ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
+                break;
+
+        }
+    }
+    @FXML
+    void logout(ActionEvent event) {
+
     }
 }
