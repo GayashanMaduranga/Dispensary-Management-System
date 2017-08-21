@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * Created by Damsith on 7/29/2017.
@@ -20,6 +21,7 @@ public class ConfirmDialog {
 
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UTILITY);
         stage.setTitle(title);
         stage.setMinWidth(300);
         stage.setMinHeight(150);
@@ -48,7 +50,7 @@ public class ConfirmDialog {
         vBox.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(vBox);
-        scene.getStylesheets().add("com/patientmanagement/views/css2.css");
+        scene.getStylesheets().add("com/patientmanagement/views/styles.css");
         stage.setScene(scene);
         stage.showAndWait();
 

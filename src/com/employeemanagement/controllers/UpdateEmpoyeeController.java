@@ -3,6 +3,7 @@ package com.employeemanagement.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
@@ -57,5 +58,11 @@ public class UpdateEmpoyeeController implements Initializable,ControlledScreen {
                 System.out.println("null");
                 break;
         }
+    }
+
+
+    @FXML
+    void logout(ActionEvent event) {
+
     }
 }
