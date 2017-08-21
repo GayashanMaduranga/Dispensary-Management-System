@@ -1,9 +1,11 @@
 package com.suppliermanagement.controllers;
 
+import com.common.BaseEnum;
+
 /**
  * Based on 'Myscreens' Created by gayashan on 8/14/2017.
  */
-public enum SupplierScreens {
+public enum SupplierScreens implements BaseEnum {
 
     PURCHASE_SCREEN("purchase", "/com/suppliermanagement/views/supView_Purchase.fxml"),
     SUPPLIER_SCREEN("suppliers", "/com/suppliermanagement/views/supView_Suppliers.fxml");

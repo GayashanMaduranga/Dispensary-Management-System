@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,8 +16,9 @@
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.labinventory.controlers.LabInventoryControl">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.labinventory.controlers.LabInventoryControl">
    <left>
       <GridPane fx:id="leftPane" prefHeight="715.0" prefWidth="197.0" BorderPane.alignment="CENTER">
         <padding>
@@ -30,10 +35,7 @@
           <RowConstraints maxHeight="452.0" minHeight="10.0" prefHeight="178.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="108.0" prefWidth="183.0" snapToPixel="false" style="-fx-background-color: none; -fx-background-radius: 50;" text="   Add Patient" GridPane.rowIndex="1">
-               <graphic>
-                  <MaterialDesignIconView glyphName="ACCOUNT_PLUS" size="60" text="" />
-               </graphic>
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="108.0" prefWidth="183.0" snapToPixel="false" style="-fx-background-color: none; -fx-background-radius: 50;" text="  Main " GridPane.rowIndex="1">
                <font>
                   <Font name="Segoe UI Semilight" size="20.0" />
                </font>
@@ -45,14 +47,14 @@
                      </stops>
                   </RadialGradient>
                </ripplerFill>
+               <graphic>
+                  <FontAwesomeIconView glyphName="FILE_ALT" size="60.0" />
+               </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="36.0" layoutY="174.0" prefHeight="108.0" prefWidth="183.0" style="-fx-background-color: none;" text="   Remove Patient" GridPane.rowIndex="2">
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="36.0" layoutY="174.0" prefHeight="108.0" prefWidth="183.0" style="-fx-background-color: none;" text="Machines" GridPane.rowIndex="2">
                <font>
                   <Font name="Segoe UI Semilight" size="20.0" />
                </font>
-               <graphic>
-                  <MaterialDesignIconView glyphName="ACCOUNT_REMOVE" size="60" />
-               </graphic>
                <ripplerFill>
                   <RadialGradient centerX="0.4943181818181818" centerY="0.5" radius="0.5">
                      <stops>
@@ -62,14 +64,14 @@
                      </stops>
                   </RadialGradient>
                </ripplerFill>
+               <graphic>
+                  <FontAwesomeIconView glyphName="DESKTOP" size="60.0" />
+               </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="19.0" layoutY="330.0" prefHeight="108.0" prefWidth="183.0" style="-fx-background-color: none;" text="   Search" GridPane.rowIndex="3">
+            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="19.0" layoutY="330.0" prefHeight="108.0" prefWidth="183.0" style="-fx-background-color: none;" text="Equipments" GridPane.rowIndex="3">
                <font>
                   <Font name="Segoe UI Semilight" size="20.0" />
                </font>
-               <graphic>
-                  <MaterialDesignIconView glyphName="ACCOUNT_SEARCH" size="60" />
-               </graphic>
                <ripplerFill>
                   <RadialGradient centerX="0.4943181818181818" centerY="0.5" radius="0.5">
                      <stops>
@@ -78,6 +80,9 @@
                      </stops>
                   </RadialGradient>
                </ripplerFill>
+               <graphic>
+                  <FontAwesomeIconView glyphName="FLASK" size="60.0" />
+               </graphic>
             </JFXButton>
          </children>
       </GridPane>
@@ -85,18 +90,72 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeTableView layoutX="107.0" layoutY="239.0" prefHeight="400.0" prefWidth="666.0" />
-            <JFXButton buttonType="RAISED" layoutX="114.0" layoutY="171.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: white;">
+            <JFXTreeTableView layoutX="123.0" layoutY="185.0" prefHeight="254.0" prefWidth="520.0" />
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="234.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: white;" text="View all">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="227.0" layoutY="171.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: white;">
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="340.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: white;" text="Report">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="338.0" layoutY="171.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: white;">
+            <JFXButton buttonType="RAISED" layoutX="44.0" layoutY="622.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: white;" text="Report">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </JFXButton>
+            <Text layoutX="54.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment No">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="54.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <JFXTextField layoutX="225.0" layoutY="91.0" />
+            <JFXTextField layoutX="225.0" layoutY="43.0" />
+            <Text layoutX="55.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Quantity">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="400.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Text>
+            <JFXTextField layoutX="225.0" layoutY="139.0" />
+            <JFXTextField layoutX="472.0" layoutY="139.0" />
+            <JFXButton buttonType="RAISED" layoutX="950.0" layoutY="134.0" prefHeight="35.0" prefWidth="130.0" style="-fx-text-fill: white;" text="Add Record">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXTreeTableView layoutX="685.0" layoutY="200.0" prefHeight="223.0" prefWidth="395.0" />
+            <JFXDatePicker layoutX="472.0" layoutY="91.0" />
+            <Label layoutX="663.0" layoutY="100.0" text="=">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="767.0" layoutY="139.0" />
+            <JFXButton buttonType="RAISED" layoutX="44.0" layoutY="525.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: white;" text="View all">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </JFXButton>
+            <Text layoutX="25.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine Details">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <JFXTreeTableView layoutX="152.0" layoutY="480.0" prefHeight="214.0" prefWidth="462.0" />
+            <JFXTextArea layoutX="663.0" layoutY="470.0" prefHeight="145.0" prefWidth="385.0" />
+            <JFXButton buttonType="RAISED" layoutX="772.0" layoutY="657.0" prefHeight="35.0" prefWidth="130.0" style="-fx-text-fill: white;" text="Print">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
@@ -104,17 +163,4 @@
          </children>
       </Pane>
    </center>
-   <right>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
-   </right>
 </BorderPane>
