@@ -10,6 +10,7 @@ public enum SupplierScreens implements BaseEnum {
     PURCHASE_SCREEN("purchase", "/com/suppliermanagement/views/supView_Purchase.fxml"),
     SUPPLIER_SCREEN("suppliers", "/com/suppliermanagement/views/supView_Suppliers.fxml");
 
+
     String path;
     String id;
 
