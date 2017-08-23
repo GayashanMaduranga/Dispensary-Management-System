@@ -6,11 +6,13 @@ import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
 import com.main.Main;
+import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -25,6 +27,8 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
 
     ScreenController controller;
 
+
+
     @Override
     public void setScreenParent(ScreenController screenParent) {
         controller = screenParent;
@@ -33,7 +37,11 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        userLbl.setText(LoginModel.user);
     }
+
+    @FXML
+    private Label userLbl;
 
     @FXML
     private JFXButton sidebarRegisterBtn;
