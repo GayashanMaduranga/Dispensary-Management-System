@@ -24,4 +24,11 @@ public class AppointmentController implements Initializable, ControlledScreen {
 
         this.controller = screenParent;
     }
+
+
+    public void setadd(){
+        //ScreenController.changeScreen(controller, AppointmentScreens.VIEW_ADD_APPOINTMENTS, AppointmentScreens.VIEW_ADD_APPOINTMENTS};
+
+    }
 }
+
