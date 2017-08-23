@@ -15,6 +15,8 @@ public enum screens implements BaseEnum{
     VIEWDB_SCREEN("viewDB", "/com/Laboratory/views/viewDB.fxml"),
     EXTRA_SCREEN("extra", "/com/Laboratory/views/extra.fxml");
 
+
+
     String path;
     String id;
 
