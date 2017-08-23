@@ -1,9 +1,9 @@
 package com.employeemanagement.controllers;
 
 import com.common.ConfirmDialog;
-import com.jfoenix.controls.JFXButton;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class UpdateEmpoyeeController implements Initializable,ControlledScreen {
+public class LoanController implements Initializable,ControlledScreen {
 
     ScreenController controller;
 
@@ -44,19 +44,19 @@ public class UpdateEmpoyeeController implements Initializable,ControlledScreen {
     void changeScene(MouseEvent event) {
         switch (((JFXButton) event.getSource()).getId()){
             case "dashBoardBtn":
-                ScreenController.changeScreen(controller, MyScreens.UPDATEADDEMPLOYEE_SCREEN, MyScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.DASHBOARD_SCREEN);
                 break;
             case "addEmployeeBtn":
-                ScreenController.changeScreen(controller, MyScreens.UPDATEADDEMPLOYEE_SCREEN, MyScreens.ADDEMPLOYEE_SCREEN);
+                ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.ADDEMPLOYEE_SCREEN);
                 break;
             case "updateEmployeeBtn":
-
+                ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
                 break;
             case "attendenceBtn":
-                ScreenController.changeScreen(controller, MyScreens.UPDATEADDEMPLOYEE_SCREEN, MyScreens.ATTENDENCE_SCREEN);
+                ScreenController.changeScreen(controller,MyScreens.LOAN_SCREEN, MyScreens.ATTENDENCE_SCREEN);
                 break;
             case "payrollBtn":
-                ScreenController.changeScreen(controller, MyScreens.UPDATEADDEMPLOYEE_SCREEN, MyScreens.PAYROLL_SCREEN);
+                ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.PAYROLL_SCREEN);
                 break;
             case "reportsBtn":
                 //ScreenController.changeScreen(controller, SupplierScreens.ADDEMPLOYEE_SCREEN, SupplierScreens.R);
@@ -64,6 +64,13 @@ public class UpdateEmpoyeeController implements Initializable,ControlledScreen {
                 break;
         }
     }
+
+    @FXML
+    void goBack(MouseEvent event) {
+        ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.PAYROLL_SCREEN);
+    }
+
+
 
 
     @FXML

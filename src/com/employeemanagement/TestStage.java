@@ -20,7 +20,9 @@ public class TestStage extends Application {
 
         ScreenController mainContainer = new ScreenController();
 
+
         mainContainer.loadScreen(MyScreens.DASHBOARD_SCREEN.getId(), MyScreens.DASHBOARD_SCREEN.getPath());
+
         mainContainer.setScreen(MyScreens.DASHBOARD_SCREEN.getId());
         Parent root = mainContainer.getScreen(MyScreens.DASHBOARD_SCREEN.getId()).getParent();
 
