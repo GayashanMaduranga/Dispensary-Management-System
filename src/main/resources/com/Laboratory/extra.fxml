@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.*?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1579.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Laboratory.controllers.extraController">
+    <left>
+        <VBox fx:id="aside" alignment="CENTER" prefHeight="715.0" prefWidth="308.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+            <children>
+                <JFXButton fx:id="dashboardBT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="Dash Board" textFill="WHITE">
+                    <graphic>
+                        <MaterialDesignIconView glyphName="VIEW_MODULE" size="80" />
+                    </graphic></JFXButton>
+                <JFXButton fx:id="ordertestBT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text=" Order Test">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="LIST_ALT" size="70" />
+                    </graphic></JFXButton>
+                <JFXButton fx:id="enter_resultBT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="Enter Results">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" size="80" />
+                    </graphic></JFXButton>
+                <JFXButton fx:id="viewDB_BT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="View Database">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="DATABASE" size="70" />
+                    </graphic></JFXButton>
+                <JFXButton fx:id="extraBT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="146.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="Extras">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="PIE_CHART" size="70" />
+                    </graphic></JFXButton>
+            </children>
+        </VBox>
+    </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="251.0" layoutY="206.0" prefHeight="59.0" prefWidth="708.0">
+               <children>
+                  <Separator layoutX="22.0" layoutY="14.0" prefHeight="39.0" prefWidth="297.0" />
+                  <Separator layoutX="393.0" layoutY="14.0" prefHeight="39.0" prefWidth="293.0" />
+                  <Label layoutX="330.0" layoutY="20.0" text="Charts" />
+               </children>
+            </Pane>
+         </children></AnchorPane>
+   </center>
+</BorderPane>
