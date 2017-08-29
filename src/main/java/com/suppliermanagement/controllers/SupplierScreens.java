@@ -7,8 +7,8 @@ import com.common.BaseEnum;
  */
 public enum SupplierScreens implements BaseEnum {
 
-    PURCHASE_SCREEN("purchase", "/com/suppliermanagement/views/supView_Purchase.fxml"),
-    SUPPLIER_SCREEN("suppliers", "/com/suppliermanagement/views/supView_Suppliers.fxml");
+    PURCHASE_SCREEN("purchase", "/com/suppliermanagement/supView_Purchase.fxml"),
+    SUPPLIER_SCREEN("suppliers", "/com/suppliermanagement/supView_Suppliers.fxml");
 
 
     String path;

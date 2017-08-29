@@ -9,8 +9,8 @@ import com.common.BaseEnum;
 
 public enum PharmacyScreens implements BaseEnum{
 
-    DASHBOARD_SCREEN("MainView", "/com/PharmacyMgt/Views/MainView.fxml"),
-    INVOICE_VIEW_SCREEN("ViewInvoice", "/com/PharmacyMgt/Views/InvoiceView.fxml");
+    DASHBOARD_SCREEN("MainView", "/com/PharmacyMgt/MainView.fxml"),
+    INVOICE_VIEW_SCREEN("ViewInvoice", "/com/PharmacyMgt/InvoiceView.fxml");
 
     String path;
     String id;

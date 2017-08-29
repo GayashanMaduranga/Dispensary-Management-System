@@ -14,11 +14,11 @@ public enum screens implements BaseEnum{
 //    PAYROLL_SCREEN("payroll", "/com/employeemanagement/views/Payroll.fxml");
 
 
-    DASHBOARD_SCREEN("dashBoard", "/com/Laboratory/views/dashboard.fxml"),
-    ORDERTEST_SCREEN("orderTest", "/com/Laboratory/views/orderTest.fxml"),
-    ENTERRESULTS_SCREEN("enterResults", "/com/Laboratory/views/enterResults.fxml"),
-    VIEWDB_SCREEN("viewDB", "/com/Laboratory/views/viewDB.fxml"),
-    EXTRA_SCREEN("extra", "/com/Laboratory/views");
+    DASHBOARD_SCREEN("dashBoard", "/com/Laboratory/dashboard.fxml"),
+    ORDERTEST_SCREEN("orderTest", "/com/Laboratory/orderTest.fxml"),
+    ENTERRESULTS_SCREEN("enterResults", "/com/Laboratory/enterResults.fxml"),
+    VIEWDB_SCREEN("viewDB", "/com/Laboratory/viewDB.fxml"),
+    EXTRA_SCREEN("extra", "/com/Laboratory");
 
     String path;
     String id;

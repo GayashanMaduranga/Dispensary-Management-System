@@ -5,7 +5,7 @@ package com.main.controllers;
  */
 public enum MainScreens {
 
-    LOGIN_SCREEN("login", "/com/main/views/Login.fxml");
+    LOGIN_SCREEN("login", "/com/main/Login.fxml");
 
     String path;
     String id;

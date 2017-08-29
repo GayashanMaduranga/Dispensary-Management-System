@@ -7,12 +7,12 @@ import com.common.BaseEnum;
  */
 public enum MyScreens implements BaseEnum{
 
-    DASHBOARD_SCREEN("dashboard", "/views/DashBoard.fxml"),
-    ADDEMPLOYEE_SCREEN("addEmployee", "/views/AddEmployee.fxml"),
-    ATTENDENCE_SCREEN("attendence", "/views/Attendence.fxml"),
-    UPDATEADDEMPLOYEE_SCREEN("updateEmployee", "/views/UpdateEmployee.fxml"),
-    PAYROLL_SCREEN("payroll", "/views/Payroll.fxml"),
-    LOAN_SCREEN("loan", "/views/Loan.fxml");
+    DASHBOARD_SCREEN("dashboard", "/employeemanagement/DashBoard.fxml"),
+    ADDEMPLOYEE_SCREEN("addEmployee", "/employeemanagement/AddEmployee.fxml"),
+    ATTENDENCE_SCREEN("attendence", "/employeemanagement/Attendence.fxml"),
+    UPDATEADDEMPLOYEE_SCREEN("updateEmployee", "/employeemanagement/UpdateEmployee.fxml"),
+    PAYROLL_SCREEN("payroll", "/employeemanagement/Payroll.fxml"),
+    LOAN_SCREEN("loan", "/employeemanagement/Loan.fxml");
 ///com/employeemanagement/views/Loan.fxml
 
     String path;

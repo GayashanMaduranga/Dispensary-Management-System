@@ -9,8 +9,8 @@ import javax.swing.text.View;
  */
 public enum AppointmentScreens implements BaseEnum{
 
-    VIEW_APPOINTMENTS_SCREEN("view", "/com/appointmentscheduling/views/AppointmentScheduling.fxml"),
-    VIEW_ADD_APPOINTMENTS("AddAppointment", "/com/appointmentscheduling/views/AddAppointment.fxml");
+    VIEW_APPOINTMENTS_SCREEN("view", "/com/appointmentscheduling/AppointmentScheduling.fxml"),
+    VIEW_ADD_APPOINTMENTS("AddAppointment", "/com/appointmentscheduling/AddAppointment.fxml");
 
 
 
