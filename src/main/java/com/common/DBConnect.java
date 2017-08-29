@@ -18,6 +18,7 @@ public class DBConnect {
 
         else{
             try {
+
                 Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dispensary","root","");
                 return connection;
