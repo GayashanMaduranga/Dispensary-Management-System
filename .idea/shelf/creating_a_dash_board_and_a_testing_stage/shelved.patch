@@ -1,0 +1,1344 @@
+Index: src/com/main/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/main/Main.java	(revision 7c51151ae919cced0de26ac9115f6a49f71d8baa)
++++ src/com/main/Main.java	(revision )
+@@ -23,6 +23,8 @@
+         primaryStage.setResizable(false);
+         primaryStage.setScene(new Scene(root));
+         primaryStage.show();
++
++        //code to center the stage on the screen
+         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+         primaryStage.setX((screenBounds.getWidth() - primaryStage.getWidth()) / 2);
+         primaryStage.setY((screenBounds.getHeight() - primaryStage.getHeight()) / 2);
+Index: src/com/labinventory/controlers/LabInventoryControl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/labinventory/controlers/LabInventoryControl.java	(revision 7c51151ae919cced0de26ac9115f6a49f71d8baa)
++++ src/com/labinventory/controlers/LabInventoryControl.java	(revision )
+@@ -1,7 +1,26 @@
+ package com.labinventory.controlers;
+ 
++import com.common.ControlledScreen;
++import com.common.ScreenController;
++import javafx.fxml.Initializable;
++
++import java.net.URL;
++import java.util.ResourceBundle;
++
+ /**
+  * Created by chamara on 8/13/2017.
+  */
+-public class LabInventoryControl {
++public class LabInventoryControl implements Initializable, ControlledScreen {
++
++    ScreenController controller;
++
++    @Override
++    public void initialize(URL location, ResourceBundle resources) {
++
++    }
++
++    @Override
++    public void setScreenParent(ScreenController screenParent) {
++        controller = screenParent;
++    }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 7c51151ae919cced0de26ac9115f6a49f71d8baa)
++++ .idea/workspace.xml	(revision )
+@@ -2,27 +2,20 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="creating a dash board and a testing stage">
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/Main_Naveen.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/controllers/SupplierScreens.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/controllers/supView_Supplier_Ctrl.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/controllers/sup_Purchase_Ctrl.java" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/views/css2.css" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/views/supView.css" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/views/supView_Purchase.fxml" />
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/views/supView_Suppliers.fxml" />
+-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/AlertDialog.class" afterPath="" />
+-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/ConfirmDialog.class" afterPath="" />
+-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/controllers/MainController.class" afterPath="" />
+-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/views/main.fxml" afterPath="" />
++      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/labinventory/controlers/InventoryScreens.java" />
++      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/test/ControlledScreen.class" afterPath="" />
++      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/test/ScreenController.class" afterPath="" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/AlertDialog.class" afterPath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/AlertDialog.class" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/ConfirmDialog.class" afterPath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/ConfirmDialog.class" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/Main.class" afterPath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/Main.class" />
+       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/views/Login.fxml" afterPath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/views/Login.fxml" />
+       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/views/main.css" afterPath="$PROJECT_DIR$/out/production/Dispensary Management System/com/main/views/main.css" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Dispensary Management System/com/patientmanagement/views/css2.css" afterPath="$PROJECT_DIR$/out/production/Dispensary Management System/com/patientmanagement/views/css2.css" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/employeemanagement/controllers/AddEmpoyeeController.java" afterPath="$PROJECT_DIR$/src/com/employeemanagement/controllers/AddEmpoyeeController.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/employeemanagement/controllers/AttendenceController.java" afterPath="$PROJECT_DIR$/src/com/employeemanagement/controllers/AttendenceController.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/employeemanagement/controllers/DashBoardController.java" afterPath="$PROJECT_DIR$/src/com/employeemanagement/controllers/DashBoardController.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/employeemanagement/controllers/PayrollController.java" afterPath="$PROJECT_DIR$/src/com/employeemanagement/controllers/PayrollController.java" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/employeemanagement/controllers/UpdateEmpoyeeController.java" afterPath="$PROJECT_DIR$/src/com/employeemanagement/controllers/UpdateEmpoyeeController.java" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/labinventory/controlers/LabInventoryControl.java" afterPath="$PROJECT_DIR$/src/com/labinventory/controlers/LabInventoryControl.java" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/main/AlertDialog.java" afterPath="$PROJECT_DIR$/src/com/main/AlertDialog.java" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/main/ConfirmDialog.java" afterPath="$PROJECT_DIR$/src/com/main/ConfirmDialog.java" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/main/Main.java" afterPath="$PROJECT_DIR$/src/com/main/Main.java" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/main/views/main.css" afterPath="$PROJECT_DIR$/src/com/main/views/main.css" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/suppliermanagement/controllers/SupplierScreens.java" afterPath="$PROJECT_DIR$/src/com/suppliermanagement/controllers/SupplierScreens.java" />
+     </list>
+     <ignored path="JavaFxApplication.iws" />
+     <ignored path=".idea/workspace.xml" />
+@@ -90,24 +83,11 @@
+   </component>
+   <component name="FileEditorManager">
+     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+-      <file leaf-file-name="DashBoard.fxml" pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/views/DashBoard.fxml">
+-          <provider editor-type-id="JavaFX-Scene-Builder">
+-            <state />
+-          </provider>
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="255">
+-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+-              <folding />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+       <file leaf-file-name="TestStage.java" pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/TestStage.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="303">
+-              <caret line="30" column="21" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="30" selection-end-column="21" />
++            <state relative-caret-position="306">
++              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+               <folding>
+                 <element signature="imports" expanded="true" />
+               </folding>
+@@ -115,31 +95,41 @@
+           </provider>
+         </entry>
+       </file>
+-      <file leaf-file-name="MyScreens.java" pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/controllers/MyScreens.java">
++      <file leaf-file-name="ControlledScreen.java" pinned="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/src/com/common/ControlledScreen.java">
+           <provider selected="true" editor-type-id="text-editor">
+             <state relative-caret-position="85">
+-              <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
++              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+               <folding />
+             </state>
+           </provider>
+         </entry>
+       </file>
+-      <file leaf-file-name="SupplierScreens.java" pinned="false" current-in-tab="false">
++      <file leaf-file-name="SupplierScreens.java" pinned="false" current-in-tab="true">
+         <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/controllers/SupplierScreens.java">
+           <provider selected="true" editor-type-id="text-editor">
++            <state relative-caret-position="272">
++              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
++              <folding />
++            </state>
++          </provider>
++        </entry>
++      </file>
++      <file leaf-file-name="InventoryScreens.java" pinned="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/src/com/labinventory/controlers/InventoryScreens.java">
++          <provider selected="true" editor-type-id="text-editor">
+             <state relative-caret-position="136">
+-              <caret line="8" column="89" lean-forward="false" selection-start-line="8" selection-start-column="89" selection-end-line="8" selection-end-column="89" />
++              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+               <folding />
+             </state>
+           </provider>
+         </entry>
+       </file>
+-      <file leaf-file-name="sup_Purchase_Ctrl.java" pinned="false" current-in-tab="true">
++      <file leaf-file-name="sup_Purchase_Ctrl.java" pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/controllers/sup_Purchase_Ctrl.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="216">
+-              <caret line="53" column="34" lean-forward="false" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
++            <state relative-caret-position="680">
++              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+               <folding>
+                 <element signature="e#1156#1157#0" expanded="true" />
+                 <element signature="e#1197#1198#0" expanded="true" />
+@@ -151,18 +141,31 @@
+       <file leaf-file-name="supView_Supplier_Ctrl.java" pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/controllers/supView_Supplier_Ctrl.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="88">
+-              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
++            <state relative-caret-position="170">
++              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+               <folding />
+             </state>
+           </provider>
+         </entry>
+       </file>
++      <file leaf-file-name="LabInventory.fxml" pinned="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/src/com/labinventory/views/LabInventory.fxml">
++          <provider selected="true" editor-type-id="text-editor">
++            <state relative-caret-position="0">
++              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
++              <folding />
++            </state>
++          </provider>
++          <provider editor-type-id="JavaFX-Scene-Builder">
++            <state />
++          </provider>
++        </entry>
++      </file>
+       <file leaf-file-name="Main_Naveen.java" pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/Main_Naveen.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="133">
+-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
++            <state relative-caret-position="391">
++              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+               <folding>
+                 <element signature="imports" expanded="true" />
+               </folding>
+@@ -170,15 +173,16 @@
+           </provider>
+         </entry>
+       </file>
+-      <file leaf-file-name="supView_Purchase.fxml" pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/views/supView_Purchase.fxml">
+-          <provider editor-type-id="JavaFX-Scene-Builder">
+-            <state />
+-          </provider>
++      <file leaf-file-name="LabInventoryControl.java" pinned="false" current-in-tab="false">
++        <entry file="file://$PROJECT_DIR$/src/com/labinventory/controlers/LabInventoryControl.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="-170">
+-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+-              <folding />
++            <state relative-caret-position="221">
++              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
++              <folding>
++                <element signature="imports" expanded="true" />
++                <element signature="e#525#526#0" expanded="true" />
++                <element signature="e#566#567#0" expanded="true" />
++              </folding>
+             </state>
+           </provider>
+         </entry>
+@@ -186,26 +190,13 @@
+       <file leaf-file-name="ScreenController.java" pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/src/com/common/ScreenController.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="208">
+-              <caret line="49" column="24" lean-forward="true" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
++            <state relative-caret-position="102">
++              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+               <folding />
+             </state>
+           </provider>
+         </entry>
+       </file>
+-      <file leaf-file-name="AddEmpoyeeController.java" pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/controllers/AddEmpoyeeController.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="-162">
+-              <caret line="16" column="49" lean-forward="true" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+-              <folding>
+-                <element signature="e#898#899#0" expanded="true" />
+-                <element signature="e#943#944#0" expanded="true" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+     </leaf>
+   </component>
+   <component name="FileTemplateManagerImpl">
+@@ -287,6 +278,9 @@
+         <option value="$PROJECT_DIR$/src/com/suppliermanagement/Main_Naveen.java" />
+         <option value="$PROJECT_DIR$/src/com/common/ScreenController.java" />
+         <option value="$PROJECT_DIR$/src/com/suppliermanagement/controllers/sup_Purchase_Ctrl.java" />
++        <option value="$PROJECT_DIR$/src/com/labinventory/controlers/LabInventoryControl.java" />
++        <option value="$PROJECT_DIR$/src/com/labinventory/controlers/InventoryScreens.java" />
++        <option value="$PROJECT_DIR$/src/com/suppliermanagement/controllers/SupplierScreens.java" />
+       </list>
+     </option>
+   </component>
+@@ -303,7 +297,16 @@
+     <option name="width" value="1382" />
+     <option name="height" value="744" />
+   </component>
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <OptionsSetting value="true" id="Add" />
++    <OptionsSetting value="true" id="Remove" />
++    <OptionsSetting value="true" id="Checkout" />
++    <OptionsSetting value="true" id="Update" />
++    <OptionsSetting value="true" id="Status" />
++    <OptionsSetting value="true" id="Edit" />
++    <ConfirmationsSetting value="0" id="Add" />
++    <ConfirmationsSetting value="0" id="Remove" />
++  </component>
+   <component name="ProjectView">
+     <navigator currentView="ProjectPane" proportions="" version="1">
+       <flattenPackages />
+@@ -319,86 +322,26 @@
+       <foldersAlwaysOnTop value="true" />
+     </navigator>
+     <panes>
+-      <pane id="Scratches" />
+-      <pane id="Scope">
+-        <subPane subId="Production">
++      <pane id="PackagesPane" />
++      <pane id="ProjectPane">
++        <subPane>
+           <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
++            <PATH_ELEMENT>
++              <option name="myItemId" value="dispensary-management-system" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+             </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+           </PATH>
+-        </subPane>
+-        <subPane subId="Changed Files">
+           <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
++            <PATH_ELEMENT>
++              <option name="myItemId" value="dispensary-management-system" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+             </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
++            <PATH_ELEMENT>
++              <option name="myItemId" value="dispensary-management-system" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT=".idea">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+           </PATH>
+-        </subPane>
+-        <subPane subId="Project Files">
+           <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="src">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-        </subPane>
+-        <subPane subId="Default">
+-          <PATH>
+-            <PATH_ELEMENT USER_OBJECT="Root">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-            <PATH_ELEMENT USER_OBJECT=".idea">
+-              <option name="myItemId" value="" />
+-              <option name="myItemType" value="" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-        </subPane>
+-      </pane>
+-      <pane id="ProjectPane">
+-        <subPane>
+-          <PATH>
+             <PATH_ELEMENT>
+               <option name="myItemId" value="dispensary-management-system" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+@@ -407,6 +350,14 @@
+               <option name="myItemId" value="dispensary-management-system" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="src" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="lib" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++            </PATH_ELEMENT>
+           </PATH>
+           <PATH>
+             <PATH_ELEMENT>
+@@ -421,6 +372,10 @@
+               <option name="myItemId" value="src" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="com" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++            </PATH_ELEMENT>
+           </PATH>
+           <PATH>
+             <PATH_ELEMENT>
+@@ -440,9 +395,13 @@
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="suppliermanagement" />
++              <option name="myItemId" value="labinventory" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="views" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++            </PATH_ELEMENT>
+           </PATH>
+           <PATH>
+             <PATH_ELEMENT>
+@@ -462,11 +421,11 @@
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="suppliermanagement" />
++              <option name="myItemId" value="labinventory" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="views" />
++              <option name="myItemId" value="controlers" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+           </PATH>
+@@ -488,13 +447,9 @@
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="suppliermanagement" />
++              <option name="myItemId" value="employeemanagement" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+-            <PATH_ELEMENT>
+-              <option name="myItemId" value="controllers" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+-            </PATH_ELEMENT>
+           </PATH>
+           <PATH>
+             <PATH_ELEMENT>
+@@ -513,6 +468,14 @@
+               <option name="myItemId" value="com" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="employeemanagement" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="controllers" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++            </PATH_ELEMENT>
+           </PATH>
+           <PATH>
+             <PATH_ELEMENT>
+@@ -532,7 +495,7 @@
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="employeemanagement" />
++              <option name="myItemId" value="common" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+           </PATH>
+@@ -554,11 +517,11 @@
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="employeemanagement" />
++              <option name="myItemId" value="appointmentscheduling" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="controllers" />
++              <option name="myItemId" value="views" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+           </PATH>
+@@ -580,13 +543,89 @@
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="common" />
++              <option name="myItemId" value="appointmentscheduling" />
+               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+           </PATH>
+         </subPane>
+       </pane>
+-      <pane id="PackagesPane" />
++      <pane id="Scratches" />
++      <pane id="Scope">
++        <subPane subId="Production">
++          <PATH>
++            <PATH_ELEMENT USER_OBJECT="Root">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT="src">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++          </PATH>
++        </subPane>
++        <subPane subId="Changed Files">
++          <PATH>
++            <PATH_ELEMENT USER_OBJECT="Root">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT=".idea">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++          </PATH>
++        </subPane>
++        <subPane subId="Project Files">
++          <PATH>
++            <PATH_ELEMENT USER_OBJECT="Root">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++          </PATH>
++          <PATH>
++            <PATH_ELEMENT USER_OBJECT="Root">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT="src">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++          </PATH>
++        </subPane>
++        <subPane subId="Default">
++          <PATH>
++            <PATH_ELEMENT USER_OBJECT="Root">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT="dispensary-management-system">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT USER_OBJECT=".idea">
++              <option name="myItemId" value="" />
++              <option name="myItemType" value="" />
++            </PATH_ELEMENT>
++          </PATH>
++        </subPane>
++      </pane>
+     </panes>
+   </component>
+   <component name="PropertiesComponent">
+@@ -612,20 +651,21 @@
+     <property name="js.eslint.eslintPackage" value="" />
+   </component>
+   <component name="RecentsManager">
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\Dilshanka\IdeaProjects\dispensary-management-system\src\com\PharmacyMgt\Views" />
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\Naveen Luke Fernando\IdeaProjects\dispensary-management-system\src\com\suppliermanagement\views" />
+       <recent name="C:\Users\Kalan\IdeaProjects\dispensary-management-system\src\com\appointmentscheduling\views" />
+       <recent name="D:\ITP Project\dispensary-management-system\src\com\patientmanagement\views" />
++      <recent name="D:\ITP Project\dispensary-management-system\src\com\patientmanagement" />
+       <recent name="D:\ITP Project\dispensary-management-system\src\com\main\views" />
+     </key>
+     <key name="CopyClassDialog.RECENTS_KEY">
++      <recent name="com.labinventory.controlers" />
+       <recent name="com.suppliermanagement.controllers" />
+     </key>
+-    <key name="MoveFile.RECENT_KEYS">
+-      <recent name="C:\Users\Naveen Luke Fernando\IdeaProjects\dispensary-management-system\src\com\suppliermanagement\views" />
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\Dilshanka\IdeaProjects\dispensary-management-system\src\com\PharmacyMgt\Views" />
+       <recent name="C:\Users\Kalan\IdeaProjects\dispensary-management-system\src\com\appointmentscheduling\views" />
+       <recent name="D:\ITP Project\dispensary-management-system\src\com\patientmanagement\views" />
+-      <recent name="D:\ITP Project\dispensary-management-system\src\com\patientmanagement" />
+       <recent name="D:\ITP Project\dispensary-management-system\src\com\main\views" />
+     </key>
+   </component>
+@@ -689,7 +729,7 @@
+       <predefined_log_file id="idea.log" enabled="true" />
+       <method />
+     </configuration>
+-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
++    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+       <module name="" />
+       <option name="DEPLOY" value="true" />
+       <option name="ARTIFACT_NAME" value="" />
+@@ -699,7 +739,7 @@
+       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+       <option name="PREFERRED_AVD" value="" />
+       <option name="CLEAR_LOGCAT" value="false" />
+-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
++      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+       <option name="FORCE_STOP_RUNNING_APP" value="true" />
+       <option name="DEBUGGER_TYPE" value="Java" />
+@@ -707,11 +747,7 @@
+       <option name="PREFERRED_AVD" value="" />
+       <Java />
+       <Profilers>
+-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+-        <option name="GAPID_ENABLED" value="false" />
+         <option name="GAPID_DISABLE_PCS" value="false" />
+-        <option name="SUPPORT_LIB_ENABLED" value="true" />
+-        <option name="INSTRUMENTATION_ENABLED" value="true" />
+       </Profilers>
+       <option name="DEEP_LINK" value="" />
+       <option name="ACTIVITY_CLASS" value="" />
+@@ -736,11 +772,7 @@
+       <option name="PREFERRED_AVD" value="" />
+       <Java />
+       <Profilers>
+-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+-        <option name="GAPID_ENABLED" value="false" />
+         <option name="GAPID_DISABLE_PCS" value="false" />
+-        <option name="SUPPORT_LIB_ENABLED" value="true" />
+-        <option name="INSTRUMENTATION_ENABLED" value="true" />
+       </Profilers>
+       <method />
+     </configuration>
+@@ -919,7 +951,6 @@
+       <setting name="cmdLine" value="run-app" />
+       <setting name="passParentEnv" value="true" />
+       <setting name="launchBrowser" value="true" />
+-      <setting name="launchBrowserUrl" value="" />
+       <setting name="depsClasspath" value="false" />
+       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+       <method />
+@@ -945,6 +976,27 @@
+       <patterns />
+       <method />
+     </configuration>
++    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
++      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
++      <module name="" />
++      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
++      <option name="ALTERNATIVE_JRE_PATH" />
++      <option name="PACKAGE_NAME" />
++      <option name="MAIN_CLASS_NAME" />
++      <option name="METHOD_NAME" />
++      <option name="TEST_OBJECT" value="class" />
++      <option name="VM_PARAMETERS" />
++      <option name="PARAMETERS" />
++      <option name="WORKING_DIRECTORY" />
++      <option name="ENV_VARIABLES" />
++      <option name="PASS_PARENT_ENVS" value="true" />
++      <option name="TEST_SEARCH_SCOPE">
++        <value defaultName="singleModule" />
++      </option>
++      <envs />
++      <patterns />
++      <method />
++    </configuration>
+     <configuration default="true" type="JarApplication" factoryName="JAR Application">
+       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+       <envs />
+@@ -966,12 +1018,6 @@
+       <envs />
+       <method />
+     </configuration>
+-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+-      <config-file value="" />
+-      <node-interpreter value="project" />
+-      <envs />
+-      <method />
+-    </configuration>
+     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+       <method />
+     </configuration>
+@@ -1042,6 +1088,34 @@
+       <listeners />
+       <method />
+     </configuration>
++    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
++      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
++      <module name="" />
++      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
++      <option name="ALTERNATIVE_JRE_PATH" />
++      <option name="SUITE_NAME" />
++      <option name="PACKAGE_NAME" />
++      <option name="MAIN_CLASS_NAME" />
++      <option name="METHOD_NAME" />
++      <option name="GROUP_NAME" />
++      <option name="TEST_OBJECT" value="CLASS" />
++      <option name="VM_PARAMETERS" />
++      <option name="PARAMETERS" />
++      <option name="WORKING_DIRECTORY" />
++      <option name="OUTPUT_DIRECTORY" />
++      <option name="ANNOTATION_TYPE" />
++      <option name="ENV_VARIABLES" />
++      <option name="PASS_PARENT_ENVS" value="true" />
++      <option name="TEST_SEARCH_SCOPE">
++        <value defaultName="singleModule" />
++      </option>
++      <option name="USE_DEFAULT_REPORTERS" value="false" />
++      <option name="PROPERTIES_FILE" />
++      <envs />
++      <properties />
++      <listeners />
++      <method />
++    </configuration>
+     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+       <node-interpreter>project</node-interpreter>
+       <node-options />
+@@ -1052,7 +1126,7 @@
+       <method />
+     </configuration>
+     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+-      <command value="run" />
++      <command value="run-script" />
+       <scripts />
+       <node-interpreter value="project" />
+       <envs />
+@@ -1097,7 +1171,7 @@
+         <item index="1" class="java.lang.String" itemvalue="Application.TestStage" />
+       </list>
+     </recent_temporary>
+-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
++    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+       <module name="" />
+       <option name="DEPLOY" value="true" />
+       <option name="ARTIFACT_NAME" value="" />
+@@ -1107,7 +1181,7 @@
+       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+       <option name="PREFERRED_AVD" value="" />
+       <option name="CLEAR_LOGCAT" value="false" />
+-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
++      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+       <option name="FORCE_STOP_RUNNING_APP" value="true" />
+       <option name="DEBUGGER_TYPE" value="Java" />
+@@ -1115,7 +1189,11 @@
+       <option name="PREFERRED_AVD" value="" />
+       <Java />
+       <Profilers>
++        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
++        <option name="GAPID_ENABLED" value="false" />
+         <option name="GAPID_DISABLE_PCS" value="false" />
++        <option name="SUPPORT_LIB_ENABLED" value="true" />
++        <option name="INSTRUMENTATION_ENABLED" value="true" />
+       </Profilers>
+       <option name="DEEP_LINK" value="" />
+       <option name="ACTIVITY_CLASS" value="" />
+@@ -1165,6 +1243,8 @@
+       <workItem from="1502633866098" duration="1257000" />
+       <workItem from="1502635313902" duration="23000" />
+       <workItem from="1502691931070" duration="1711000" />
++      <workItem from="1502694174377" duration="1376000" />
++      <workItem from="1503041161027" duration="58000" />
+     </task>
+     <task id="LOCAL-00001" summary="check if changes in master are seen in fork">
+       <created>1501007501382</created>
+@@ -1247,7 +1327,7 @@
+     <servers />
+   </component>
+   <component name="TimeTrackingManager">
+-    <option name="totallyTimeSpent" value="59881000" />
++    <option name="totallyTimeSpent" value="61315000" />
+   </component>
+   <component name="TodoView">
+     <todo-panel id="selected-file">
+@@ -1264,40 +1344,40 @@
+     <layout>
+       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32821077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10130719" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30882353" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
++      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30599368" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22768533" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
++      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22767204" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15718885" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14484979" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
++      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
++      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
++      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32821077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
++      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="91" y="91" width="1738" height="848" />
+       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
++      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
++      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+     </layout>
+     <layout-to-restore>
+       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+@@ -1398,12 +1478,7 @@
+     <option name="FILTER_TARGETS" value="false" />
+   </component>
+   <component name="editorHistoryManager">
+-    <entry file="file://$PROJECT_DIR$/src/com/main/Main.java" />
+-    <entry file="file://$PROJECT_DIR$/src/com/main/controllers/LoginController.java" />
+     <entry file="file://$PROJECT_DIR$/src/com/main/views/Login.fxml" />
+-    <entry file="file://$PROJECT_DIR$/src/com/main/Main.java" />
+-    <entry file="file://$PROJECT_DIR$/src/com/main/controllers/LoginController.java" />
+-    <entry file="file://$PROJECT_DIR$/src/com/main/views/Login.fxml" />
+     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a3eb6a28-0f64-4eed-b0df-5c66afa4eb50/console.sql" />
+     <entry file="file://$PROJECT_DIR$/src/com/main/views/main.fxml" />
+     <entry file="file://$PROJECT_DIR$/src/com/main/controllers/MainController.java" />
+@@ -1423,101 +1498,98 @@
+     <entry file="file://$PROJECT_DIR$/src/com/appointmentscheduling/views/css2.css" />
+     <entry file="file://$PROJECT_DIR$/src/com/patientmanagement/views/css2.css" />
+     <entry file="file://$PROJECT_DIR$/src/com/main/views/main.css" />
+-    <entry file="file://$PROJECT_DIR$/src/com/main/Main.java" />
+-    <entry file="file://$PROJECT_DIR$/src/com/main/controllers/LoginController.java" />
+     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="3876">
+-          <caret line="228" column="13" lean-forward="false" selection-start-line="228" selection-start-column="13" selection-end-line="228" selection-end-column="13" />
+-          <folding />
++          <caret line="228" column="13" selection-start-line="228" selection-start-column="13" selection-end-line="228" selection-end-column="13" />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/PharmacyMgt/Views/css2.css">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="0">
+-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
++          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/patientmanagement/controllers/PatientController.java">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="102">
+-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
++          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/patientmanagement/views/DoctorsAssistant.fxml">
+-      <provider editor-type-id="JavaFX-Scene-Builder">
+-        <state />
+-      </provider>
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="255">
+-          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
++          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+         </state>
+       </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/appointmentscheduling/views/AppointmentScheduling.fxml">
+       <provider editor-type-id="JavaFX-Scene-Builder">
+         <state />
+       </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/appointmentscheduling/views/AppointmentScheduling.fxml">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="0">
+-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
++          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+           <folding />
+         </state>
+       </provider>
++      <provider editor-type-id="JavaFX-Scene-Builder">
++        <state />
++      </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/appointmentscheduling/controllers/AppointmentController.java">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="85">
+-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
++          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/PharmacyMgt/Controllers/PharmacyController.java">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="85">
+-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
++          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/main/views/Login.fxml">
+-      <provider editor-type-id="JavaFX-Scene-Builder">
+-        <state />
+-      </provider>
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="306">
+-          <caret line="36" column="15" lean-forward="false" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
++          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
+         </state>
+       </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/views/DoctorsAssistant.fxml" />
+-    <entry file="file://$PROJECT_DIR$/src/com/PharmacyMgt/Views/PharmacyManagemet.fxml">
+       <provider editor-type-id="JavaFX-Scene-Builder">
+         <state />
+       </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/views/DoctorsAssistant.fxml" />
++    <entry file="file://$PROJECT_DIR$/src/com/PharmacyMgt/Views/PharmacyManagemet.fxml">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="286">
+-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
++          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+         </state>
+       </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/patientmanagement/views/Doctor.fxml">
+       <provider editor-type-id="JavaFX-Scene-Builder">
+         <state />
+       </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/patientmanagement/views/Doctor.fxml">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="294">
+-          <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
++          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+         </state>
+       </provider>
++      <provider editor-type-id="JavaFX-Scene-Builder">
++        <state />
++      </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/views/css2.css" />
+     <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/controllers/DashBoardController.java">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="85">
+-          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
++          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+           <folding />
+         </state>
+       </provider>
+@@ -1525,104 +1597,161 @@
+     <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/views/styles.css">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="0">
+-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="17" />
+-          <folding />
++          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="17" />
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/views/DashBoard.fxml">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="255">
++          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
++        </state>
++      </provider>
+       <provider editor-type-id="JavaFX-Scene-Builder">
+         <state />
+       </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/views/supView_Purchase.fxml">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="255">
+-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+-          <folding />
++        <state relative-caret-position="0">
++          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+         </state>
+       </provider>
++      <provider editor-type-id="JavaFX-Scene-Builder">
++        <state />
++      </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/controllers/supView_Supplier_Ctrl.java">
++    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/controllers/MyScreens.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="88">
+-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+-          <folding />
++        <state relative-caret-position="85">
++          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/views/supView_Purchase.fxml">
+-      <provider editor-type-id="JavaFX-Scene-Builder">
+-        <state />
++    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/controllers/AddEmpoyeeController.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="119">
++          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
++          <folding>
++            <element signature="e#898#899#0" expanded="true" />
++            <element signature="e#943#944#0" expanded="true" />
++          </folding>
++        </state>
+       </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/main/Main.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="-170">
+-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+-          <folding />
++        <state relative-caret-position="68">
++          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/controllers/SupplierScreens.java">
++    <entry file="file://$PROJECT_DIR$/src/com/main/controllers/LoginController.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="136">
+-          <caret line="8" column="89" lean-forward="false" selection-start-line="8" selection-start-column="89" selection-end-line="8" selection-end-column="89" />
+-          <folding />
++        <state relative-caret-position="357">
++          <caret line="61" column="44" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/controllers/MyScreens.java">
++    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/controllers/AttendenceController.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="85">
+-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
++        <state relative-caret-position="-25">
++          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+           <folding />
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/TestStage.java">
++    <entry file="file://$PROJECT_DIR$/src/com/labinventory/controlers/LabInventoryControl.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="303">
+-          <caret line="30" column="21" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="30" selection-end-column="21" />
++        <state relative-caret-position="221">
++          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+           <folding>
+             <element signature="imports" expanded="true" />
++            <element signature="e#525#526#0" expanded="true" />
++            <element signature="e#566#567#0" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/Main_Naveen.java">
++    <entry file="file://$PROJECT_DIR$/src/com/labinventory/views/LabInventory.fxml">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="133">
+-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
++        <state relative-caret-position="0">
++          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
++          <folding />
++        </state>
++      </provider>
++      <provider editor-type-id="JavaFX-Scene-Builder">
++        <state />
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/labinventory/controlers/InventoryScreens.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="136">
++          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
++          <folding />
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/TestStage.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="306">
++          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+           <folding>
+             <element signature="imports" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/common/ControlledScreen.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="85">
++          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
++          <folding />
++        </state>
++      </provider>
++    </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/common/ScreenController.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="208">
+-          <caret line="49" column="24" lean-forward="true" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
++        <state relative-caret-position="102">
++          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+           <folding />
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/src/com/employeemanagement/controllers/AddEmpoyeeController.java">
++    <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/Main_Naveen.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="-162">
+-          <caret line="16" column="49" lean-forward="true" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
++        <state relative-caret-position="391">
++          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+           <folding>
+-            <element signature="e#898#899#0" expanded="true" />
+-            <element signature="e#943#944#0" expanded="true" />
++            <element signature="imports" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/controllers/sup_Purchase_Ctrl.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="216">
+-          <caret line="53" column="34" lean-forward="false" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
++        <state relative-caret-position="680">
++          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+           <folding>
+             <element signature="e#1156#1157#0" expanded="true" />
+             <element signature="e#1197#1198#0" expanded="true" />
+           </folding>
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/controllers/supView_Supplier_Ctrl.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="170">
++          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
++          <folding />
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/com/suppliermanagement/controllers/SupplierScreens.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="272">
++          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
++          <folding />
+         </state>
+       </provider>
+     </entry>
+\ No newline at end of file
+Index: src/com/main/views/main.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/main/views/main.css	(revision 7c51151ae919cced0de26ac9115f6a49f71d8baa)
++++ src/com/main/views/main.css	(revision )
+@@ -1,9 +1,11 @@
+ .button{
+     -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #146bbe, #1bda99);
++    -fx-text-fill: #dedede;
+ }
+ 
+ .button:hover{
+-    -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #362ac2, #1ddfcc);
++    -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #0d1675, #0e7c74);
++    -fx-text-fill: whitesmoke;
+ }
+ 
+ #closebtn:hover{
+Index: src/com/main/ConfirmDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/main/ConfirmDialog.java	(revision 7c51151ae919cced0de26ac9115f6a49f71d8baa)
++++ src/com/main/ConfirmDialog.java	(revision )
+@@ -8,6 +8,7 @@
+ import javafx.scene.layout.VBox;
+ import javafx.stage.Modality;
+ import javafx.stage.Stage;
++import javafx.stage.StageStyle;
+ 
+ /**
+  * Created by Damsith on 7/29/2017.
+@@ -20,13 +21,16 @@
+ 
+         Stage stage = new Stage();
+         stage.initModality(Modality.APPLICATION_MODAL);
++        stage.initStyle(StageStyle.UTILITY);
+         stage.setTitle(title);
+         stage.setMinWidth(300);
+         stage.setMinHeight(150);
+ 
+         Label lbl = new Label(msg);
+         Button btnYes = new Button("Yes");
++        btnYes.setMinWidth(80);
+         Button btnNo = new Button("No");
++        btnNo.setMinWidth(80);
+ 
+         btnYes.setOnAction(e -> {
+             answer = true;
+@@ -38,8 +42,8 @@
+             stage.close();
+         });
+ 
+-        VBox vBox = new VBox(10);
+-        HBox hBox = new HBox(10);
++        VBox vBox = new VBox(30);
++        HBox hBox = new HBox(30);
+         hBox.getChildren().addAll(btnYes, btnNo);
+         vBox.getChildren().addAll(lbl, hBox);
+         hBox.setAlignment(Pos.CENTER);
+Index: src/com/suppliermanagement/controllers/SupplierScreens.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/suppliermanagement/controllers/SupplierScreens.java	(revision 7c51151ae919cced0de26ac9115f6a49f71d8baa)
++++ src/com/suppliermanagement/controllers/SupplierScreens.java	(revision )
+@@ -3,6 +3,7 @@
+ /**
+  * Created by gayashan on 8/14/2017.
+  */
++
+ public enum SupplierScreens {
+ 
+     PURCHASE_SCREEN("purchase", "/com/suppliermanagement/views/supView_Purchase.fxml"),
+Index: src/com/labinventory/controlers/InventoryScreens.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/labinventory/controlers/InventoryScreens.java	(revision )
++++ src/com/labinventory/controlers/InventoryScreens.java	(revision )
+@@ -0,0 +1,28 @@
++package com.labinventory.controlers;
++
++/**
++ * Created by gayashan on 8/14/2017.
++ */
++public enum InventoryScreens {
++
++    INVENTORY_SCREEN("mainScreen", "/com/labinventory/views/LabInventory.fxml");
++
++
++    String path;
++    String id;
++
++    InventoryScreens(String id, String path) {
++        this.path = path;
++        this.id = id;
++    }
++
++    ;
++
++    public String getPath() {
++        return path;
++    }
++
++    public String getId() {
++        return id;
++    }
++}
+Index: out/production/Dispensary Management System/com/main/views/main.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- out/production/Dispensary Management System/com/main/views/main.css	(revision 7c51151ae919cced0de26ac9115f6a49f71d8baa)
++++ out/production/Dispensary Management System/com/main/views/main.css	(revision )
+@@ -1,0 +1,0 @@
+Index: src/com/main/AlertDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/main/AlertDialog.java	(revision 7c51151ae919cced0de26ac9115f6a49f71d8baa)
++++ src/com/main/AlertDialog.java	(revision )
+@@ -7,6 +7,7 @@
+ import javafx.scene.layout.VBox;
+ import javafx.stage.Modality;
+ import javafx.stage.Stage;
++import javafx.stage.StageStyle;
+ 
+ 
+ public class AlertDialog {
+@@ -16,6 +17,7 @@
+         Stage stage = new Stage();
+ 
+         stage.initModality(Modality.APPLICATION_MODAL);
++        stage.initStyle(StageStyle.UTILITY);
+         stage.setTitle(title);
+         stage.setMinWidth(300);
+         stage.setMinHeight(150);
+@@ -29,7 +31,7 @@
+         vBox.setAlignment(Pos.CENTER);
+ 
+         Scene scene = new Scene(vBox);
+-        scene.getStylesheets().add("com.patientmanagement.views.css2.css");
++        scene.getStylesheets().add("com.main.views.main.css");
+         stage.setScene(scene);
+         stage.showAndWait();
+ 
