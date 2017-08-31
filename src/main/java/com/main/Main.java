@@ -64,7 +64,6 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.setAlwaysOnTop(true);
-//        primaryStage.initStyle(StageStyle.DECORATED);
         primaryStage.setResizable(false);
         Scene scene = new Scene(root);
         scene.setFill(Color.rgb(255, 255, 255, 0.6));
