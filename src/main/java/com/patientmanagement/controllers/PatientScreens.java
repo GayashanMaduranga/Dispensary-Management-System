@@ -10,7 +10,7 @@ import com.common.BaseEnum;
 public enum PatientScreens implements BaseEnum{
 
     DASHBOARD_SCREEN("ViewPatients", "/com/patientmanagement/Dashboard.fxml"),
-    PRESCRIPTION_SCREEN("MakePrescription", "/com/patientmanagement/MakePrescription.fxml"),
+    PRESCRIPTION_SCREEN("MakePrescription", "/com/patientmanagement/Medication.fxml"),
     BILL_SCREEN("MakePrescription", "/com/patientmanagement/MakeBill.fxml"),
     REGISTER_PATIENT_SCREEN("RegisterPatients", "/com/patientmanagement/RegisterPatient.fxml");
 
