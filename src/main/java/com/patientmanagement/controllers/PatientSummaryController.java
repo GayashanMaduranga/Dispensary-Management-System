@@ -20,9 +20,11 @@ import java.util.ResourceBundle;
  * Created by Damsith on 8/1/2017.
  */
 
-public class DashboardController implements Initializable,ControlledScreen {
+public class PatientSummaryController implements Initializable,ControlledScreen {
 
     ScreenController controller;
+
+
 
     @Override
     public void setScreenParent(ScreenController screenParent) {
@@ -56,14 +58,14 @@ public class DashboardController implements Initializable,ControlledScreen {
     @FXML
     void changeScene(Event event){
 
-        switch(((JFXButton)event.getSource()).getId()) {
+        switch(((JFXButton)event.getSource()).getId()){
 
             case "sidebarRegisterBtn":
-                Stage s = (Stage) logoutBtn.getScene().getWindow();
-                Main.createRegisterWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml");
-            case "titlebtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
                 break;
+//            case "titlebtn":
+//                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+//                break;
             case "sidebarPrescriptionBtn":
                 ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.PRESCRIPTION_SCREEN);
                 break;
