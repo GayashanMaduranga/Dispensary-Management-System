@@ -5,33 +5,33 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.PatientSummaryController">
     <center>
-        <GridPane BorderPane.alignment="CENTER">
+        <GridPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="32.0" prefWidth="32.0" />
-            <ColumnConstraints hgrow="SOMETIMES" prefWidth="180.0" />
-                <ColumnConstraints hgrow="SOMETIMES" prefWidth="180.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="70.0" />
-                <ColumnConstraints hgrow="SOMETIMES" prefWidth="180.0" />
-                <ColumnConstraints hgrow="SOMETIMES" prefWidth="180.0" />
+            <ColumnConstraints hgrow="SOMETIMES" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="50.0" prefWidth="50.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="68.0" prefHeight="68.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="255.0" minHeight="60.0" prefHeight="255.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="53.0" minHeight="11.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="70.0" minHeight="-Infinity" prefHeight="70.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="68.0" prefHeight="68.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
@@ -50,77 +50,157 @@
                                 <Font name="Calibri" size="36.0" />
                             </font>
                      <GridPane.margin>
-                        <Insets left="20.0" />
+                        <Insets left="30.0" />
                      </GridPane.margin>
                         </Label>
+                        <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                            <children>
+                                <MaterialDesignIconView glyphName="ACCOUNT_CIRCLE" size="25">
+                                    <HBox.margin>
+                                        <Insets left="15.0" />
+                                    </HBox.margin>
+                                </MaterialDesignIconView>
+                                <Label fx:id="userLbl" text="&lt;username&gt;" textFill="#cdcdcd">
+                                    <HBox.margin>
+                                        <Insets left="5.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Label text="logged in" textFill="#cdcdcd">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                </Label>
+                            </children>
+                            <GridPane.margin>
+                                <Insets right="20.0" />
+                            </GridPane.margin>
+                        </HBox>
                     </children>
                 </GridPane>
-            <JFXTreeTableView fx:id="viewPatientTable" style="-fx-border-color: darkblue;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin></JFXTreeTableView>
-            <Label prefHeight="38.0" prefWidth="242.0" text="Usual Medications" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Verdana" size="23.0" />
-               </font>
-            </Label>
-            <JFXTreeTableView style="-fx-border-color: darkblue;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </JFXTreeTableView>
-            <Label text="Notes" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Verdana" size="23.0" />
-               </font>
-            </Label>
-            <GridPane fx:id="historyPane" style="-fx-effect: dropshadow(gaussian, #858485, 7,0.01,-2, 5);" styleClass="popupPane" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="3">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints fillHeight="false" minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <Accordion GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2">
+              <panes>
+                <TitledPane text="Previous Medications">
+                  <content>
+                        <GridPane style="-fx-background-color: #CCCCCC;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="382.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="480.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXTreeTableView fx:id="viewPatientTable" GridPane.columnSpan="2" GridPane.rowSpan="2">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </JFXTreeTableView>
+                           </children>
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </GridPane>
+                  </content>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                </TitledPane>
+                <TitledPane text="Notes">
+                  <content>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXTreeTableView styleClass="popupPane" GridPane.columnSpan="2">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </JFXTreeTableView>
+                           </children>
+                        </GridPane>
+                  </content>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                </TitledPane>
+                <TitledPane text="untitled 3">
+                  <content>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                  </content>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                </TitledPane>
+              </panes>
+            </Accordion>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Label prefHeight="30.0" prefWidth="183.0" text="Family History">
-                     <font>
-                        <Font name="Verdana Bold" size="15.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label prefHeight="30.0" prefWidth="183.0" text="Social History" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Verdana Bold" size="15.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <TextArea editable="false" prefHeight="229.0" prefWidth="237.0" styleClass="whiteTextArea" text="sddsadsjakdjlsada&#10;dsadsadsasadklsajkjklasjdkadjlsal&#10;dasjdkasldkjalsdada&#10;asdsakdsa&#10;&#10;dsakldjsajjaksjlkasd&#10;adsajkdas" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                     <GridPane.margin>
-                        <Insets bottom="20.0" left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextArea>
-                  <TextArea editable="false" prefHeight="229.0" prefWidth="237.0" styleClass="whiteTextArea" text="djsajkdlsajdkasdasdjasd&#10;adsajdksaljasdsadjjkasldsadjlasd&#10;asjk&#10;&#10;jdskalsajsakasjkdlaskasldasdaljdklsaaskdklasjlad&#10;ajdsakldlask&#10;adjaskdasdjkjkljaslkdjsald&#10;jdakdjsa" GridPane.rowIndex="3" GridPane.valignment="TOP">
-                     <GridPane.margin>
-                        <Insets bottom="20.0" left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextArea>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.rowIndex="1">
+                     <children>
+                        <FontAwesomeIconView glyphName="FLASK" size="50" styleClass="glyph-icon-temp" />
+                        <Button mnemonicParsing="false" styleClass="button-temp" text="View Details">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <FontAwesomeIconView glyphName="HEARTBEAT" size="50" styleClass="glyph-icon-temp" />
+                        <Button mnemonicParsing="false" styleClass="button-temp" text="View Details">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <FontAwesomeIconView glyphName="LINE_CHART" size="50" styleClass="glyph-icon-temp" />
+                        <Button mnemonicParsing="false" styleClass="button-temp" text="View Details">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <children>
+                        <FontAwesomeIconView size="50" styleClass="glyph-icon-temp" />
+                        <Button mnemonicParsing="false" styleClass="button-temp" text="View Details">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
             </GridPane>
-            <Label prefHeight="38.0" prefWidth="242.0" text="History" GridPane.columnIndex="4" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Verdana" size="23.0" />
-               </font>
-            </Label>
             </children>
         </GridPane>
     </center>
@@ -131,42 +211,13 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="-Infinity" minHeight="130.0" prefHeight="120.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
-                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
-                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
-                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
-                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="199.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="121.0" vgrow="NEVER" />
+                <RowConstraints maxHeight="464.0" minHeight="-Infinity" prefHeight="439.0" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="NEVER" />
                 <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <JFXButton fx:id="sidebarRegisterBtn" buttonType="RAISED" disable="true" graphicTextGap="6.0" onAction="#changeScene" prefHeight="45.0" prefWidth="302.0" text="Summary                 " GridPane.rowIndex="2">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="USER_PLUS" size="20" />
-                    </graphic>
-                    <font>
-                        <Font name="Verdana" size="16.0" />
-                    </font>
-                </JFXButton>
-                <JFXButton fx:id="sidebarPrescriptionBtn" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="273.0" text="Medications              " GridPane.rowIndex="3">
-                    <font>
-                        <Font name="Verdana" size="16.0" />
-                    </font>
-                    <graphic>
-                        <FontAwesomeIconView glyphName="FLASK" size="20" />
-                    </graphic>
-                </JFXButton>
-                <JFXButton fx:id="sidebarBillBtn" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="273.0" text="Request test            " GridPane.rowIndex="4">
-                    <font>
-                        <Font name="Verdana" size="16.0" />
-                    </font>
-                    <graphic>
-                        <FontAwesomeIconView glyphName="FILE_TEXT" size="20" wrappingWidth="18.14285659790039" />
-                    </graphic>
-                </JFXButton>
                 <JFXButton fx:id="titlebtn" graphicTextGap="9.0" onAction="#changeScene" prefHeight="98.0" prefWidth="390.0" text="Medical Records">
                     <font>
                         <Font name="Segoe UI Light" size="21.0" />
@@ -178,7 +229,7 @@
                   <Insets />
                </GridPane.margin>
                 </JFXButton>
-                <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#logout" prefHeight="37.0" prefWidth="128.0" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+                <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#logout" prefHeight="37.0" prefWidth="128.0" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                     <graphic>
                         <MaterialDesignIconView glyphName="LOGOUT" size="25" />
                     </graphic>
@@ -186,19 +237,11 @@
                         <Font name="Verdana" size="16.0" />
                     </font>
                 </JFXButton>
-            <JFXButton fx:id="sidebarViewBtn" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="273.0" text="View Patients          " GridPane.rowIndex="5">
-               <font>
-                  <Font name="Verdana" size="16.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView glyphName="EYE" size="20" />
-               </graphic>
-            </JFXButton>
-            <AnchorPane fx:id="viewPatientPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="199.0" prefWidth="227.0" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+            <AnchorPane fx:id="viewPatientPane" maxWidth="-Infinity" prefHeight="229.0" prefWidth="227.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <children>
-                  <Label contentDisplay="CENTER" layoutX="88.0" layoutY="14.0" prefHeight="21.0" prefWidth="51.0" text="Patient" textFill="WHITE" />
-                  <Label contentDisplay="CENTER" layoutX="26.0" layoutY="49.0" prefHeight="21.0" prefWidth="51.0" text="Name" textFill="WHITE" />
-                  <Label contentDisplay="CENTER" layoutX="26.0" layoutY="70.0" prefHeight="21.0" prefWidth="51.0" text="Age" textFill="WHITE" />
+                  <Label contentDisplay="CENTER" layoutX="85.0" layoutY="14.0" prefHeight="21.0" prefWidth="78.0" text="PATIENT" textFill="#0d0d0d" />
+                  <Label contentDisplay="CENTER" layoutX="26.0" layoutY="49.0" prefHeight="21.0" prefWidth="51.0" text="Name" />
+                  <Label contentDisplay="CENTER" layoutX="26.0" layoutY="70.0" prefHeight="21.0" prefWidth="51.0" text="Age" />
                </children>
             </AnchorPane>
             </children>
