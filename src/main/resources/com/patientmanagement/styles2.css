@@ -1,0 +1,47 @@
+.glyph-icon-temp-red{
+    -fx-fill: #e82727;
+}
+
+.glyph-icon-temp-orange{
+    -fx-fill: #e87600;
+}
+
+.glyph-icon-temp-grey{
+    -fx-fill: #646565;
+}
+
+.glyph-icon-temp-blue{
+    -fx-fill: #144265;
+}
+
+.button-temp{
+
+    -fx-background-color: none;
+    -fx-text-fill: #0e4f75;
+    -fx-border-color: #0e4f75;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+.button-temp:hover{
+
+    -fx-background-color: #0e4f75;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
+}
+
+.category-med{
+    -fx-border-radius: 30px;
+    -fx-border-width: 2px;
+    -fx-border-color:  #427070;
+    -fx-background-radius: 30px;
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6e0e87, #c112ef);
+}
+
+.category-med-green{
+    -fx-border-radius: 30px;
+    -fx-border-width: 2px;
+    -fx-border-color:  #427070;
+    -fx-background-radius: 30px;
+    -fx-background-color:#4ad972
+}

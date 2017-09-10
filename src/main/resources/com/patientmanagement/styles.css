@@ -154,23 +154,3 @@
 
     -fx-fill: #ebeef3;
 }
-
-.glyph-icon-temp{
-    -fx-fill: #427070;
-}
-
-.button-temp{
-
-    -fx-background-color: none;
-    -fx-text-fill: #0e4f75;
-    -fx-border-color: #0e4f75;
-    -fx-border-width: 2px;
-    -fx-border-radius: 30px;
-}
-
-.button-temp:hover{
-
-    -fx-background-color: #0e4f75;
-    -fx-text-fill: #ffffff;
-    -fx-background-radius: 30px;
-}
