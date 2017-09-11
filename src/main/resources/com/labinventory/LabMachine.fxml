@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.labinventory.controlers.LabInventoryControl">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@css2.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.labinventory.controlers.LabMachineControl">
    <left>
       <GridPane fx:id="leftPane" prefHeight="715.0" prefWidth="197.0" BorderPane.alignment="CENTER">
         <padding>
@@ -33,7 +33,7 @@
           <RowConstraints maxHeight="452.0" minHeight="10.0" prefHeight="178.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" prefHeight="108.0" prefWidth="183.0" snapToPixel="false" style="-fx-background-color: none; -fx-background-radius: 50;" text="Main" GridPane.rowIndex="1">
+            <JFXButton fx:id="equipmentBtn" buttonType="RAISED" contentDisplay="TOP" onMouseClicked="#changeScene" prefHeight="108.0" prefWidth="183.0" snapToPixel="false" style="-fx-background-color: none; -fx-background-radius: 50;" text="Equipment" GridPane.rowIndex="1">
                <font>
                   <Font name="Segoe UI Semilight" size="20.0" />
                </font>
@@ -46,10 +46,10 @@
                   </RadialGradient>
                </ripplerFill>
                <graphic>
-                  <FontAwesomeIconView glyphName="FILE_ALT" size="60.0" />
+                  <FontAwesomeIconView glyphName="FLASK" size="60.0" />
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="36.0" layoutY="174.0" prefHeight="108.0" prefWidth="183.0" style="-fx-background-color: none;" text="Machines" GridPane.rowIndex="2">
+            <JFXButton fx:id="ManitainBtn" buttonType="RAISED" contentDisplay="TOP" layoutX="36.0" layoutY="174.0" onMouseClicked="#changeScene" prefHeight="108.0" prefWidth="183.0" style="-fx-background-color: none;" text="Maintenance" GridPane.rowIndex="2">
                <font>
                   <Font name="Segoe UI Semilight" size="20.0" />
                </font>
@@ -63,10 +63,10 @@
                   </RadialGradient>
                </ripplerFill>
                <graphic>
-                  <FontAwesomeIconView glyphName="DESKTOP" size="60.0" />
+                  <FontAwesomeIconView glyphName="WRENCH" size="60.0" />
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="19.0" layoutY="330.0" prefHeight="108.0" prefWidth="183.0" style="-fx-background-color: none;" text="Equipments" GridPane.rowIndex="3">
+            <JFXButton fx:id="ReportBtn" buttonType="RAISED" contentDisplay="TOP" layoutX="19.0" layoutY="330.0" onMouseClicked="#changeScene" prefHeight="108.0" prefWidth="183.0" style="-fx-background-color: none;" text="Report" GridPane.rowIndex="3">
                <font>
                   <Font name="Segoe UI Semilight" size="20.0" />
                </font>
@@ -79,7 +79,7 @@
                   </RadialGradient>
                </ripplerFill>
                <graphic>
-                  <FontAwesomeIconView glyphName="FLASK" size="60.0" />
+                  <FontAwesomeIconView glyphName="LINE_CHART" size="60.0" />
                </graphic>
             </JFXButton>
          </children>
@@ -88,18 +88,18 @@
    <center>
       <Pane prefHeight="715.0" prefWidth="922.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTreeTableView layoutX="96.0" layoutY="436.0" prefHeight="269.0" prefWidth="732.0" />
-            <JFXButton buttonType="RAISED" layoutX="220.0" layoutY="351.0" prefHeight="40.0" prefWidth="100.0" style="-fx-text-fill: white;" text="Insert">
+            <JFXTreeTableView layoutX="110.0" layoutY="436.0" prefHeight="269.0" prefWidth="846.0" />
+            <JFXButton buttonType="RAISED" layoutX="879.0" layoutY="102.0" prefHeight="40.0" prefWidth="124.0" style="-fx-text-fill: white;" text="Insert">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="418.0" layoutY="351.0" prefHeight="40.0" prefWidth="100.0" style="-fx-text-fill: white;" text="Update">
+            <JFXButton buttonType="RAISED" layoutX="879.0" layoutY="268.0" prefHeight="40.0" prefWidth="124.0" style="-fx-text-fill: white;" text="Clear Fields">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="614.0" layoutY="351.0" prefHeight="40.0" prefWidth="100.0" style="-fx-text-fill: white;" text="Remove">
+            <JFXButton buttonType="RAISED" layoutX="879.0" layoutY="185.0" prefHeight="40.0" prefWidth="124.0" style="-fx-text-fill: white;" text="Remove">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
@@ -109,42 +109,54 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="99.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+            <Text layoutX="111.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment ID">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="93.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+            <Text layoutX="108.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Name">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
             <JFXTextField layoutX="693.0" layoutY="42.0" />
-            <Text layoutX="93.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purpose">
+            <Text layoutX="109.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Period">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="90.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bought Date">
+            <Text layoutX="112.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of last Service">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <JFXTextField layoutX="283.0" layoutY="97.0" />
-            <JFXTextField layoutX="283.0" layoutY="152.0" />
-            <JFXTextField layoutX="283.0" layoutY="205.0" />
-            <Text layoutX="523.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintance Date">
+            <JFXTextField layoutX="308.0" layoutY="96.0" />
+            <JFXTextField layoutX="308.0" layoutY="151.0" />
+            <JFXTextField layoutX="308.0" layoutY="204.0" />
+            <Text layoutX="548.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today :">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <JFXDatePicker layoutX="283.0" layoutY="265.0" />
+            <JFXDatePicker layoutX="308.0" layoutY="262.0" />
             <JFXDatePicker layoutX="688.0" layoutY="263.0" />
+            <Text layoutX="109.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintaining Reason">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="109.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintaining Cost">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <JFXTextField layoutX="308.0" layoutY="316.0" />
+            <JFXTextField layoutX="308.0" layoutY="371.0" />
          </children>
       </Pane>
    </center>
    <right>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane prefHeight="705.0" prefWidth="19.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

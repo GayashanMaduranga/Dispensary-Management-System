@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="548.8166666666666" y="-162.0">com.common.ScreenController</node>
+    <node x="746.0" y="245.0">com.labinventory.controlers.LabInventoryControl</node>
+    <node x="494.0" y="467.0">com.labinventory.controlers.LabInventoryScreens</node>
+    <node x="373.0" y="245.0">com.labinventory.controlers.LabMachineControl</node>
+    <node x="230.64999999999998" y="-135.5">com.common.ControlledScreen</node>
+    <node x="-1.0" y="247.0">com.labinventory.controlers.LabEquipmentControl</node>
+    <node x="62.5" y="479.0">com.common.BaseEnum</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.labinventory.controlers.LabMachineControl" target="com.common.ScreenController">
+      <point x="88.25" y="-103.5" />
+      <point x="637.75" y="225.0" />
+      <point x="731.8166666666666" y="225.0" />
+      <point x="0.0" y="92.5" />
+    </edge>
+    <edge source="com.labinventory.controlers.LabMachineControl" target="com.common.ControlledScreen">
+      <point x="-88.25" y="-103.5" />
+      <point x="461.25" y="215.0" />
+      <point x="370.15" y="215.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="com.labinventory.controlers.LabInventoryControl" target="com.common.ControlledScreen">
+      <point x="-88.25" y="-103.5" />
+      <point x="834.25" y="205.0" />
+      <point x="462.4833333333333" y="205.0" />
+      <point x="92.33333333333331" y="26.0" />
+    </edge>
+    <edge source="com.labinventory.controlers.LabEquipmentControl" target="com.common.ScreenController">
+      <point x="88.25" y="-103.5" />
+      <point x="264.75" y="225.0" />
+      <point x="609.8166666666666" y="225.0" />
+      <point x="-122.0" y="92.5" />
+    </edge>
+    <edge source="com.labinventory.controlers.LabInventoryControl" target="com.common.ScreenController">
+      <point x="88.25" y="-103.5" />
+      <point x="1010.75" y="225.0" />
+      <point x="853.8166666666666" y="225.0" />
+      <point x="122.0" y="92.5" />
+    </edge>
+    <edge source="com.labinventory.controlers.LabEquipmentControl" target="com.common.ControlledScreen">
+      <point x="-88.25" y="-103.5" />
+      <point x="88.25" y="215.0" />
+      <point x="277.81666666666666" y="215.0" />
+      <point x="-92.33333333333331" y="26.0" />
+    </edge>
+    <edge source="com.labinventory.controlers.LabInventoryScreens" target="com.common.BaseEnum">
+      <point x="0.0" y="-92.5" />
+      <point x="0.0" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="563.0" y="29.0" />
+  <SelectedNodes>
+    <node>com.labinventory.controlers.LabEquipmentControl</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
