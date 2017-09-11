@@ -8,6 +8,12 @@
     -fx-effect: dropshadow(gaussian, #858485, 7,0.01,-2, 5);
 }
 
+.popupPane{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, #858485, 7,0.01,-2, 5);
+    -fx-border-color: #0e7c74;
+}
+
 #topPane .glyph-icon{
 
     -fx-fill: #cdcdcd;
@@ -44,10 +50,10 @@
 
 #viewPatientPane{
     -fx-border-width: 1px;
-    -fx-border-color: #d2d2d2;
+    -fx-border-color: #6d6d6d;
     -fx-border-radius: 20;
     -fx-background-radius: 20;
-    -fx-background-color: #156ebc;
+    -fx-background-color: #8bcbe9;
     -fx-opacity: 70% ;
 }
 
@@ -77,6 +83,16 @@
 
 }
 
+.whiteTextArea .content{
+    -fx-background-color:   rgba(255,255,255,1);
+    -fx-background-insets:none ;
+    -fx-background-radius: 1px;
+    -fx-border-radius: 1px;
+    -fx-effect: none;
+    -fx-font-family: "verdana";
+    -fx-font-size: 18px;
+}
+
 .button{
     -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #146bbe, #1bda99);
     -fx-text-fill: white;
@@ -86,6 +102,15 @@
     -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #0d1675, #0e7c74);
     -fx-text-fill: whitesmoke;
 
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-background-color: #0d1675;
 }
 
 .accept-btn{

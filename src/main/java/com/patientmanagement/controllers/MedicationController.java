@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  * Created by Damsith on 8/1/2017.
  */
 
-public class MakePrescriptionController implements Initializable,ControlledScreen {
+public class MedicationController implements Initializable,ControlledScreen {
 
     ScreenController controller;
 
