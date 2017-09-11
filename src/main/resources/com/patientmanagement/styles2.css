@@ -1,5 +1,5 @@
-.glyph-icon-temp-red{
-    -fx-fill: #e82727;
+.glyph-icon-temp{
+    -fx-fill: #1a1818;
 }
 
 .glyph-icon-temp-orange{
@@ -30,18 +30,26 @@
     -fx-background-radius: 30px;
 }
 
-.category-med{
-    -fx-border-radius: 30px;
+.button-temp-green{
+
+    -fx-background-color: none;
+    -fx-text-fill: #12752d;
+    -fx-border-color: #12752d;
     -fx-border-width: 2px;
-    -fx-border-color:  #427070;
-    -fx-background-radius: 30px;
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6e0e87, #c112ef);
+    -fx-border-radius: 30px;
 }
 
-.category-med-green{
+.button-temp-green:hover{
+
+    -fx-background-color: #12752d;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
+}
+
+.category-med{
     -fx-border-radius: 30px;
-    -fx-border-width: 2px;
+    -fx-border-width: 1px;
     -fx-border-color:  #427070;
     -fx-background-radius: 30px;
-    -fx-background-color:#4ad972
+    -fx-background-color: #ffffff;
 }
