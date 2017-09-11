@@ -1,5 +1,6 @@
 
 
+
 #aside {
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);
     -fx-text-fill: white;
@@ -17,6 +18,11 @@
 }
 
 
+/*-------------------------------ENTER RESULTS WINDOW-------------------------------------*/
+#enterResSearchBT,#enterResPrintBT,#enterResDeleteBT{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 10%, #1c67c1,#3bcad1,#1c67c1);
+    -fx-text-fill: white;
+}
 
 .button:hover{
     -fx-background-color: #134a79;
@@ -34,12 +40,4 @@
     -fx-effect: dropshadow(gaussian, #3d404a, 7,0.01,-2, 5);
 }
 
-
-
-/*#selectTest{*/
-    /*-fx-background-color: #0076b2;*/
-/*}*/
-/*#selectTest:hover{*/
-    /*-fx-background-color: #27ebed;*/
-/*}*/
 

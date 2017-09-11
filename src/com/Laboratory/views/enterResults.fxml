@@ -63,7 +63,7 @@
                   <Tooltip text="Search by patient ID or name" />
                </tooltip>
             </TextField>
-            <JFXButton fx:id="selectTest" layoutX="701.0" layoutY="59.0" prefHeight="56.0" prefWidth="146.0" stylesheets="@stylesheet.css" text="Search" textFill="WHITE" />
+            <JFXButton fx:id="enterResSearchBT" layoutX="701.0" layoutY="59.0" prefHeight="56.0" prefWidth="146.0" stylesheets="@stylesheet.css" text="Search" textFill="WHITE" />
             <TableView fx:id="table" layoutX="114.0" layoutY="142.0" prefHeight="525.0" prefWidth="832.0">
               <columns>
                 <TableColumn prefWidth="98.0" text="Patient ID" />
@@ -73,8 +73,8 @@
                   <TableColumn prefWidth="125.0" text="Status" />
               </columns>
             </TableView>
-            <JFXButton fx:id="selectTest" layoutX="1068.0" layoutY="429.0" prefHeight="67.0" prefWidth="177.0" stylesheets="@stylesheet.css" text="Delete" />
-            <JFXButton fx:id="selectTest" layoutX="1064.0" layoutY="314.0" prefHeight="67.0" prefWidth="184.0" stylesheets="@stylesheet.css" text="Print" />
+            <JFXButton fx:id="enterResDeleteBT" layoutX="1068.0" layoutY="429.0" prefHeight="67.0" prefWidth="177.0" stylesheets="@stylesheet.css" text="Delete" />
+            <JFXButton fx:id="enterResPrintBT" layoutX="1064.0" layoutY="314.0" prefHeight="67.0" prefWidth="184.0" stylesheets="@stylesheet.css" text="Print" />
             <Separator layoutX="1008.0" layoutY="138.0" orientation="VERTICAL" prefHeight="529.0" prefWidth="6.0" />
          </children>
       </AnchorPane>
