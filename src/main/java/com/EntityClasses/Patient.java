@@ -31,6 +31,7 @@ public class Patient {
     private SimpleStringProperty habits;
 
     private List<LabTestOrder> labTestOrders;
+    private List<Complaint> complaints;
 
     public Patient() {
         this.pId = new SimpleIntegerProperty();
@@ -45,6 +46,7 @@ public class Patient {
         this.habits = new SimpleStringProperty();
 
         labTestOrders = new ArrayList<>();
+        complaints = new ArrayList<>();
     }
 
     //pname
@@ -213,4 +215,13 @@ public class Patient {
 
 //    @Column(name = "name", columnDefinition = "TEXT")
 
+
+    @ElementCollection
+    public List<Complaint> getComplaints() {
+        return complaints;
+    }
+
+    public void setComplaints(List<Complaint> complaints) {
+        this.complaints = complaints;
+    }
 }

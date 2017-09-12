@@ -1,14 +1,12 @@
 package patientManagement;
 
+import com.EntityClasses.Complaint;
 import com.EntityClasses.Patient;
 import db.UserSession;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 import org.junit.Test;
 
+import javax.persistence.Column;
 import java.sql.Date;
 
 /**
@@ -39,6 +37,30 @@ public class PatientManagementTest {
 
 
     }
+
+
+    @Test
+    public void canComplaint(){
+        Session session = UserSession.getSession();
+
+        Patient patient = (Patient)session.get(Patient.class,1);
+
+        Complaint complaint = new Complaint();
+        complaint.setDate(new Date(System.currentTimeMillis()));
+        complaint.setAssociations("asdfadfasdf");
+
+        patient.getComplaints().add(complaint);
+
+
+        session.beginTransaction();
+        session.update(patient);
+        session.getTransaction().commit();
+
+
+    }
+
+
+
 
 
 

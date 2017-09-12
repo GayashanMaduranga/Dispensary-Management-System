@@ -59,7 +59,7 @@ public class LaboratoryManagementTest {
         LabTestOrder labTestOrder = new LabTestOrder();
         labTestOrder.setMainTest((MainTest)session.get(MainTest.class,1));
         labTestOrder.setDate(new Date(System.currentTimeMillis()));
-
+        labTestOrder.setPatient((Patient)session.get(Patient.class,1));
 
         session.beginTransaction();
         session.save(labTestOrder);
