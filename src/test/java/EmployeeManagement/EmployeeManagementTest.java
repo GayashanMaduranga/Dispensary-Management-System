@@ -1,11 +1,13 @@
 package EmployeeManagement;
 
+import com.EntityClasses.Attendance;
 import com.EntityClasses.Staff;
 import db.UserSession;
 import org.hibernate.Session;
 import org.junit.Test;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by gayashan on 9/13/2017.
@@ -23,6 +25,7 @@ public class EmployeeManagementTest {
         staff.setDateOfBirth(Date.valueOf("1980-03-01"));
         staff.setContactNumber("0345234");
         staff.setGender("M");
+        staff.setEmployeeid(2);
 
 
 
@@ -33,5 +36,32 @@ public class EmployeeManagementTest {
 
 
     }
+
+    @Test
+    public void canAddStaffAttendence(){
+
+        Session session = UserSession.getSession();
+
+        Staff staff =(Staff)session.get(Staff.class,1);
+
+        Attendance attendance = new Attendance();
+        attendance.setArrivalTime(new Timestamp(System.currentTimeMillis()));
+        attendance.setLeaveTime(new Timestamp(System.currentTimeMillis()));
+        attendance.setDate(new Date(System.currentTimeMillis()));
+
+        staff.getAttendanceList().add(attendance);
+
+
+
+
+        session.beginTransaction();
+        session.update(staff);
+        session.getTransaction().commit();
+        session.close();
+
+
+    }
+
+
 
 }

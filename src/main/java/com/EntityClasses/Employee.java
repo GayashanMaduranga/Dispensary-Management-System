@@ -27,7 +27,7 @@ public class Employee {
     private StringProperty qualifications;
 
 
-    private List<Attendance> attendanceList;
+
 
 
     public Employee() {
@@ -38,17 +38,10 @@ public class Employee {
         contactNumber = new SimpleStringProperty();
         qualifications = new SimpleStringProperty();
 
-        attendanceList = new ArrayList<>();
+
     }
 
-    @ElementCollection
-    public List<Attendance> getAttendanceList() {
-        return attendanceList;
-    }
 
-    public void setAttendanceList(List<Attendance> attendanceList) {
-        this.attendanceList = attendanceList;
-    }
 
     @Id
     public int getEmployeeid() {
