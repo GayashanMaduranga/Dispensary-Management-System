@@ -7,6 +7,8 @@ import javafx.beans.property.StringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gayashan on 9/10/2017.
@@ -25,6 +27,9 @@ public class Employee {
     private StringProperty qualifications;
 
 
+    private List<Attendance> attendanceList;
+
+
     public Employee() {
         employeeid = new SimpleIntegerProperty();
         name = new SimpleStringProperty();
@@ -32,6 +37,17 @@ public class Employee {
         email = new SimpleStringProperty();
         contactNumber = new SimpleStringProperty();
         qualifications = new SimpleStringProperty();
+
+        attendanceList = new ArrayList<>();
+    }
+
+    @ElementCollection
+    public List<Attendance> getAttendanceList() {
+        return attendanceList;
+    }
+
+    public void setAttendanceList(List<Attendance> attendanceList) {
+        this.attendanceList = attendanceList;
     }
 
     @Id
