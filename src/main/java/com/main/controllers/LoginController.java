@@ -1,6 +1,7 @@
 package com.main.controllers;
 
 
+import com.EntityClasses.User;
 import com.appointmentscheduling.controllers.AppointmentScreens;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
@@ -13,23 +14,37 @@ import com.patientmanagement.controllers.PatientScreens;
 import com.suppliermanagement.controllers.SupplierScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class LoginController implements ControlledScreen{
+public class LoginController implements ControlledScreen, Initializable{
 
+    private Session session;
     public LoginModel loginModel = new LoginModel();
     ScreenController mainContainer = new ScreenController();
 
     @Override
     public void setScreenParent(ScreenController screenParent) {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        session = Main.getSessionFactory().openSession();
+
     }
 
     @FXML
@@ -50,22 +65,44 @@ public class LoginController implements ControlledScreen{
     @FXML
     public void login(ActionEvent actionEvent){
 
-        ResultSet rs = loginModel.getValidatedUser(txtUsername.getText(), txtPassword.getText());
 
-        try {
-            if(rs.next()){
+        session.beginTransaction();
+        Query query = session.createQuery("from User where username ='"+txtUsername.getText()+"'");
+        List<User> users = query.list();
+        session.getTransaction().commit();
 
-                makeStage(rs.getInt(3));
+        if(users.isEmpty()){
+            AlertDialog.show("", "No such user");
+        }
+        else{
+
+            if(users.get(0).getPassword().equals(txtPassword.getText())){
+                makeStage(users.get(0).getAccessLevel());
+                session.close();
                 Stage s = (Stage) txtUsername.getScene().getWindow();
                 s.close();
-
             }
-            else
-                AlertDialog.show("", "Wrong Credentials");
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            else{
+                AlertDialog.show("", "Password Incorrect");
+            }
         }
+//        ResultSet rs = loginModel.getValidatedUser(txtUsername.getText(), txtPassword.getText());
+//
+//        try {
+//            if(rs.next()){
+//
+//                makeStage(rs.getInt(3));
+//                Stage s = (Stage) txtUsername.getScene().getWindow();
+//                s.close();
+//
+//            }
+//            else
+//                AlertDialog.show("", "Wrong Credentials");
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void makeStage(int AccessLevel){
