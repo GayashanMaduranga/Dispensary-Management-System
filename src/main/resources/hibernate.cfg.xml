@@ -19,6 +19,7 @@
         <mapping class="com.EntityClasses.Patient"/>
         <mapping class="com.EntityClasses.TestResults"/>
         <mapping class="com.EntityClasses.Prescription"/>
+        <mapping class="com.EntityClasses.PharmacyItem"/>
 
 
 

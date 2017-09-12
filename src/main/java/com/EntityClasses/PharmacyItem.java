@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "PharmacyItem", schema = "entitydb")
+@Table(name = "PharmacyItem")
 public class PharmacyItem {
 
     private SimpleIntegerProperty phId;
@@ -20,6 +20,7 @@ public class PharmacyItem {
     private SimpleIntegerProperty stock;
     private SimpleIntegerProperty reorderLevel;
     private SimpleDoubleProperty MRP;
+
 
 
 
@@ -99,4 +100,5 @@ public class PharmacyItem {
     public void setMRP(double MRP) {
         this.MRP.set(MRP);
     }
+
 }
