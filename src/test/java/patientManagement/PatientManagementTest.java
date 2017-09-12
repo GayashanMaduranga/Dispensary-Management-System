@@ -1,6 +1,7 @@
 package patientManagement;
 
 import com.EntityClasses.Patient;
+import db.UserSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -25,6 +26,16 @@ public class PatientManagementTest {
         patient.setDOB(Date.valueOf("1990-03-03"));
         patient.setEmail("Someting@mail.com");
         patient.setFamilyHistory("adlfjasldf ;lfkjas;d sjfdlajd lfsjdf sdlfhjhdfhasdif hadfkjh akdjfh kasdjfh kalsdfh");
+
+
+        Session session = UserSession.getSession();
+
+        session.beginTransaction();
+
+        session.save(patient);
+
+        session.getTransaction().commit();
+        session.close();
 
 
     }

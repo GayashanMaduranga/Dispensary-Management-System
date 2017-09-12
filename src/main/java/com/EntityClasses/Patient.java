@@ -12,7 +12,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "Patient", schema = "entitydb")
+@Table(name = "Patient")
 public class Patient {
 
 
