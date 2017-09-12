@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "MainTest", schema = "entitydb")
+//@Table(name = "Main_Test")
 public class MainTest {
 
     private SimpleIntegerProperty tId;
@@ -22,27 +22,28 @@ public class MainTest {
     private SimpleDoubleProperty testPrice;
 
 
-    //Bi directional one to many Relationship
-    @OneToMany(mappedBy = "mainTest")
-    private List<LabTestOrder> labTestOrders;
+
+//    private List<LabTestOrder> labTestOrders;
 
 
-    //Uni directional one to many Relationship
-    @OneToMany
+
+
+
     private List<TestField> testFields;
+
+
     public MainTest() {
 
         this.tId = new SimpleIntegerProperty();
         this.testName = new SimpleStringProperty();
         this.testPrice = new SimpleDoubleProperty();
-        labTestOrders = new ArrayList<>();
-        testFields = new ArrayList<>();
+//        this.labTestOrders = new ArrayList<>();
+        this.testFields = new ArrayList<>();
     }
 
 
 
     @Id
-    @Column(name = "sID")
     @GeneratedValue
     public int gettId() {
         return tId.get();
@@ -56,7 +57,7 @@ public class MainTest {
         this.tId.set(tId);
     }
 
-    @Column(name = "testName")
+//    @Column(name = "test_Name")
     public String getTestName() {
         return testName.get();
     }
@@ -69,7 +70,7 @@ public class MainTest {
         this.testName.set(testName);
     }
 
-    @Column(name = "testPrice")
+//    @Column(name = "test_Price")
     public double getTestPrice() {
         return testPrice.get();
     }
@@ -82,14 +83,9 @@ public class MainTest {
         this.testPrice.set(testPrice);
     }
 
-    public List<LabTestOrder> getLabTestOrders() {
-        return labTestOrders;
-    }
 
-    public void setLabTestOrders(List<LabTestOrder> labTestOrders) {
-        this.labTestOrders = labTestOrders;
-    }
-
+    //Uni directional one to many Relationship
+    @OneToMany(cascade = CascadeType.ALL)
     public List<TestField> getTestFields() {
         return testFields;
     }
@@ -97,4 +93,14 @@ public class MainTest {
     public void setTestFields(List<TestField> testFields) {
         this.testFields = testFields;
     }
+
+    //Bi directional one to many Relationship
+//    @OneToMany(mappedBy = "mainTest")
+//    public List<LabTestOrder> getLabTestOrders() {
+//        return labTestOrders;
+//    }
+//
+//    public void setLabTestOrders(List<LabTestOrder> labTestOrders) {
+//        this.labTestOrders = labTestOrders;
+//    }
 }

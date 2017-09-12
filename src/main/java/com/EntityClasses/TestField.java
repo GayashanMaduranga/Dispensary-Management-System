@@ -13,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "TestField", schema = "entitydb")
+//@Table(name = "TestField")
 public class TestField {
 
     private SimpleIntegerProperty fId;
@@ -22,8 +22,8 @@ public class TestField {
 
 
 
-    //Week Entity Mapped
-    @ElementCollection
+
+
     private List<Range> rangeList;
 
 
@@ -37,7 +37,7 @@ public class TestField {
     }
 
     @Id
-    @Column(name = "fID")
+//    @Column(name = "fID")
     @GeneratedValue
     public int getfId() {
         return fId.get();
@@ -51,7 +51,7 @@ public class TestField {
         this.fId.set(fId);
     }
 
-    @Column(name = "fieldName")
+//    @Column(name = "field_Name")
     public String getFieldName() {
         return fieldName.get();
     }
@@ -64,7 +64,18 @@ public class TestField {
         this.fieldName.set(fieldName);
     }
 
-    @Column(name = "units")
+    //Week Entity Mapped
+    @ElementCollection
+    public List<Range> getRangeList() {
+        return rangeList;
+    }
+
+    public void setRangeList(List<Range> rangeList) {
+        this.rangeList = rangeList;
+    }
+
+
+//    @Column(name = "units")
     public String getUnits() {
         return units.get();
     }
@@ -76,4 +87,6 @@ public class TestField {
     public void setUnits(String units) {
         this.units.set(units);
     }
+
+
 }

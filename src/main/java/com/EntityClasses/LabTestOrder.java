@@ -13,29 +13,30 @@ import java.util.List;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "LabTestOrder")
+//@Table(name = "LabTestOrder")
 public class LabTestOrder {
 
 
     private SimpleIntegerProperty oId;
     private Date date;
 
-    //Uni directional one to many relationship
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Sample> samples;
 
+//    List<Sample> samples;
+
+
+    MainTest mainTest;
 
     //Bi directional one to many Relationship
-    @ManyToOne(cascade = CascadeType.ALL)
-    MainTest mainTest;
+//    @OneToMany(mappedBy = "labTestOrder")
+//    private List<TestResults> testResults;
 
     public LabTestOrder() {
         this.oId = new SimpleIntegerProperty();
-        samples = new ArrayList<>();
+//        samples = new ArrayList<>();
     }
 
     @Id
-    @Column(name = "oID")
+//    @Column(name = "oID")
     @GeneratedValue
     public int getoId() {
         return oId.get();
@@ -50,7 +51,7 @@ public class LabTestOrder {
     }
 
     //Date
-    @Column(name = "date")
+//    @Column(name = "date")
     public Date getDate() {
         return date;
     }
@@ -59,11 +60,30 @@ public class LabTestOrder {
         this.date = date;
     }
 
-    public List<Sample> getSamples() {
-        return samples;
+    //Uni directional one to many relationship
+//    @OneToMany(cascade = CascadeType.ALL)
+//    public List<Sample> getSamples() {
+//        return samples;
+//    }
+//
+//    public void setSamples(List<Sample> samples) {
+//        this.samples = samples;
+//    }
+
+    //Bi directional one to many Relationship
+    @ManyToOne(cascade = CascadeType.ALL)
+    public MainTest getMainTest() {
+        return mainTest;
     }
 
-    public void setSamples(List<Sample> samples) {
-        this.samples = samples;
+    public void setMainTest(MainTest mainTest) {
+        this.mainTest = mainTest;
     }
+    //    public List<TestResults> getTestResults() {
+//        return testResults;
+//    }
+//
+//    public void setTestResults(List<TestResults> testResults) {
+//        this.testResults = testResults;
+//    }
 }

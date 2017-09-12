@@ -11,6 +11,13 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.EntityClasses.Doctor"/>
         <mapping class="com.EntityClasses.User"/>
+        <mapping class="com.EntityClasses.Sample"/>
+        <mapping class="com.EntityClasses.LabTestOrder"/>
+        <mapping class="com.EntityClasses.MainTest"/>
+        <!--<mapping class="com.EntityClasses.TestResults"/>-->
+        <mapping class="com.EntityClasses.TestField"/>
+
+
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 
