@@ -2,6 +2,7 @@ package patientManagement;
 
 import com.EntityClasses.Complaint;
 import com.EntityClasses.Patient;
+import com.EntityClasses.PharmacyItem;
 import com.EntityClasses.Prescription;
 import db.UserSession;
 import org.hibernate.Session;
@@ -67,11 +68,15 @@ public class PatientManagementTest {
 
         Patient patient = (Patient)session.get(Patient.class,1);
 
+
+        PharmacyItem item = (PharmacyItem)session.get(PharmacyItem.class,1);
+
         Prescription prescription = new Prescription();
         prescription.setDate(new Date(System.currentTimeMillis()));
         prescription.setQuantity(123);
-
+        prescription.setPharmacyItem(item);
         patient.getPrescriptions().add(prescription);
+
 
 
         session.beginTransaction();

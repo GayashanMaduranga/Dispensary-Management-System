@@ -21,6 +21,7 @@ public class Prescription {
     private Date date;
     private DoubleProperty quantity;
 
+    private PharmacyItem pharmacyItem;
 
     public Prescription() {
         this.presId = new SimpleIntegerProperty();
@@ -63,5 +64,15 @@ public class Prescription {
 
     public void setQuantity(double quantity) {
         this.quantity.set(quantity);
+    }
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public PharmacyItem getPharmacyItem() {
+        return pharmacyItem;
+    }
+
+    public void setPharmacyItem(PharmacyItem pharmacyItem) {
+        this.pharmacyItem = pharmacyItem;
     }
 }
