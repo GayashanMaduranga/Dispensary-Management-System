@@ -14,8 +14,9 @@
         <mapping class="com.EntityClasses.Sample"/>
         <mapping class="com.EntityClasses.LabTestOrder"/>
         <mapping class="com.EntityClasses.MainTest"/>
-        <!--<mapping class="com.EntityClasses.TestResults"/>-->
         <mapping class="com.EntityClasses.TestField"/>
+        <mapping class="com.EntityClasses.Patient"/>
+
 
 
         <!-- <property name="connection.username"/> -->

@@ -137,7 +137,8 @@ public class Patient {
     }
 
     //medicationHistory
-    @Column(name = "medicationHistory", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "medicationHistory")
     public String getMedicationHistory() {
         return medicationHistory.get();
     }
@@ -151,7 +152,8 @@ public class Patient {
     }
 
     //familyHistory
-    @Column(name = "familyHistory", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "familyHistory")
     public String getFamilyHistory() {
         return familyHistory.get();
     }
@@ -165,7 +167,8 @@ public class Patient {
     }
 
     //habits
-    @Column(name = "habits", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "habits")
     public String getHabits() {
         return habits.get();
     }

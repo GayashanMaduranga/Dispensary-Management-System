@@ -1,11 +1,9 @@
 package Laboratory;
 
 import com.EntityClasses.*;
+import db.UserSession;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+
 import org.junit.Test;
 
 import java.sql.Date;
@@ -18,7 +16,7 @@ public class LaboratoryManagementTest {
     @Test
     public void canAddMainTest(){
         //When
-        Session session = getSession();
+        Session session = UserSession.getSession();
 
 
         MainTest mainTest = new MainTest();
@@ -56,7 +54,7 @@ public class LaboratoryManagementTest {
     @Test
     public void canOrderTest(){
 
-        Session session = getSession();
+        Session session = UserSession.getSession();
 
         LabTestOrder labTestOrder = new LabTestOrder();
         labTestOrder.setMainTest((MainTest)session.get(MainTest.class,1));
@@ -75,7 +73,7 @@ public class LaboratoryManagementTest {
     @Test
     public void canAddSample(){
 
-        Session session = getSession();
+        Session session = UserSession.getSession();
 
         Sample sample = new Sample();
         sample.setType("somthing");
@@ -93,14 +91,5 @@ public class LaboratoryManagementTest {
 
 
 
-    private Session getSession(){
-        Configuration configuration = new Configuration().configure();
 
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        Session session = sessionFactory.openSession();
-
-        return session;
-
-    }
 }
