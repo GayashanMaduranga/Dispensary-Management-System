@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DAMMA on 8/31/2017.
@@ -28,6 +30,8 @@ public class Patient {
     private SimpleStringProperty familyHistory;
     private SimpleStringProperty habits;
 
+    private List<LabTestOrder> labTestOrders;
+
     public Patient() {
         this.pId = new SimpleIntegerProperty();
         this.pname = new SimpleStringProperty();
@@ -39,6 +43,8 @@ public class Patient {
         this.medicationHistory = new SimpleStringProperty();
         this.familyHistory = new SimpleStringProperty();
         this.habits = new SimpleStringProperty();
+
+        labTestOrders = new ArrayList<>();
     }
 
     //pname
@@ -196,7 +202,14 @@ public class Patient {
         return pId;
     }
 
+    @OneToMany(mappedBy = "patient")
+    public List<LabTestOrder> getLabTestOrders() {
+        return labTestOrders;
+    }
 
+    public void setLabTestOrders(List<LabTestOrder> labTestOrders) {
+        this.labTestOrders = labTestOrders;
+    }
 
 //    @Column(name = "name", columnDefinition = "TEXT")
 

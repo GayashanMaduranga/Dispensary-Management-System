@@ -20,8 +20,9 @@ public class LabTestOrder {
     private SimpleIntegerProperty oId;
     private Date date;
 
+    private Patient patient;
 
-//    List<Sample> samples;
+    List<Sample> samples;
 
 
     MainTest mainTest;
@@ -32,7 +33,7 @@ public class LabTestOrder {
 
     public LabTestOrder() {
         this.oId = new SimpleIntegerProperty();
-//        samples = new ArrayList<>();
+        samples = new ArrayList<>();
     }
 
     @Id
@@ -61,14 +62,14 @@ public class LabTestOrder {
     }
 
     //Uni directional one to many relationship
-//    @OneToMany(cascade = CascadeType.ALL)
-//    public List<Sample> getSamples() {
-//        return samples;
-//    }
-//
-//    public void setSamples(List<Sample> samples) {
-//        this.samples = samples;
-//    }
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Sample> getSamples() {
+        return samples;
+    }
+
+    public void setSamples(List<Sample> samples) {
+        this.samples = samples;
+    }
 
     //Bi directional one to many Relationship
     @ManyToOne(cascade = CascadeType.ALL)
@@ -86,4 +87,13 @@ public class LabTestOrder {
 //    public void setTestResults(List<TestResults> testResults) {
 //        this.testResults = testResults;
 //    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }

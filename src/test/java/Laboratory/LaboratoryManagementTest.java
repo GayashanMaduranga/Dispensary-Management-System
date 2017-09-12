@@ -76,11 +76,16 @@ public class LaboratoryManagementTest {
         Session session = UserSession.getSession();
 
         Sample sample = new Sample();
-        sample.setType("somthing");
+        sample.setType("somthing 1235");
         sample.setDate(Date.valueOf("2013-12-21"));
 
+        LabTestOrder labTestOrder = (LabTestOrder)session.get(LabTestOrder.class,1);
+
+        labTestOrder.getSamples().add(sample);
+
+
         session.beginTransaction();
-        session.save(sample);
+        session.save(labTestOrder);
         session.getTransaction().commit();
         session.close();
 
