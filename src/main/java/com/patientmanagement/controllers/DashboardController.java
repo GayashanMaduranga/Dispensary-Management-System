@@ -60,7 +60,7 @@ public class DashboardController implements Initializable,ControlledScreen {
 
             case "sidebarRegisterBtn":
                 Stage s = (Stage) logoutBtn.getScene().getWindow();
-                Main.createRegisterWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml");
+                Main.createFadedWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml");
             case "titlebtn":
                 ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.DASHBOARD_SCREEN);
                 break;

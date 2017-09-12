@@ -1,4 +1,5 @@
 import com.EntityClasses.Doctor;
+import com.EntityClasses.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -41,5 +42,29 @@ public class MyTest {
         //Then
 
 
+    }
+
+    @org.junit.Test
+    public void CanAddUser(){
+
+        //given
+        User user = new User();
+        user.setUsername("admin");
+        user.setPassword("pass");
+        user.setAccessLevel(1);
+
+
+        Configuration configuration = new Configuration().configure();
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        session.save(user);
+
+        session.getTransaction().commit();
+
+        session.close();
     }
 }
