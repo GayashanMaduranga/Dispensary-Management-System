@@ -23,6 +23,7 @@
         <mapping class="com.EntityClasses.PharmacyBatch"/>
         <mapping class="com.EntityClasses.PharmacyLineItem"/>
         <mapping class="com.EntityClasses.PharmacyBill"/>
+        <mapping class="com.EntityClasses.Supplier"/>
 
 
 
