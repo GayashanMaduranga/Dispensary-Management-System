@@ -12,8 +12,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "Machine  ", schema = "entitydb")
-public class Machine {
+public class Machine extends Equipment{
 
 
     private SimpleIntegerProperty servicePeriod;

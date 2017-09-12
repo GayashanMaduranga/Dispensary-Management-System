@@ -16,8 +16,7 @@ public class Staff extends Employee {
 
     @Column(name = "DATE_OF_APPOINTMENT",nullable = false)
     private Date dateOfAppointment;
-    @Column(name = "QUALIFICATIONS")
-    private String qualifications;
+
 
     public Date getDateOfAppointment() {
         return dateOfAppointment;
@@ -27,13 +26,5 @@ public class Staff extends Employee {
         this.dateOfAppointment = dateOfAppointment;
     }
 
-    @Override
-    public String getQualifications() {
-        return qualifications;
-    }
 
-    @Override
-    public void setQualifications(String qualifications) {
-        this.qualifications = qualifications;
-    }
 }

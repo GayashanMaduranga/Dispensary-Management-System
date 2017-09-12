@@ -11,8 +11,9 @@ import java.sql.Date;
  */
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Access(AccessType.PROPERTY)
-@Table(name = "Equipment  ", schema = "entitydb")
+@Table(name = "Equipment")
 public class Equipment {
 
 
