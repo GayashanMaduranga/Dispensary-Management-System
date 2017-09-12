@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DAMMA on 8/31/2017.
@@ -12,7 +14,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "PharmacyBill", schema = "entitydb")
+@Table(name = "PharmacyBill")
 public class PharmacyBill {
 
 
@@ -20,13 +22,15 @@ public class PharmacyBill {
     private Date date;
     private SimpleDoubleProperty total;
 
+    private List<PharmacyLineItem> pharmacyLineItems;
+
     public PharmacyBill() {
+
         this.bID = new SimpleIntegerProperty();
         this.total = new SimpleDoubleProperty();
+        pharmacyLineItems = new ArrayList<>();
+
     }
-
-
-    //Date
 
 
     @Id
@@ -65,5 +69,15 @@ public class PharmacyBill {
 
     public void setTotal(double total) {
         this.total.set(total);
+    }
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<PharmacyLineItem> getPharmacyLineItems() {
+        return pharmacyLineItems;
+    }
+
+    public void setPharmacyLineItems(List<PharmacyLineItem> pharmacyLineItems) {
+        this.pharmacyLineItems = pharmacyLineItems;
     }
 }

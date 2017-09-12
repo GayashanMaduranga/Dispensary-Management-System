@@ -1,6 +1,7 @@
 package PharmacyManagement;
 
 import com.EntityClasses.PharmacyBatch;
+import com.EntityClasses.PharmacyBill;
 import com.EntityClasses.PharmacyItem;
 import com.EntityClasses.PharmacyLineItem;
 import db.UserSession;
@@ -75,4 +76,29 @@ public class PharmacyManagementTest {
     }
 
 
+    @Test
+    public void canAddPharmacyBill(){
+        Session session = UserSession.getSession();
+
+
+        PharmacyBatch pharmacyBatch = (PharmacyBatch)session.get(PharmacyBatch.class,1);
+
+
+        PharmacyLineItem item = new PharmacyLineItem() ;
+        item.setPharmacyBatch(pharmacyBatch);
+        item.setQuantity(124);
+        item.setSubTotal(234.023);
+
+        PharmacyBill bill = new PharmacyBill();
+        bill.setDate(new Date(System.currentTimeMillis()));
+        bill.setTotal(123);
+        bill.getPharmacyLineItems().add(item);
+
+
+        session.beginTransaction();
+        session.save(bill);
+        session.getTransaction().commit();
+
+
+    }
 }

@@ -22,6 +22,7 @@
         <mapping class="com.EntityClasses.PharmacyItem"/>
         <mapping class="com.EntityClasses.PharmacyBatch"/>
         <mapping class="com.EntityClasses.PharmacyLineItem"/>
+        <mapping class="com.EntityClasses.PharmacyBill"/>
 
 
 
