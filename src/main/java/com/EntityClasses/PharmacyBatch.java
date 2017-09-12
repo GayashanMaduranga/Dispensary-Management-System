@@ -1,5 +1,6 @@
 package com.EntityClasses;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,13 +25,16 @@ public class PharmacyBatch {
     private SimpleDoubleProperty purchasingPrice;
     private PharmacyItem pharmacyItem;
     private List<PharmacyLineItem> pharmacyLineItems;
-
+    private IntegerProperty quantity;
 
     public PharmacyBatch() {
 
         this.batchId = new SimpleIntegerProperty();
         this.purchasingPrice = new SimpleDoubleProperty();
+        this.quantity = new SimpleIntegerProperty();
         this.pharmacyLineItems = new ArrayList<>();
+
+
     }
 
     @Id
