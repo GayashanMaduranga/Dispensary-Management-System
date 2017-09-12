@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Damma on 8/31/2017.
@@ -21,14 +23,14 @@ public class PharmacyBatch {
     private Date expiryDate;
     private SimpleDoubleProperty purchasingPrice;
     private PharmacyItem pharmacyItem;
-
+    private List<PharmacyLineItem> pharmacyLineItems;
 
 
     public PharmacyBatch() {
 
         this.batchId = new SimpleIntegerProperty();
         this.purchasingPrice = new SimpleDoubleProperty();
-
+        this.pharmacyLineItems = new ArrayList<>();
     }
 
     @Id
@@ -86,5 +88,14 @@ public class PharmacyBatch {
 
     public void setPharmacyItem(PharmacyItem pharmacyItem) {
         this.pharmacyItem = pharmacyItem;
+    }
+
+    @OneToMany(mappedBy = "pharmacyBatch")
+    public List<PharmacyLineItem> getPharmacyLineItems() {
+        return pharmacyLineItems;
+    }
+
+    public void setPharmacyLineItems(List<PharmacyLineItem> pharmacyLineItems) {
+        this.pharmacyLineItems = pharmacyLineItems;
     }
 }

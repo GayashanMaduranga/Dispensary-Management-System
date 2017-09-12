@@ -2,6 +2,7 @@ package PharmacyManagement;
 
 import com.EntityClasses.PharmacyBatch;
 import com.EntityClasses.PharmacyItem;
+import com.EntityClasses.PharmacyLineItem;
 import db.UserSession;
 import org.hibernate.Session;
 import org.junit.Test;
@@ -52,5 +53,26 @@ public class PharmacyManagementTest {
 
 
     }
+
+
+    @Test
+    public void canAddPharmacyLineItem(){
+        Session session = UserSession.getSession();
+
+
+        PharmacyBatch pharmacyBatch = (PharmacyBatch)session.get(PharmacyBatch.class,1);
+
+        PharmacyLineItem item = new PharmacyLineItem() ;
+        item.setPharmacyBatch(pharmacyBatch);
+        item.setQuantity(12);
+        item.setSubTotal(234.023);
+
+        session.beginTransaction();
+        session.save(item);
+        session.getTransaction().commit();
+
+
+    }
+
 
 }

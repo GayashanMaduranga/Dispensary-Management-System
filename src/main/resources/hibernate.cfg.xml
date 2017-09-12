@@ -21,6 +21,8 @@
         <mapping class="com.EntityClasses.Prescription"/>
         <mapping class="com.EntityClasses.PharmacyItem"/>
         <mapping class="com.EntityClasses.PharmacyBatch"/>
+        <mapping class="com.EntityClasses.PharmacyLineItem"/>
+
 
 
 
