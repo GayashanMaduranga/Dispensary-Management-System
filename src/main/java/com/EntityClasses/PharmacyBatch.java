@@ -13,13 +13,14 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "PharmacyBatch", schema = "entitydb")
+@Table(name = "PharmacyBatch")
 public class PharmacyBatch {
 
     private SimpleIntegerProperty batchId;
     private Date manufacturingDate;
     private Date expiryDate;
     private SimpleDoubleProperty purchasingPrice;
+    private PharmacyItem pharmacyItem;
 
 
 
@@ -74,5 +75,16 @@ public class PharmacyBatch {
 
     public void setPurchasingPrice(double purchasingPrice) {
         this.purchasingPrice.set(purchasingPrice);
+    }
+
+
+    //One to One uni directional
+    @OneToOne(cascade = CascadeType.ALL)
+    public PharmacyItem getPharmacyItem() {
+        return pharmacyItem;
+    }
+
+    public void setPharmacyItem(PharmacyItem pharmacyItem) {
+        this.pharmacyItem = pharmacyItem;
     }
 }
