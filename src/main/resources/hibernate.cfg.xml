@@ -17,6 +17,7 @@
         <mapping class="com.EntityClasses.MainTest"/>
         <mapping class="com.EntityClasses.TestField"/>
         <mapping class="com.EntityClasses.Patient"/>
+        <mapping class="com.EntityClasses.TestResults"/>
 
 
 

@@ -93,6 +93,33 @@ public class LaboratoryManagementTest {
     }
 
 
+    @Test
+    public void canAddTestResult(){
+
+        Session session = UserSession.getSession();
+
+        LabTestOrder labTestOrder = (LabTestOrder)session.get(LabTestOrder.class,1);
+
+        TestField testField = labTestOrder.getMainTest().getTestFields().get(1);
+
+        TestResults testResults = new TestResults();
+        testResults.setResult(12);
+
+
+
+
+        testResults.setTestField(testField);
+
+        labTestOrder.getTestResults().add(testResults);
+
+
+        session.beginTransaction();
+        session.save(labTestOrder);
+        session.getTransaction().commit();
+        session.close();
+
+
+    }
 
 
 

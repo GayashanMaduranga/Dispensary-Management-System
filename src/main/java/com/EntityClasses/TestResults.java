@@ -55,7 +55,7 @@ public class TestResults {
     }
 
     //Uni directional one to one relationship
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public TestField getTestField() {
         return testField;
     }

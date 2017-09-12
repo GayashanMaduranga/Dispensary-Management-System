@@ -27,13 +27,13 @@ public class LabTestOrder {
 
     MainTest mainTest;
 
-    //Bi directional one to many Relationship
-//    @OneToMany(mappedBy = "labTestOrder")
-//    private List<TestResults> testResults;
+
+    private List<TestResults> testResults;
 
     public LabTestOrder() {
         this.oId = new SimpleIntegerProperty();
         samples = new ArrayList<>();
+        testResults = new ArrayList<>();
     }
 
     @Id
@@ -80,13 +80,16 @@ public class LabTestOrder {
     public void setMainTest(MainTest mainTest) {
         this.mainTest = mainTest;
     }
-    //    public List<TestResults> getTestResults() {
-//        return testResults;
-//    }
-//
-//    public void setTestResults(List<TestResults> testResults) {
-//        this.testResults = testResults;
-//    }
+
+    //Bi directional one to many Relationship
+    @OneToMany(mappedBy = "labTestOrder")
+    public List<TestResults> getTestResults() {
+        return testResults;
+    }
+
+    public void setTestResults(List<TestResults> testResults) {
+        this.testResults = testResults;
+    }
 
     @ManyToOne(cascade = CascadeType.ALL)
     public Patient getPatient() {
