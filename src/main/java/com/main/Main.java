@@ -13,21 +13,32 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 import java.io.IOException;
 
 public class Main extends Application {
 
+    private static SessionFactory sessionFactory;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
+        Configuration configuration = new Configuration().configure();
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         createLogin(primaryStage);
     }
 
-
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static SessionFactory getSessionFactory(){
+        return sessionFactory;
     }
 
     public static void createLogin(Stage primaryStage){
@@ -50,7 +61,7 @@ public class Main extends Application {
 
     }
 
-    public static void createRegisterWindow(Stage primaryStage, Stage owner, String FXML_location) {
+    public static void createFadedWindow(Stage primaryStage, Stage owner, String FXML_location) {
 
         Parent root = null;
         Object object = new Object();

@@ -22,7 +22,7 @@
          <effect>
             <BoxBlur height="15.94" width="15.94" />
          </effect></JFXButton>
-      <JFXTextField fx:id="txtUsername" focusColor="#132149" layoutX="45.0" layoutY="109.0" prefHeight="35.0" prefWidth="250.0" promptText="Username" stylesheets="@views/main.css">
+      <JFXTextField fx:id="txtUsername" focusColor="#132149" layoutX="45.0" layoutY="109.0" prefHeight="35.0" prefWidth="250.0" promptText="Username" stylesheets="/com/main/main.css">
          <font>
             <Font name="Segoe UI Light" size="18.0" />
          </font></JFXTextField>
