@@ -9,9 +9,8 @@ import javax.persistence.*;
  * Created by Damma on 8/31/2017.
  */
 
-@Entity
+@Embeddable
 @Access(AccessType.PROPERTY)
-@Table(name = "Range", schema = "entitydb")
 public class Range {
 
     private SimpleIntegerProperty patientAge;

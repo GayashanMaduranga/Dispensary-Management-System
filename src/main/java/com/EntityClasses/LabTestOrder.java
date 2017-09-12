@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DAMMA on 8/31/2017.
@@ -11,15 +13,25 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "LabTestOrder", schema = "entitydb")
+@Table(name = "LabTestOrder")
 public class LabTestOrder {
 
 
     private SimpleIntegerProperty oId;
     private Date date;
 
+    //Uni directional one to many relationship
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Sample> samples;
+
+
+    //Bi directional one to many Relationship
+    @ManyToOne(cascade = CascadeType.ALL)
+    MainTest mainTest;
+
     public LabTestOrder() {
         this.oId = new SimpleIntegerProperty();
+        samples = new ArrayList<>();
     }
 
     @Id
@@ -47,5 +59,11 @@ public class LabTestOrder {
         this.date = date;
     }
 
+    public List<Sample> getSamples() {
+        return samples;
+    }
 
+    public void setSamples(List<Sample> samples) {
+        this.samples = samples;
+    }
 }

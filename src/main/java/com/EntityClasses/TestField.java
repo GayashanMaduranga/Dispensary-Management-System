@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Damma on 8/31/2017.
@@ -20,11 +22,17 @@ public class TestField {
 
 
 
+    //Week Entity Mapped
+    @ElementCollection
+    private List<Range> rangeList;
+
+
     public TestField() {
 
         this.fId = new SimpleIntegerProperty();
         this.fieldName = new SimpleStringProperty();
         this.units = new SimpleStringProperty();
+        rangeList = new ArrayList<>();
 
     }
 

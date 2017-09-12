@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Damma on 8/31/2017.
@@ -20,14 +22,24 @@ public class MainTest {
     private SimpleDoubleProperty testPrice;
 
 
+    //Bi directional one to many Relationship
+    @OneToMany(mappedBy = "mainTest")
+    private List<LabTestOrder> labTestOrders;
 
+
+    //Uni directional one to many Relationship
+    @OneToMany
+    private List<TestField> testFields;
     public MainTest() {
 
         this.tId = new SimpleIntegerProperty();
         this.testName = new SimpleStringProperty();
         this.testPrice = new SimpleDoubleProperty();
-
+        labTestOrders = new ArrayList<>();
+        testFields = new ArrayList<>();
     }
+
+
 
     @Id
     @Column(name = "sID")
@@ -68,5 +80,21 @@ public class MainTest {
 
     public void setTestPrice(double testPrice) {
         this.testPrice.set(testPrice);
+    }
+
+    public List<LabTestOrder> getLabTestOrders() {
+        return labTestOrders;
+    }
+
+    public void setLabTestOrders(List<LabTestOrder> labTestOrders) {
+        this.labTestOrders = labTestOrders;
+    }
+
+    public List<TestField> getTestFields() {
+        return testFields;
+    }
+
+    public void setTestFields(List<TestField> testFields) {
+        this.testFields = testFields;
     }
 }
