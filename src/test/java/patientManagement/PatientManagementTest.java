@@ -2,6 +2,7 @@ package patientManagement;
 
 import com.EntityClasses.Complaint;
 import com.EntityClasses.Patient;
+import com.EntityClasses.Prescription;
 import db.UserSession;
 import org.hibernate.Session;
 import org.junit.Test;
@@ -60,7 +61,25 @@ public class PatientManagementTest {
     }
 
 
+    @Test
+    public void canAddPrescription(){
+        Session session = UserSession.getSession();
 
+        Patient patient = (Patient)session.get(Patient.class,1);
+
+        Prescription prescription = new Prescription();
+        prescription.setDate(new Date(System.currentTimeMillis()));
+        prescription.setQuantity(123);
+
+        patient.getPrescriptions().add(prescription);
+
+
+        session.beginTransaction();
+        session.update(patient);
+        session.getTransaction().commit();
+
+
+    }
 
 
 

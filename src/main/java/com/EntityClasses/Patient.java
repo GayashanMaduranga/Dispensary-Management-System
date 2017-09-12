@@ -33,6 +33,8 @@ public class Patient {
     private List<LabTestOrder> labTestOrders;
     private List<Complaint> complaints;
 
+    private List<Prescription> prescriptions;
+
     public Patient() {
         this.pId = new SimpleIntegerProperty();
         this.pname = new SimpleStringProperty();
@@ -47,6 +49,7 @@ public class Patient {
 
         labTestOrders = new ArrayList<>();
         complaints = new ArrayList<>();
+        prescriptions = new ArrayList<>();
     }
 
     //pname
@@ -223,5 +226,16 @@ public class Patient {
 
     public void setComplaints(List<Complaint> complaints) {
         this.complaints = complaints;
+    }
+
+
+    //One to Many uni directional
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(List<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
     }
 }
