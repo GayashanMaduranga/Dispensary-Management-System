@@ -438,7 +438,7 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <JFXButton fx:id="titlebtn" graphicTextGap="9.0" onAction="#changeScene" prefHeight="98.0" prefWidth="390.0" text="Medical Records">
+                <JFXButton fx:id="titlebtn" graphicTextGap="9.0" prefHeight="98.0" prefWidth="390.0" text="Medical Records">
                     <font>
                         <Font name="Segoe UI Light" size="21.0" />
                     </font>
