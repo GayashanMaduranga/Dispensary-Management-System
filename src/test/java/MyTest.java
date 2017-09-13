@@ -50,7 +50,7 @@ public class MyTest {
 
         //given
         User user = new User();
-        user.setUsername("user2");
+        user.setUsername("user");
         user.setPassword("pass");
         user.setAccessLevel(6);
 
