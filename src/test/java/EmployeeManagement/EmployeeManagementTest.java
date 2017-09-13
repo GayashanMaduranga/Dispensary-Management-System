@@ -1,15 +1,13 @@
 package EmployeeManagement;
 
-import com.EntityClasses.Attendance;
-import com.EntityClasses.Doctor;
-import com.EntityClasses.Leave;
-import com.EntityClasses.Staff;
+import com.EntityClasses.*;
 import db.UserSession;
 import org.hibernate.Session;
 import org.junit.Test;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 /**
  * Created by gayashan on 9/13/2017.
@@ -118,6 +116,18 @@ public class EmployeeManagementTest {
         Staff staff =(Staff)session.get(Staff.class,1);
 
 
+        Loan loan = new Loan();
+        loan.setLoanAmount(1230345);
+        loan.setReason("Personal");
+        loan.setInterestRate(12.0);
+
+        Date today = new Date(System.currentTimeMillis());
+        LocalDate ld = today.toLocalDate();
+        ld.plusYears(1l);
+        loan.setStartDate(today);
+        loan.setEndDate(Date.valueOf(ld));
+
+        staff.getLoanList().add(loan);
 
 
 
@@ -128,5 +138,7 @@ public class EmployeeManagementTest {
         session.getTransaction().commit();
         session.close();
     }
+
+
 
 }

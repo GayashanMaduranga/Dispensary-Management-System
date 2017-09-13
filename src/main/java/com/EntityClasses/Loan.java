@@ -2,11 +2,15 @@ package com.EntityClasses;
 
 import javafx.beans.property.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.sql.Date;
 
 /**
  * Created by gayashan on 9/13/2017.
  */
+@Entity
 public class Loan {
 
     private IntegerProperty id;
@@ -21,12 +25,15 @@ public class Loan {
     public Loan() {
         this.id = new SimpleIntegerProperty();
         this.reason = new SimpleStringProperty();
-        this.loanAmount = new SimpleDoubleProperty();
-        this.interestRate = new SimpleDoubleProperty();
-        this.collectedLoan = new SimpleDoubleProperty();
+        this.loanAmount = new SimpleDoubleProperty(0);
+        this.interestRate = new SimpleDoubleProperty(0);
+        this.collectedLoan = new SimpleDoubleProperty(0);
+
     }
 
 
+    @Id
+    @GeneratedValue
     public int getId() {
         return id.get();
     }

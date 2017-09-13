@@ -19,6 +19,8 @@ public class Staff extends Employee {
 
     private List<Leave> leaveList;
 
+    private List<Loan> loanList;
+
     public Staff() {
         attendanceList = new ArrayList<>();
         leaveList = new ArrayList<>();
@@ -51,5 +53,15 @@ public class Staff extends Employee {
 
     public void setLeaveList(List<Leave> leaveList) {
         this.leaveList = leaveList;
+    }
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Loan> getLoanList() {
+        return loanList;
+    }
+
+    public void setLoanList(List<Loan> loanList) {
+        this.loanList = loanList;
     }
 }
