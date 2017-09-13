@@ -9,19 +9,22 @@ import java.util.List;
  * Created by gayashan on 9/12/2017.
  */
 @Entity
-@Access(AccessType.FIELD)
+@Access(AccessType.PROPERTY)
 public class Staff extends Employee {
 
 
-    @Column(name = "DATE_OF_APPOINTMENT",nullable = false)
     private Date dateOfAppointment;
 
-    @ElementCollection
     private List<Attendance> attendanceList;
+
+    private List<Leave> leaveList;
 
     public Staff() {
         attendanceList = new ArrayList<>();
+        leaveList = new ArrayList<>();
     }
+
+    @Column(name = "DATE_OF_APPOINTMENT",nullable = false)
 
     public Date getDateOfAppointment() {
         return dateOfAppointment;
@@ -32,6 +35,7 @@ public class Staff extends Employee {
     }
 
 
+    @ElementCollection
     public List<Attendance> getAttendanceList() {
         return attendanceList;
     }
@@ -40,4 +44,12 @@ public class Staff extends Employee {
         this.attendanceList = attendanceList;
     }
 
+    @ElementCollection
+    public List<Leave> getLeaveList() {
+        return leaveList;
+    }
+
+    public void setLeaveList(List<Leave> leaveList) {
+        this.leaveList = leaveList;
+    }
 }

@@ -2,6 +2,7 @@ package EmployeeManagement;
 
 import com.EntityClasses.Attendance;
 import com.EntityClasses.Doctor;
+import com.EntityClasses.Leave;
 import com.EntityClasses.Staff;
 import db.UserSession;
 import org.hibernate.Session;
@@ -81,6 +82,31 @@ public class EmployeeManagementTest {
         session.save(doc);
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Test
+    public void canApplyLeave(){
+
+        Session session = UserSession.getSession();
+
+        Staff staff =(Staff)session.get(Staff.class,1);
+
+
+        Leave leave = new Leave();
+        leave.setDate(Date.valueOf("2017-10-10"));
+        leave.setReason("Personal");
+
+        staff.getLeaveList().add(leave);
+
+
+
+
+        session.beginTransaction();
+        session.update(staff);
+        session.getTransaction().commit();
+        session.close();
+
+
     }
 
 
