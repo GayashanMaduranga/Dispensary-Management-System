@@ -13,7 +13,6 @@ import java.sql.Date;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Access(AccessType.PROPERTY)
-@Table(name = "Equipment")
 public abstract class Equipment {
 
 
@@ -28,8 +27,6 @@ public abstract class Equipment {
     }
 
     @Id
-    @Column(name = "equipmentID")
-    @GeneratedValue
     public int getEquipmentID() {
         return equipmentID.get();
     }

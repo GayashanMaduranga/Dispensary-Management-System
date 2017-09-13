@@ -13,7 +13,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "UtilityEquipment  ")
+@Table(name = "UtilityEquipment")
 public class UtilityEquipment extends Equipment{
 
 

@@ -21,9 +21,12 @@ public class Staff extends Employee {
 
     private List<Loan> loanList;
 
+    private List<Payroll> payrolls;
+
     public Staff() {
         attendanceList = new ArrayList<>();
         leaveList = new ArrayList<>();
+        payrolls = new ArrayList<>();
     }
 
     @Column(name = "DATE_OF_APPOINTMENT",nullable = false)
@@ -63,5 +66,15 @@ public class Staff extends Employee {
 
     public void setLoanList(List<Loan> loanList) {
         this.loanList = loanList;
+    }
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Payroll> getPayrolls() {
+        return payrolls;
+    }
+
+    public void setPayrolls(List<Payroll> payrolls) {
+        this.payrolls = payrolls;
     }
 }

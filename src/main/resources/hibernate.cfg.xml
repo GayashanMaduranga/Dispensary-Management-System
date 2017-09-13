@@ -29,6 +29,7 @@
         <mapping class="com.EntityClasses.Loan"/>
         <mapping class="com.EntityClasses.Machine"/>
         <mapping class="com.EntityClasses.UtilityEquipment"/>
+        <mapping class="com.EntityClasses.Payroll"/>
 
 
 
