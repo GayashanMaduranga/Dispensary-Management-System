@@ -25,8 +25,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -60,6 +58,7 @@ public class LoginController implements ControlledScreen, Initializable{
     public void closeWindow(ActionEvent actionEvent){
         Stage s = (Stage) txtUsername.getScene().getWindow();
         s.close();
+        System.exit(0);
     }
 
     @FXML
@@ -77,6 +76,7 @@ public class LoginController implements ControlledScreen, Initializable{
         else{
 
             if(users.get(0).getPassword().equals(txtPassword.getText())){
+                LoginModel.setUser(users.get(0).getUsername());
                 makeStage(users.get(0).getAccessLevel());
                 session.close();
                 Stage s = (Stage) txtUsername.getScene().getWindow();
@@ -125,9 +125,9 @@ public class LoginController implements ControlledScreen, Initializable{
 
             if(AccessLevel == 1){
 
-                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
-                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
+                mainContainer.loadScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId(), PatientScreens.PATIENT_SUMMARY_SCREEN.getPath());
+                mainContainer.setScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
 
             }
@@ -162,6 +162,14 @@ public class LoginController implements ControlledScreen, Initializable{
                 mainContainer.loadScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId(), AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getPath());
                 mainContainer.setScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId());
                 Parent layout = mainContainer.getScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId()).getParent();
+                primaryStage.setScene(new Scene(layout));
+            }
+
+            else if(AccessLevel == 6){
+
+                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
+                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
             }
 

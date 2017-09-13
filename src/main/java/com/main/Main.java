@@ -23,6 +23,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static SessionFactory sessionFactory;
+    public static boolean dialogCanceled = true;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -61,7 +62,7 @@ public class Main extends Application {
 
     }
 
-    public static void createFadedWindow(Stage primaryStage, Stage owner, String FXML_location) {
+    public static boolean createFadedWindow(Stage primaryStage, Stage owner, String FXML_location) {
 
         Parent root = null;
         Object object = new Object();
@@ -83,8 +84,24 @@ public class Main extends Application {
         primaryStage.setMinHeight(615);
         primaryStage.setFullScreenExitHint("");
         primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        primaryStage.show();
-        owner.setFullScreen(true);
+
+//        owner.setFullScreen(true);
+
+//        primaryStage.toFront();
+        //code to center the stage on-screen
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+        primaryStage.setWidth(screenBounds.getWidth());
+        primaryStage.setHeight(screenBounds.getHeight());
+        primaryStage.setX((screenBounds.getWidth() - primaryStage.getWidth()) / 2);
+        primaryStage.setY((screenBounds.getHeight() - primaryStage.getHeight()) / 2);
+        primaryStage.showAndWait();
+
+        return dialogCanceled;
+    }
+}
+
+
 //        Runnable task = () -> {
 //            try {
 //                Thread.sleep(2000);
@@ -95,14 +112,3 @@ public class Main extends Application {
 //            }
 //        };
 //        new Thread(task).start();
-        primaryStage.toFront();
-//        primaryStage.toFront();
-        //code to center the stage on-screen
-        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-
-        primaryStage.setWidth(screenBounds.getWidth());
-        primaryStage.setHeight(screenBounds.getHeight());
-        primaryStage.setX((screenBounds.getWidth() - primaryStage.getWidth()) / 2);
-        primaryStage.setY((screenBounds.getHeight() - primaryStage.getHeight()) / 2);
-    }
-}
