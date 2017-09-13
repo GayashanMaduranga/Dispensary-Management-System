@@ -9,38 +9,52 @@ import javax.persistence.*;
  * Created by Damma on 8/31/2017.
  */
 
-@Entity
+@Embeddable
 @Access(AccessType.PROPERTY)
-@Table(name = "Range", schema = "entitydb")
 public class Range {
 
-    private SimpleIntegerProperty patientAge;
+    private SimpleIntegerProperty minPatientAge;
+    private SimpleIntegerProperty maxPatientAge;
     private SimpleDoubleProperty lowerBound;
     private SimpleDoubleProperty upperBound;
 
 
     public Range() {
 
-        this.patientAge = new SimpleIntegerProperty();
+        this.minPatientAge = new SimpleIntegerProperty();
+        this.maxPatientAge = new SimpleIntegerProperty();
         this.lowerBound = new SimpleDoubleProperty();
         this.upperBound = new SimpleDoubleProperty();
 
     }
 
-    @Column(name = "patientAge")
-    public int getPatientAge() {
-        return patientAge.get();
+//    @Column(name = "MinPatientAge")
+    public int getMinPatientAge() {
+        return minPatientAge.get();
     }
 
-    public SimpleIntegerProperty patientAgeProperty() {
-        return patientAge;
+    public SimpleIntegerProperty minPatientAgeProperty() {
+        return minPatientAge;
     }
 
-    public void setPatientAge(int patientAge) {
-        this.patientAge.set(patientAge);
+    public void setMinPatientAge(int minPatientAge) {
+        this.minPatientAge.set(minPatientAge);
     }
 
-    @Column(name = "lowerBound")
+//    @Column(name = "MaxPatientAge")
+    public int getMaxPatientAge() {
+        return maxPatientAge.get();
+    }
+
+    public SimpleIntegerProperty maxPatientAgeProperty() {
+        return maxPatientAge;
+    }
+
+    public void setMaxPatientAge(int maxPatientAge) {
+        this.maxPatientAge.set(maxPatientAge);
+    }
+
+//    @Column(name = "lowerBound")
     public double getLowerBound() {
         return lowerBound.get();
     }
@@ -53,7 +67,7 @@ public class Range {
         this.lowerBound.set(lowerBound);
     }
 
-    @Column(name = "upperBound")
+//    @Column(name = "upperBound")
     public double getUpperBound() {
         return upperBound.get();
     }
