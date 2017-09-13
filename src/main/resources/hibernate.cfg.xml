@@ -11,6 +11,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.EntityClasses.Doctor"/>
+        <mapping class="com.EntityClasses.Medication"/>
         <mapping class="com.EntityClasses.User"/>
         <mapping class="com.EntityClasses.Sample"/>
         <mapping class="com.EntityClasses.LabTestOrder"/>

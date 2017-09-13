@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  * Created by Damsith on 8/1/2017.
  */
 
-public class MakeBillController implements Initializable,ControlledScreen {
+public class EncounterController implements Initializable,ControlledScreen {
 
     ScreenController controller;
 
@@ -32,7 +32,7 @@ public class MakeBillController implements Initializable,ControlledScreen {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userLbl.setText(LoginModel.user);
+        userLbl.setText(LoginModel.getUser());
     }
 
     @FXML
@@ -62,10 +62,10 @@ public class MakeBillController implements Initializable,ControlledScreen {
                 ScreenController.changeScreen(controller, PatientScreens.BILL_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
                 break;
             case "titlebtn":
-                ScreenController.changeScreen(controller, PatientScreens.BILL_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.BILL_SCREEN, PatientScreens.PATIENT_SUMMARY_SCREEN);
                 break;
             case "sidebarPrescriptionBtn":
-                ScreenController.changeScreen(controller, PatientScreens.BILL_SCREEN, PatientScreens.PRESCRIPTION_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.BILL_SCREEN, PatientScreens.MEDICATION_SCREEN);
                 break;
 //            case "sidebarBillBtn":
 //                ScreenController.changeScreen(controller, PatientScreens.BILL_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);

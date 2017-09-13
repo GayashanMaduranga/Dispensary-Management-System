@@ -1,4 +1,5 @@
 import com.EntityClasses.Doctor;
+import com.EntityClasses.Medication;
 import com.EntityClasses.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -49,9 +50,9 @@ public class MyTest {
 
         //given
         User user = new User();
-        user.setUsername("admin");
+        user.setUsername("user");
         user.setPassword("pass");
-        user.setAccessLevel(1);
+        user.setAccessLevel(6);
 
 
         Configuration configuration = new Configuration().configure();
@@ -62,6 +63,32 @@ public class MyTest {
 
         session.beginTransaction();
         session.save(user);
+
+        session.getTransaction().commit();
+
+        session.close();
+    }
+
+    @org.junit.Test
+    public void CanAddMedication(){
+
+        //given
+        Medication med = new Medication();
+        med.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+        med.setDosage(1);
+        med.setDosageType("tablets");
+        med.setFrequency("once daily");
+        med.setMedication("ciprofloxacin");
+        med.setDiscontinued(true);
+
+        Configuration configuration = new Configuration().configure();
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        session.save(med);
 
         session.getTransaction().commit();
 
