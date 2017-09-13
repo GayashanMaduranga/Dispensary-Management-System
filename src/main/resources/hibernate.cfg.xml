@@ -26,6 +26,8 @@
         <mapping class="com.EntityClasses.Supplier"/>
         <mapping class="com.EntityClasses.SupplyOrder"/>
         <mapping class="com.EntityClasses.Staff"/>
+        <mapping class="com.EntityClasses.Loan"/>
+
         <!--<mapping class="com.EntityClasses.Attendance"/>-->
 
 

@@ -110,5 +110,23 @@ public class EmployeeManagementTest {
     }
 
 
+    @Test
+    public void canApplyLoan(){
+
+        Session session = UserSession.getSession();
+
+        Staff staff =(Staff)session.get(Staff.class,1);
+
+
+
+
+
+
+
+        session.beginTransaction();
+        session.update(staff);
+        session.getTransaction().commit();
+        session.close();
+    }
 
 }
