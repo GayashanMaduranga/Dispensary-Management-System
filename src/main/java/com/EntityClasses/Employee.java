@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Access(AccessType.PROPERTY)
-public class Employee {
+public abstract class Employee {
 
     private IntegerProperty employeeid;
     private StringProperty name;

@@ -14,7 +14,7 @@ import java.sql.Date;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Access(AccessType.PROPERTY)
 @Table(name = "Equipment")
-public class Equipment {
+public abstract class Equipment {
 
 
     private SimpleIntegerProperty equipmentID;

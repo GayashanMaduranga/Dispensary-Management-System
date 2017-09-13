@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DAMMA on 8/31/2017.
@@ -18,9 +20,12 @@ public class Machine extends Equipment{
     private SimpleIntegerProperty servicePeriod;
     private Date DateLastServiced;
 
+    private List<Maintenance> maintenances;
+
     public Machine() {
 
         this.servicePeriod = new SimpleIntegerProperty();
+        this.maintenances = new ArrayList<>();
 
     }
 
@@ -44,5 +49,15 @@ public class Machine extends Equipment{
 
     public void setDateLastServiced(Date dateLastServiced) {
         DateLastServiced = dateLastServiced;
+    }
+
+
+    @ElementCollection
+    public List<Maintenance> getMaintenances() {
+        return maintenances;
+    }
+
+    public void setMaintenances(List<Maintenance> maintenances) {
+        this.maintenances = maintenances;
     }
 }

@@ -23,6 +23,8 @@ public class SupplyOrder {
     private SimpleDoubleProperty total;
 
     private List<PharmacyBatch> pharmacyBatches;
+    private List<Equipment> equipmentList;
+
 
     private Supplier supplier;
 
@@ -30,6 +32,7 @@ public class SupplyOrder {
         this.orderID = new SimpleIntegerProperty();
         this.total = new SimpleDoubleProperty();
         this.pharmacyBatches  = new ArrayList<>();
+        this.equipmentList = new ArrayList<>();
     }
 
 
@@ -90,5 +93,14 @@ public class SupplyOrder {
 
     public void setPharmacyBatches(List<PharmacyBatch> pharmacyBatches) {
         this.pharmacyBatches = pharmacyBatches;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Equipment> getEquipmentList() {
+        return equipmentList;
+    }
+
+    public void setEquipmentList(List<Equipment> equipmentList) {
+        this.equipmentList = equipmentList;
     }
 }
