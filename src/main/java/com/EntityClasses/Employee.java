@@ -31,12 +31,12 @@ public abstract class Employee {
 
 
     public Employee() {
-        employeeid = new SimpleIntegerProperty();
-        name = new SimpleStringProperty();
-        gender = new SimpleStringProperty();
-        email = new SimpleStringProperty();
-        contactNumber = new SimpleStringProperty();
-        qualifications = new SimpleStringProperty();
+        this.employeeid = new SimpleIntegerProperty();
+        this.name = new SimpleStringProperty();
+        this.gender = new SimpleStringProperty();
+        this.email = new SimpleStringProperty();
+        this.contactNumber = new SimpleStringProperty();
+        this.qualifications = new SimpleStringProperty();
 
 
     }

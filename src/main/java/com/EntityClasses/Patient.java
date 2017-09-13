@@ -35,6 +35,8 @@ public class Patient {
 
     private List<Prescription> prescriptions;
 
+    private List<Appointment> appointments;
+
     public Patient() {
         this.pId = new SimpleIntegerProperty();
         this.pname = new SimpleStringProperty();
@@ -47,9 +49,10 @@ public class Patient {
         this.familyHistory = new SimpleStringProperty();
         this.habits = new SimpleStringProperty();
 
-        labTestOrders = new ArrayList<>();
-        complaints = new ArrayList<>();
-        prescriptions = new ArrayList<>();
+        this.labTestOrders = new ArrayList<>();
+        this.complaints = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
+        this.appointments = new ArrayList<>();
     }
 
     //pname

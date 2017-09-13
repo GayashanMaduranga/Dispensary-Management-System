@@ -32,8 +32,8 @@ public class LabTestOrder {
 
     public LabTestOrder() {
         this.oId = new SimpleIntegerProperty();
-        samples = new ArrayList<>();
-        testResults = new ArrayList<>();
+        this.samples = new ArrayList<>();
+        this.testResults = new ArrayList<>();
     }
 
     @Id

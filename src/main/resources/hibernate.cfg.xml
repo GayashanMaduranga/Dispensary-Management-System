@@ -30,16 +30,9 @@
         <mapping class="com.EntityClasses.Machine"/>
         <mapping class="com.EntityClasses.UtilityEquipment"/>
         <mapping class="com.EntityClasses.Payroll"/>
-
-
+        <mapping class="com.EntityClasses.Appointment"/>
 
         <!--<mapping class="com.EntityClasses.Attendance"/>-->
-
-
-
-
-
-
 
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->

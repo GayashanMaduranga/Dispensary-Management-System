@@ -32,7 +32,7 @@ public class TestField {
         this.fId = new SimpleIntegerProperty();
         this.fieldName = new SimpleStringProperty();
         this.units = new SimpleStringProperty();
-        rangeList = new ArrayList<>();
+        this.rangeList = new ArrayList<>();
 
     }
 

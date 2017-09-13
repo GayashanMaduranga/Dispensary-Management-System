@@ -36,7 +36,15 @@ public class LaboratoryManagementTest {
         r1.setUpperBound(20);
         r1.setMaxPatientAge(10);
         r1.setMinPatientAge(2);
+
+        Range r2 = new Range();
+        r2.setLowerBound(20);
+        r2.setUpperBound(50);
+        r2.setMaxPatientAge(50);
+        r2.setMinPatientAge(10);
+
         testField1.getRangeList().add(r1);
+        testField1.getRangeList().add(r2);
 
         mainTest.getTestFields().add(testField1);
         mainTest.getTestFields().add(testField2);
@@ -122,6 +130,14 @@ public class LaboratoryManagementTest {
     }
 
 
+
+
+//    @Test
+//    public void amilaTestcanAddMainTest(){
+//
+//
+//
+//    }
 
 
 }

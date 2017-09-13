@@ -101,4 +101,68 @@ public class PharmacyManagementTest {
 
 
     }
+
+    @Test
+    public  void dilShankaBiil(){
+
+        Session session = UserSession.getSession();
+
+        PharmacyBill bill = new PharmacyBill();
+        bill.setDate(new Date(System.currentTimeMillis()));
+
+        PharmacyLineItem  item1 = new PharmacyLineItem();
+        PharmacyBatch pharmacyBatch1 = (PharmacyBatch)session.get(PharmacyBatch.class,1);
+            item1.setPharmacyBatch(pharmacyBatch1);
+
+            item1.setQuantity(5);
+            item1.setSubTotal(pharmacyBatch1.getPurchasingPrice()*5);
+
+        System.out.println("------------------------------------------------------------------$$$$$$");
+        System.out.println(pharmacyBatch1.getPharmacyItem().getItemName());
+
+
+        PharmacyLineItem  item2 = new PharmacyLineItem();
+        PharmacyBatch pharmacyBatch2 = (PharmacyBatch)session.get(PharmacyBatch.class,2);
+        item2.setPharmacyBatch(pharmacyBatch2);
+
+        item2.setQuantity(20);
+        item2.setSubTotal(pharmacyBatch2.getPurchasingPrice()*20);
+
+        System.out.println("------------------------------------------------------------------$$$$$$");
+
+        System.out.println(pharmacyBatch2.getPharmacyItem().getItemName());
+
+        PharmacyLineItem  item3 = new PharmacyLineItem();
+        PharmacyBatch pharmacyBatch3 = (PharmacyBatch)session.get(PharmacyBatch.class,3);
+        item3.setPharmacyBatch(pharmacyBatch3);
+
+        System.out.println("------------------------------------------------------------------$$$$$$");
+
+        System.out.println(pharmacyBatch3.getPharmacyItem().getItemName());
+
+        item3.setQuantity(40);
+        item3.setSubTotal(pharmacyBatch1.getPurchasingPrice()*40);
+
+
+        bill.getPharmacyLineItems().add(item1);
+        bill.getPharmacyLineItems().add(item2);
+        bill.getPharmacyLineItems().add(item3);
+
+        double total = 0;
+
+        for (PharmacyLineItem item : bill.getPharmacyLineItems()
+             ) {
+            total += item.getSubTotal();
+        }
+
+
+
+        bill.setTotal(total);
+
+
+        session.beginTransaction();
+        session.save(bill);
+        session.getTransaction().commit();
+
+    }
 }

@@ -28,7 +28,7 @@ public class PharmacyBill {
 
         this.bID = new SimpleIntegerProperty();
         this.total = new SimpleDoubleProperty();
-        pharmacyLineItems = new ArrayList<>();
+        this.pharmacyLineItems = new ArrayList<>();
 
     }
 

@@ -24,9 +24,9 @@ public class Staff extends Employee {
     private List<Payroll> payrolls;
 
     public Staff() {
-        attendanceList = new ArrayList<>();
-        leaveList = new ArrayList<>();
-        payrolls = new ArrayList<>();
+        this.attendanceList = new ArrayList<>();
+        this.leaveList = new ArrayList<>();
+        this.payrolls = new ArrayList<>();
     }
 
     @Column(name = "DATE_OF_APPOINTMENT",nullable = false)

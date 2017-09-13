@@ -23,7 +23,7 @@ public class MainTest {
 
 
 
-//    private List<LabTestOrder> labTestOrders;
+    private List<LabTestOrder> labTestOrders;
 
 
 
@@ -37,7 +37,7 @@ public class MainTest {
         this.tId = new SimpleIntegerProperty();
         this.testName = new SimpleStringProperty();
         this.testPrice = new SimpleDoubleProperty();
-//        this.labTestOrders = new ArrayList<>();
+        this.labTestOrders = new ArrayList<>();
         this.testFields = new ArrayList<>();
     }
 
@@ -95,12 +95,12 @@ public class MainTest {
     }
 
     //Bi directional one to many Relationship
-//    @OneToMany(mappedBy = "mainTest")
-//    public List<LabTestOrder> getLabTestOrders() {
-//        return labTestOrders;
-//    }
-//
-//    public void setLabTestOrders(List<LabTestOrder> labTestOrders) {
-//        this.labTestOrders = labTestOrders;
-//    }
+    @OneToMany(mappedBy = "mainTest")
+    public List<LabTestOrder> getLabTestOrders() {
+        return labTestOrders;
+    }
+
+    public void setLabTestOrders(List<LabTestOrder> labTestOrders) {
+        this.labTestOrders = labTestOrders;
+    }
 }
