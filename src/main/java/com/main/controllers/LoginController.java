@@ -1,6 +1,7 @@
 package com.main.controllers;
 
 
+import com.EntityClasses.User;
 import com.appointmentscheduling.controllers.AppointmentScreens;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
@@ -13,23 +14,35 @@ import com.patientmanagement.controllers.PatientScreens;
 import com.suppliermanagement.controllers.SupplierScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class LoginController implements ControlledScreen{
+public class LoginController implements ControlledScreen, Initializable{
 
+    private Session session;
     public LoginModel loginModel = new LoginModel();
     ScreenController mainContainer = new ScreenController();
 
     @Override
     public void setScreenParent(ScreenController screenParent) {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        session = Main.getSessionFactory().openSession();
+
     }
 
     @FXML
@@ -45,27 +58,51 @@ public class LoginController implements ControlledScreen{
     public void closeWindow(ActionEvent actionEvent){
         Stage s = (Stage) txtUsername.getScene().getWindow();
         s.close();
+        System.exit(0);
     }
 
     @FXML
     public void login(ActionEvent actionEvent){
 
-        ResultSet rs = loginModel.getValidatedUser(txtUsername.getText(), txtPassword.getText());
 
-        try {
-            if(rs.next()){
+        session.beginTransaction();
+        Query query = session.createQuery("from User where username ='"+txtUsername.getText()+"'");
+        List<User> users = query.list();
+        session.getTransaction().commit();
 
-                makeStage(rs.getInt(3));
+        if(users.isEmpty()){
+            AlertDialog.show("", "No such user");
+        }
+        else{
+
+            if(users.get(0).getPassword().equals(txtPassword.getText())){
+                LoginModel.setUser(users.get(0).getUsername());
+                makeStage(users.get(0).getAccessLevel());
+                session.close();
                 Stage s = (Stage) txtUsername.getScene().getWindow();
                 s.close();
-
             }
-            else
-                AlertDialog.show("", "Wrong Credentials");
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            else{
+                AlertDialog.show("", "Password Incorrect");
+            }
         }
+//        ResultSet rs = loginModel.getValidatedUser(txtUsername.getText(), txtPassword.getText());
+//
+//        try {
+//            if(rs.next()){
+//
+//                makeStage(rs.getInt(3));
+//                Stage s = (Stage) txtUsername.getScene().getWindow();
+//                s.close();
+//
+//            }
+//            else
+//                AlertDialog.show("", "Wrong Credentials");
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void makeStage(int AccessLevel){
@@ -88,9 +125,9 @@ public class LoginController implements ControlledScreen{
 
             if(AccessLevel == 1){
 
-                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
-                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
+                mainContainer.loadScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId(), PatientScreens.PATIENT_SUMMARY_SCREEN.getPath());
+                mainContainer.setScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
 
             }
@@ -125,6 +162,14 @@ public class LoginController implements ControlledScreen{
                 mainContainer.loadScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId(), AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getPath());
                 mainContainer.setScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId());
                 Parent layout = mainContainer.getScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId()).getParent();
+                primaryStage.setScene(new Scene(layout));
+            }
+
+            else if(AccessLevel == 6){
+
+                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
+                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
             }
 

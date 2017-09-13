@@ -11,9 +11,7 @@ import java.sql.Date;
  * Created by DAMMA on 8/31/2017.
  */
 
-@Entity
-@Access(AccessType.PROPERTY)
-@Table(name = "Maintenance  ", schema = "entitydb")
+@Embeddable
 public class Maintenance {
 
 

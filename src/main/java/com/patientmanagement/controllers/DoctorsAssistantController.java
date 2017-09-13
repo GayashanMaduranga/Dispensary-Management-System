@@ -4,16 +4,13 @@ package com.patientmanagement.controllers;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
-import com.employeemanagement.controllers.MyScreens;
 import com.main.Main;
 import com.main.models.LoginModel;
-import com.patientmanagement.controllers.PatientScreens;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -37,7 +34,7 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userLbl.setText(LoginModel.user);
+        userLbl.setText(LoginModel.getUser());
     }
 
     @FXML
@@ -64,16 +61,16 @@ public class DoctorsAssistantController implements Initializable,ControlledScree
         switch(((JFXButton)event.getSource()).getId()){
 
             case "sidebarRegisterBtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
                 break;
 //            case "titlebtn":
-//                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+//                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.PATIENT_SUMMARY_SCREEN);
 //                break;
             case "sidebarPrescriptionBtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.PRESCRIPTION_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.MEDICATION_SCREEN);
                 break;
             case "sidebarBillBtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.BILL_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.BILL_SCREEN);
                 break;
         }
     }

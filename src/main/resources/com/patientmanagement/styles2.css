@@ -53,3 +53,9 @@
     -fx-background-radius: 30px;
     -fx-background-color: #ffffff;
 }
+
+.back-btn{
+    -fx-background-color: none;
+    -fx-text-fill: #0d1675;
+    -fx-fill: #0d1675;
+}

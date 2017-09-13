@@ -12,7 +12,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "Sample", schema = "entitydb")
+//@Table(name = "Sample")
 public class Sample {
 
     private SimpleIntegerProperty sId;
@@ -29,7 +29,7 @@ public class Sample {
     }
 
     @Id
-    @Column(name = "sID")
+//    @Column(name = "SID")
     @GeneratedValue
     public int getsId() {
         return sId.get();
@@ -44,7 +44,7 @@ public class Sample {
     }
 
     //type
-    @Column(name = "type")
+//    @Column(name = "type")
     public String getType() {
         return type.get();
     }
@@ -59,7 +59,7 @@ public class Sample {
 
 
     //date
-    @Column(name = "date")
+//    @Column(name = "date")
     public java.sql.Date getDate() {
         return Date;
     }

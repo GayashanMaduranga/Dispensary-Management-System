@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DAMMA on 8/31/2017.
@@ -12,7 +14,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "SupplyOrder  ", schema = "entitydb")
+@Table(name = "SupplyOrder")
 public class SupplyOrder {
 
 
@@ -20,9 +22,17 @@ public class SupplyOrder {
     private Date date;
     private SimpleDoubleProperty total;
 
+    private List<PharmacyBatch> pharmacyBatches;
+    private List<Equipment> equipmentList;
+
+
+    private Supplier supplier;
+
     public SupplyOrder() {
         this.orderID = new SimpleIntegerProperty();
         this.total = new SimpleDoubleProperty();
+        this.pharmacyBatches  = new ArrayList<>();
+        this.equipmentList = new ArrayList<>();
     }
 
 
@@ -64,5 +74,33 @@ public class SupplyOrder {
 
     public void setTotal(double total) {
         this.total.set(total);
+    }
+
+    //uni directional one to many
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<PharmacyBatch> getPharmacyBatches() {
+        return pharmacyBatches;
+    }
+
+    public void setPharmacyBatches(List<PharmacyBatch> pharmacyBatches) {
+        this.pharmacyBatches = pharmacyBatches;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Equipment> getEquipmentList() {
+        return equipmentList;
+    }
+
+    public void setEquipmentList(List<Equipment> equipmentList) {
+        this.equipmentList = equipmentList;
     }
 }
