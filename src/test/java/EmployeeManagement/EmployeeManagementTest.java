@@ -1,6 +1,7 @@
 package EmployeeManagement;
 
 import com.EntityClasses.Attendance;
+import com.EntityClasses.Doctor;
 import com.EntityClasses.Staff;
 import db.UserSession;
 import org.hibernate.Session;
@@ -60,6 +61,26 @@ public class EmployeeManagementTest {
         session.close();
 
 
+    }
+
+    @Test
+    public void canAddDoctor(){
+
+        Session session = UserSession.getSession();
+        Doctor doc = new Doctor();
+
+        doc.setName("ABC");
+        doc.setDateOfBirth(Date.valueOf("1980-03-01"));
+        doc.setContactNumber("0345234");
+        doc.setGender("M");
+        doc.setEmployeeid(1);
+
+
+
+        session.beginTransaction();
+        session.save(doc);
+        session.getTransaction().commit();
+        session.close();
     }
 
 
