@@ -1,6 +1,7 @@
 package com.patientmanagement.controllers;
 
 
+import com.EntityClasses.Measure;
 import com.EntityClasses.Medication;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
@@ -9,7 +10,6 @@ import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import com.main.models.LoginModel;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -86,6 +86,38 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 
 // for discontinued table ************************************
 
+// for measures table ************************************
+    @FXML
+    private TreeTableView<Measure> measuresTable;
+
+    @FXML
+    private TreeTableColumn<Measure, String> dateCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> weightCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> HeightCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> tempCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> BPCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> respRateCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> pulseRateCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> glucoseCol;
+
+    private List<TreeItem<Measure>> measuresList;
+
+// for measures table ************************************
+
     private Session session;
 
     @FXML
@@ -144,7 +176,7 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
                                                                                                                 //
         session.beginTransaction();                                                                             //
         mediList = new ArrayList<>();                                                                           //
-        Query medTableQuery = session.createQuery("from Medication m where m.discontinued = false");              //
+        Query medTableQuery = session.createQuery("from Medication m where m.discontinued = false");            //
         List<Medication> meds = medTableQuery.list();                                                           //
         session.getTransaction().commit();                                                                      //
                                                                                                                 //
@@ -154,12 +186,22 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
                                                                                                                 //
         session.beginTransaction();                                                                             //
         discontinuedMediList = new ArrayList<>();                                                               //
-        Query discTableQuery = session.createQuery("select d from Medication d where d.discontinued = true");              //
+        Query discTableQuery = session.createQuery("select d from Medication d where d.discontinued = true");   //
         List<Medication> discMeds = discTableQuery.list();                                                      //
         session.getTransaction().commit();                                                                      //
                                                                                                                 //
                                                                                                                 //
 //for discontinued table****************************************************************************************//
+//for measures table******************************************************************************************//
+                                                                                                                //
+        session.beginTransaction();                                                                             //
+        measuresList = new ArrayList<>();                                                                           //
+        Query measuresTableQuery = session.createQuery("select mes from Measure mes");            //
+        List<Measure> measures = measuresTableQuery.list();                                                           //
+        session.getTransaction().commit();                                                                      //
+                                                                                                                //
+                                                                                                                //
+//for measures table******************************************************************************************//
 //##############################################################################################################//
 
         for (Medication medication : meds){
@@ -170,12 +212,16 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
             discontinuedMediList.add(new TreeItem<>(discontinued));
         }
 
+        for (Measure mes : measures){
+            measuresList.add(new TreeItem<>(mes));
+        }
+
 
 //##############   CELL FACTORIES   ############################################################################################//
 //for medication table**********************************************************************************************            //
         date_col.setCellValueFactory(param -> param.getValue().getValue().dateProperty());                                      //
         name_col.setCellValueFactory(param -> param.getValue().getValue().medicationProperty());                                //
-        dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                                  //
+        dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                            //
         frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());                            //
         action_col.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));                           //
         action_col.setCellFactory(param -> new DiscontinueMedicationCell(medTable, discontinued_med_Table, true));              //
@@ -183,11 +229,21 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 //for discontinued table********************************************************************************************            //
         start_date_col.setCellValueFactory(param -> param.getValue().getValue().dateProperty());                                //
         discontinued_name_col.setCellValueFactory(param -> param.getValue().getValue().medicationProperty());                   //
-        discontinued_dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                     //
+        discontinued_dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());               //
         discontinued_frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());               //
         discontinued_action_col.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));              //
         discontinued_action_col.setCellFactory(param -> new DiscontinueMedicationCell(discontinued_med_Table, medTable, false));//
 //for discontinued table********************************************************************************************            //
+//for measures table********************************************************************************************            //
+        dateCol.setCellValueFactory(param -> param.getValue().getValue().dateProperty());                                //
+        weightCol.setCellValueFactory(param -> param.getValue().getValue().weightProperty());                   //
+        HeightCol.setCellValueFactory(param -> param.getValue().getValue().heightProperty());               //
+        tempCol.setCellValueFactory(param -> param.getValue().getValue().tempProperty());               //
+        BPCol.setCellValueFactory(param -> param.getValue().getValue().bpProperty());              //
+        respRateCol.setCellValueFactory(param -> param.getValue().getValue().respRateProperty());//
+        pulseRateCol.setCellValueFactory(param -> param.getValue().getValue().pulseRateProperty());
+        glucoseCol.setCellValueFactory(param -> param.getValue().getValue().bloodGlucoseProperty());
+//for measures table********************************************************************************************            //
 //##############################################################################################################################//
 
         Medication m = new Medication();
@@ -204,17 +260,33 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
         d.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
         d.setDiscontinued(true);
 
+        Measure meas = new Measure();
+        meas.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+        meas.setBloodGlucose(0);
+        meas.setBp(0);
+        meas.setHeight(0);
+        meas.setPulseRate(0);
+        meas.setRespRate(0);
+        meas.setTemp(0);
+        meas.setWeight(0);
+
+
         TreeItem<Medication> root = new TreeItem<>(m);
         TreeItem<Medication> root2 = new TreeItem<>(d);
+        TreeItem<Measure> root3 = new TreeItem<>(meas);
 
         root.getChildren().addAll(mediList);
         root2.getChildren().addAll(discontinuedMediList);
+        root3.getChildren().addAll(measuresList);
 
         medTable.setRoot(root);
         medTable.setShowRoot(false);
 
         discontinued_med_Table.setRoot(root2);
         discontinued_med_Table.setShowRoot(false);
+
+        measuresTable.setRoot(root3);
+        measuresTable.setShowRoot(false);
     }
 
     private class DiscontinueMedicationCell extends TreeTableCell<Medication, Boolean> {

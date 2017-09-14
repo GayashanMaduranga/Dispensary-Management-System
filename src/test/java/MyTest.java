@@ -1,4 +1,4 @@
-import com.EntityClasses.Doctor;
+import com.EntityClasses.Measure;
 import com.EntityClasses.Medication;
 import com.EntityClasses.User;
 import org.hibernate.Session;
@@ -6,10 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.sql.Date;
 
 /**
  * Created by gayashan on 8/27/2017.
@@ -50,9 +46,9 @@ public class MyTest {
 
         //given
         User user = new User();
-        user.setUsername("user");
+        user.setUsername("admin");
         user.setPassword("pass");
-        user.setAccessLevel(6);
+        user.setAccessLevel(1);
 
 
         Configuration configuration = new Configuration().configure();
@@ -89,6 +85,36 @@ public class MyTest {
 
         session.beginTransaction();
         session.save(med);
+
+        session.getTransaction().commit();
+
+        session.close();
+    }
+
+    @org.junit.Test
+    public void CanAddMeasure(){
+
+        //given
+        Measure mes = new Measure();
+
+        mes.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+        mes.setBloodGlucose(999);
+        mes.setBp(999);
+        mes.setHeight(999);
+        mes.setPulseRate(999);
+        mes.setRespRate(999);
+        mes.setTemp(999);
+        mes.setWeight(999);
+
+
+        Configuration configuration = new Configuration().configure();
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        session.save(mes);
 
         session.getTransaction().commit();
 

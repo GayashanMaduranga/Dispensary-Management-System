@@ -10,8 +10,9 @@ import javax.persistence.*;
 /**
  * Created by gayashan on 8/28/2017.
  */
+
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 @Access(AccessType.PROPERTY)
 public class User {
 
