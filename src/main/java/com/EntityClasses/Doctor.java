@@ -1,113 +1,65 @@
 package com.EntityClasses;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gayashan on 8/27/2017.
  */
 
 @Entity
-public class Doctor {
+@Access(AccessType.PROPERTY)
+public class Doctor extends Employee{
 
-    @Id
-    private int employeeID;
-    private String fullName;
-    private String NIC;
-    private String email;
-    private char gender;
-    private String contactNo;
-    private Date dateOfBirth;
-    private String qualifications;
-    private String SLMC_reg_No;
-    private double chargePerVisit;
+    private StringProperty SLMCRegNO;
+    private DoubleProperty chargePerVisit;
+    private List<Appointment> appointments;
 
-    public int getEmployeeID() {
-        return employeeID;
+
+    public Doctor() {
+        this.SLMCRegNO = new SimpleStringProperty();
+        this.chargePerVisit = new SimpleDoubleProperty();
+        this.appointments = new ArrayList<>();
     }
 
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
+    public String getSLMCRegNO() {
+        return SLMCRegNO.get();
     }
 
-    public String getFullName() {
-        return fullName;
+    public StringProperty SLMCRegNOProperty() {
+        return SLMCRegNO;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getNIC() {
-        return NIC;
-    }
-
-    public void setNIC(String NIC) {
-        this.NIC = NIC;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public char getGender() {
-        return gender;
-    }
-
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
-    public String getContactNo() {
-        return contactNo;
-    }
-
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getQualifications() {
-        return qualifications;
-    }
-
-    public void setQualifications(String qualifications) {
-        this.qualifications = qualifications;
-    }
-
-    public String getSLMC_reg_No() {
-        return SLMC_reg_No;
-    }
-
-    public void setSLMC_reg_No(String SLMC_reg_No) {
-        this.SLMC_reg_No = SLMC_reg_No;
+    public void setSLMCRegNO(String SLMCRegNO) {
+        this.SLMCRegNO.set(SLMCRegNO);
     }
 
     public double getChargePerVisit() {
+        return chargePerVisit.get();
+    }
+
+    public DoubleProperty chargePerVisitProperty() {
         return chargePerVisit;
     }
 
     public void setChargePerVisit(double chargePerVisit) {
-        this.chargePerVisit = chargePerVisit;
+        this.chargePerVisit.set(chargePerVisit);
     }
 
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "employeeID=" + employeeID +
-                ", fullName='" + fullName + '\'' +
-                '}';
+
+    @OneToMany(mappedBy = "doctor")
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }
