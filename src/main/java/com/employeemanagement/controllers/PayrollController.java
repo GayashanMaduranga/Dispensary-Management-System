@@ -18,21 +18,11 @@ import java.util.ResourceBundle;
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class PayrollController implements Initializable,ControlledScreen {
+public class PayrollController implements Initializable {
 
-    ScreenController controller;
 
-    @FXML
-    private VBox aside;
-    @FXML
-    private JFXButton dashBoardBtn;
-    @FXML
-    private JFXButton logoutBtn;
 
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-            controller = screenParent;
-    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,30 +30,7 @@ public class PayrollController implements Initializable,ControlledScreen {
     }
 
 
-    @FXML
-    void changeScene(MouseEvent event) {
-        switch (((JFXButton) event.getSource()).getId()){
-            case "dashBoardBtn":
-                ScreenController.changeScreen(controller, MyScreens.PAYROLL_SCREEN, MyScreens.DASHBOARD_SCREEN);
-                break;
-            case "addEmployeeBtn":
-                ScreenController.changeScreen(controller, MyScreens.PAYROLL_SCREEN, MyScreens.ADDEMPLOYEE_SCREEN);
-                break;
-            case "updateEmployeeBtn":
-                ScreenController.changeScreen(controller, MyScreens.PAYROLL_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
-                break;
-            case "attendenceBtn":
-                ScreenController.changeScreen(controller, MyScreens.PAYROLL_SCREEN, MyScreens.ATTENDENCE_SCREEN);
-                break;
-            case "payrollBtn":
 
-                break;
-            case "reportsBtn":
-                //ScreenController.changeScreen(controller, SupplierScreens.ADDEMPLOYEE_SCREEN, SupplierScreens.R);
-                System.out.println("null");
-                break;
-        }
-    }
 
 
     @FXML
@@ -73,8 +40,8 @@ public class PayrollController implements Initializable,ControlledScreen {
                 // ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.DASHBOARD_SCREEN);
                 break;
             case "applyLoanBtn":
-
-                ScreenController.changeScreen(controller, MyScreens.PAYROLL_SCREEN, MyScreens.LOAN_SCREEN);
+//                ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,content);
+//                ScreenController.changeScreen(controller, MyScreens.PAYROLL_SCREEN, MyScreens.LOAN_SCREEN);
                 break;
             case "calculatePayrollBtn":
                 //ScreenController.changeScreen(controller, MyScreens.LOAN_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
@@ -82,12 +49,5 @@ public class PayrollController implements Initializable,ControlledScreen {
 
         }
     }
-    @FXML
-    void logout(ActionEvent event) {
-        if(ConfirmDialog.show("", "Are you sure you want to logout?")){
-            Main.createLogin(new Stage());
-            Stage s = (Stage)logoutBtn.getScene().getWindow();
-            s.close();
-        }
-    }
+
 }

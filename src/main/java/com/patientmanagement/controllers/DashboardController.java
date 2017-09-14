@@ -32,7 +32,7 @@ public class DashboardController implements Initializable,ControlledScreen {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userLbl.setText(LoginModel.user);
+        userLbl.setText(LoginModel.getUser());
     }
 
     @FXML
@@ -60,15 +60,21 @@ public class DashboardController implements Initializable,ControlledScreen {
 
             case "sidebarRegisterBtn":
                 Stage s = (Stage) logoutBtn.getScene().getWindow();
-                Main.createRegisterWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml");
+                if(!(Main.createFadedWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml"))){
+                    System.out.println("added patient");
+                    Main.dialogCanceled = true;
+                }else{
+                    System.out.println("canceled");
+                }
+                break;
             case "titlebtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.PATIENT_SUMMARY_SCREEN);
                 break;
             case "sidebarPrescriptionBtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.PRESCRIPTION_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.MEDICATION_SCREEN);
                 break;
             case "sidebarBillBtn":
-                ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.BILL_SCREEN);
+                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.BILL_SCREEN);
                 break;
         }
     }
@@ -82,5 +88,4 @@ public class DashboardController implements Initializable,ControlledScreen {
             s.close();
         }
     }
-
 }
