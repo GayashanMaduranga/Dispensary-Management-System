@@ -12,7 +12,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "Supplier", schema = "entitydb")
+@Table(name = "Supplier")
 public class Supplier {
 
 

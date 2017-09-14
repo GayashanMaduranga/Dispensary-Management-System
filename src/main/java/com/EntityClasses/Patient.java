@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DAMMA on 8/31/2017.
@@ -12,7 +14,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "Patient", schema = "entitydb")
+@Table(name = "Patient")
 public class Patient {
 
 
@@ -28,6 +30,14 @@ public class Patient {
     private SimpleStringProperty familyHistory;
     private SimpleStringProperty habits;
 
+    private List<LabTestOrder> labTestOrders;
+    private List<Complaint> complaints;
+    private List<Prescription> prescriptions;
+    private List<Appointment> appointments;
+    private List<Medication> medications;
+    private List<Measure> measures;
+
+
     public Patient() {
         this.pId = new SimpleIntegerProperty();
         this.pname = new SimpleStringProperty();
@@ -39,6 +49,11 @@ public class Patient {
         this.medicationHistory = new SimpleStringProperty();
         this.familyHistory = new SimpleStringProperty();
         this.habits = new SimpleStringProperty();
+
+        this.labTestOrders = new ArrayList<>();
+        this.complaints = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
+        this.appointments = new ArrayList<>();
     }
 
     //pname
@@ -137,7 +152,8 @@ public class Patient {
     }
 
     //medicationHistory
-    @Column(name = "medicationHistory", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "medicationHistory")
     public String getMedicationHistory() {
         return medicationHistory.get();
     }
@@ -151,7 +167,8 @@ public class Patient {
     }
 
     //familyHistory
-    @Column(name = "familyHistory", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "familyHistory")
     public String getFamilyHistory() {
         return familyHistory.get();
     }
@@ -165,7 +182,8 @@ public class Patient {
     }
 
     //habits
-    @Column(name = "habits", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "habits")
     public String getHabits() {
         return habits.get();
     }
@@ -193,8 +211,53 @@ public class Patient {
         return pId;
     }
 
+    @OneToMany(mappedBy = "patient")
+    public List<LabTestOrder> getLabTestOrders() {
+        return labTestOrders;
+    }
+
+    public void setLabTestOrders(List<LabTestOrder> labTestOrders) {
+        this.labTestOrders = labTestOrders;
+    }
 
 
 //    @Column(name = "name", columnDefinition = "TEXT")
 
+    @ElementCollection
+    public List<Complaint> getComplaints() {
+        return complaints;
+    }
+
+    public void setComplaints(List<Complaint> complaints) {
+        this.complaints = complaints;
+    }
+
+
+    //One to Many uni directional
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(List<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Measure> getMeasures() {
+        return measures;
+    }
+
+    public void setMeasures(List<Measure> measures) {
+        this.measures = measures;
+    }
+
+    @OneToMany
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
+    }
 }

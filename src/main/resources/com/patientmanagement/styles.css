@@ -51,8 +51,6 @@
 #viewPatientPane{
     -fx-border-width: 1px;
     -fx-border-color: #6d6d6d;
-    -fx-border-radius: 20;
-    -fx-background-radius: 20;
     -fx-background-color: #8bcbe9;
     -fx-opacity: 70% ;
 }
@@ -71,17 +69,17 @@
     -jfx-unselected-color: white;
 }
 
-.text-field, .text-area .content{
-    -fx-background-color:   rgba(255,255,255,0.75),
-                            linear-gradient(to top left, #c2c2c2 0%, #dddddd 100%);
-    -fx-background-insets: 0, 1;
-    -fx-background-radius: 9px;
-    -fx-border-radius: 9px;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.75),1,0,1,1);
-    -fx-font-family: "verdana";
-    -fx-font-size: 18px;
+/*.text-field, .text-area .content{*/
+    /*-fx-background-color:   rgba(255,255,255,0.75),*/
+                            /*linear-gradient(to top left, #c2c2c2 0%, #dddddd 100%);*/
+    /*-fx-background-insets: 0, 1;*/
+    /*-fx-background-radius: 9px;*/
+    /*-fx-border-radius: 9px;*/
+    /*-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.75),1,0,1,1);*/
+    /*-fx-font-family: "verdana";*/
+    /*-fx-font-size: 18px;*/
 
-}
+/*}*/
 
 .whiteTextArea .content{
     -fx-background-color:   rgba(255,255,255,1);
@@ -94,15 +92,86 @@
 }
 
 .button{
-    -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #146bbe, #1bda99);
-    -fx-text-fill: white;
+    -fx-background-color: none;
+    -fx-text-fill: #0e4f75;
+    -fx-border-color: #0e4f75;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
 }
 
 .button:hover{
-    -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #0d1675, #0e7c74);
-    -fx-text-fill: whitesmoke;
+    -fx-background-color: #0e4f75;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
 
 }
+
+.button-blue{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #0e4f75;
+    -fx-border-color: #0e4f75;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+.button-blue:hover{
+    -fx-background-color: #0e4f75;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
+
+}
+
+#leftPane .button-blue:hover{
+    -fx-background-color: #0e4f75;
+    -fx-text-fill: #ebeef3;
+    -fx-font-size: 23px;
+}
+
+.button-red{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #c80002;
+    -fx-border-color: #c80002;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+.button-red:hover{
+    -fx-background-color: #c80002;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
+
+}
+
+#leftPane .button-red:hover{
+    -fx-background-color: #c80002;
+    -fx-text-fill: #ebeef3;
+    -fx-font-size: 23px;
+}
+
+.button-green{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #00be13;
+    -fx-border-color: #00be13;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+.button-green:hover{
+    -fx-background-color: #00be13;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
+
+}
+
+#leftPane .button-green:hover{
+    -fx-background-color: #00be13;
+    -fx-text-fill: #ebeef3;
+    -fx-font-size: 23px;
+}
+
 
 .tab .tab-label {
     -fx-alignment: CENTER;
@@ -137,11 +206,16 @@
 
 #leftPane .logout-btn{
     -fx-background-color: #eba108;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
 }
 
 #leftPane .logout-btn:hover{
     -fx-background-color: #eb7715;
-    -fx-font-size:17px;
+    -fx-font-size:16px;
 }
 
 .glyph-icon{

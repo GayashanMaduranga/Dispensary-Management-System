@@ -1,5 +1,7 @@
 package com.EntityClasses;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import javax.persistence.*;
@@ -11,16 +13,19 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "Prescription", schema = "entitydb")
+@Table(name = "Prescription")
 public class Prescription {
 
 
     private SimpleIntegerProperty presId;
     private Date date;
+    private DoubleProperty quantity;
 
+    private PharmacyItem pharmacyItem;
 
     public Prescription() {
         this.presId = new SimpleIntegerProperty();
+        this.quantity = new SimpleDoubleProperty();
     }
 
 
@@ -49,4 +54,25 @@ public class Prescription {
         return presId;
     }
 
+    public double getQuantity() {
+        return quantity.get();
+    }
+
+    public DoubleProperty quantityProperty() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity.set(quantity);
+    }
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public PharmacyItem getPharmacyItem() {
+        return pharmacyItem;
+    }
+
+    public void setPharmacyItem(PharmacyItem pharmacyItem) {
+        this.pharmacyItem = pharmacyItem;
+    }
 }

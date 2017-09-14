@@ -8,8 +8,34 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
+        <property name="hibernate.show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.EntityClasses.Doctor"/>
+        <mapping class="com.EntityClasses.Medication"/>
+        <mapping class="com.EntityClasses.User"/>
+        <mapping class="com.EntityClasses.Measure"/>
+        <mapping class="com.EntityClasses.Sample"/>
+        <mapping class="com.EntityClasses.LabTestOrder"/>
+        <mapping class="com.EntityClasses.MainTest"/>
+        <mapping class="com.EntityClasses.TestField"/>
+        <mapping class="com.EntityClasses.Patient"/>
+        <mapping class="com.EntityClasses.TestResults"/>
+        <mapping class="com.EntityClasses.Prescription"/>
+        <mapping class="com.EntityClasses.PharmacyItem"/>
+        <mapping class="com.EntityClasses.PharmacyBatch"/>
+        <mapping class="com.EntityClasses.PharmacyLineItem"/>
+        <mapping class="com.EntityClasses.PharmacyBill"/>
+        <mapping class="com.EntityClasses.Supplier"/>
+        <mapping class="com.EntityClasses.SupplyOrder"/>
+        <mapping class="com.EntityClasses.Staff"/>
+        <mapping class="com.EntityClasses.Loan"/>
+        <mapping class="com.EntityClasses.Machine"/>
+        <mapping class="com.EntityClasses.UtilityEquipment"/>
+        <mapping class="com.EntityClasses.Payroll"/>
+        <mapping class="com.EntityClasses.Appointment"/>
+
+        <!--<mapping class="com.EntityClasses.Attendance"/>-->
+
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 

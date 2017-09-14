@@ -18,37 +18,9 @@ import java.util.ResourceBundle;
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class AddEmpoyeeController implements Initializable,ControlledScreen {
+public class AddEmpoyeeController implements Initializable{
 
-    ScreenController controller;
 
-    @FXML
-    private VBox aside;
-    @FXML
-    private JFXButton dashBoardBtn;
-
-    @FXML
-    private JFXButton addEmployeeBtn;
-
-    @FXML
-    private JFXButton updateEmployeeBtn;
-
-    @FXML
-    private JFXButton attendenceBtn;
-
-    @FXML
-    private JFXButton payrollBtn;
-
-    @FXML
-    private JFXButton reportsBtn;
-
-    @FXML
-    private JFXButton logoutBtn;
-
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-            controller = screenParent;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,42 +28,6 @@ public class AddEmpoyeeController implements Initializable,ControlledScreen {
     }
 
 
-    @FXML
-    void changeScene(MouseEvent event) {
-
-
-        switch (((JFXButton) event.getSource()).getId()){
-            case "dashBoardBtn":
-                ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.DASHBOARD_SCREEN);
-                break;
-            case "addEmployeeBtn":
-                break;
-            case "updateEmployeeBtn":
-                ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
-                break;
-            case "attendenceBtn":
-                ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.ATTENDENCE_SCREEN);
-                break;
-            case "payrollBtn":
-                ScreenController.changeScreen(controller, MyScreens.ADDEMPLOYEE_SCREEN, MyScreens.PAYROLL_SCREEN);
-                break;
-            case "reportsBtn":
-                //ScreenController.changeScreen(controller, SupplierScreens.ADDEMPLOYEE_SCREEN, SupplierScreens.R);
-                System.out.println("null");
-                break;
-        }
-
-
-    }
-
-    @FXML
-    void logout(ActionEvent event) {
-        if(ConfirmDialog.show("", "Are you sure you want to logout?")){
-            Main.createLogin(new Stage());
-            Stage s = (Stage)logoutBtn.getScene().getWindow();
-            s.close();
-        }
-    }
 
 
 }
