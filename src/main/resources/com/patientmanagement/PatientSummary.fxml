@@ -109,7 +109,14 @@
                                       <panes>
                                         <TitledPane fx:id="pastVisitPane" animated="false" text="Past Visits">
                                           <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                <GridPane>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                </GridPane>
                                           </content>
                                              <font>
                                                 <Font size="18.0" />
@@ -149,6 +156,11 @@
                                                    </font>
                                                 </Button>
                                                 <Button mnemonicParsing="false" styleClass="button-temp" text="View Details">
+                                                   <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" styleClass="button-temp" text="  Add Note  ">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
@@ -343,7 +355,28 @@
                                        <panes>
                                           <TitledPane fx:id="pastVisitPane11" animated="false" text="Values">
                                              <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                <GridPane>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <TreeTableView fx:id="measuresTable" prefHeight="200.0" prefWidth="200.0">
+                                                         <columns>
+                                                            <TreeTableColumn fx:id="dateCol" prefWidth="150.0" text="Date" />
+                                                            <TreeTableColumn fx:id="weightCol" prefWidth="150.0" text="Weight" />
+                                                            <TreeTableColumn fx:id="HeightCol" prefWidth="150.0" text="Height" />
+                                                            <TreeTableColumn fx:id="tempCol" prefWidth="150.0" text="Temperature" />
+                                                            <TreeTableColumn fx:id="BPCol" prefWidth="150.0" text="Blood Pressure" />
+                                                            <TreeTableColumn fx:id="respRateCol" prefWidth="150.0" text="Respiratory Rate" />
+                                                            <TreeTableColumn fx:id="pulseRateCol" prefWidth="150.0" text="Pulse Rate" />
+                                                            <TreeTableColumn fx:id="glucoseCol" prefWidth="150.0" text="Blood Glucose" />
+                                                         </columns>
+                                                      </TreeTableView>
+                                                   </children>
+                                                </GridPane>
                                              </content>
                                              <font>
                                                 <Font size="18.0" />
