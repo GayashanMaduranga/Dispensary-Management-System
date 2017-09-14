@@ -17,64 +17,21 @@ import java.util.ResourceBundle;
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class DashBoardController implements Initializable,ControlledScreen {
-
-    ScreenController controller;
+public class DashBoardController implements Initializable {
 
 
-    @FXML
-    private JFXButton dashBoardBtn;
-
-    @FXML
-    private JFXButton addEmployeeBtn;
-    @FXML
-    private JFXButton logoutBtn;
-
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-            controller = screenParent;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    @FXML
-    void changeScene(MouseEvent event) {
+//    @FXML
+//    void changeScene(MouseEvent event) {
+//
+//
+//
+//    }
 
 
-        switch (((JFXButton) event.getSource()).getId()){
-            case "dashBoardBtn":
-
-                break;
-            case "addEmployeeBtn":
-
-                ScreenController.changeScreen(controller, MyScreens.DASHBOARD_SCREEN, MyScreens.ADDEMPLOYEE_SCREEN);
-                break;
-            case "updateEmployeeBtn":
-                ScreenController.changeScreen(controller, MyScreens.DASHBOARD_SCREEN, MyScreens.UPDATEADDEMPLOYEE_SCREEN);
-                break;
-            case "attendenceBtn":
-                ScreenController.changeScreen(controller, MyScreens.DASHBOARD_SCREEN, MyScreens.ATTENDENCE_SCREEN);
-                break;
-            case "payrollBtn":
-                ScreenController.changeScreen(controller, MyScreens.DASHBOARD_SCREEN, MyScreens.PAYROLL_SCREEN);
-
-                break;
-            case "reportsBtn":
-                //ScreenController.changeScreen(controller, SupplierScreens.ADDEMPLOYEE_SCREEN, SupplierScreens.R);
-                System.out.println("null");
-                break;
-        }
-    }
-
-    @FXML
-    void logout(ActionEvent event) {
-        if(ConfirmDialog.show("", "Are you sure you want to logout?")){
-            Main.createLogin(new Stage());
-            Stage s = (Stage)logoutBtn.getScene().getWindow();
-            s.close();
-        }
-    }
 }
