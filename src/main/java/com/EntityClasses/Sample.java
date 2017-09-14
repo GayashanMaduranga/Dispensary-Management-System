@@ -12,7 +12,7 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-//@Table(name = "Sample")
+@Table(name = "Sample")
 public class Sample {
 
     private SimpleIntegerProperty sId;
