@@ -1,6 +1,5 @@
-import com.EntityClasses.Doctor;
-import com.EntityClasses.Medication;
-import com.EntityClasses.User;
+import com.EntityClasses.*;
+import db.UserSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -94,4 +93,17 @@ public class MyTest {
 
         session.close();
     }
+
+    @Test
+    public void canRetriveData(){
+
+        Session session = UserSession.getSession();
+
+        SupplyOrder supplier = (SupplyOrder)session.get(SupplyOrder.class,1);
+        Supplier supplier1 = supplier.getSupplier();
+
+        System.out.println(supplier1.getSupname());
+
+    }
+
 }
