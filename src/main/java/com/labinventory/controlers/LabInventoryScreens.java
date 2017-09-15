@@ -3,15 +3,15 @@ package com.labinventory.controlers;
 import com.common.BaseEnum;
 
 /**
- * Created by gayashan on 8/14/2017.
+ * Created by chamara on 8/14/2017.
  */
 public enum LabInventoryScreens implements BaseEnum{
 
 
 
-    LAB_EQUIPMENT_SCREEN("updateEmployee", "/com/labinventory/views/LabEquipment.fxml"),
-    LAB_INVENTORY_SCREENS("payroll", "/com/labinventory/views/LabInventory.fxml"),
-    LAB_MACHINE_SCREEN("loan", "/com/labinventory/views/LabMachine.fxml");
+    LAB_EQUIPMENT_SCREEN("updateEmployee", "/com/labinventory/LabEquipment.fxml"),
+    LAB_INVENTORY_SCREENS("payroll", "/com/labinventory/LabInventory.fxml"),
+    LAB_MACHINE_SCREEN("loan", "/com/labinventory/LabMachine.fxml");
 
 
     String path;
