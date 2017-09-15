@@ -2,6 +2,7 @@ package com.patientmanagement.controllers;
 
 
 import com.EntityClasses.Medication;
+import com.EntityClasses.Patient;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,6 +32,8 @@ public class MedicationController implements Initializable,ControlledScreen {
 
     ScreenController controller;
 
+    static Medication medication;
+
 
     @Override
     public void setScreenParent(ScreenController screenParent) {
@@ -39,13 +43,15 @@ public class MedicationController implements Initializable,ControlledScreen {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        medication = new Medication();
+
         dosageChoiceBox.getItems().addAll("tablets", "ml", "mg");
         frequencyChoiceBox.getItems().addAll("once daily", "twice daily", "thrice daily");
         ArrayList<String> values = new ArrayList<>();
-        values.add(0,"roomba");
-        values.add(1,"zoomba");
-        values.add(2,"koromba");
-        values.add(3,"cocoomba");
+        values.add("roomba");
+        values.add("zoomba");
+        values.add("koromba");
+        values.add("cocoomba");
 
         TextFields.bindAutoCompletion(txtMedication, values);
     }
@@ -88,23 +94,26 @@ public class MedicationController implements Initializable,ControlledScreen {
         String frequency = frequencyChoiceBox.getValue();
         String name = txtMedication.getText();
 
-        Medication med = new Medication();
-        med.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
-        med.setDosage(dosage);
-        med.setDosageType(dosageType);
-        med.setFrequency(frequency);
-        med.setMedication(name);
-        med.setDiscontinued(false);
+        medication.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+        medication.setDosage(dosage);
+        medication.setDosageType(dosageType);
+        medication.setFrequency(frequency);
+        medication.setMedication(name);
+        medication.setDiscontinued(false);
 
-
-        Session session = Main.getSessionFactory().openSession();
-
-        session.beginTransaction();
-        session.save(med);
-        session.getTransaction().commit();
 
         Main.dialogCanceled = false;
         Stage s = (Stage)addMedBtn.getScene().getWindow();
         s.close();
+    }
+
+    @FXML
+    void reset(){
+
+        dosageSpinner.getValueFactory().setValue(0);
+        dosageChoiceBox.getSelectionModel().clearSelection();
+        frequencyChoiceBox.getSelectionModel().clearSelection();
+        txtMedication.setText("");
+
     }
 }
