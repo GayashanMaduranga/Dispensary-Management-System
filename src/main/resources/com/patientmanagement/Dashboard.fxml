@@ -86,7 +86,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <GridPane fx:id="patientCard" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <GridPane fx:id="patientCard" styleClass="popupPane" GridPane.columnIndex="3" GridPane.rowIndex="2">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="230.0" minWidth="230.0" prefWidth="230.0" />
@@ -143,29 +143,38 @@
             <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="sidebarRegisterBtn" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="302.0" text="Register Patient      " GridPane.rowIndex="2">
+            <JFXButton fx:id="sidebarRegisterBtn" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="302.0" styleClass="button-white" text="Register Patient      " GridPane.rowIndex="2">
                <graphic>
                   <FontAwesomeIconView glyphName="USER_PLUS" size="20" />
                </graphic>
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </JFXButton>
-            <JFXButton fx:id="sidebarPrescriptionBtn" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="273.0" text="Make Prescription    " GridPane.rowIndex="3">
+            <JFXButton fx:id="sidebarPrescriptionBtn" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="273.0" styleClass="button-white" text="Make Prescription    " GridPane.rowIndex="3">
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
                <graphic>
                   <FontAwesomeIconView glyphName="EDIT" size="20" />
                </graphic>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </JFXButton>
-            <JFXButton fx:id="sidebarBillBtn" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="273.0" text="Create Bill              " GridPane.rowIndex="4">
+            <JFXButton fx:id="sidebarBillBtn" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="45.0" prefWidth="273.0" styleClass="button-white" text="Create Bill              " GridPane.rowIndex="4">
                <font>
                   <Font name="Verdana" size="16.0" />
                </font>
                <graphic>
                   <FontAwesomeIconView glyphName="FILE_TEXT" size="20" wrappingWidth="18.14285659790039" />
                </graphic>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
             </JFXButton>
             <JFXButton fx:id="titlebtn" graphicTextGap="9.0" onAction="#changeScene" prefHeight="98.0" prefWidth="390.0" text="Assistant Portal">
                <font>

@@ -32,10 +32,11 @@ public class Patient {
 
     private List<LabTestOrder> labTestOrders;
     private List<Complaint> complaints;
-
     private List<Prescription> prescriptions;
-
     private List<Appointment> appointments;
+    private List<Medication> medications;
+    private List<Measure> measures;
+
 
     public Patient() {
         this.pId = new SimpleIntegerProperty();
@@ -219,8 +220,8 @@ public class Patient {
         this.labTestOrders = labTestOrders;
     }
 
-//    @Column(name = "name", columnDefinition = "TEXT")
 
+//    @Column(name = "name", columnDefinition = "TEXT")
 
     @ElementCollection
     public List<Complaint> getComplaints() {
@@ -240,5 +241,23 @@ public class Patient {
 
     public void setPrescriptions(List<Prescription> prescriptions) {
         this.prescriptions = prescriptions;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Measure> getMeasures() {
+        return measures;
+    }
+
+    public void setMeasures(List<Measure> measures) {
+        this.measures = measures;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
     }
 }

@@ -1,6 +1,6 @@
-import com.EntityClasses.Doctor;
-import com.EntityClasses.Medication;
-import com.EntityClasses.User;
+import com.EntityClasses.*;
+import db.UserSession;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by gayashan on 8/27/2017.
@@ -73,6 +74,7 @@ public class MyTest {
     public void CanAddMedication(){
 
         //given
+
         Medication med = new Medication();
         med.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
         med.setDosage(1);
@@ -88,10 +90,29 @@ public class MyTest {
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
-        session.save(med);
+
+        Query patientNameQuery = session.createQuery("select p from Patient p where p.pname = 'patient0'");
+        List<Patient> patients = patientNameQuery.list();
+        Patient patient = patients.get(0);
+
+        patient.getMedications().add(med);
+        session.persist(patient);
 
         session.getTransaction().commit();
 
         session.close();
     }
+
+    @Test
+    public void canRetriveData(){
+
+        Session session = UserSession.getSession();
+
+        SupplyOrder supplier = (SupplyOrder)session.get(SupplyOrder.class,1);
+        Supplier supplier1 = supplier.getSupplier();
+
+        System.out.println(supplier1.getSupname());
+
+    }
+
 }

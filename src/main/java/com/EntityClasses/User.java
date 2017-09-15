@@ -10,6 +10,7 @@ import javax.persistence.*;
 /**
  * Created by gayashan on 8/28/2017.
  */
+
 @Entity
 @Table(name = "USERS")
 @Access(AccessType.PROPERTY)

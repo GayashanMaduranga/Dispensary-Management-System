@@ -1,7 +1,9 @@
 package com.patientmanagement.controllers;
 
 
+import com.EntityClasses.Measure;
 import com.EntityClasses.Medication;
+import com.EntityClasses.Patient;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
@@ -9,7 +11,6 @@ import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import com.main.models.LoginModel;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -17,6 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -86,23 +88,82 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 
 // for discontinued table ************************************
 
+// for measures table ************************************
+    @FXML
+    private TreeTableView<Measure> measuresTable;
+
+    @FXML
+    private TreeTableColumn<Measure, String> dateCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> weightCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> HeightCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> tempCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> BPCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> respRateCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> pulseRateCol;
+
+    @FXML
+    private TreeTableColumn<Measure, Number> glucoseCol;
+
+    private List<TreeItem<Measure>> measuresList;
+
+// for measures table ************************************
+
     private Session session;
+
+    private List<Patient> patients;
+
+    private Patient summaryPatient;
+
+    @FXML
+    private Label lblPname;
+
+    @FXML
+    private Label lblPage;
+
+    @FXML
+    private Label lblPid;
+
+    @FXML
+    private Label lblPoccupation;
+
+    @FXML
+    private Label lblPphone;
+
+    @FXML
+    private Label lblPemail;
 
     @FXML
     private Label userLbl;
 
     @FXML
-    private JFXButton logoutBtn;
+    private TextField txtGetpatient;
+
+    @FXML
+    private JFXButton homeBtn;
 
     @FXML
     private Button addMedBtn;
+
+
 
     @FXML
     void logout(){
 
         if(ConfirmDialog.show("", "Are you sure you want to logout?")){
             Main.createLogin(new Stage());
-            Stage s = (Stage)logoutBtn.getScene().getWindow();
+            Stage s = (Stage)homeBtn.getScene().getWindow();
             s.close();
         }
     }
@@ -110,85 +171,84 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
     @FXML
     void addMedication(){
 
+
         Stage s = (Stage) medTable.getScene().getWindow();
 
         if(!(Main.createFadedWindow(new Stage(), s,"/com/patientmanagement/Medication.fxml"))){
 
-            mediList.clear();
+            Medication m = MedicationController.medication;
+
+            summaryPatient.getMedications().add(m);
 
             session.beginTransaction();
-            Query medTableQuery = session.createQuery("from Medication m where m.discontinued = false");              //
-            List<Medication> meds = medTableQuery.list();                                                           //
+
+            session.save(summaryPatient);
+
             session.getTransaction().commit();
 
-            for (Medication medication : meds){
-                mediList.add(new TreeItem<>(medication));
-            }
+            int pid = summaryPatient.getpId();
+
+            mediList.add(new TreeItem<>(m));
             medTable.getRoot().getChildren().clear();
             medTable.getRoot().getChildren().addAll(mediList);
+
             Main.dialogCanceled = true;
+
         }else{
+
             System.out.println("canceled");
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    void populateDetails(){
 
-        userLbl.setText(LoginModel.getUser());
+        String patientName = txtGetpatient.getText();
 
-        session=Main.getSessionFactory().openSession();
+        patients.clear();
 
-//##############   TRANSACTIONS/POPULATING ARRAY-LISTS   #######################################################//
+        session.beginTransaction();
+        Query patientNameQuery = session.createQuery("select p from Patient p where p.pname = '"+patientName+"'");
+        patients = patientNameQuery.list();
+        session.getTransaction().commit();
+
+        summaryPatient = patients.get(0);
+
+        lblPid.setText(Integer.toString(summaryPatient.getpId()));
+        lblPoccupation.setText(summaryPatient.getOccupation());
+        lblPemail.setText(summaryPatient.getEmail());
+        lblPphone.setText(summaryPatient.getContactNumber());
+        lblPage.setText(summaryPatient.getDOB().toString());
+        lblPname.setText(summaryPatient.getPname());
+
+        updateMedTable();
+        updateDiscTable();
+
+    }
+
+    private void updateMedTable(){
+
 //for medication table******************************************************************************************//
-                                                                                                                //
-        session.beginTransaction();                                                                             //
-        mediList = new ArrayList<>();                                                                           //
-        Query medTableQuery = session.createQuery("from Medication m where m.discontinued = false");              //
-        List<Medication> meds = medTableQuery.list();                                                           //
-        session.getTransaction().commit();                                                                      //
-                                                                                                                //
-                                                                                                                //
-//for medication table******************************************************************************************//
-//for discontinued table****************************************************************************************//
-                                                                                                                //
-        session.beginTransaction();                                                                             //
-        discontinuedMediList = new ArrayList<>();                                                               //
-        Query discTableQuery = session.createQuery("select d from Medication d where d.discontinued = true");              //
-        List<Medication> discMeds = discTableQuery.list();                                                      //
-        session.getTransaction().commit();                                                                      //
-                                                                                                                //
-                                                                                                                //
-//for discontinued table****************************************************************************************//
-//##############################################################################################################//
+
+        List<Medication> meds = summaryPatient.getMedications();
 
         for (Medication medication : meds){
-            mediList.add(new TreeItem<>(medication));
+
+            if(!(medication.isDiscontinued())){
+                mediList.add(new TreeItem<>(medication));
+            }
         }
 
-        for (Medication discontinued : discMeds){
-            discontinuedMediList.add(new TreeItem<>(discontinued));
-        }
-
-
-//##############   CELL FACTORIES   ############################################################################################//
 //for medication table**********************************************************************************************            //
+
         date_col.setCellValueFactory(param -> param.getValue().getValue().dateProperty());                                      //
         name_col.setCellValueFactory(param -> param.getValue().getValue().medicationProperty());                                //
-        dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                                  //
+        dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                            //
         frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());                            //
         action_col.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));                           //
         action_col.setCellFactory(param -> new DiscontinueMedicationCell(medTable, discontinued_med_Table, true));              //
+
 //for medication table**********************************************************************************************            //
-//for discontinued table********************************************************************************************            //
-        start_date_col.setCellValueFactory(param -> param.getValue().getValue().dateProperty());                                //
-        discontinued_name_col.setCellValueFactory(param -> param.getValue().getValue().medicationProperty());                   //
-        discontinued_dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                     //
-        discontinued_frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());               //
-        discontinued_action_col.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));              //
-        discontinued_action_col.setCellFactory(param -> new DiscontinueMedicationCell(discontinued_med_Table, medTable, false));//
-//for discontinued table********************************************************************************************            //
-//##############################################################################################################################//
 
         Medication m = new Medication();
         m.setDosage(0);
@@ -197,6 +257,37 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
         m.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
         m.setDiscontinued(false);
 
+        TreeItem<Medication> root = new TreeItem<>(m);
+        root.getChildren().addAll(mediList);
+        medTable.setRoot(root);
+        medTable.setShowRoot(false);
+
+    }
+
+    private void updateDiscTable(){
+
+//for discontinued medication table***********************************************************//
+
+        List<Medication> discMeds = summaryPatient.getMedications();
+
+        for (Medication medication : discMeds){
+
+            if(medication.isDiscontinued()){
+                discontinuedMediList.add(new TreeItem<>(medication));
+            }
+        }
+
+//*********  setting cell value factories   ************************************************************************************
+
+        start_date_col.setCellValueFactory(param -> param.getValue().getValue().dateProperty());
+        discontinued_name_col.setCellValueFactory(param -> param.getValue().getValue().medicationProperty());
+        discontinued_dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());
+        discontinued_frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());
+        discontinued_action_col.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));
+        discontinued_action_col.setCellFactory(param -> new DiscontinueMedicationCell(discontinued_med_Table, medTable, false));
+
+//for discontinued medication table**********************************************************************************************
+
         Medication d = new Medication();
         d.setDosage(0);
         d.setMedication("null");
@@ -204,17 +295,89 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
         d.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
         d.setDiscontinued(true);
 
-        TreeItem<Medication> root = new TreeItem<>(m);
-        TreeItem<Medication> root2 = new TreeItem<>(d);
-
-        root.getChildren().addAll(mediList);
-        root2.getChildren().addAll(discontinuedMediList);
-
-        medTable.setRoot(root);
-        medTable.setShowRoot(false);
-
-        discontinued_med_Table.setRoot(root2);
+        TreeItem<Medication> root = new TreeItem<>(d);
+        root.getChildren().addAll(discontinuedMediList);
+        discontinued_med_Table.setRoot(root);
         discontinued_med_Table.setShowRoot(false);
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        userLbl.setText(LoginModel.getUser());
+
+        session = Main.getSessionFactory().openSession();
+
+        patients = new ArrayList<>();
+        mediList = new ArrayList<>();
+        discontinuedMediList = new ArrayList<>();
+
+        List<String> values;
+
+//############ POPULATING PATIENT SEARCH BAR ###############################################
+
+        session.beginTransaction();
+        Query patientNameQuery = session.createQuery("select p.pname  from Patient p");
+        values = patientNameQuery.list();
+        session.getTransaction().commit();
+
+        TextFields.bindAutoCompletion(txtGetpatient, values);
+
+//###########################################################################################
+
+
+//for measures table******************************************************************************************//
+                                                                                                                //
+//        session.beginTransaction();                                                                             //
+//        measuresList = new ArrayList<>();                                                                           //
+//        Query measuresTableQuery = session.createQuery("select mes from Measure mes");            //
+//        List<Measure> measures = measuresTableQuery.list();                                                           //
+//        session.getTransaction().commit();                                                                      //
+                                                                                                                //
+                                                                                                                //
+//for measures table******************************************************************************************//
+
+//##############################################################################################################//
+
+//
+//        for (Measure mes : measures){
+//            measuresList.add(new TreeItem<>(mes));
+//        }
+
+
+//##############   CELL FACTORIES   ############################################################################################//
+//for measures table********************************************************************************************                //
+
+//        dateCol.setCellValueFactory(param -> param.getValue().getValue().dateProperty());                                       //
+//        weightCol.setCellValueFactory(param -> param.getValue().getValue().weightProperty());                                   //
+//        HeightCol.setCellValueFactory(param -> param.getValue().getValue().heightProperty());                                   //
+//        tempCol.setCellValueFactory(param -> param.getValue().getValue().tempProperty());                                       //
+//        BPCol.setCellValueFactory(param -> param.getValue().getValue().bpProperty());                                           //
+//        respRateCol.setCellValueFactory(param -> param.getValue().getValue().respRateProperty());                               //
+//        pulseRateCol.setCellValueFactory(param -> param.getValue().getValue().pulseRateProperty());
+//        glucoseCol.setCellValueFactory(param -> param.getValue().getValue().bloodGlucoseProperty());
+
+//for measures table********************************************************************************************                //
+//##############################################################################################################################//
+
+//
+//        Measure meas = new Measure();
+//        meas.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+//        meas.setBloodGlucose(0);
+//        meas.setBp(0);
+//        meas.setHeight(0);
+//        meas.setPulseRate(0);
+//        meas.setRespRate(0);
+//        meas.setTemp(0);
+//        meas.setWeight(0);
+//
+//        TreeItem<Measure> root3 = new TreeItem<>(meas);
+//
+//        root3.getChildren().addAll(measuresList);
+//
+//        measuresTable.setRoot(root3);
+//        measuresTable.setShowRoot(false);
     }
 
     private class DiscontinueMedicationCell extends TreeTableCell<Medication, Boolean> {
@@ -222,7 +385,7 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
         private Button discontinueButton = new Button("Stop");
         // a button for adding a new person.
         private Button editButton = new Button(" Edit ");
-        // pads and centers the add button in the cell.
+        // pads and centers the buttons in the cell.
         final HBox paddedButton = new HBox(10);
 
         /**

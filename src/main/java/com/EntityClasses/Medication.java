@@ -14,7 +14,6 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "Medication", schema = "entitydb")
 public class Medication {
 
     private SimpleIntegerProperty medID;
@@ -95,7 +94,7 @@ public class Medication {
 
     public SimpleIntegerProperty dosageProperty() {
 //        SimpleStringProperty dosageString = new SimpleStringProperty();
-//        dosageString.set(Integer.toString(this.getDosage())+" "+this.getDosageType());
+//        dosageString.set(Integer.toString(this.getWeight())+" "+this.getDosageType());
         return dosage;
     }
 

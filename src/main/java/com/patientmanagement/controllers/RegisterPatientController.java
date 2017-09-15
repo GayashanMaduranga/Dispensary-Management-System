@@ -3,6 +3,7 @@ package com.patientmanagement.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -19,10 +20,10 @@ public class RegisterPatientController {
     private ToggleGroup genderGroup;
 
     @FXML
-    private JFXButton registerBtn;
+    private Button registerBtn;
 
     @FXML
-    private JFXButton cancelBtn;
+    private Button cancelBtn;
 
     @FXML
     void cancel(){

@@ -200,7 +200,7 @@
             </GridPane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                <children>
-                  <Button fx:id="registerBtn" mnemonicParsing="false" onAction="#addMedication" styleClass="button-green" text="   Register   ">
+                  <Button fx:id="registerBtn" mnemonicParsing="false" onAction="#register" styleClass="button-green" text="   Register   ">
                      <font>
                         <Font size="23.0" />
                      </font>
