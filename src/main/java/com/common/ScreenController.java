@@ -1,5 +1,6 @@
 package com.common;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import com.employeemanagement.controllers.MyScreens;
@@ -10,7 +11,11 @@ import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -118,12 +123,22 @@ public class ScreenController extends StackPane{
 
     public static void changeScreen(ScreenController controller, BaseEnum oldScreen, BaseEnum newScreen){
 
-        System.out.println("OK");
         controller.loadScreen(newScreen.getId(),newScreen.getPath());
         controller.setScreen(newScreen.getId());
-        System.out.println("OK");
         controller.unloadScreen(oldScreen.getId());
 
+    }
+
+    public static void changeScreen(BaseEnum screen,Pane content){
+
+                    try {
+                Parent root = FXMLLoader.load(ScreenController.class.getResource(screen.getPath()));
+                content.getChildren().clear();
+                content.getChildren().add(root);
+
+            } catch (IOException e) {
+            e.printStackTrace();
+            }
     }
 
 }

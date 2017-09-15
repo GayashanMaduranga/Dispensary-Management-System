@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Damma on 8/31/2017.
@@ -12,19 +14,36 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "PharmacyLineItem", schema = "entitydb")
+@Table(name = "PharmacyLineItem")
 public class PharmacyLineItem {
 
+    private SimpleIntegerProperty id;
     private SimpleIntegerProperty quantity;
     private SimpleDoubleProperty subTotal;
 
 
+    private PharmacyBatch pharmacyBatch;
 
     public PharmacyLineItem() {
 
         this.quantity = new SimpleIntegerProperty();
         this.subTotal = new SimpleDoubleProperty();
+        this.id = new SimpleIntegerProperty();
 
+    }
+
+    @Id
+    @GeneratedValue
+    public int getId() {
+        return id.get();
+    }
+
+    public SimpleIntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     @Column(name = "quantity")
@@ -51,5 +70,16 @@ public class PharmacyLineItem {
 
     public void setSubTotal(double subTotal) {
         this.subTotal.set(subTotal);
+    }
+
+
+    //Bi directional one to many
+    @ManyToOne(cascade = CascadeType.ALL)
+    public PharmacyBatch getPharmacyBatch() {
+        return pharmacyBatch;
+    }
+
+    public void setPharmacyBatch(PharmacyBatch pharmacyBatch) {
+        this.pharmacyBatch = pharmacyBatch;
     }
 }

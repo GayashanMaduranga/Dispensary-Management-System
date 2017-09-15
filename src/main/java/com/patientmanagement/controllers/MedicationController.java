@@ -1,19 +1,27 @@
 package com.patientmanagement.controllers;
 
 
+import com.EntityClasses.Medication;
+import com.EntityClasses.Patient;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import com.main.models.LoginModel;
+import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.CustomTextField;
+import org.controlsfx.control.textfield.TextFields;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -24,6 +32,9 @@ public class MedicationController implements Initializable,ControlledScreen {
 
     ScreenController controller;
 
+    static Medication medication;
+
+
     @Override
     public void setScreenParent(ScreenController screenParent) {
         controller = screenParent;
@@ -32,51 +43,77 @@ public class MedicationController implements Initializable,ControlledScreen {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userLbl.setText(LoginModel.user);
+        medication = new Medication();
+
+        dosageChoiceBox.getItems().addAll("tablets", "ml", "mg");
+        frequencyChoiceBox.getItems().addAll("once daily", "twice daily", "thrice daily");
+        ArrayList<String> values = new ArrayList<>();
+        values.add("roomba");
+        values.add("zoomba");
+        values.add("koromba");
+        values.add("cocoomba");
+
+        TextFields.bindAutoCompletion(txtMedication, values);
     }
 
     @FXML
-    private Label userLbl;
+    private Button addMedBtn;
 
     @FXML
-    private JFXButton sidebarRegisterBtn;
+    private Button resetBtn;
 
     @FXML
-    private JFXButton sidebarPrescriptionBtn;
+    private Button cancelBtn;
 
     @FXML
-    private JFXButton sidebarBillBtn;
+    private TextField txtMedication;
 
     @FXML
-    private JFXButton titlebtn;
+    private Spinner<Integer> dosageSpinner;
 
     @FXML
-    private JFXButton logoutBtn;
+    private ChoiceBox<String> dosageChoiceBox;
 
     @FXML
-    void changeScene(Event event){
+    private ChoiceBox<String> frequencyChoiceBox;
 
-        switch(((JFXButton)event.getSource()).getId()){
 
-            case "sidebarRegisterBtn":
-                ScreenController.changeScreen(controller, PatientScreens.PRESCRIPTION_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
-                break;
-            case "titlebtn":
-                ScreenController.changeScreen(controller, PatientScreens.PRESCRIPTION_SCREEN, PatientScreens.DASHBOARD_SCREEN);
-                break;
-            case "sidebarBillBtn":
-                ScreenController.changeScreen(controller, PatientScreens.PRESCRIPTION_SCREEN, PatientScreens.BILL_SCREEN);
-                break;
-        }
+    @FXML
+    void cancel(){
+
+        Main.dialogCanceled = true;
+        Stage s = (Stage)cancelBtn.getScene().getWindow();
+        s.close();
     }
 
     @FXML
-    void logout(){
+    void addMedication(){
 
-        if(ConfirmDialog.show("", "Are you sure you want to logout?")){
-            Main.createLogin(new Stage());
-            Stage s = (Stage)logoutBtn.getScene().getWindow();
-            s.close();
-        }
+        int dosage = dosageSpinner.getValue();
+        String dosageType = dosageChoiceBox.getValue();
+        String frequency = frequencyChoiceBox.getValue();
+        String name = txtMedication.getText();
+
+        medication.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+        medication.setDosage(dosage);
+        medication.setDosageType(dosageType);
+        medication.setFrequency(frequency);
+        medication.setMedication(name);
+        medication.setDiscontinued(false);
+
+
+        Main.dialogCanceled = false;
+        Stage s = (Stage)addMedBtn.getScene().getWindow();
+        s.close();
+    }
+
+    @FXML
+    void reset(){
+
+        dosageSpinner.getValueFactory().setValue(0);
+        dosageChoiceBox.getSelectionModel().clearSelection();
+        frequencyChoiceBox.getSelectionModel().clearSelection();
+        txtMedication.setText("");
+
     }
 }

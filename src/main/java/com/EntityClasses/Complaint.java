@@ -10,9 +10,8 @@ import java.sql.Date;
  * Created by Damma on 8/31/2017.
  */
 
-@Entity
+@Embeddable
 @Access(AccessType.PROPERTY)
-@Table(name = "Complaint", schema = "entitydb")
 public class Complaint {
 
     private SimpleStringProperty type;
