@@ -45,7 +45,7 @@
 
 #leftPane .button:hover .glyph-icon{
 
-    -fx-fill: #ebeef3;
+    -fx-fill: #134a79;
 }
 
 #viewPatientPane{
@@ -148,6 +148,29 @@
     -fx-background-color: #c80002;
     -fx-text-fill: #ebeef3;
     -fx-font-size: 23px;
+}
+
+.button-white{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+.button-white:hover{
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #0e4f75;
+    -fx-background-radius: 30px;
+
+}
+
+#leftPane .button-white:hover{
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #0e4f75;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
 }
 
 .button-green{

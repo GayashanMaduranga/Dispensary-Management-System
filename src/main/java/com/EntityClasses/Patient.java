@@ -252,7 +252,7 @@ public class Patient {
         this.measures = measures;
     }
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     public List<Medication> getMedications() {
         return medications;
     }
