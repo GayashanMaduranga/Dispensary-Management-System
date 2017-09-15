@@ -181,9 +181,7 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
             summaryPatient.getMedications().add(m);
 
             session.beginTransaction();
-
             session.save(summaryPatient);
-
             session.getTransaction().commit();
 
             int pid = summaryPatient.getpId();

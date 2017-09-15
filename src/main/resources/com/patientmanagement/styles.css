@@ -115,6 +115,16 @@
     -fx-border-radius: 30px;
 }
 
+#leftPane .button-blue{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #0e4f75;
+    -fx-font-weight: bold;
+    -fx-border-color: #0e4f75;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
 .button-blue:hover{
     -fx-background-color: #0e4f75;
     -fx-text-fill: #ffffff;
@@ -125,7 +135,7 @@
 #leftPane .button-blue:hover{
     -fx-background-color: #0e4f75;
     -fx-text-fill: #ebeef3;
-    -fx-font-size: 23px;
+    -fx-font-size: 17px;
 }
 
 .button-red{
