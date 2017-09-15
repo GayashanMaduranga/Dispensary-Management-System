@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
@@ -464,8 +465,8 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="-Infinity" prefHeight="121.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="600.0" minHeight="-Infinity" prefHeight="439.0" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="300.0" minHeight="-Infinity" prefHeight="150.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="450.0" minHeight="-Infinity" prefHeight="410.0" vgrow="ALWAYS" />
                 <RowConstraints minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -482,9 +483,9 @@
                   <Insets />
                </GridPane.margin>
                 </JFXButton>
-                <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#logout" prefHeight="37.0" prefWidth="128.0" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                <JFXButton fx:id="homeBtn" buttonType="RAISED" onAction="#logout" prefHeight="37.0" prefWidth="128.0" styleClass="logout-btn" text="Home" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                     <graphic>
-                        <MaterialDesignIconView glyphName="LOGOUT" size="25" />
+                        <MaterialDesignIconView glyphName="HOME" size="25" />
                     </graphic>
                     <font>
                         <Font name="Verdana" size="16.0" />
@@ -492,14 +493,17 @@
                 </JFXButton>
             <GridPane fx:id="viewPatientPane" alignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <columnConstraints>
-                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="70.0" minWidth="-Infinity" prefWidth="51.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="497.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="326.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="105.0" minWidth="-Infinity" prefWidth="98.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="163.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
@@ -512,16 +516,124 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="51.0" text="Name" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="51.0" text="Age" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="51.0" text="Name :" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="51.0" text="D.O.B :" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="69.0" text="ID :" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="96.0" text="Occupation :" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="69.0" text="Phone :" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="21.0" prefWidth="51.0" text="Email :" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblPid" prefHeight="21.0" prefWidth="180.0" text="-" textFill="#17265e" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblPname" prefHeight="21.0" prefWidth="193.0" text="-" textFill="#17265e" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblPage" prefHeight="21.0" prefWidth="198.0" text="-" textFill="#17265e" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblPoccupation" prefHeight="21.0" prefWidth="203.0" text="-" textFill="#17265e" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblPphone" prefHeight="21.0" prefWidth="186.0" text="-" textFill="#17265e" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblPemail" prefHeight="21.0" prefWidth="192.0" text="-" textFill="#17265e" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
                </children>
                <GridPane.margin>
-                  <Insets />
+                  <Insets left="5.0" right="5.0" />
                </GridPane.margin>
                <effect>
-                  <InnerShadow blurType="GAUSSIAN" height="55.21" radius="13.3025" width="0.0" />
+                  <InnerShadow blurType="GAUSSIAN" height="27.605" radius="6.40125" width="0.0" />
                </effect>
             </GridPane>
+            <VBox alignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+               <children>
+                  <TextField fx:id="txtGetpatient" promptText="Search" />
+                  <Button fx:id="getPatientBtn" mnemonicParsing="false" onAction="#populateDetails" styleClass="button-white" text="  Get Patient  ">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
             </children>
         </GridPane>
     </left>
