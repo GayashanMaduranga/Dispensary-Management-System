@@ -1,5 +1,6 @@
 package com.employeemanagement.controllers;
 
+import com.EntityClasses.PreviousEmployment;
 import com.common.ConfirmDialog;
 import com.jfoenix.controls.JFXButton;
 import com.common.ControlledScreen;
@@ -8,6 +9,7 @@ import com.main.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -20,6 +22,8 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXDatePicker;
@@ -36,9 +40,6 @@ import javafx.scene.shape.Circle;
 public class AddEmpoyeeController implements Initializable{
 
 
-
-    private FileChooser fileChooser ;
-    private Image empimage =null;
 
     @FXML
     private Circle empImage;
@@ -77,19 +78,13 @@ public class AddEmpoyeeController implements Initializable{
     private JFXTextField zip;
 
     @FXML
-    private TreeTableView<?> priviousEmployementTable;
+    private TreeTableView<PreviousEmployment> priviousEmployementTable;
 
     @FXML
-    private TreeTableColumn<?, ?> colcompany;
+    private TreeTableColumn<PreviousEmployment, String> colcompany;
 
     @FXML
-    private TreeTableColumn<?, ?> coljobTitle;
-
-    @FXML
-    private TreeTableColumn<?, ?> colphoneNumber;
-
-    @FXML
-    private TreeTableColumn<?, ?> colAddress;
+    private TreeTableColumn<PreviousEmployment, String> coljobTitle;
 
     @FXML
     private JFXTextField company;
@@ -119,6 +114,9 @@ public class AddEmpoyeeController implements Initializable{
     private JFXTextField companyAddress;
 
     @FXML
+    private TreeTableView<?> SchoolTable;
+
+    @FXML
     private TreeTableColumn<?, ?> colSchoolName;
 
     @FXML
@@ -145,8 +143,17 @@ public class AddEmpoyeeController implements Initializable{
     @FXML
     private JFXTextField schoolAddress;
 
+
+
+    private FileChooser fileChooser ;
+    private Image empimage =null;
+    private List<TreeItem<PreviousEmployment>> previouEmploymentList;
+
+
     @FXML
     void addEducationHistory(ActionEvent event) {
+
+
 
     }
 
@@ -157,7 +164,19 @@ public class AddEmpoyeeController implements Initializable{
 
     @FXML
     void addPreviousEmployment(ActionEvent event) {
+        PreviousEmployment emplymemt = new PreviousEmployment();
+        emplymemt.setCompany(company.getText());
+        emplymemt.setAddress(companyAddress.getText());
+        emplymemt.setJobTitle(jobTitle.getText());
+        emplymemt.setPhone(phone.getText());
+        emplymemt.setSupervisor(supervisor.getText());
+        emplymemt.setFromDate(Date.valueOf(jobFrom.getValue()));
+        emplymemt.setToDate(Date.valueOf(jobTo.getValue()));
 
+        previouEmploymentList.add(new TreeItem<>(emplymemt));
+
+        priviousEmployementTable.getRoot().getChildren().clear();
+        priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
     }
 
 
@@ -166,6 +185,21 @@ public class AddEmpoyeeController implements Initializable{
 
         fileChooser = new FileChooser();
         empImage.setFill(new ImagePattern(new Image("/com/Images/user1600.png")));
+        previouEmploymentList = new ArrayList<>();
+
+        colcompany.setCellValueFactory(param -> param.getValue().getValue().companyProperty());
+        coljobTitle.setCellValueFactory(param -> param.getValue().getValue().jobTitleProperty());
+
+        PreviousEmployment employment = new PreviousEmployment();
+        employment.setCompany("company");
+        employment.setJobTitle("Job Title");
+        TreeItem<PreviousEmployment> root1 = new TreeItem<>();
+
+        priviousEmployementTable.setRoot(root1);
+        priviousEmployementTable.setShowRoot(false);
+
+
+
 
 
     }
