@@ -1,11 +1,14 @@
 package com.employeemanagement.controllers;
 
 import com.EntityClasses.PreviousEmployment;
+import com.EntityClasses.Staff;
 import com.common.ConfirmDialog;
 import com.jfoenix.controls.JFXButton;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.main.Main;
+import db.UserSession;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,6 +36,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.shape.Circle;
+import org.hibernate.Session;
 
 /**
  * Created by gayashan on 8/13/2017.
@@ -143,6 +147,8 @@ public class AddEmpoyeeController implements Initializable{
     @FXML
     private JFXTextField schoolAddress;
 
+    private Session session;
+
 
 
     private FileChooser fileChooser ;
@@ -160,6 +166,20 @@ public class AddEmpoyeeController implements Initializable{
     @FXML
     void addNewStaff(ActionEvent event) {
 
+        Staff s = new Staff();
+
+        for ( TreeItem<PreviousEmployment> p: previouEmploymentList
+             ) {
+
+            s.getPreviousEmploymentList().add(p.getValue());
+        }
+
+        s.setName(fullName.getText());
+        s.setDateOfAppointment(Date.valueOf(dob.getValue()));
+        s.setEmployeeid(Integer.parseInt(nic.getText()));
+        session.beginTransaction();
+        session.save(s);
+        session.getTransaction().commit();
     }
 
     @FXML
@@ -198,6 +218,11 @@ public class AddEmpoyeeController implements Initializable{
         priviousEmployementTable.setRoot(root1);
         priviousEmployementTable.setShowRoot(false);
 
+
+        new Thread(() ->
+        {
+            Platform.runLater(() -> UserSession.getSession());
+        }).start();
 
 
 
