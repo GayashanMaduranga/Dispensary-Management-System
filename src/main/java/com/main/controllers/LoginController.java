@@ -119,8 +119,8 @@ public class LoginController implements ControlledScreen, Initializable{
             }); // code to be run on stage close ~ Damsith
 
             primaryStage.setFullScreen(true);
-            primaryStage.setMinHeight(715.0);
-            primaryStage.setMinWidth(1299.0);
+            primaryStage.setMinHeight(750.0);
+            primaryStage.setMinWidth(1380.0);
 
 
             if(AccessLevel == 1){
@@ -133,10 +133,10 @@ public class LoginController implements ControlledScreen, Initializable{
             }
             else if(AccessLevel == 2){
 
-//                mainContainer.loadScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId(), PatientScreens.REGISTER_PATIENTS_SCREEN.getPath());
-//                mainContainer.setScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(PatientScreens.REGISTER_PATIENTS_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
+                mainContainer.loadScreen(SupplierScreens.DASHBOARD_SCREEN.getId(), SupplierScreens.DASHBOARD_SCREEN.getPath());
+                mainContainer.setScreen(SupplierScreens.DASHBOARD_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(SupplierScreens.DASHBOARD_SCREEN.getId()).getParent();
+                primaryStage.setScene(new Scene(layout));
 
             }
 

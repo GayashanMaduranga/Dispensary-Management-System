@@ -8,8 +8,7 @@
 }
 
 .label{
-    /*-fx-font: segoe;*/
-    -fx-font-family: segoe;
+    -fx-font: segoe;
 }
 
 .button:hover{
