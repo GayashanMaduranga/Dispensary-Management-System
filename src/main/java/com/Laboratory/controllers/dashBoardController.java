@@ -2,12 +2,10 @@ package com.Laboratory.controllers;
 
 import com.common.ControlledScreen;
 import com.common.ScreenController;
-import com.employeemanagement.controllers.MyScreens;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,16 +43,16 @@ public class dashBoardController implements Initializable,ControlledScreen {
 
                 break;
             case "ordertestBT":
-                ScreenController.changeScreen(controller, screens.DASHBOARD_SCREEN, screens.ORDERTEST_SCREEN);
+                ScreenController.changeScreen(controller, LabScreens.DASHBOARD_SCREEN, LabScreens.ORDERTEST_SCREEN);
                 break;
             case "enter_resultBT":
-                ScreenController.changeScreen(controller, screens.DASHBOARD_SCREEN, screens.ENTERRESULTS_SCREEN);
+                ScreenController.changeScreen(controller, LabScreens.DASHBOARD_SCREEN, LabScreens.ENTERRESULTS_SCREEN);
                 break;
             case "viewDB_BT":
-                ScreenController.changeScreen(controller, screens.DASHBOARD_SCREEN, screens.VIEWDB_SCREEN);
+                ScreenController.changeScreen(controller, LabScreens.DASHBOARD_SCREEN, LabScreens.VIEWDB_SCREEN);
                 break;
             case "extraBT":
-                ScreenController.changeScreen(controller, screens.DASHBOARD_SCREEN, screens.EXTRA_SCREEN);
+                ScreenController.changeScreen(controller, LabScreens.DASHBOARD_SCREEN, LabScreens.EXTRA_SCREEN);
                 break;
 
         }

@@ -30,9 +30,6 @@ public class PayrollController implements Initializable {
     }
 
 
-
-
-
     @FXML
     void changeSubScene(MouseEvent event) {
         switch (((JFXButton) event.getSource()).getId()){

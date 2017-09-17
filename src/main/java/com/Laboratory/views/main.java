@@ -1,10 +1,9 @@
 package com.Laboratory.views;
 
-import com.Laboratory.controllers.screens;
+import com.Laboratory.controllers.LabScreens;
 import com.common.ScreenController;
-import com.employeemanagement.controllers.MyScreens;
+import com.main.controllers.MainScreens;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -22,9 +21,11 @@ import javafx.stage.Stage;
 
             ScreenController mainContainer = new ScreenController();
 
-            mainContainer.loadScreen(screens.DASHBOARD_SCREEN.getId(), screens.DASHBOARD_SCREEN.getPath());
-            mainContainer.setScreen(screens.DASHBOARD_SCREEN.getId());
-            Parent root = mainContainer.getScreen(screens.DASHBOARD_SCREEN.getId()).getParent();
+//            mainContainer.loadScreen(LabScreens.DASHBOARD_SCREEN.getId(), LabScreens.DASHBOARD_SCREEN.getPath());
+//            mainContainer.setScreen(LabScreens.DASHBOARD_SCREEN.getId());
+            mainContainer.loadScreen(MainScreens.HOME_SCREEN.getId(), MainScreens.HOME_SCREEN.getPath());
+            mainContainer.setScreen(MainScreens.HOME_SCREEN.getId());
+            Parent root = mainContainer.getScreen(MainScreens.HOME_SCREEN.getId()).getParent();
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

@@ -61,6 +61,7 @@ public class Patient extends RecursiveTreeObject<Patient> {
         this.complaints = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
         this.appointments = new ArrayList<>();
+        this.measures = new ArrayList<>();
     }
 
     //pname

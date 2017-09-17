@@ -25,7 +25,7 @@ public class EmployeeManagementTest {
         staff.setDateOfBirth(Date.valueOf("1980-03-01"));
         staff.setContactNumber("0345234");
         staff.setGender("M");
-        staff.setEmployeeid(2);
+        staff.setEmployeeid(3);
 
 
 
