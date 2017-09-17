@@ -40,7 +40,6 @@
 #leftPane .button:hover{
     -fx-background-color: #134a79;
     -fx-text-fill: #ebeef3;
-    -fx-font-size: 23px;
 }
 
 #leftPane .button:hover .glyph-icon{
@@ -110,6 +109,15 @@
     -fx-padding: 5px;
     -fx-background-color: none;
     -fx-text-fill: #0e4f75;
+    -fx-border-color: #0e4f75;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+#leftPane .button-blue{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #ffffff;
     -fx-border-color: #0e4f75;
     -fx-border-width: 2px;
     -fx-border-radius: 30px;
@@ -251,3 +259,36 @@
 
     -fx-fill: #ebeef3;
 }
+
+#leftPane .button-blue-table{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #0e4f75;
+    -fx-font-weight: bold;
+    -fx-border-color: #0e4f75;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+#leftPane .button-blue-table:hover{
+    -fx-background-color: #0e4f75;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
+}
+
+#leftPane .button-red-table{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #c80002;
+    -fx-font-weight: bold;
+    -fx-border-color: #c80002;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+#leftPane .button-red-table:hover{
+    -fx-background-color: #c80002;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
+}
+

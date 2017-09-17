@@ -101,10 +101,10 @@ public class MedicationController implements Initializable,ControlledScreen {
         medication.setMedication(name);
         medication.setDiscontinued(false);
 
-
         Main.dialogCanceled = false;
         Stage s = (Stage)addMedBtn.getScene().getWindow();
         s.close();
+
     }
 
     @FXML
@@ -116,4 +116,5 @@ public class MedicationController implements Initializable,ControlledScreen {
         txtMedication.setText("");
 
     }
+
 }

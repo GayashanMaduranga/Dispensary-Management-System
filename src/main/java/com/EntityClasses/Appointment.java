@@ -3,6 +3,7 @@ package com.EntityClasses;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -20,6 +21,7 @@ public class Appointment {
 
     private IntegerProperty id;
     private SimpleDoubleProperty charge;
+    private SimpleStringProperty reason;
     private Date Date;
     private Time Time;
 
@@ -31,11 +33,23 @@ public class Appointment {
 
         this.charge = new SimpleDoubleProperty();
         this.id = new SimpleIntegerProperty();
+        this.reason = new SimpleStringProperty();
 
 
     }
 
+    @Column(name = "reason")
+    public String getReason() {
+        return reason.get();
+    }
 
+    public SimpleStringProperty reasonProperty() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason.set(reason);
+    }
 
     @Column(name = "charge")
     public double getCharge() {
@@ -68,7 +82,6 @@ public class Appointment {
         Time = time;
     }
 
-
     @Id
     @GeneratedValue
     public int getId() {
@@ -82,6 +95,10 @@ public class Appointment {
     public void setId(int id) {
         this.id.set(id);
     }
+
+
+
+
 
     @ManyToOne(cascade = CascadeType.ALL)
     public Doctor getDoctor() {
