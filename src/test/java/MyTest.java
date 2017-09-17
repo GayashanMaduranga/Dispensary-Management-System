@@ -115,4 +115,55 @@ public class MyTest {
 
     }
 
+    @org.junit.Test
+    public void CanAddPharmacyItem(){
+
+        //given
+
+        PharmacyItem med = new PharmacyItem();
+        med.setMRP(100.0);
+        med.setItemName("abc");
+        med.setReorderLevel(20);
+        med.setStock(0);
+
+        Configuration configuration = new Configuration().configure();
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        session.save(med);
+        session.getTransaction().commit();
+
+        session.close();
+    }
+
+    @org.junit.Test
+    public void CanAddPharmacyBatch(){
+
+        Configuration configuration = new Configuration().configure();
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        Session session = sessionFactory.openSession();
+
+        PharmacyBatch med = new PharmacyBatch();
+        med.setExpiryDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+        med.setManufacturingDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+        med.setPurchasingPrice(20.0);
+
+        session.beginTransaction();
+        Query patientNameQuery = session.createQuery("from PharmacyItem p where p.itemName = 'abc'");
+        List<PharmacyItem> patients = patientNameQuery.list();
+        PharmacyItem pharmacyItem = patients.get(0);
+        session.getTransaction().commit();
+
+        pharmacyItem.getBatches().add(med);
+
+        session.beginTransaction();
+        session.persist(pharmacyItem);
+        session.getTransaction().commit();
+        session.close();
+    }
+
 }

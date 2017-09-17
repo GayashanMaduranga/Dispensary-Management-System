@@ -1,5 +1,6 @@
 package com.EntityClasses;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -17,7 +18,7 @@ import java.util.List;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "PharmacyBatch")
-public class PharmacyBatch {
+public class PharmacyBatch extends RecursiveTreeObject<PharmacyBatch> {
 
     private SimpleIntegerProperty batchId;
     private Date manufacturingDate;
@@ -32,8 +33,8 @@ public class PharmacyBatch {
         this.batchId = new SimpleIntegerProperty();
         this.purchasingPrice = new SimpleDoubleProperty();
         this.quantity = new SimpleIntegerProperty();
+        this.pharmacyItem = new PharmacyItem();
         this.pharmacyLineItems = new ArrayList<>();
-
 
     }
 
@@ -70,6 +71,12 @@ public class PharmacyBatch {
         this.expiryDate = expiryDate;
     }
 
+    public SimpleStringProperty expiryDateProperty(){
+        SimpleStringProperty dateString = new SimpleStringProperty();
+        dateString.set(this.expiryDate.toString());
+        return dateString;
+    }
+
     @Column(name = "purchasingPrice")
     public double getPurchasingPrice() {
         return purchasingPrice.get();
@@ -85,7 +92,7 @@ public class PharmacyBatch {
 
 
     //One to One uni directional
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     public PharmacyItem getPharmacyItem() {
         return pharmacyItem;
     }
@@ -102,4 +109,6 @@ public class PharmacyBatch {
     public void setPharmacyLineItems(List<PharmacyLineItem> pharmacyLineItems) {
         this.pharmacyLineItems = pharmacyLineItems;
     }
+
+
 }
