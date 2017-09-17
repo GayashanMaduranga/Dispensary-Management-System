@@ -1,10 +1,13 @@
 package com.EntityClasses;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Damma on 8/31/2017.
@@ -13,15 +16,14 @@ import javax.persistence.*;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "PharmacyItem")
-public class PharmacyItem {
+public class PharmacyItem extends RecursiveTreeObject<PharmacyItem> {
 
     private SimpleIntegerProperty phId;
     private SimpleStringProperty itemName;
     private SimpleIntegerProperty stock;
     private SimpleIntegerProperty reorderLevel;
     private SimpleDoubleProperty MRP;
-
-
+    private List<PharmacyBatch> batches;
 
 
     public PharmacyItem() {
@@ -31,6 +33,7 @@ public class PharmacyItem {
         this.stock = new SimpleIntegerProperty();
         this.reorderLevel = new SimpleIntegerProperty();
         this.MRP = new SimpleDoubleProperty();
+        this.batches = new ArrayList<>();
 
     }
 
@@ -101,4 +104,12 @@ public class PharmacyItem {
         this.MRP.set(MRP);
     }
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyItem")
+    public List<PharmacyBatch> getBatches() {
+        return batches;
+    }
+
+    public void setBatches(List<PharmacyBatch> batches) {
+        this.batches = batches;
+    }
 }

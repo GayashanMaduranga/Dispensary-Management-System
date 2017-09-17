@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.PharmacyMgt.Controllers.testBillController">
+   <children>
+      <AnchorPane layoutX="2.0" layoutY="4.0" prefHeight="389.0" prefWidth="593.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="56.0" prefHeight="29.0" prefWidth="59.0" text="ID" />
+            <Label fx:id="idLabel" layoutX="103.0" layoutY="56.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: red;" />
+            <Label alignment="CENTER" layoutX="194.0" layoutY="56.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: ;" text="Date" />
+            <Label alignment="CENTER" layoutX="346.0" layoutY="56.0" prefHeight="29.0" prefWidth="59.0" />
+            <Label fx:id="dateLabel" alignment="CENTER" layoutX="267.0" layoutY="56.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: red;" />
+            <Label alignment="CENTER" layoutX="390.0" layoutY="56.0" prefHeight="29.0" prefWidth="59.0" text="SubTotal" />
+            <Label fx:id="totLabel" alignment="CENTER" layoutX="503.0" layoutY="56.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: red;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

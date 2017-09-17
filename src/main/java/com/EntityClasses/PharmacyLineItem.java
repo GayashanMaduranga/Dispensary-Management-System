@@ -69,6 +69,7 @@ public class PharmacyLineItem {
     }
 
     public void setSubTotal(double subTotal) {
+
         this.subTotal.set(subTotal);
     }
 
