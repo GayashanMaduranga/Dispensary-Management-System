@@ -8,6 +8,7 @@ import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
 import com.common.AlertDialog;
 import com.common.ConfirmDialog;
+import com.labinventory.controlers.LabInventoryScreens;
 import com.main.Main;
 import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
@@ -151,9 +152,9 @@ public class LoginController implements ControlledScreen, Initializable{
 
             else if(AccessLevel == 4){
 
-                mainContainer.loadScreen(SupplierScreens.PURCHASE_SCREEN.getId(), SupplierScreens.PURCHASE_SCREEN.getPath());
-                mainContainer.setScreen(SupplierScreens.PURCHASE_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(SupplierScreens.PURCHASE_SCREEN.getId()).getParent();
+                mainContainer.loadScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId(), LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getPath());
+                mainContainer.setScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId());
+                Parent layout = mainContainer.getScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
             }
 
@@ -171,6 +172,7 @@ public class LoginController implements ControlledScreen, Initializable{
                 mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
                 Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
                 primaryStage.setScene(new Scene(layout));
+
             }
 
             primaryStage.show();

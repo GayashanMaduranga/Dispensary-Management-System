@@ -1,4 +1,4 @@
-package com.labinventory;
+package com.labinventory.controlers;
 
 /**
  * Created by gayashan on 8/13/2017.
@@ -9,6 +9,7 @@ import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
 import com.labinventory.controlers.LabInventoryScreens;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -23,7 +24,6 @@ public class TestStage extends Application {
 
 
         mainContainer.loadScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId(), LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getPath());
-
         mainContainer.setScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId());
         Parent root = mainContainer.getScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId()).getParent();
 
@@ -32,7 +32,7 @@ public class TestStage extends Application {
         stage.show();
 
 
-//        Parent root = FXMLLoader.load(getClass().getResource("/com/employeemanagement/views/DashBoard.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/com/labinventory/labEquipment.fxml"));
 //
 //        Scene scene = new Scene(root);
 //
