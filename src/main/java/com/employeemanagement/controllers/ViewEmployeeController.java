@@ -425,12 +425,12 @@ public class ViewEmployeeController implements Initializable,SessionListener{
         Staff staff = (Staff)mainController.getEmployee();
         empID.setText(String.valueOf(staff.getEmployeeid()));
         fullName.setText(staff.getName());
-//        dateOfAppointment.setValue();
-//        employeeBufferedImage=staff.getImage();
-//        email.setText(staff.getName());
-//        dob.setValue();
-//        contactNumber.setText();
-//        jobRole.setText();
+        dateOfAppointment.setValue(staff.getDateOfAppointment().toLocalDate());
+        employeeBufferedImage=staff.getImage();
+        email.setText(staff.getName());
+        dob.setValue(staff.getDateOfBirth().toLocalDate());
+        contactNumber.setText(staff.getContactNumber());
+        jobRole.setText(staff.getJobRole());
 
 
 //        Staff s = new Staff();
