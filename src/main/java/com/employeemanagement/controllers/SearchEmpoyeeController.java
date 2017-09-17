@@ -65,15 +65,29 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
     @FXML
     private JFXTextField jobRole;
 
+    private MainScreenController mainController;
+
 
 
     @FXML
     void setSelectionDetails(MouseEvent event) {
 
+        Staff staff = staffTable.getSelectionModel().getSelectedItem().getValue();
+        fullName.setText(staff.getName());
+        nic.setText(staff.getNic());
+        contactNumber.setText(staff.getContactNumber());
+        email.setText(staff.getEmail());
+        jobRole.setText(staff.getJobRole());
+
+        mainController.setEmployee(staff);
+
+
     }
 
     @FXML
     void viewProfile(ActionEvent event) {
+
+        ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN,mainController.getContent(),mainController);
 
     }
 
@@ -162,6 +176,8 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
 
     @Override
     public void setMainController(SessionListener controller) {
+
+        this.mainController = (MainScreenController) controller;
 
     }
 }

@@ -34,6 +34,8 @@ public class ScreenController extends StackPane{
 
     private static final Session session = UserSession.getSession();
 
+
+
     public ScreenController() {
     }
 

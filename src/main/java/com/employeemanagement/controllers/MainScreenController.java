@@ -4,6 +4,7 @@ import com.EntityClasses.Employee;
 import com.common.ConfirmDialog;
 import com.common.ScreenController;
 import com.common.SessionListener;
+import com.financemanagement.controllers.MainController.MainController;
 import com.main.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -53,6 +54,7 @@ public class MainScreenController implements Initializable,SessionListener {
     private StackPane content;
 
 
+    private MainScreenController mainScreenController;
 
     public String test = "Hello";
 
@@ -64,6 +66,14 @@ public class MainScreenController implements Initializable,SessionListener {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public StackPane getContent() {
+        return content;
+    }
+
+    public void setContent(StackPane content) {
+        this.content = content;
     }
 
     private JFXButton selectedBtn;
@@ -86,7 +96,7 @@ public class MainScreenController implements Initializable,SessionListener {
                 break;
 
             case "updateEmployeeBtn":
-                ScreenController.changeScreen(MyScreens.UPDATEADDEMPLOYEE_SCREEN,content,this);
+                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN,content,this);
 
                 break;
             case "attendenceBtn":
@@ -134,6 +144,6 @@ public class MainScreenController implements Initializable,SessionListener {
 
     @Override
     public void setMainController(SessionListener controller) {
-
+                mainScreenController = this;
     }
 }
