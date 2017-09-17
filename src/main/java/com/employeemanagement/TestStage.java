@@ -41,6 +41,7 @@ public class TestStage extends Application {
             stage.setMaximized(false);
             stage.setMinHeight(715.0);
             stage.setMinWidth(1299.0);
+            stage.setOnCloseRequest(event -> System.exit(0));
             stage.show();
         } catch (IOException ex) {
 //            Logger.getLogger(StoreKeeper.class.getName()).log(Level.SEVERE, null, ex);

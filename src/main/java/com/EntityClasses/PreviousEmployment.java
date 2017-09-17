@@ -1,5 +1,7 @@
 package com.EntityClasses;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -17,6 +19,8 @@ public class PreviousEmployment {
     private StringProperty address;
     private StringProperty phone;
     private StringProperty supervisor;
+    private DoubleProperty startingSalary;
+    private DoubleProperty endingSalary;
     private Date fromDate;
     private Date toDate;
 
@@ -27,6 +31,8 @@ public class PreviousEmployment {
         this.address = new SimpleStringProperty();
         this.phone = new SimpleStringProperty();
         this.supervisor = new SimpleStringProperty();
+        this.startingSalary = new SimpleDoubleProperty();
+        this.endingSalary = new SimpleDoubleProperty();
     }
 
 
@@ -105,5 +111,30 @@ public class PreviousEmployment {
 
     public void setToDate(Date toDate) {
         this.toDate = toDate;
+    }
+
+
+    public double getStartingSalary() {
+        return startingSalary.get();
+    }
+
+    public DoubleProperty startingSalaryProperty() {
+        return startingSalary;
+    }
+
+    public void setStartingSalary(double startingSalary) {
+        this.startingSalary.set(startingSalary);
+    }
+
+    public double getEndingSalary() {
+        return endingSalary.get();
+    }
+
+    public DoubleProperty endingSalaryProperty() {
+        return endingSalary;
+    }
+
+    public void setEndingSalary(double endingSalary) {
+        this.endingSalary.set(endingSalary);
     }
 }

@@ -21,6 +21,7 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -28,11 +29,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -45,6 +53,9 @@ public class HomeController implements ControlledScreen, Initializable{
 
     @FXML
     private Button patientBtn;
+
+    @FXML
+    private GridPane pane;
 
     @FXML
     private Button supplierBtn;
@@ -135,13 +146,40 @@ public class HomeController implements ControlledScreen, Initializable{
                 break;
 
             case "employeeBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, MyScreens.DASHBOARD_SCREEN);
+                //ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, MyScreens.DASHBOARD_SCREEN);
+                loadEmployeeManagement();
                 break;
 
             case "pharmacyBtn":
                 ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PharmacyScreens.DASHBOARD_SCREEN);
                 break;
 
+        }
+    }
+
+
+    private void loadEmployeeManagement(){
+        try {
+
+            Stage stage = (Stage) pane.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource(MyScreens.MAIN_SCREEN.getPath()));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Welcome New Dispensary");
+            stage.getIcons().add(new Image("/com/Images/Hospital-management-system.png"));
+            stage.setMaximized(true);
+            stage.setMinHeight(715.0);
+            stage.setMinWidth(1299.0);
+            stage.setOnCloseRequest(event -> System.exit(0));
+
+            stage.setFullScreen(true);
+
+            stage.show();
+
+
+        } catch (IOException ex) {
+//            Logger.getLogger(StoreKeeper.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 

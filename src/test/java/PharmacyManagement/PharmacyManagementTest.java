@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.sql.Date;
 
 /**
- * Created by gayashan on 9/12/2017.
+ * Created by Vikt0r on 9/12/2017.
  */
 public class PharmacyManagementTest {
 
@@ -45,7 +45,7 @@ public class PharmacyManagementTest {
         PharmacyBatch pharmacyBatch = new PharmacyBatch();
         pharmacyBatch.setExpiryDate(Date.valueOf("2030-08-02"));
         pharmacyBatch.setManufacturingDate(Date.valueOf("2010-08-02"));
-        pharmacyBatch.setPurchasingPrice(20.23);
+        pharmacyBatch.setPurchasingPrice(80.00);
         pharmacyBatch.setPharmacyItem(item);
 
         session.beginTransaction();
@@ -164,5 +164,17 @@ public class PharmacyManagementTest {
         session.save(bill);
         session.getTransaction().commit();
 
+        System.out.println("#########################################################################\n\n\n\n");
+
+        System.out.println(" id : " + bill.getbID()
+                            + "  date " + bill.getDate()
+                            + "  Total" +bill.getTotal() +"\n");
+
+        int i = 0;
+        for (PharmacyLineItem itm:bill.getPharmacyLineItems()
+             ) {
+            i++;
+            System.out.println(" " +i  + " " +itm.getPharmacyBatch().getPharmacyItem().getItemName() + " " + " " + itm.getQuantity() + " " +itm.getSubTotal() + "\n");
+        }
     }
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" stylesheets="@home.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controllers.HomeController">
+<GridPane fx:id="pane" alignment="center" hgap="10" stylesheets="@home.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controllers.HomeController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
