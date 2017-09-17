@@ -461,7 +461,7 @@
                                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                        </HBox.margin>
                                     </JFXButton>
-                                    <JFXButton layoutX="379.0" layoutY="30.0" onAction="#updateEducationHistory" prefHeight="36.0" prefWidth="111.0" text="Add " />
+                                    <JFXButton layoutX="379.0" layoutY="30.0" onAction="#updateEducationHistory" prefHeight="36.0" prefWidth="111.0" text="Update" />
                                     <JFXButton onAction="#removeEducationHistory" prefHeight="36.0" prefWidth="111.0" text="Remove">
                                        <HBox.margin>
                                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

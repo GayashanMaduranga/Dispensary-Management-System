@@ -5,8 +5,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -17,7 +16,7 @@ public class Education {
     StringProperty schoolName;
     StringProperty address;
     StringProperty phone;
-    BooleanProperty isGraduated;
+    StringProperty isGraduated;
     Date fromDate;
     Date toDate;
 
@@ -26,7 +25,7 @@ public class Education {
         this.schoolName = new SimpleStringProperty();
         this.address = new SimpleStringProperty();
         this.phone = new SimpleStringProperty();
-        this.isGraduated = new SimpleBooleanProperty();
+        this.isGraduated = new SimpleStringProperty();
 
     }
 
@@ -67,15 +66,16 @@ public class Education {
         this.phone.set(phone);
     }
 
-    public boolean isIsGraduated() {
+    public String getIsGraduated() {
         return isGraduated.get();
     }
 
-    public BooleanProperty isGraduatedProperty() {
+    @Transient
+    public StringProperty isGraduatedProperty() {
         return isGraduated;
     }
 
-    public void setIsGraduated(boolean isGraduated) {
+    public void setIsGraduated(String isGraduated) {
         this.isGraduated.set(isGraduated);
     }
 

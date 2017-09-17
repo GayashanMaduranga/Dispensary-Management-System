@@ -196,4 +196,6 @@ public abstract class Employee {
     public void setEducationList(List<Education> educationList) {
         this.educationList = educationList;
     }
+
+
 }
