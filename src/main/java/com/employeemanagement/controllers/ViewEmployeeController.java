@@ -4,7 +4,9 @@ import com.EntityClasses.Address;
 import com.EntityClasses.Education;
 import com.EntityClasses.PreviousEmployment;
 import com.EntityClasses.Staff;
-import com.common.SessionListener;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
 import db.UserSession;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -12,11 +14,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import org.controlsfx.control.Notifications;
+import org.hibernate.Session;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -26,18 +32,13 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
-import org.controlsfx.control.Notifications;
-import org.hibernate.Session;
 
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class AddEmpoyeeController implements Initializable,SessionListener{
+
+
+public class ViewEmployeeController implements Initializable{
 
 
 
@@ -453,15 +454,11 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         yes.setToggleGroup(yesNOGroup);
         no.setToggleGroup(yesNOGroup);
 
-//        new Thread(() ->
-//        {
-//            Platform.runLater(() -> session = UserSession.getSession());
-//        }).start();
+        new Thread(() ->
+        {
+            Platform.runLater(() -> session = UserSession.getSession());
+        }).start();
     }
 
 
-    @Override
-    public void setSession(Session session) {
-        this.session = session;
-    }
 }

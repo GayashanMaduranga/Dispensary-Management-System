@@ -1,0 +1,31 @@
+#basePane{
+    /*-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);*/
+}
+
+
+.button:hover{
+    -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #362ac2, #1ddfcc);
+}
+
+#closebtn:hover{
+    -fx-text-fill: linear-gradient(to top, #360500 0%, #c90700 40%);
+}
+
+.circleBtn{
+    -fx-background-color: #525252;
+    -fx-background-radius : 200;
+    -fx-border-radius: 200;
+    -fx-border-width: 3px;
+    -fx-border-color: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+
+}
+
+.dmsBtn{
+    -fx-background-color: #154687;
+    -fx-background-radius : 200;
+    -fx-border-radius: 200;
+    -fx-border-width: 3px;
+    -fx-border-color: white;
+}

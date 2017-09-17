@@ -2,6 +2,7 @@ package com.patientmanagement.controllers;
 
 
 import com.EntityClasses.Measure;
+import com.EntityClasses.MeasureValue;
 import com.EntityClasses.Medication;
 import com.EntityClasses.Patient;
 import com.common.ConfirmDialog;
@@ -9,6 +10,7 @@ import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
+import com.main.controllers.MainScreens;
 import com.main.models.LoginModel;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
@@ -26,6 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 /**
  * Created by Damsith on 8/1/2017.
@@ -93,38 +96,28 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
     private TreeTableView<Measure> measuresTable;
 
     @FXML
-    private TreeTableColumn<Measure, String> dateCol;
+    private TreeTableColumn<Measure, String> measureCol;
 
     @FXML
-    private TreeTableColumn<Measure, Number> weightCol;
+    private TreeTableColumn<Measure, String> lastUpdateCol;
 
     @FXML
-    private TreeTableColumn<Measure, Number> HeightCol;
+    private TreeTableColumn<Measure, Number> HighestCol;
 
     @FXML
-    private TreeTableColumn<Measure, Number> tempCol;
-
-    @FXML
-    private TreeTableColumn<Measure, Number> BPCol;
-
-    @FXML
-    private TreeTableColumn<Measure, Number> respRateCol;
-
-    @FXML
-    private TreeTableColumn<Measure, Number> pulseRateCol;
-
-    @FXML
-    private TreeTableColumn<Measure, Number> glucoseCol;
+    private TreeTableColumn<Measure, Boolean> measureActionCol;
 
     private List<TreeItem<Measure>> measuresList;
 
 // for measures table ************************************
 
+
     private Session session;
 
     private List<Patient> patients;
 
-    private Patient summaryPatient;
+    static Patient summaryPatient;
+
 
     @FXML
     private Label lblPname;
@@ -151,12 +144,25 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
     private TextField txtGetpatient;
 
     @FXML
+    private TextField txtAddMeasure;
+
+    @FXML
+    private Button addMeasureBtn;
+
+    @FXML
+    private Button newSessionBtn;
+
+    @FXML
     private JFXButton homeBtn;
 
     @FXML
     private Button addMedBtn;
 
 
+    @FXML
+    void showHome(){
+        ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, MainScreens.HOME_SCREEN);
+    }
 
     @FXML
     void logout(){
@@ -199,6 +205,75 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
     }
 
     @FXML
+    void newSession(){
+
+
+        Stage s = (Stage) medTable.getScene().getWindow();
+
+        if(!(Main.createFadedWindow(new Stage(), s,"/com/patientmanagement/PatientVisit.fxml"))){
+
+            session.beginTransaction();
+
+            for (Measure mess: patientVisitController.addedMeasures) {
+                summaryPatient.getMeasures().add(mess);
+                measuresList.add(new TreeItem<>(mess));
+            }
+            for (Measure mess: patientVisitController.updatedMeasures) {
+                session.update(mess);
+            }
+
+            session.save(summaryPatient);
+            session.getTransaction().commit();
+
+            measuresTable.getRoot().getChildren().clear();
+            measuresTable.getRoot().getChildren().addAll(measuresList);
+
+//            Medication m = MedicationController.medication;
+//
+//            summaryPatient.getMedications().add(m);
+//
+//            session.beginTransaction();
+//            session.save(summaryPatient);
+//            session.getTransaction().commit();
+//
+//            int pid = summaryPatient.getpId();
+//
+//            mediList.add(new TreeItem<>(m));
+//            medTable.getRoot().getChildren().clear();
+//            medTable.getRoot().getChildren().addAll(mediList);
+
+            System.out.println("new session");
+
+            Main.dialogCanceled = true;
+
+        }else{
+
+            System.out.println("canceled");
+        }
+    }
+
+    @FXML
+    void addMeasure(){
+
+        Measure m = new Measure();
+        m.setName(txtAddMeasure.getText());
+        m.setDateUpdated(java.sql.Date.valueOf(java.time.LocalDate.now()));
+
+        summaryPatient.getMeasures().add(m);
+
+        session.beginTransaction();
+        session.save(summaryPatient);
+        session.getTransaction().commit();
+
+        int pid = summaryPatient.getpId();
+
+        measuresList.add(new TreeItem<>(m));
+        measuresTable.getRoot().getChildren().clear();
+        measuresTable.getRoot().getChildren().addAll(measuresList);
+
+    }
+
+    @FXML
     void populateDetails(){
 
         String patientName = txtGetpatient.getText();
@@ -221,6 +296,39 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 
         updateMedTable();
         updateDiscTable();
+        updateMeasureTable();
+
+    }
+
+    private void updateMeasureTable(){
+
+//for measure table******************************************************************************************//
+
+        List<Measure> measures = summaryPatient.getMeasures();
+
+        for (Measure measure : measures){
+
+                measuresList.add(new TreeItem<>(measure));
+        }
+
+//for measure table**********************************************************************************************            //
+
+        measureCol.setCellValueFactory(param -> param.getValue().getValue().nameProperty());                                      //
+        lastUpdateCol.setCellValueFactory(param -> param.getValue().getValue().dateUpdatedProperty());                                //
+//        dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                            //
+//        frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());                            //
+        measureActionCol.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));                           //
+        measureActionCol.setCellFactory(param -> new MeasureActionCell(measuresTable));              //
+//for measure table**********************************************************************************************            //
+
+        Measure m = new Measure();
+        m.setName("null");
+        m.setDateUpdated(java.sql.Date.valueOf(java.time.LocalDate.now()));
+
+        TreeItem<Measure> root = new TreeItem<>(m);
+        root.getChildren().addAll(measuresList);
+        measuresTable.setRoot(root);
+        measuresTable.setShowRoot(false);
 
     }
 
@@ -309,6 +417,7 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 
         patients = new ArrayList<>();
         mediList = new ArrayList<>();
+        measuresList = new ArrayList<>();
         discontinuedMediList = new ArrayList<>();
 
         List<String> values;
@@ -378,6 +487,97 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 //        measuresTable.setShowRoot(false);
     }
 
+    private class MeasureActionCell extends TreeTableCell<Measure, Boolean> {
+
+        private Button viewButton = new Button(" Graph ");
+        private Button removeButton = new Button(" delete ");
+        final HBox paddedButton = new HBox(10);
+
+        /**
+         * EditMedicationCell constructor
+         * @param fromTable the Table in which button resides.
+         */
+
+        MeasureActionCell(final TreeTableView<Measure> fromTable /*, final TreeTableView<Medication> toTable, boolean discontinue*/ ) {
+
+            viewButton.getStyleClass().clear();
+            viewButton.getStyleClass().add("button-blue");
+
+            removeButton.getStyleClass().clear();
+            removeButton.getStyleClass().add("button-red");
+
+            paddedButton.setPadding(new Insets(3));
+            paddedButton.setAlignment(Pos.CENTER);
+            paddedButton.getChildren().addAll(viewButton, removeButton);
+            removeButton.setOnAction(actionEvent -> {
+
+                fromTable.getSelectionModel().select(getTreeTableRow().getIndex());
+
+                TreeItem<Measure> m = fromTable.getSelectionModel().getSelectedItem();
+                String measureName = m.getValue().getName();
+
+                measuresList.removeIf(measureTreeItem -> {
+                    boolean flag = false;
+                    if(measureTreeItem.getValue().getName() == measureName)
+                        flag = true;
+
+                    return flag;
+                });
+
+                measuresTable.getRoot().getChildren().clear();
+                measuresTable.getRoot().getChildren().addAll(measuresList);
+
+                summaryPatient.getMeasures().removeIf(measure -> {
+
+                    boolean flag = false;
+                    if(measure.getName() == measureName)
+                        flag = true;
+
+                    return flag;
+                });
+
+                session.beginTransaction();
+                session.update(summaryPatient);
+                session.getTransaction().commit();
+
+//                if(discontinue){
+//                    m.getValue().setDiscontinued(true);
+//                }else{
+//                    m.getValue().setDiscontinued(false);
+//                }
+//
+//
+
+//
+//                toTable.getRoot().getChildren().clear();
+//                fromTable.getRoot().getChildren().clear();
+//
+//                if(discontinue){
+//                    mediList.remove(m);
+//                    discontinuedMediList.add(m);
+//                    fromTable.getRoot().getChildren().addAll(mediList);
+//                    toTable.getRoot().getChildren().addAll(discontinuedMediList);
+//                }else{
+//                    discontinuedMediList.remove(m);
+//                    mediList.add(m);
+//                    fromTable.getRoot().getChildren().addAll(discontinuedMediList);
+//                    toTable.getRoot().getChildren().addAll(mediList);
+//                }
+
+            });
+        }
+
+        /** places an add button in the row only if the row is not empty. */
+        @Override protected void updateItem(Boolean item, boolean empty) {
+            super.updateItem(item, empty);
+            if (!empty) {
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                setGraphic(paddedButton);
+            } else {
+                setGraphic(null);
+            }
+        }
+    }
     private class DiscontinueMedicationCell extends TreeTableCell<Medication, Boolean> {
         // a button for adding a new person.
         private Button discontinueButton = new Button("Stop");
