@@ -4,8 +4,17 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
+import org.hibernate.annotations.Type;
 
+import javax.imageio.ImageIO;
 import javax.persistence.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +34,9 @@ public abstract class Employee {
     private StringProperty email;
     private StringProperty contactNumber;
     private StringProperty qualifications;
+    private Address address;
+    private BufferedImage image;
+    private byte[] imageByte;
     private List<PreviousEmployment> previousEmploymentList;
 
 
@@ -135,4 +147,46 @@ public abstract class Employee {
     public void setPreviousEmploymentList(List<PreviousEmployment> previousEmploymentList) {
         this.previousEmploymentList = previousEmploymentList;
     }
+
+    @Embedded
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+
+    @Transient
+    public BufferedImage getImage() {
+
+        try {
+            image = ImageIO.read(new ByteArrayInputStream(imageByte));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        WritableRaster raster = image.getRaster();
+        DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
+        imageByte = data.getData();
+        this.image = image;
+    }
+
+    @Lob
+    @Column(name="IMAGE", columnDefinition="longblob")
+    private byte[] getImageByte() {
+        return imageByte;
+    }
+
+    private void setImageByte(byte[] imageByte) {
+        this.imageByte = imageByte;
+    }
+
+
+
+
 }

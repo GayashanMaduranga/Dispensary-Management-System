@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +23,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
@@ -43,6 +45,13 @@ import org.hibernate.Session;
  */
 public class AddEmpoyeeController implements Initializable{
 
+
+
+    @FXML
+    private JFXTextField empID;
+
+    @FXML
+    private JFXDatePicker dateOfAppointment;
 
 
     @FXML
@@ -149,11 +158,26 @@ public class AddEmpoyeeController implements Initializable{
 
     private Session session;
 
-
+    private final ToggleGroup genderGroup = new ToggleGroup();
+    private final ToggleGroup yesNOGroup = new ToggleGroup();
 
     private FileChooser fileChooser ;
     private Image empimage =null;
     private List<TreeItem<PreviousEmployment>> previouEmploymentList;
+    private BufferedImage employeeBufferedImage;
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        initMainComponents();
+
+        //Initialize Table Previous Employment
+        initPreviousEmploymentTable();
+
+
+    }
 
 
     @FXML
@@ -175,8 +199,10 @@ public class AddEmpoyeeController implements Initializable{
         }
 
         s.setName(fullName.getText());
-        s.setDateOfAppointment(Date.valueOf(dob.getValue()));
+        s.setDateOfAppointment(Date.valueOf(.getValue()));
         s.setEmployeeid(Integer.parseInt(nic.getText()));
+        s.setImage(employeeBufferedImage);
+
         session.beginTransaction();
         session.save(s);
         session.getTransaction().commit();
@@ -200,34 +226,7 @@ public class AddEmpoyeeController implements Initializable{
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-        fileChooser = new FileChooser();
-        empImage.setFill(new ImagePattern(new Image("/com/Images/user1600.png")));
-        previouEmploymentList = new ArrayList<>();
-
-        colcompany.setCellValueFactory(param -> param.getValue().getValue().companyProperty());
-        coljobTitle.setCellValueFactory(param -> param.getValue().getValue().jobTitleProperty());
-
-        PreviousEmployment employment = new PreviousEmployment();
-        employment.setCompany("company");
-        employment.setJobTitle("Job Title");
-        TreeItem<PreviousEmployment> root1 = new TreeItem<>();
-
-        priviousEmployementTable.setRoot(root1);
-        priviousEmployementTable.setShowRoot(false);
-
-
-        new Thread(() ->
-        {
-            Platform.runLater(() -> UserSession.getSession());
-        }).start();
-
-
-
-
-    }
 
 
     @FXML
@@ -250,12 +249,80 @@ public class AddEmpoyeeController implements Initializable{
 
             empimage = new Image(selectedFile.toURI().toString());
             empImage.setFill(new ImagePattern(empimage));
+            employeeBufferedImage = ImageIO.read(selectedFile);
 
         }catch (Exception e){
             e.printStackTrace();
         }
 
 
+    }
+
+    @FXML
+    void UpdatePreviousEmployment(ActionEvent event) {
+
+    }
+
+
+
+
+
+
+
+    @FXML
+    void removeEducationHistory(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateEducationHistory(ActionEvent event) {
+
+    }
+
+    @FXML
+    void previousEmployementTableSelections(MouseEvent event) {
+
+        PreviousEmployment employment = priviousEmployementTable.getSelectionModel().getSelectedItem().getValue();
+        company.setText(employment.getCompany());
+        jobTitle.setText(employment.getJobTitle());
+        companyAddress.setText(employment.getAddress());
+        phone.setText(employment.getPhone());
+        supervisor.setText(employment.getSupervisor());
+        startingSalary.setText(employment.get);
+        endingSalary.;
+        jobFrom.;
+        jobTo.;
+
+    }
+
+    private void initPreviousEmploymentTable(){
+        colcompany.setCellValueFactory(param -> param.getValue().getValue().companyProperty());
+        coljobTitle.setCellValueFactory(param -> param.getValue().getValue().jobTitleProperty());
+
+        PreviousEmployment employment = new PreviousEmployment();
+        employment.setCompany("company");
+        employment.setJobTitle("Job Title");
+        TreeItem<PreviousEmployment> root1 = new TreeItem<>();
+
+        priviousEmployementTable.setRoot(root1);
+        priviousEmployementTable.setShowRoot(false);
+    }
+
+    private void initMainComponents(){
+        fileChooser = new FileChooser();
+        empImage.setFill(new ImagePattern(new Image("/com/Images/user1600.png")));
+        previouEmploymentList = new ArrayList<>();
+
+        male.setToggleGroup(genderGroup);
+        female.setToggleGroup(genderGroup);
+
+        yes.setToggleGroup(yesNOGroup);
+        no.setToggleGroup(yesNOGroup);
+
+        new Thread(() ->
+        {
+            Platform.runLater(() -> session = UserSession.getSession());
+        }).start();
     }
 
 
