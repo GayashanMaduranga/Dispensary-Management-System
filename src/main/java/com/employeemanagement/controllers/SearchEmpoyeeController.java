@@ -88,6 +88,7 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
     void viewProfile(ActionEvent event) {
 
         ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN,mainController.getContent(),mainController);
+//        System.out.println(mainController.getEmployee().getName());
 
     }
 

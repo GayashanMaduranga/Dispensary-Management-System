@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import db.UserSession;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -422,6 +423,7 @@ public class ViewEmployeeController implements Initializable,SessionListener{
     }
 
     private void setData(){
+
         Staff staff = (Staff)mainController.getEmployee();
         empID.setText(String.valueOf(staff.getEmployeeid()));
         fullName.setText(staff.getName());
@@ -431,7 +433,32 @@ public class ViewEmployeeController implements Initializable,SessionListener{
         dob.setValue(staff.getDateOfBirth().toLocalDate());
         contactNumber.setText(staff.getContactNumber());
         jobRole.setText(staff.getJobRole());
+        unitNo.setText(staff.getAddress().getUnitNO());
 
+        streetAddress.setText(staff.getAddress().getStreetAddress());
+        city.setText(staff.getAddress().getCity());
+        zip.setText(staff.getAddress().getZip());
+
+        if(employeeBufferedImage==null){
+            System.out.println("Null");
+        }
+      //  empImage.setFill(new ImagePattern(SwingFXUtils.toFXImage(employeeBufferedImage, null )));
+//SwingFXUtils.toFXImage(tempCard, null )
+//
+//
+//        for(PreviousEmployment employment: staff.getPreviousEmploymentList()) {
+//            previouEmploymentList.add(new TreeItem<>(employment));
+//        }
+//        priviousEmployementTable.getRoot().getChildren().clear();
+//        priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
+//
+//
+//        for(Education e:staff.getEducationList()){
+//            educationHistory.add(new TreeItem<>(e));
+//        }
+//
+//        SchoolTable.getRoot().getChildren().clear();
+//        SchoolTable.getRoot().getChildren().addAll(educationHistory);
 
 //        Staff s = new Staff();
 //

@@ -164,8 +164,10 @@ public abstract class Employee {
     @Transient
     public BufferedImage getImage() {
 
+        image = null;
         try {
             image = ImageIO.read(new ByteArrayInputStream(imageByte));
+            System.out.println("OK");
         }catch (Exception e){
             e.printStackTrace();
         }

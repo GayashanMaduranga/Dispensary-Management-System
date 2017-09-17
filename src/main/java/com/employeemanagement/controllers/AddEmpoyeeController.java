@@ -287,6 +287,9 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         emplymemt.setSupervisor(supervisor.getText());
         emplymemt.setFromDate(Date.valueOf(jobFrom.getValue()));
         emplymemt.setToDate(Date.valueOf(jobTo.getValue()));
+        emplymemt.setStartingSalary(Double.parseDouble(startingSalary.getText()));
+        emplymemt.setEndingSalary(Double.parseDouble(endingSalary.getText()));
+
 
         previouEmploymentList.add(new TreeItem<>(emplymemt));
 
