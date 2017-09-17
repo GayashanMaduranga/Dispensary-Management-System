@@ -13,6 +13,15 @@ import java.sql.ResultSet;
 public class LoginModel {
 
     private static String user;
+    private static int AccessLevel;
+
+    public static int getAccessLevel() {
+        return AccessLevel;
+    }
+
+    public static void setAccessLevel(int accessLevel) {
+        AccessLevel = accessLevel;
+    }
 
     public static void setUser(String username){
         user = username;

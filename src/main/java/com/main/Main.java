@@ -85,10 +85,6 @@ public class Main extends Application {
         primaryStage.setFullScreenExitHint("");
         primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 
-//        owner.setFullScreen(true);
-
-//        primaryStage.toFront();
-        //code to center the stage on-screen
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
         primaryStage.setWidth(screenBounds.getWidth());
@@ -101,14 +97,3 @@ public class Main extends Application {
     }
 }
 
-
-//        Runnable task = () -> {
-//            try {
-//                Thread.sleep(2000);
-//                Platform.runLater(() -> owner.setFullScreen(true));
-//                System.out.println("Thread done");
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        };
-//        new Thread(task).start();

@@ -42,7 +42,7 @@
             <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="60.0" prefHeight="100.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <GridPane.margin>
@@ -225,6 +225,29 @@
                   <MaterialDesignIconView glyphName="ACCOUNT_PLUS" size="30" />
                </graphic>
             </JFXButton>
+            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="181.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="247.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="71.0" minWidth="10.0" prefWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="txtOccupation" prefHeight="35.0" prefWidth="256.0" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="Verdana" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="410.0" text="Occupation :" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                     <font>
+                        <Font name="Verdana" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
    </children>

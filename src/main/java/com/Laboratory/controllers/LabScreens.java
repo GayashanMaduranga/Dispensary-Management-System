@@ -5,7 +5,7 @@ import com.common.BaseEnum;
 /**
  * Created by AmilaWC on 8/20/2017.
  */
-public enum screens implements BaseEnum{
+public enum LabScreens implements BaseEnum{
 
 
 
@@ -20,7 +20,7 @@ public enum screens implements BaseEnum{
     String path;
     String id;
 
-    screens(String id, String path) {
+    LabScreens(String id, String path) {
         this.path = path;
         this.id = id;
     }
