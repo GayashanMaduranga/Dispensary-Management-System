@@ -2,10 +2,13 @@ package com.employeemanagement.controllers;
 
 import com.EntityClasses.Employee;
 import com.common.ConfirmDialog;
+import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.common.SessionListener;
 import com.financemanagement.controllers.MainController.MainController;
 import com.main.Main;
+import com.main.controllers.MainScreens;
+import com.patientmanagement.controllers.PatientScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
@@ -18,7 +21,7 @@ import org.hibernate.Session;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainScreenController implements Initializable,SessionListener {
+public class MainScreenController implements Initializable,SessionListener,ControlledScreen {
 
     @FXML
     private GridPane leftPane;
@@ -52,6 +55,8 @@ public class MainScreenController implements Initializable,SessionListener {
 
     @FXML
     private StackPane content;
+
+    private ScreenController controller;
 
 
     private MainScreenController mainScreenController;
@@ -146,4 +151,15 @@ public class MainScreenController implements Initializable,SessionListener {
     public void setMainController(SessionListener controller) {
                 mainScreenController = this;
     }
+
+    @Override
+    public void setScreenParent(ScreenController screenParent) {
+        controller = screenParent;
+    }
+
+    @FXML
+    void showHome(ActionEvent event) {
+        ScreenController.changeScreen(controller, MyScreens.MAIN_SCREEN, MainScreens.HOME_SCREEN);
+    }
+
 }

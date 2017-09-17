@@ -166,8 +166,10 @@ public abstract class Employee {
 
         image = null;
         try {
-            image = ImageIO.read(new ByteArrayInputStream(imageByte));
-            System.out.println("OK");
+
+            image = ImageIO.read(new ByteArrayInputStream(this.getImageByte()));
+            System.out.println(this.getImageByte().length);
+
         }catch (Exception e){
             e.printStackTrace();
         }

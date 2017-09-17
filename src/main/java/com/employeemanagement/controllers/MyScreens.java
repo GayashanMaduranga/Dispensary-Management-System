@@ -14,6 +14,7 @@ public enum MyScreens implements BaseEnum{
     SEARCH_EMPLOYEE_SCREEN("searchEmployee", "/com/employeemanagement/SearchEmployee.fxml"),//com/employeemanagement/SearchEmployee.fxml
     PAYROLL_SCREEN("payroll", "/com/employeemanagement/Payroll.fxml"),
     VIEW_EMPLOYEE_SCREEN("payroll", "/com/employeemanagement/ViewEmployeeDetails.fxml"),
+    ADD_DOCTOR_SCREEN("searchEmployee", "/com/employeemanagement/AddDoctor.fxml"),
 
     LOAN_SCREEN("loan", "/com/employeemanagement/Loan.fxml");
 ///com/employeemanagement/views/Loan.fxml
