@@ -105,11 +105,11 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
                 break;
             case "attendenceBtn":
-                ScreenController.changeScreen(MyScreens.ATTENDENCE_SCREEN,content,this);
+               // ScreenController.changeScreen(MyScreens.ATTENDENCE_SCREEN,content,this);
 
                 break;
             case "payrollBtn":
-                ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
+                //ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
 
                 break;
             case "reportsBtn":
