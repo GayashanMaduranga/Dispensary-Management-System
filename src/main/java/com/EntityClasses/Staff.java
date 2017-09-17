@@ -1,5 +1,8 @@
 package com.EntityClasses;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -14,6 +17,7 @@ public class Staff extends Employee {
 
 
     private Date dateOfAppointment;
+    private StringProperty jobRole;
 
     private List<Attendance> attendanceList;
 
@@ -27,6 +31,7 @@ public class Staff extends Employee {
         this.attendanceList = new ArrayList<>();
         this.leaveList = new ArrayList<>();
         this.payrolls = new ArrayList<>();
+        this.jobRole = new SimpleStringProperty();
     }
 
     @Column(name = "DATE_OF_APPOINTMENT",nullable = false)
@@ -77,4 +82,18 @@ public class Staff extends Employee {
     public void setPayrolls(List<Payroll> payrolls) {
         this.payrolls = payrolls;
     }
+
+    public String getJobRole() {
+        return jobRole.get();
+    }
+
+    public StringProperty occupationProperty() {
+        return jobRole;
+    }
+
+    public void setJobRole(String occupation) {
+        this.jobRole.set(occupation);
+    }
+
+
 }

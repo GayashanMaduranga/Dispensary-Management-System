@@ -1,5 +1,6 @@
 package com.employeemanagement.controllers;
 
+import com.EntityClasses.Employee;
 import com.common.ConfirmDialog;
 import com.common.ScreenController;
 import com.main.Main;
@@ -49,6 +50,15 @@ public class MainScreenController implements Initializable {
     @FXML
     private StackPane content;
 
+    private Employee employee;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     private JFXButton selectedBtn;
 //    private JFXButton btn2;
@@ -105,6 +115,9 @@ public class MainScreenController implements Initializable {
         selectedBtn.setDisable(true);
 
         ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content);
+
+
+
 
     }
 
