@@ -1,6 +1,6 @@
 package com.labinventory.controlers;
 
-import com.Laboratory.controllers.screens;
+import com.Laboratory.controllers.LabScreens;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.jfoenix.controls.JFXDatePicker;
