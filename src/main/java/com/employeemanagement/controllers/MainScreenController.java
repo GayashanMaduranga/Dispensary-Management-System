@@ -104,7 +104,7 @@ public class MainScreenController implements Initializable {
         selectedBtn = dashBoardBtn;
         selectedBtn.setDisable(true);
 
-        ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN, content);
+        ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content);
 
     }
 

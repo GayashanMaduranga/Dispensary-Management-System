@@ -25,6 +25,7 @@ public abstract class Employee {
     private StringProperty email;
     private StringProperty contactNumber;
     private StringProperty qualifications;
+    private List<PreviousEmployment> previousEmploymentList;
 
 
 
@@ -37,6 +38,7 @@ public abstract class Employee {
         this.email = new SimpleStringProperty();
         this.contactNumber = new SimpleStringProperty();
         this.qualifications = new SimpleStringProperty();
+        previousEmploymentList = new ArrayList<>();
 
 
     }
@@ -123,5 +125,14 @@ public abstract class Employee {
 
     public void setQualifications(String qualifications) {
         this.qualifications.set(qualifications);
+    }
+
+    @ElementCollection
+    public List<PreviousEmployment> getPreviousEmploymentList() {
+        return previousEmploymentList;
+    }
+
+    public void setPreviousEmploymentList(List<PreviousEmployment> previousEmploymentList) {
+        this.previousEmploymentList = previousEmploymentList;
     }
 }
