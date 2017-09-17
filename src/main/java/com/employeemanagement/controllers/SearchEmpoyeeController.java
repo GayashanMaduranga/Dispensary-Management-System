@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class UpdateEmpoyeeController implements Initializable,SessionListener {
+public class SearchEmpoyeeController implements Initializable,SessionListener {
 
 
     @FXML
@@ -65,15 +65,30 @@ public class UpdateEmpoyeeController implements Initializable,SessionListener {
     @FXML
     private JFXTextField jobRole;
 
+    private MainScreenController mainController;
+
 
 
     @FXML
     void setSelectionDetails(MouseEvent event) {
 
+        Staff staff = staffTable.getSelectionModel().getSelectedItem().getValue();
+        fullName.setText(staff.getName());
+        nic.setText(staff.getNic());
+        contactNumber.setText(staff.getContactNumber());
+        email.setText(staff.getEmail());
+        jobRole.setText(staff.getJobRole());
+
+        mainController.setEmployee(staff);
+
+
     }
 
     @FXML
     void viewProfile(ActionEvent event) {
+
+        ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN,mainController.getContent(),mainController);
+//        System.out.println(mainController.getEmployee().getName());
 
     }
 
@@ -108,6 +123,7 @@ public class UpdateEmpoyeeController implements Initializable,SessionListener {
         staffList = new ArrayList<>();
         initTable();
 
+//        initDB();
           new Thread(() -> {
 
                 Platform.runLater(() ->initDB() );
@@ -118,6 +134,7 @@ public class UpdateEmpoyeeController implements Initializable,SessionListener {
     }
 
     private void initDB(){
+
 //        session = UserSession.getSession();
 
 
@@ -156,5 +173,12 @@ public class UpdateEmpoyeeController implements Initializable,SessionListener {
     @Override
     public void setSession(Session session) {
         this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainController = (MainScreenController) controller;
+
     }
 }

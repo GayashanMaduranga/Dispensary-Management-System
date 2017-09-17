@@ -38,28 +38,28 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                 </rowConstraints>
                 <children>
-                    <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Add Employee" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <JFXButton fx:id="addEmployeeBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="300.0" maxWidth="300.0" onAction="#changeScreen" prefHeight="300.0" prefWidth="300.0" text="Add Employee" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                         <graphic>
                             <FontAwesomeIconView glyphName="USER_PLUS" size="100" />
                         </graphic>
                         <font>
                             <Font size="30.0" />
                         </font></JFXButton>
-                    <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Update Employee" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <JFXButton fx:id="employeeDetailsBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="300.0" maxWidth="300.0" onAction="#changeScreen" prefHeight="300.0" prefWidth="300.0" text="Employee Details" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                         <graphic>
                             <FontAwesomeIconView glyphName="USER" size="100" />
                         </graphic>
                         <font>
                             <Font size="30.0" />
                         </font></JFXButton>
-                    <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="265.0" layoutY="190.0" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Remove Employee" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <JFXButton fx:id="addDoctorBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="265.0" layoutY="190.0" maxHeight="300.0" maxWidth="300.0" onAction="#changeScreen" prefHeight="300.0" prefWidth="300.0" text="Add Doctor" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                         <graphic>
-                            <FontAwesomeIconView glyphName="USER_TIMES" size="100" />
+                            <FontAwesomeIconView glyphName="USER_MD" size="100" />
                         </graphic>
                         <font>
                             <Font size="30.0" />
                         </font></JFXButton>
-                    <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="520.0" layoutY="190.0" maxHeight="300.0" maxWidth="300.0" prefHeight="300.0" prefWidth="300.0" text="Employee Details" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <JFXButton fx:id="doctorDetailsBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="520.0" layoutY="190.0" maxHeight="300.0" maxWidth="300.0" onAction="#changeScreen" prefHeight="300.0" prefWidth="300.0" text="Doctor Details" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                         <graphic>
                             <FontAwesomeIconView glyphName="GROUP" size="100" />
                         </graphic>
