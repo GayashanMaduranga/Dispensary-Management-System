@@ -4,6 +4,8 @@ import com.EntityClasses.Address;
 import com.EntityClasses.Education;
 import com.EntityClasses.PreviousEmployment;
 import com.EntityClasses.Staff;
+import com.common.SessionListener;
+import com.financemanagement.controllers.MainController.MainController;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
@@ -38,7 +40,7 @@ import java.util.ResourceBundle;
  */
 
 
-public class ViewEmployeeController implements Initializable{
+public class ViewEmployeeController implements Initializable,SessionListener{
 
 
 
@@ -161,6 +163,8 @@ public class ViewEmployeeController implements Initializable{
     private List<TreeItem<PreviousEmployment>> previouEmploymentList;
     private List<TreeItem<Education>> educationHistory;
     private BufferedImage employeeBufferedImage;
+
+    private MainController mainController;
 
 
 
@@ -454,11 +458,20 @@ public class ViewEmployeeController implements Initializable{
         yes.setToggleGroup(yesNOGroup);
         no.setToggleGroup(yesNOGroup);
 
-        new Thread(() ->
-        {
-            Platform.runLater(() -> session = UserSession.getSession());
-        }).start();
+//        new Thread(() ->
+//        {
+//            Platform.runLater(() -> session = UserSession.getSession());
+//        }).start();
     }
 
 
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+        this.mainController = (MainController)controller;
+    }
 }

@@ -136,10 +136,9 @@ public class ScreenController extends StackPane{
     public static void changeScreen(BaseEnum screen,Pane content){
 
                     try {
-                        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource(screen.getPath()));
+                 FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource(screen.getPath()));
                 Parent root = loader.load();
-                SessionListener listener = (SessionListener)loader.getController();
-                listener.setSession(session);
+
                 content.getChildren().clear();
                 content.getChildren().add(root);
 //
@@ -151,6 +150,29 @@ public class ScreenController extends StackPane{
             } catch (IOException e) {
             e.printStackTrace();
             }
+    }
+
+
+    public static void changeScreen(BaseEnum screen,Pane content,SessionListener controller){
+
+        try {
+            FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource(screen.getPath()));
+            Parent root = loader.load();
+            SessionListener listener = (SessionListener)loader.getController();
+
+            listener.setSession(session);
+            listener.setMainController(controller);
+            content.getChildren().clear();
+            content.getChildren().add(root);
+//
+//                        Parent loadScreen = loader.load();
+//                        ControlledScreen myScreenController = (ControlledScreen) loader.getController();
+//                        myScreenController.setScreenParent(this);
+//                        addScreen(name, loadScreen);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

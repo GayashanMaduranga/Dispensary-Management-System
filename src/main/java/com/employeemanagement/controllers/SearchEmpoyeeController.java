@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class UpdateEmpoyeeController implements Initializable,SessionListener {
+public class SearchEmpoyeeController implements Initializable,SessionListener {
 
 
     @FXML
@@ -108,6 +108,7 @@ public class UpdateEmpoyeeController implements Initializable,SessionListener {
         staffList = new ArrayList<>();
         initTable();
 
+//        initDB();
           new Thread(() -> {
 
                 Platform.runLater(() ->initDB() );
@@ -118,6 +119,7 @@ public class UpdateEmpoyeeController implements Initializable,SessionListener {
     }
 
     private void initDB(){
+
 //        session = UserSession.getSession();
 
 
@@ -156,5 +158,10 @@ public class UpdateEmpoyeeController implements Initializable,SessionListener {
     @Override
     public void setSession(Session session) {
         this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
     }
 }

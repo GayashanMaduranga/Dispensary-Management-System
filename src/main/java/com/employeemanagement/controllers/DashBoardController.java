@@ -34,6 +34,11 @@ public class DashBoardController implements Initializable,SessionListener {
 
     }
 
+    @Override
+    public void setMainController(SessionListener controller) {
+
+    }
+
 //    @FXML
 //    void changeScene(MouseEvent event) {
 //

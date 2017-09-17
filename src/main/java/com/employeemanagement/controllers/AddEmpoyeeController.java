@@ -85,6 +85,9 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     private JFXTextField zip;
 
     @FXML
+    private JFXTextField jobRole;
+
+    @FXML
     private TreeTableView<PreviousEmployment> priviousEmployementTable;
 
     @FXML
@@ -160,6 +163,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     private List<TreeItem<PreviousEmployment>> previouEmploymentList;
     private List<TreeItem<Education>> educationHistory;
     private BufferedImage employeeBufferedImage;
+    private MainScreenController mainScreenController;
 
 
 
@@ -170,6 +174,8 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
         //Initialize Table Previous Employment
         initTables();
+
+
 
 
     }
@@ -219,6 +225,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         s.setEmail(email.getText());
         s.setDateOfBirth(Date.valueOf(dob.getValue()));
         s.setContactNumber(contactNumber.getText());
+        s.setJobRole(jobRole.getText());
         if(male.isSelected()) {
             s.setGender("M");
         }else {
@@ -463,5 +470,13 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @Override
     public void setSession(Session session) {
         this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainScreenController = (MainScreenController)controller;
+
+
     }
 }
