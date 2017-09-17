@@ -11,6 +11,9 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.current_session_context_class">thread</property>
+
+        <mapping class="com.EntityClasses.MeasureValue"/>
+        <mapping class="com.EntityClasses.DoctorSession"/>
         <mapping class="com.EntityClasses.Doctor"/>
         <mapping class="com.EntityClasses.Medication"/>
         <mapping class="com.EntityClasses.User"/>

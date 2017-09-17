@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Damma on 8/31/2017.
@@ -15,27 +17,17 @@ import java.sql.Date;
 public class Measure {
 
     private SimpleIntegerProperty measureId;
-    private Date date;
-    private SimpleIntegerProperty weight;
-    private SimpleIntegerProperty height;
-    private SimpleIntegerProperty temp;
-    private SimpleIntegerProperty bp;
-    private SimpleIntegerProperty respRate;
-    private SimpleIntegerProperty pulseRate;
-    private SimpleIntegerProperty bloodGlucose;
+    private Date dateUpdated;
+    private SimpleStringProperty name;
 
-
+    private List<MeasureValue> values;
 
 
     public Measure() {
+
         this.measureId = new SimpleIntegerProperty();
-        this.weight = new SimpleIntegerProperty();
-        this.height = new SimpleIntegerProperty();
-        this.temp = new SimpleIntegerProperty();
-        this.bp = new SimpleIntegerProperty();
-        this.respRate = new SimpleIntegerProperty();
-        this.pulseRate = new SimpleIntegerProperty();
-        this.bloodGlucose = new SimpleIntegerProperty();
+        this.name = new SimpleStringProperty();
+
     }
 
     @Id
@@ -53,112 +45,41 @@ public class Measure {
         this.measureId.set(measureId);
     }
 
-    //Date
-    @Column(name = "date")
-    public Date getDate() {
-        return date;
+    @Column(name = "dateUpdated")
+    public Date getDateUpdated() {
+        return dateUpdated;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateUpdated(Date dateUpdated) {
+        this.dateUpdated = dateUpdated;
     }
 
-    public SimpleStringProperty dateProperty(){
+    public SimpleStringProperty dateUpdatedProperty(){
         SimpleStringProperty dateString = new SimpleStringProperty();
-        dateString.set(this.date.toString());
+        dateString.set(this.dateUpdated.toString());
         return dateString;
     }
 
-    @Column(name = "weight")
-    public int getWeight() {
-        return weight.get();
+
+    @Column(name = "name")
+    public String getName() {
+        return name.get();
     }
 
-    public SimpleIntegerProperty weightProperty() {
-        return weight;
+    public SimpleStringProperty nameProperty() {
+        return name;
     }
 
-    public void setWeight(int weight) {
-        this.weight.set(weight);
+    public void setName(String name) {
+        this.name.set(name);
     }
 
-
-    @Column(name = "height")
-    public int getHeight() {
-        return height.get();
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<MeasureValue> getValues() {
+        return values;
     }
 
-    public SimpleIntegerProperty heightProperty() {
-        return height;
+    public void setValues(List<MeasureValue> values) {
+        this.values = values;
     }
-
-    public void setHeight(int height) {
-        this.height.set(height);
-    }
-
-    @Column(name = "temp")
-    public int getTemp() {
-        return temp.get();
-    }
-
-    public SimpleIntegerProperty tempProperty() {
-        return temp;
-    }
-
-    public void setTemp(int temp) {
-        this.temp.set(temp);
-    }
-
-    @Column(name = "bp")
-    public int getBp() {
-        return bp.get();
-    }
-
-    public SimpleIntegerProperty bpProperty() {
-        return bp;
-    }
-
-    public void setBp(int bp) {
-        this.bp.set(bp);
-    }
-
-    @Column(name = "respRate")
-    public int getRespRate() {
-        return respRate.get();
-    }
-
-    public SimpleIntegerProperty respRateProperty() {
-        return respRate;
-    }
-
-    public void setRespRate(int respRate) {
-        this.respRate.set(respRate);
-    }
-
-    @Column(name = "pulseRate")
-    public int getPulseRate() {
-        return pulseRate.get();
-    }
-
-    public SimpleIntegerProperty pulseRateProperty() {
-        return pulseRate;
-    }
-
-    public void setPulseRate(int pulseRate) {
-        this.pulseRate.set(pulseRate);
-    }
-
-    @Column(name = "bloodGlucose")
-    public int getBloodGlucose() {
-        return bloodGlucose.get();
-    }
-
-    public SimpleIntegerProperty bloodGlucoseProperty() {
-        return bloodGlucose;
-    }
-
-    public void setBloodGlucose(int bloodGlucose) {
-        this.bloodGlucose.set(bloodGlucose);
-    }
-
 }
