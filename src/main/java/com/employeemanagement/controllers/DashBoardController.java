@@ -61,7 +61,7 @@ public class DashBoardController implements Initializable,SessionListener {
 
                 break;
             case "doctorDetailsBtn":
-                ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN,mainScreenController.getContent(),mainScreenController);
+                ScreenController.changeScreen(MyScreens.SEARCH_DOCTOR_SCREEN,mainScreenController.getContent(),mainScreenController);
 
 
                 break;

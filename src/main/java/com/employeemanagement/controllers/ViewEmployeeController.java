@@ -503,6 +503,68 @@ public class ViewEmployeeController implements Initializable,SessionListener{
     @FXML
     void addNewStaff(ActionEvent event) {
 
+        Staff s = (Staff)mainController.getEmployee();
+
+        for ( TreeItem<PreviousEmployment> p: previouEmploymentList
+                ) {
+
+            s.getPreviousEmploymentList().add(p.getValue());
+        }
+
+        s.setName(fullName.getText());
+        s.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
+        s.setEmployeeid(Integer.parseInt(empID.getText()));
+//        s.setImage(employeeBufferedImage);
+        s.setEmail(email.getText());
+        s.setDateOfBirth(Date.valueOf(dob.getValue()));
+        s.setContactNumber(contactNumber.getText());
+        s.setJobRole(jobRole.getText());
+        s.setNic(nic.getText());
+        if(male.isSelected()) {
+            s.setGender("M");
+        }else {
+            s.setGender("F");
+        }
+
+        for ( TreeItem<Education> e: educationHistory
+                ) {
+
+            s.getEducationList().add(e.getValue());
+        }
+
+        Address address = new Address();
+        address.setUnitNO(unitNo.getText());
+        address.setStreetAddress(streetAddress.getText());
+        address.setCity(city.getText());
+        address.setZip(zip.getText());
+
+        s.setAddress(address);
+
+        new Thread(() ->
+        {
+
+
+            try {
+                session.beginTransaction();
+                session.update(s);
+                session.getTransaction().commit();
+
+                Platform.runLater(() ->  Notifications.create()
+                        .title("Updated")
+                        .text("successfully Update To the Database")
+                        .showInformation());
+            }catch (Exception e){
+
+                Platform.runLater(() ->  Notifications.create()
+                        .title("Error Inserting Data")
+                        .text("please check and try to insert again")
+                        .darkStyle()
+                        .showError());
+
+
+            }
+        }).start();
+
     }
 
 
