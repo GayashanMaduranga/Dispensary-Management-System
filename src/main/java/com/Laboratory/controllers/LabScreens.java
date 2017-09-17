@@ -8,12 +8,21 @@ import com.common.BaseEnum;
 public enum LabScreens implements BaseEnum{
 
 
+    HOME_SCREEN("home", "/com/Laboratory/home.fxml"),
 
-    DASHBOARD_SCREEN("dashBoard", "/com/Laboratory/views/dashBoard.fxml"),
-    ORDERTEST_SCREEN("orderTest", "/com/Laboratory/views/orderTest.fxml"),
-    ENTERRESULTS_SCREEN("enterResults", "/com/Laboratory/views/enterResults.fxml"),
-    VIEWDB_SCREEN("viewDB", "/com/Laboratory/views/viewDB.fxml"),
-    EXTRA_SCREEN("extra", "/com/Laboratory/views/extra.fxml");
+    DASHBOARD_SCREEN("dashBoard", "/com/Laboratory/dashBoard.fxml"),
+    ORDERTEST_SCREEN("orderTest", "/com/Laboratory/orderTest.fxml"),
+    ENTERRESULTS_SCREEN("enterResults", "/com/Laboratory/enterResults.fxml"),
+    ADDTEST_SCREEN("addTest","/com/Laboratory/addTest.fxml"),
+    VIEWDB_SCREEN("viewDB", "/com/Laboratory/viewDB.fxml"),
+    EXTRA_SCREEN("extra", "/com/Laboratory/extra.fxml"),
+    REFER_SCREEN("refer","/com/Laboratory/AddReferenceValue.fxml"),
+
+
+
+
+    SELECT_TEST_SCREEN("selectTest", "/com/Laboratory/selectTest.fxml");
+
 
 
 
