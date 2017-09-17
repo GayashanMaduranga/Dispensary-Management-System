@@ -1,12 +1,23 @@
 
 
+
 #aside {
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);
     -fx-text-fill: white;
 }
 
 /*Button*/
-#ordertestBT1 , #enter_resultBT1 , #extraBT1 ,#viewDB_BT1,#DB1,#DB2,#selectTest{
+#orderTestBT1 ,  #extraBT1 ,#viewDB_BT1,#DB1,#DB2,#selectTest,#printReciptBT,#addReferBT,#back_to_addTestBT{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);
+    -fx-text-fill: white;
+}
+
+#enter_resultBT1,#reportBT1,#addTest_BT1{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #10afd7, #154687);
+    -fx-text-fill: white;
+}
+
+#dashGrid #button{
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);
     -fx-text-fill: white;
 }
@@ -14,9 +25,15 @@
 #labicon{
     -fx-background-color: #154687;
     -fx-effect: dropshadow(gaussian, #003344, 7,0.01,-2, 5);
+
 }
 
 
+/*-------------------------------ENTER RESULTS WINDOW-------------------------------------*/
+#enterResSearchBT,#enterResPrintBT,#enterResDeleteBT{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 10%, #1c67c1,#3bcad1,#1c67c1);
+    -fx-text-fill: white;
+}
 
 .button:hover{
     -fx-background-color: #134a79;
@@ -34,11 +51,17 @@
     -fx-effect: dropshadow(gaussian, #3d404a, 7,0.01,-2, 5);
 }
 
+#topPane{
 
-/*#selectTest{*/
-    /*-fx-background-color: #0076b2;*/
-/*}*/
-/*#selectTest:hover{*/
-    /*-fx-background-color: #27ebed;*/
-/*}*/
+    -fx-background-color: #2b2e33;
+}
 
+/*logout button*/
+#aside .logout-btn{
+    -fx-background-color: #eba108;
+}
+
+#aside .logout-btn:hover {
+    -fx-background-color: #eb7715;
+    -fx-font-size: 17px;
+}
