@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import com.employeemanagement.controllers.MyScreens;
+import db.UserSession;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -17,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.hibernate.Session;
 
 
 /**
@@ -29,6 +31,8 @@ import javafx.util.Duration;
 public class ScreenController extends StackPane{
 
     private HashMap<String, Node> screens = new HashMap<>();
+
+    private static final Session session = UserSession.getSession();
 
     public ScreenController() {
     }
@@ -132,9 +136,17 @@ public class ScreenController extends StackPane{
     public static void changeScreen(BaseEnum screen,Pane content){
 
                     try {
-                Parent root = FXMLLoader.load(ScreenController.class.getResource(screen.getPath()));
+                        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource(screen.getPath()));
+                Parent root = loader.load();
+                SessionListener listener = (SessionListener)loader.getController();
+                listener.setSession(session);
                 content.getChildren().clear();
                 content.getChildren().add(root);
+//
+//                        Parent loadScreen = loader.load();
+//                        ControlledScreen myScreenController = (ControlledScreen) loader.getController();
+//                        myScreenController.setScreenParent(this);
+//                        addScreen(name, loadScreen);
 
             } catch (IOException e) {
             e.printStackTrace();

@@ -8,7 +8,6 @@ import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
 import com.common.AlertDialog;
 import com.common.ConfirmDialog;
-import com.labinventory.controlers.LabInventoryScreens;
 import com.main.Main;
 import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
@@ -21,7 +20,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -32,7 +33,7 @@ import java.util.ResourceBundle;
 public class LoginController implements ControlledScreen, Initializable{
 
     private Session session;
-    public LoginModel loginModel = new LoginModel();
+
     ScreenController mainContainer = new ScreenController();
 
     @Override
@@ -78,8 +79,9 @@ public class LoginController implements ControlledScreen, Initializable{
 
             if(users.get(0).getPassword().equals(txtPassword.getText())){
                 LoginModel.setUser(users.get(0).getUsername());
+                LoginModel.setAccessLevel(users.get(0).getAccessLevel());
                 makeStage(users.get(0).getAccessLevel());
-                session.close();
+//                session.close();
                 Stage s = (Stage) txtUsername.getScene().getWindow();
                 s.close();
             }
@@ -88,22 +90,7 @@ public class LoginController implements ControlledScreen, Initializable{
                 AlertDialog.show("", "Password Incorrect");
             }
         }
-//        ResultSet rs = loginModel.getValidatedUser(txtUsername.getText(), txtPassword.getText());
-//
-//        try {
-//            if(rs.next()){
-//
-//                makeStage(rs.getInt(3));
-//                Stage s = (Stage) txtUsername.getScene().getWindow();
-//                s.close();
-//
-//            }
-//            else
-//                AlertDialog.show("", "Wrong Credentials");
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+
     }
 
     private void makeStage(int AccessLevel){
@@ -123,57 +110,60 @@ public class LoginController implements ControlledScreen, Initializable{
             primaryStage.setMinHeight(750.0);
             primaryStage.setMinWidth(1380.0);
 
+            mainContainer.loadScreen(MainScreens.HOME_SCREEN.getId(), MainScreens.HOME_SCREEN.getPath());
+            mainContainer.setScreen(MainScreens.HOME_SCREEN.getId());
+            Parent layout = mainContainer.getScreen(MainScreens.HOME_SCREEN.getId()).getParent();
+            primaryStage.setScene(new Scene(layout));
 
-            if(AccessLevel == 1){
-
-                mainContainer.loadScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId(), PatientScreens.PATIENT_SUMMARY_SCREEN.getPath());
-                mainContainer.setScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId()).getParent();
-                primaryStage.setScene(new Scene(layout));
-
-            }
-            else if(AccessLevel == 2){
-
-                mainContainer.loadScreen(SupplierScreens.DASHBOARD_SCREEN.getId(), SupplierScreens.DASHBOARD_SCREEN.getPath());
-                mainContainer.setScreen(SupplierScreens.DASHBOARD_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(SupplierScreens.DASHBOARD_SCREEN.getId()).getParent();
-                primaryStage.setScene(new Scene(layout));
-
-            }
-
-            else if(AccessLevel == 3){
-
-                mainContainer.loadScreen(MyScreens.DASHBOARD_SCREEN.getId(), MyScreens.DASHBOARD_SCREEN.getPath());
-                mainContainer.setScreen(MyScreens.DASHBOARD_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(MyScreens.DASHBOARD_SCREEN.getId()).getParent();
-                primaryStage.setScene(new Scene(layout));
-
-            }
-
-            else if(AccessLevel == 4){
-
-                mainContainer.loadScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId(), LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getPath());
-                mainContainer.setScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN.getId()).getParent();
-                primaryStage.setScene(new Scene(layout));
-            }
-
-            else if(AccessLevel == 5){
-
-                mainContainer.loadScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId(), AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getPath());
-                mainContainer.setScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId()).getParent();
-                primaryStage.setScene(new Scene(layout));
-            }
-
-            else if(AccessLevel == 6){
-
-                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
-                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
-                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
-                primaryStage.setScene(new Scene(layout));
-
-            }
+//            if(AccessLevel == 1){
+//
+//                mainContainer.loadScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId(), PatientScreens.PATIENT_SUMMARY_SCREEN.getPath());
+//                mainContainer.setScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId());
+//                Parent layout = mainContainer.getScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId()).getParent();
+//                primaryStage.setScene(new Scene(layout));
+//
+//            }
+//            else if(AccessLevel == 2){
+//
+//                mainContainer.loadScreen(SupplierScreens.DASHBOARD_SCREEN.getId(), SupplierScreens.DASHBOARD_SCREEN.getPath());
+//                mainContainer.setScreen(SupplierScreens.DASHBOARD_SCREEN.getId());
+//                Parent layout = mainContainer.getScreen(SupplierScreens.DASHBOARD_SCREEN.getId()).getParent();
+//                primaryStage.setScene(new Scene(layout));
+//
+//            }
+//
+//            else if(AccessLevel == 3){
+//
+//                mainContainer.loadScreen(MyScreens.DASHBOARD_SCREEN.getId(), MyScreens.DASHBOARD_SCREEN.getPath());
+//                mainContainer.setScreen(MyScreens.DASHBOARD_SCREEN.getId());
+//                Parent layout = mainContainer.getScreen(MyScreens.DASHBOARD_SCREEN.getId()).getParent();
+//                primaryStage.setScene(new Scene(layout));
+//
+//            }
+//
+//            else if(AccessLevel == 4){
+//
+//                mainContainer.loadScreen(SupplierScreens.PURCHASE_SCREEN.getId(), SupplierScreens.PURCHASE_SCREEN.getPath());
+//                mainContainer.setScreen(SupplierScreens.PURCHASE_SCREEN.getId());
+//                Parent layout = mainContainer.getScreen(SupplierScreens.PURCHASE_SCREEN.getId()).getParent();
+//                primaryStage.setScene(new Scene(layout));
+//            }
+//
+//            else if(AccessLevel == 5){
+//
+//                mainContainer.loadScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId(), AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getPath());
+//                mainContainer.setScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId());
+//                Parent layout = mainContainer.getScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId()).getParent();
+//                primaryStage.setScene(new Scene(layout));
+//            }
+//
+//            else if(AccessLevel == 6){
+//
+//                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
+//                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
+//                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
+//                primaryStage.setScene(new Scene(layout));
+//            }
 
             primaryStage.show();
 
