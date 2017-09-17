@@ -21,8 +21,6 @@ import javafx.stage.Stage;
 
             ScreenController mainContainer = new ScreenController();
 
-//            mainContainer.loadScreen(LabScreens.DASHBOARD_SCREEN.getId(), LabScreens.DASHBOARD_SCREEN.getPath());
-//            mainContainer.setScreen(LabScreens.DASHBOARD_SCREEN.getId());
             mainContainer.loadScreen(MainScreens.HOME_SCREEN.getId(), MainScreens.HOME_SCREEN.getPath());
             mainContainer.setScreen(MainScreens.HOME_SCREEN.getId());
             Parent root = mainContainer.getScreen(MainScreens.HOME_SCREEN.getId()).getParent();

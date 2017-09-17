@@ -33,7 +33,7 @@
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="financeBtn" mnemonicParsing="false" onAction="#openWindow" prefHeight="180.0" prefWidth="180.0" styleClass="circleBtn" text="Finance" textFill="WHITE">
+            <Button fx:id="adminBtn" mnemonicParsing="false" onAction="#openWindow" prefHeight="180.0" prefWidth="180.0" styleClass="circleBtn" text="Admin " textFill="WHITE">
                <effect>
                   <DropShadow offsetX="-2.0" offsetY="2.0" />
                </effect>

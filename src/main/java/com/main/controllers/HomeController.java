@@ -123,7 +123,7 @@ public class HomeController implements ControlledScreen, Initializable{
                 break;
 
             case "patientBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
                 break;
 
             case "supplierBtn":
