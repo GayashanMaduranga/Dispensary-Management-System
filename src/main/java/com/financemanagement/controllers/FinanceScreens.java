@@ -9,11 +9,12 @@ import com.common.BaseEnum;
 
 public enum FinanceScreens implements BaseEnum{
 
-    EXPENSES_SCREEN("Expenses", "com/financemanagement/Expenses.fxml"),
-    FINALBALANCE_SCREEN("FinalBalance","com/financemanagement/Final Balance.fxml"),
-    FINANCE_MAIN_SCREEN("FinanceMain","com/financemanagement/Finace_Main.fxml"),
-    REVENUE_SCREEN("Revenue","com/financemanagement/Revenue.fxml"),
-    LOGINFORM_SCREEN("LoginForm","com/financemanagement/LoginForm.fxml");
+    MAIN_DASHBOARD_SCREEN("MainScreen", "/com/financemanagement/MainDashboard.fxml"),
+    EXPENSES_SCREEN("Expenses", "/com/financemanagement/Expenses.fxml"),
+    FINALBALANCE_SCREEN("FinalBalance","/com/financemanagement/Final Balance.fxml"),
+    FINANCE_MAIN_SCREEN("FinanceMain","/com/financemanagement/Finance_Main.fxml"),
+    REVENUE_SCREEN("Revenue","/com/financemanagement/Revenue.fxml"),
+    LOGINFORM_SCREEN("LoginForm","/com/financemanagement/LoginForm.fxml");
 
 
     String path;

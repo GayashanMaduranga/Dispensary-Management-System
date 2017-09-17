@@ -4,18 +4,23 @@ import com.EntityClasses.OtherExpenses;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.employeemanagement.controllers.MyScreens;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import javafx.beans.property.*;
+import com.patientmanagement.controllers.PatientScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static jfxtras.labs.repeatagenda.scene.control.repeatagenda.Settings.resources;
 
 /**
  * Created by Kavindu on 9/12/2017.
@@ -40,44 +45,13 @@ public class Expenses implements Initializable,ControlledScreen {
     @FXML
     private JFXButton logoutBtn;
 
-    //Creating Variables
+    @FXML
+    private JFXButton homeBtn;
 
-    private final SimpleIntegerProperty id ;
-
-    private SimpleStringProperty name;
-
-    private SimpleStringProperty description;
-
-    private SimpleStringProperty remark;
-
-    private SimpleDoubleProperty amount;
-
-    public Expenses(ScreenController controller, Integer id, String name, String description, String remark, Double amount) {
-        this.controller = controller;
-        this.id = new SimpleIntegerProperty(id);
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty(description);
-        this.remark = new SimpleStringProperty(remark);
-        this.amount = new SimpleDoubleProperty(amount);
+    @FXML
+    void showHome(){
+        ScreenController.changeScreen(controller, FinanceScreens.FINANCE_MAIN_SCREEN, FinanceScreens.MAIN_DASHBOARD_SCREEN);
     }
-
-    public int getId() {
-        return id.get();
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public String getName() {
-        return name.get();
-    }
-
-
 
     @FXML
     void changeScene(ActionEvent event) {
@@ -99,10 +73,11 @@ public class Expenses implements Initializable,ControlledScreen {
 
         if (ConfirmDialog.show("", "Are you sure you want to logout?")) {
             Main.createLogin(new Stage());
-            Stage s = (Stage) logoutBtn.getScene().getWindow();
+            Stage s = (Stage) homeBtn.getScene().getWindow();
             s.close();
         }
 }
+
     @Override
     public void setScreenParent(ScreenController screenParent) {
         controller = screenParent;
