@@ -343,7 +343,7 @@
                                        </HBox.margin>
                                     </JFXButton>
                                     <JFXButton layoutX="383.0" layoutY="30.0" onAction="#UpdatePreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Update" />
-                                    <JFXButton onAction="#UpdatePreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Remove">
+                                    <JFXButton onAction="#RemovePreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Remove">
                                        <HBox.margin>
                                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                        </HBox.margin>
@@ -357,7 +357,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="999.0">
                            <children>
-                              <TreeTableView fx:id="SchoolTable" layoutX="60.0" layoutY="93.0" prefHeight="329.0" prefWidth="404.0">
+                              <TreeTableView fx:id="SchoolTable" layoutX="60.0" layoutY="93.0" onMouseClicked="#educationTableSelection" prefHeight="329.0" prefWidth="404.0">
                                  <columns>
                                     <TreeTableColumn fx:id="colSchoolName" prefWidth="186.0" text="School Name" />
                                     <TreeTableColumn fx:id="colSchoolAddress" prefWidth="214.0" text="Address" />

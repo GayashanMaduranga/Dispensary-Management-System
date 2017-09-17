@@ -38,6 +38,7 @@ public abstract class Employee {
     private BufferedImage image;
     private byte[] imageByte;
     private List<PreviousEmployment> previousEmploymentList;
+    private List<Education> educationList;
 
 
 
@@ -50,8 +51,8 @@ public abstract class Employee {
         this.email = new SimpleStringProperty();
         this.contactNumber = new SimpleStringProperty();
         this.qualifications = new SimpleStringProperty();
-        previousEmploymentList = new ArrayList<>();
-
+        this.previousEmploymentList = new ArrayList<>();
+        this.educationList = new ArrayList<>();
 
     }
 
@@ -187,6 +188,12 @@ public abstract class Employee {
     }
 
 
+    @ElementCollection
+    public List<Education> getEducationList() {
+        return educationList;
+    }
 
-
+    public void setEducationList(List<Education> educationList) {
+        this.educationList = educationList;
+    }
 }

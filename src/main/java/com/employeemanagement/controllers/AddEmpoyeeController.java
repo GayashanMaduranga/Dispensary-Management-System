@@ -28,6 +28,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -185,6 +187,8 @@ public class AddEmpoyeeController implements Initializable{
 
 
 
+
+
     }
 
     @FXML
@@ -199,9 +203,9 @@ public class AddEmpoyeeController implements Initializable{
         }
 
         s.setName(fullName.getText());
-        s.setDateOfAppointment(Date.valueOf(.getValue()));
-        s.setEmployeeid(Integer.parseInt(nic.getText()));
-        s.setImage(employeeBufferedImage);
+//        s.setDateOfAppointment(Date.valueOf(.getValue()));
+//        s.setEmployeeid(Integer.parseInt(nic.getText()));
+//        s.setImage(employeeBufferedImage);
 
         session.beginTransaction();
         session.save(s);
@@ -261,11 +265,33 @@ public class AddEmpoyeeController implements Initializable{
     @FXML
     void UpdatePreviousEmployment(ActionEvent event) {
 
+        TreeItem<PreviousEmployment> employment = priviousEmployementTable.getSelectionModel().getSelectedItem();
+//        previouEmploymentList.remove(employment);
+        employment.getValue().setCompany(company.getText());
+        employment.getValue().setAddress(companyAddress.getText());
+        employment.getValue().setJobTitle(jobTitle.getText());
+        employment.getValue().setPhone(phone.getText());
+        employment.getValue().setSupervisor(supervisor.getText());
+        employment.getValue().setFromDate(Date.valueOf(jobFrom.getValue()));
+        employment.getValue().setToDate(Date.valueOf(jobTo.getValue()));
+
+        priviousEmployementTable.getRoot().getChildren().clear();
+        priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
     }
 
 
 
+    @FXML
+    void RemovePreviousEmployment(ActionEvent event) {
 
+//        PreviousEmployment employment = priviousEmployementTable.getSelectionModel().getSelectedItem().getValue();
+        previouEmploymentList.remove(priviousEmployementTable.getSelectionModel().getSelectedItem());
+
+        priviousEmployementTable.getRoot().getChildren().clear();
+        priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
+
+
+    }
 
 
 
@@ -288,14 +314,22 @@ public class AddEmpoyeeController implements Initializable{
         companyAddress.setText(employment.getAddress());
         phone.setText(employment.getPhone());
         supervisor.setText(employment.getSupervisor());
-        startingSalary.setText(employment.get);
-        endingSalary.;
-        jobFrom.;
-        jobTo.;
+        startingSalary.setText(String.valueOf(employment.getStartingSalary()));
+        endingSalary.setText(String.valueOf(employment.getEndingSalary()));
+        jobFrom.setUserData(employment.getFromDate().toLocalDate());
+        jobTo.setUserData(employment.getToDate().toLocalDate());
+
+
+    }
+
+    @FXML
+    void educationTableSelection(MouseEvent event) {
+
 
     }
 
     private void initPreviousEmploymentTable(){
+
         colcompany.setCellValueFactory(param -> param.getValue().getValue().companyProperty());
         coljobTitle.setCellValueFactory(param -> param.getValue().getValue().jobTitleProperty());
 
@@ -306,6 +340,7 @@ public class AddEmpoyeeController implements Initializable{
 
         priviousEmployementTable.setRoot(root1);
         priviousEmployementTable.setShowRoot(false);
+
     }
 
     private void initMainComponents(){
