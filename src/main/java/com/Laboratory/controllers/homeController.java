@@ -3,7 +3,6 @@ package com.Laboratory.controllers;
 
 import com.common.ConfirmDialog;
 import com.common.ScreenController;
-import com.employeemanagement.controllers.MyScreens;
 import com.main.Main;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
@@ -80,30 +79,30 @@ public class homeController implements Initializable{
 
         switch (selectedBtn.getId()) {
             case "dashboardBT":
-                ScreenController.changeScreen(screens.DASHBOARD_SCREEN, content);
+                ScreenController.changeScreen(LabScreens.DASHBOARD_SCREEN, content);
                 break;
             case "ordertestBT":
-                ScreenController.changeScreen(screens.ORDERTEST_SCREEN, content);
+                ScreenController.changeScreen(LabScreens.ORDERTEST_SCREEN, content);
                 break;
             case "add_new_testBT":
-                ScreenController.changeScreen(screens.ADDTEST_SCREEN, content);
+                ScreenController.changeScreen(LabScreens.ADDTEST_SCREEN, content);
 
                 break;
             case "enter_resultBT":
-                ScreenController.changeScreen(screens.ENTERRESULTS_SCREEN, content);
+                ScreenController.changeScreen(LabScreens.ENTERRESULTS_SCREEN, content);
 
                 break;
             case "viewDB_BT":
-                ScreenController.changeScreen(screens.VIEWDB_SCREEN, content);
+                ScreenController.changeScreen(LabScreens.VIEWDB_SCREEN, content);
 
                 break;
             case "extraBT":
-                ScreenController.changeScreen(screens.EXTRA_SCREEN, content);
+                ScreenController.changeScreen(LabScreens.EXTRA_SCREEN, content);
 
                 break;
 
             case "add_referBT":
-                ScreenController.changeScreen(screens.REFER_SCREEN, content);
+                ScreenController.changeScreen(LabScreens.REFER_SCREEN, content);
 
                 break;
         }
@@ -128,6 +127,6 @@ public class homeController implements Initializable{
             selectedBtn = dashboardBT;
             selectedBtn.setDisable(true);
 
-          ScreenController.changeScreen(screens.DASHBOARD_SCREEN, content);
+          ScreenController.changeScreen(LabScreens.DASHBOARD_SCREEN, content);
     }
 }

@@ -1,8 +1,6 @@
 package com.Laboratory.views;
 
-import com.Laboratory.controllers.screens;
-import com.common.ScreenController;
-import com.employeemanagement.controllers.MyScreens;
+import com.Laboratory.controllers.LabScreens;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,9 +21,9 @@ import java.io.IOException;
 
 //            ScreenController mainContainer = new ScreenController();
 //
-//            mainContainer.loadScreen(screens.DASHBOARD_SCREEN.getId(), screens.DASHBOARD_SCREEN.getPath());
-//            mainContainer.setScreen(screens.DASHBOARD_SCREEN.getId());
-//            Parent root = mainContainer.getScreen(screens.DASHBOARD_SCREEN.getId()).getParent();
+//            mainContainer.loadScreen(LabScreens.DASHBOARD_SCREEN.getId(), LabScreens.DASHBOARD_SCREEN.getPath());
+//            mainContainer.setScreen(LabScreens.DASHBOARD_SCREEN.getId());
+//            Parent root = mainContainer.getScreen(LabScreens.DASHBOARD_SCREEN.getId()).getParent();
 //
 //            Scene scene = new Scene(root);
 //            primaryStage.setScene(scene);
@@ -34,7 +32,7 @@ import java.io.IOException;
 //
         try {
 
-    Parent root = FXMLLoader.load(getClass().getResource(screens.HOME_SCREEN.getPath()));
+    Parent root = FXMLLoader.load(getClass().getResource(LabScreens.HOME_SCREEN.getPath()));
     Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Welcome Dispensary");

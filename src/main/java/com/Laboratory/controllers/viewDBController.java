@@ -40,20 +40,20 @@ public class viewDBController implements Initializable,ControlledScreen {
 //    void changePanel(MouseEvent event) {
 //        switch (((JFXButton) event.getSource()).getId()){
 //            case "dashboardBT":
-//                ScreenController.changeScreen(controller, screens.VIEWDB_SCREEN, screens.DASHBOARD_SCREEN);
+//                ScreenController.changeScreen(controller, LabScreens.VIEWDB_SCREEN, LabScreens.DASHBOARD_SCREEN);
 //
 //                break;
 //            case "ordertestBT":
-//                ScreenController.changeScreen(controller, screens.VIEWDB_SCREEN, screens.ORDERTEST_SCREEN);
+//                ScreenController.changeScreen(controller, LabScreens.VIEWDB_SCREEN, LabScreens.ORDERTEST_SCREEN);
 //                break;
 //            case "enter_resultBT":
-//                ScreenController.changeScreen(controller, screens.VIEWDB_SCREEN, screens.ENTERRESULTS_SCREEN);
+//                ScreenController.changeScreen(controller, LabScreens.VIEWDB_SCREEN, LabScreens.ENTERRESULTS_SCREEN);
 //                break;
 ////            case "viewDB_BT":
-////                ScreenController.changeScreen(controller, screens.VIEWDB_SCREEN, screens.VIEWDB_SCREEN);
+////                ScreenController.changeScreen(controller, LabScreens.VIEWDB_SCREEN, LabScreens.VIEWDB_SCREEN);
 ////                break;
 //            case "extraBT":
-//                ScreenController.changeScreen(controller, screens.DASHBOARD_SCREEN, screens.EXTRA_SCREEN);
+//                ScreenController.changeScreen(controller, LabScreens.DASHBOARD_SCREEN, LabScreens.EXTRA_SCREEN);
 //                break;
 //
 //        }
