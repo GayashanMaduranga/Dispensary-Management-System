@@ -1,5 +1,6 @@
 package com.EntityClasses;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "Patient")
-public class Patient {
+public class Patient extends RecursiveTreeObject<Patient> {
 
 
     private SimpleIntegerProperty pId;
@@ -29,6 +30,8 @@ public class Patient {
     private SimpleStringProperty medicationHistory;
     private SimpleStringProperty familyHistory;
     private SimpleStringProperty habits;
+    private SimpleStringProperty gender;
+    private SimpleStringProperty NIC;
 
     private List<LabTestOrder> labTestOrders;
     private List<Complaint> complaints;
@@ -39,6 +42,7 @@ public class Patient {
 
 
     public Patient() {
+
         this.pId = new SimpleIntegerProperty();
         this.pname = new SimpleStringProperty();
         this.email = new SimpleStringProperty();
@@ -49,11 +53,15 @@ public class Patient {
         this.medicationHistory = new SimpleStringProperty();
         this.familyHistory = new SimpleStringProperty();
         this.habits = new SimpleStringProperty();
+        this.gender = new SimpleStringProperty();
+        this.NIC = new SimpleStringProperty();
+
 
         this.labTestOrders = new ArrayList<>();
         this.complaints = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
         this.appointments = new ArrayList<>();
+        this.measures = new ArrayList<>();
     }
 
     //pname
@@ -80,6 +88,37 @@ public class Patient {
         this.DOB = DOB;
     }
 
+    public SimpleStringProperty DOBProperty(){
+        SimpleStringProperty dateString = new SimpleStringProperty();
+        dateString.set(this.DOB.toString());
+        return dateString;
+    }
+
+    @Column(name = "gender")
+    public String getGender() {
+        return gender.get();
+    }
+
+    public SimpleStringProperty genderProperty() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender.set(gender);
+    }
+
+    @Column(name = "NIC")
+    public String getNIC() {
+        return NIC.get();
+    }
+
+    public SimpleStringProperty NICProperty() {
+        return NIC;
+    }
+
+    public void setNIC(String NIC) {
+        this.NIC.set(NIC);
+    }
 
     //email
     @Column(name = "email")
@@ -259,5 +298,14 @@ public class Patient {
 
     public void setMedications(List<Medication> medications) {
         this.medications = medications;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }
