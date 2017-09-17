@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane prefHeight="720.0" prefWidth="1289.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Laboratory.controllers.addTestController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="74.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="179.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="2.0" prefWidth="179.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="201.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="0.0" prefWidth="23.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.0" minWidth="10.0" prefWidth="44.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="185.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="176.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="162.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="61.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="479.0" minHeight="10.0" prefHeight="315.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="99.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="719.0" minHeight="10.0" prefHeight="182.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="719.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <TitledPane animated="false" collapsible="false" prefHeight="297.0" prefWidth="556.0" text="Main Test" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TreeTableView fx:id="mainTestTable" layoutX="-1.4000000000000004" onMouseClicked="#setTextFields" prefHeight="258.0" prefWidth="575.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0">
+                    <columns>
+                      <TreeTableColumn fx:id="mainid" prefWidth="81.0" text="id" />
+                      <TreeTableColumn fx:id="mainName" prefWidth="216.0" text="Test Name" />
+                        <TreeTableColumn fx:id="mainPrice" minWidth="0.0" prefWidth="166.0" text="Test price" />
+                    </columns>
+                  </TreeTableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" prefHeight="297.0" text="Test field" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="1">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="478.0">
+               <children>
+                  <TreeTableView fx:id="testFieldTable" layoutX="-1.0" prefHeight="263.0" prefWidth="552.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0">
+                    <columns>
+                      <TreeTableColumn fx:id="TestFid" prefWidth="75.0" text="fid" />
+                      <TreeTableColumn fx:id="TestName" prefWidth="224.0" text="fName" />
+                        <TreeTableColumn fx:id="testUnits" minWidth="0.0" prefWidth="180.0" text="Units" />
+                    </columns>
+                  </TreeTableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <Label prefHeight="26.0" prefWidth="122.0" text="Test Name" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></Label>
+      <Label prefHeight="26.0" prefWidth="88.0" text="Test Price" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></Label>
+      <JFXTextField fx:id="testPrice" prefHeight="50.0" prefWidth="306.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+      <JFXTextField fx:id="testName" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+      <Button maxWidth="157.0" mnemonicParsing="false" onAction="#addMainTest" prefHeight="38.0" prefWidth="157.0" text="Add Main Test" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Button mnemonicParsing="false" onAction="#updateMainTest" text="Update Main Test" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <Button maxWidth="157.0" mnemonicParsing="false" onAction="#deleteMainTest" text="Delete Main Test" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+      <Label prefHeight="26.0" prefWidth="122.0" text="fid" GridPane.columnIndex="6" GridPane.rowIndex="3">
+         <padding>
+            <Insets left="20.0" />
+         </padding></Label>
+      <Label prefHeight="26.0" prefWidth="88.0" text="Units" GridPane.columnIndex="6" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin></Label>
+      <Label prefHeight="26.0" prefWidth="122.0" text="fName" GridPane.columnIndex="6" GridPane.rowIndex="4">
+         <padding>
+            <Insets left="20.0" />
+         </padding></Label>
+      <JFXTextField fx:id="fid" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+      <JFXTextField fx:id="fName" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+      <JFXTextField fx:id="Units" prefHeight="50.0" prefWidth="306.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+      <Button maxWidth="157.0" mnemonicParsing="false" onAction="#addTestField" text="Add Test Field" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+      <Button maxWidth="157.0" mnemonicParsing="false" onAction="#updateTestField" prefHeight="38.0" prefWidth="157.0" text="Update Test Field" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+      <Button maxWidth="157.0" mnemonicParsing="false" onAction="#deleteTestField" text="Delete Test Field" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+      <JFXButton fx:id="addReferBT" prefHeight="38.0" prefWidth="316.0" stylesheets="@stylesheet.css" text="Add Reference Value" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets bottom="20.0" left="40.0" />
+         </GridPane.margin>
+      </JFXButton>
+   </children>
+</GridPane>
