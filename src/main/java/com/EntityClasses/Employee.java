@@ -35,6 +35,7 @@ public abstract class Employee {
     private StringProperty contactNumber;
     private StringProperty qualifications;
     private Address address;
+    private StringProperty nic;
     private BufferedImage image;
     private byte[] imageByte;
     private List<PreviousEmployment> previousEmploymentList;
@@ -53,6 +54,7 @@ public abstract class Employee {
         this.qualifications = new SimpleStringProperty();
         this.previousEmploymentList = new ArrayList<>();
         this.educationList = new ArrayList<>();
+        this.nic = new SimpleStringProperty();
 
     }
 
@@ -197,5 +199,15 @@ public abstract class Employee {
         this.educationList = educationList;
     }
 
+    public String getNic() {
+        return nic.get();
+    }
 
+    public StringProperty nicProperty() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic.set(nic);
+    }
 }
