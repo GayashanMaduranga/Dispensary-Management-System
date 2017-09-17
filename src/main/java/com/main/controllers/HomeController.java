@@ -53,7 +53,7 @@ public class HomeController implements ControlledScreen, Initializable{
     private Button labBtn;
 
     @FXML
-    private Button financeBtn;
+    private Button adminBtn;
 
     @FXML
     private Button pharmacyBtn;
@@ -72,7 +72,7 @@ public class HomeController implements ControlledScreen, Initializable{
         translateXY(-300, 0, patientBtn);
         translateXY(300, 0, supplierBtn);
         translateXY(160, 280, labBtn);
-        translateXY(-160, -280, financeBtn);
+        translateXY(-160, -280, adminBtn);
         translateXY(160, -280, pharmacyBtn);
         translateXY(-160, 280, employeeBtn);
     }
@@ -118,7 +118,7 @@ public class HomeController implements ControlledScreen, Initializable{
 
         switch (((Button)event.getSource()).getId()){
 
-            case "financeBtn":
+            case "adminBtn":
                 ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, FinanceScreens.FINANCE_MAIN_SCREEN);
                 break;
 
