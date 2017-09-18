@@ -1,13 +1,11 @@
 package com.employeemanagement.controllers;
 
-import com.EntityClasses.Doctor;
-import com.EntityClasses.Education;
-import com.EntityClasses.PreviousEmployment;
-import com.EntityClasses.Staff;
+import com.EntityClasses.*;
 import com.common.SessionListener;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import org.controlsfx.control.Notifications;
 import org.hibernate.Session;
 
 import java.awt.image.BufferedImage;
@@ -498,6 +497,70 @@ public class ViewDoctorController implements Initializable,SessionListener{
 
     @FXML
     void addNewStaff(ActionEvent event) {
+
+        Doctor doctor = new Doctor();
+
+        for ( TreeItem<PreviousEmployment> p: previouEmploymentList
+                ) {
+
+            doctor.getPreviousEmploymentList().add(p.getValue());
+        }
+
+        doctor.setName(fullName.getText());
+        //doctor.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
+        doctor.setEmployeeid(Integer.parseInt(empID.getText()));
+        doctor.setImage(employeeBufferedImage);
+        doctor.setEmail(email.getText());
+        doctor.setDateOfBirth(Date.valueOf(dob.getValue()));
+        doctor.setContactNumber(contactNumber.getText());
+        doctor.setChargePerVisit(Double.parseDouble(chargePerVisit.getText()));
+        doctor.setSLMCRegNO(slmcRegNumber.getText());
+        doctor.setNic(nic.getText());
+
+        if(male.isSelected()) {
+            doctor.setGender("M");
+        }else {
+            doctor.setGender("F");
+        }
+
+        for ( TreeItem<Education> e: educationHistory
+                ) {
+
+            doctor.getEducationList().add(e.getValue());
+        }
+
+        Address address = new Address();
+        address.setUnitNO(unitNo.getText());
+        address.setStreetAddress(streetAddress.getText());
+        address.setCity(city.getText());
+        address.setZip(zip.getText());
+
+        doctor.setAddress(address);
+
+        new Thread(() ->
+        {
+
+
+            try {
+                session.beginTransaction();
+                session.update(doctor);
+                session.getTransaction().commit();
+
+                Platform.runLater(() ->  Notifications.create()
+                        .title("Updated")
+                        .text("successfully Updated the Database")
+                        .showInformation());
+            }catch (Exception e){
+
+                Platform.runLater(() ->  Notifications.create()
+                        .title("Error Inserting Data")
+                        .text("please check and try to insert again")
+                        .darkStyle()
+                        .showError());
+
+
+            }
+        }).start();
 
     }
 
