@@ -1,17 +1,12 @@
 package com.employeemanagement.controllers;
 
-import com.EntityClasses.Address;
-import com.EntityClasses.Education;
-import com.EntityClasses.PreviousEmployment;
-import com.EntityClasses.Staff;
+import com.EntityClasses.*;
 import com.common.SessionListener;
-import com.financemanagement.controllers.MainController.MainController;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import db.UserSession;
+import com.jfoenix.controls.JFXTimePicker;
 import javafx.application.Platform;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +15,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -28,11 +22,10 @@ import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
 import org.hibernate.Session;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -158,6 +151,24 @@ public class ViewEmployeeController implements Initializable,SessionListener{
     @FXML
     private JFXTextField jobRole;
 
+    @FXML
+    private TreeTableView<Attendance> attendanceTable;
+
+    @FXML
+    private TreeTableColumn<Attendance, Number> colID;
+
+    @FXML
+    private TreeTableColumn<Attendance, String> colDate;
+
+    @FXML
+    private JFXDatePicker attendenceDate;
+
+    @FXML
+    private JFXTimePicker arivalTime;
+
+    @FXML
+    private JFXTimePicker departureTime;
+
     private Session session;
 
     private final ToggleGroup genderGroup = new ToggleGroup();
@@ -167,6 +178,7 @@ public class ViewEmployeeController implements Initializable,SessionListener{
     private Image empimage =null;
     private List<TreeItem<PreviousEmployment>> previouEmploymentList;
     private List<TreeItem<Education>> educationHistory;
+    private List<TreeItem<Attendance>> attendanceTreeList;
     private BufferedImage employeeBufferedImage;
 
     private MainScreenController mainController;
@@ -389,6 +401,8 @@ public class ViewEmployeeController implements Initializable,SessionListener{
         SchoolTable.setRoot(root2);
         SchoolTable.setShowRoot(false);
 
+
+
     }
 
     private void initMainComponents(){
@@ -396,6 +410,7 @@ public class ViewEmployeeController implements Initializable,SessionListener{
         empImage.setFill(new ImagePattern(new Image("/com/Images/user1600.png")));
         previouEmploymentList = new ArrayList<>();
         educationHistory = new ArrayList<>();
+        attendanceTreeList = new ArrayList<>();
         male.setToggleGroup(genderGroup);
         female.setToggleGroup(genderGroup);
 
@@ -459,6 +474,14 @@ public class ViewEmployeeController implements Initializable,SessionListener{
 
         SchoolTable.getRoot().getChildren().clear();
         SchoolTable.getRoot().getChildren().addAll(educationHistory);
+
+
+        for(Attendance a :staff.getAttendanceList()){
+            attendanceTreeList.add(new TreeItem<>(a));
+        }
+
+        attendanceTable.getRoot().getChildren().clear();
+        attendanceTable.getRoot().getChildren().addAll(attendanceTreeList);
 
 //        Staff s = new Staff();
 //
@@ -564,6 +587,41 @@ public class ViewEmployeeController implements Initializable,SessionListener{
 
             }
         }).start();
+
+    }
+
+
+    @FXML
+    void addAttendance(ActionEvent event) {
+
+                Attendance attendance = new Attendance();
+                attendance.setDate(Date.valueOf(attendenceDate.getValue()));
+                //attendance.setArrivalTime(new Timestamp(arivalTime.getValue().));
+                   // attendance.setLeaveTime();
+
+
+//        PreviousEmployment emplymemt = new PreviousEmployment();
+//        emplymemt.setCompany(company.getText());
+//        emplymemt.setAddress(companyAddress.getText());
+//        emplymemt.setJobTitle(jobTitle.getText());
+//        emplymemt.setPhone(phone.getText());
+//        emplymemt.setSupervisor(supervisor.getText());
+//        emplymemt.setFromDate(Date.valueOf(jobFrom.getValue()));
+//        emplymemt.setToDate(Date.valueOf(jobTo.getValue()));
+//
+//        previouEmploymentList.add(new TreeItem<>(emplymemt));
+//
+//        priviousEmployementTable.getRoot().getChildren().clear();
+//        priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
+    }
+
+    @FXML
+    void deleteAttendance(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateAttendance(ActionEvent event) {
 
     }
 
