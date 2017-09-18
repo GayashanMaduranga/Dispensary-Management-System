@@ -191,9 +191,42 @@ public class LabEquipmentControl implements Initializable, ControlledScreen{
 
 
 
+    @FXML
+    void updateTable(MouseEvent event) {
+
+        TreeItem<Equipment> s = eqTable.getSelectionModel().getSelectedItem();
+        s.getValue().setName(name.getText());
+
+        session.beginTransaction();
+        session.update(s.getValue());
+        session.getTransaction().commit();
+
+
+    }
+
+
+    @FXML
+    void setFields(MouseEvent event) {
+        Equipment equipment = eqTable.getSelectionModel().getSelectedItem().getValue();
+        name.setText(equipment.getName());
+        id.setText(String.valueOf(equipment.getName()));
+        remaiquan.setText(String.valueOf(equipment.getRquant()));
+        addquan.setText(String.valueOf(equipment.getAddquantity()));
+        totalquan.setText(String.valueOf(equipment.getTotquantity()));
+        supplier.setText(equipment.getSupplier());
+       // lifetime.setText(equipment.getLifetime());
+        //today.setText(equipment.getToday());
+
+
+    }
 
 
 
 
 
-}
+
+
+
+
+
+    }
