@@ -3,6 +3,7 @@ package com.patientmanagement.controllers;
 
 import com.Laboratory.controllers.LabScreens;
 import com.PharmacyMgt.Controllers.PharmacyScreens;
+import com.appointmentscheduling.controllers.AppointmentScreens;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
@@ -32,6 +33,9 @@ public class MainDashboardController implements ControlledScreen, Initializable 
     private JFXButton assistantPortalBtn;
 
     @FXML
+    private JFXButton apoointmentBtn;
+
+    @FXML
     private JFXButton backToHomeBtn;
 
     @FXML
@@ -45,6 +49,10 @@ public class MainDashboardController implements ControlledScreen, Initializable 
 
             case "assistantPortalBtn":
                 ScreenController.changeScreen(controller, PatientScreens.MAIN_DASHBOARD_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+                break;
+
+            case "apoointmentBtn":
+                ScreenController.changeScreen(controller, PatientScreens.MAIN_DASHBOARD_SCREEN, AppointmentScreens.VIEW_APPOINTMENTS_SCREEN);
                 break;
 
             case "backToHomeBtn":

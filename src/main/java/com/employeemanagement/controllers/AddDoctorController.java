@@ -1,46 +1,40 @@
 package com.employeemanagement.controllers;
 
-import com.EntityClasses.Address;
-import com.EntityClasses.Education;
-import com.EntityClasses.PreviousEmployment;
-import com.EntityClasses.Staff;
+import com.EntityClasses.*;
 import com.common.SessionListener;
-import db.UserSession;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import org.controlsfx.control.Notifications;
+import org.hibernate.Session;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
-import org.controlsfx.control.Notifications;
-import org.hibernate.Session;
 
 /**
  * Created by gayashan on 8/13/2017.
  */
 @SuppressWarnings("Duplicates")
-public class AddEmpoyeeController implements Initializable,SessionListener{
+public class AddDoctorController implements Initializable,SessionListener{
 
 
 
@@ -87,8 +81,13 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @FXML
     private JFXTextField zip;
 
+
+
     @FXML
-    private JFXTextField jobRole;
+    private JFXTextField slmcRegNumber;
+
+    @FXML
+    private JFXTextField chargePerVisit;
 
     @FXML
     private TreeTableView<PreviousEmployment> priviousEmployementTable;
@@ -213,33 +212,35 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @FXML
     void addNewStaff(ActionEvent event) {
 
-        Staff s = new Staff();
+        Doctor doctor = new Doctor();
 
         for ( TreeItem<PreviousEmployment> p: previouEmploymentList
              ) {
 
-            s.getPreviousEmploymentList().add(p.getValue());
+            doctor.getPreviousEmploymentList().add(p.getValue());
         }
 
-        s.setName(fullName.getText());
-        s.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
-        s.setEmployeeid(Integer.parseInt(empID.getText()));
-        s.setImage(employeeBufferedImage);
-        s.setEmail(email.getText());
-        s.setDateOfBirth(Date.valueOf(dob.getValue()));
-        s.setContactNumber(contactNumber.getText());
-        s.setJobRole(jobRole.getText());
-        s.setNic(nic.getText());
+        doctor.setName(fullName.getText());
+        //doctor.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
+        doctor.setEmployeeid(Integer.parseInt(empID.getText()));
+        doctor.setImage(employeeBufferedImage);
+        doctor.setEmail(email.getText());
+        doctor.setDateOfBirth(Date.valueOf(dob.getValue()));
+        doctor.setContactNumber(contactNumber.getText());
+        doctor.setChargePerVisit(Double.parseDouble(chargePerVisit.getText()));
+        doctor.setSLMCRegNO(slmcRegNumber.getText());
+        doctor.setNic(nic.getText());
+
         if(male.isSelected()) {
-            s.setGender("M");
+            doctor.setGender("M");
         }else {
-            s.setGender("F");
+            doctor.setGender("F");
         }
 
         for ( TreeItem<Education> e: educationHistory
                 ) {
 
-            s.getEducationList().add(e.getValue());
+            doctor.getEducationList().add(e.getValue());
         }
 
         Address address = new Address();
@@ -248,7 +249,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         address.setCity(city.getText());
         address.setZip(zip.getText());
 
-        s.setAddress(address);
+        doctor.setAddress(address);
 
         new Thread(() ->
         {
@@ -256,7 +257,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
             try {
                 session.beginTransaction();
-                session.save(s);
+                session.save(doctor);
                 session.getTransaction().commit();
 
                 Platform.runLater(() ->  Notifications.create()
