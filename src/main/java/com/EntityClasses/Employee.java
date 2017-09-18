@@ -4,8 +4,17 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
+import org.hibernate.annotations.Type;
 
+import javax.imageio.ImageIO;
 import javax.persistence.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +34,12 @@ public abstract class Employee {
     private StringProperty email;
     private StringProperty contactNumber;
     private StringProperty qualifications;
+    private Address address;
+    private StringProperty nic;
+    private BufferedImage image;
+    private byte[] imageByte;
     private List<PreviousEmployment> previousEmploymentList;
+    private List<Education> educationList;
 
 
 
@@ -38,8 +52,9 @@ public abstract class Employee {
         this.email = new SimpleStringProperty();
         this.contactNumber = new SimpleStringProperty();
         this.qualifications = new SimpleStringProperty();
-        previousEmploymentList = new ArrayList<>();
-
+        this.previousEmploymentList = new ArrayList<>();
+        this.educationList = new ArrayList<>();
+        this.nic = new SimpleStringProperty();
 
     }
 
@@ -134,5 +149,69 @@ public abstract class Employee {
 
     public void setPreviousEmploymentList(List<PreviousEmployment> previousEmploymentList) {
         this.previousEmploymentList = previousEmploymentList;
+    }
+
+    @Embedded
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+
+    @Transient
+    public BufferedImage getImage() {
+
+        image = null;
+        try {
+
+            image = ImageIO.read(new ByteArrayInputStream(this.getImageByte()));
+            System.out.println(this.getImageByte().length);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        WritableRaster raster = image.getRaster();
+        DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
+        imageByte = data.getData();
+        this.image = image;
+    }
+
+    @Lob
+    @Column(name="IMAGE", columnDefinition="longblob")
+    private byte[] getImageByte() {
+        return imageByte;
+    }
+
+    private void setImageByte(byte[] imageByte) {
+        this.imageByte = imageByte;
+    }
+
+
+    @ElementCollection
+    public List<Education> getEducationList() {
+        return educationList;
+    }
+
+    public void setEducationList(List<Education> educationList) {
+        this.educationList = educationList;
+    }
+
+    public String getNic() {
+        return nic.get();
+    }
+
+    public StringProperty nicProperty() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic.set(nic);
     }
 }

@@ -1,158 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1579.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Laboratory.controllers.orderTestController">
 
-    <left>
-        <VBox fx:id="aside" alignment="CENTER" prefHeight="715.0" prefWidth="308.0" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
-            <children>
-                <JFXButton fx:id="dashboardBT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="168.0" prefWidth="308.0" stylesheets="@stylesheet.css" text="Dash Board" textFill="WHITE">
-                    <graphic>
-                        <MaterialDesignIconView glyphName="VIEW_MODULE" size="80" />
-                    </graphic></JFXButton>
-                <JFXButton fx:id="ordertestBT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="168.0" prefWidth="415.0" stylesheets="@stylesheet.css" text=" Order Test">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="LIST_ALT" size="70" />
-                    </graphic></JFXButton>
-                <JFXButton fx:id="enter_resultBT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="168.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="Enter Results">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="EDIT" size="80" />
-                    </graphic></JFXButton>
-                <JFXButton fx:id="viewDB_BT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="168.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="View Database">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="DATABASE" size="70" />
-                    </graphic></JFXButton>
-                <JFXButton fx:id="extraBT" contentDisplay="TOP" onMouseClicked="#changePanel" prefHeight="168.0" prefWidth="415.0" stylesheets="@stylesheet.css" text="Extras">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="PIE_CHART" size="70" />
-                    </graphic></JFXButton>
-            </children>
-        </VBox>
-    </left>
-
-
-
-    
-    <!--<left>-->
-      <!--<VBox alignment="CENTER" prefHeight="715.0" prefWidth="228.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">-->
-         <!--<children>-->
-            <!--<JFXButton fx:id="a" prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Dash Board">-->
-               <!--<VBox.margin>-->
-                  <!--<Insets />-->
-               <!--</VBox.margin></JFXButton>-->
-            <!--<JFXButton fx:id="b" prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Order Test" />-->
-            <!--<JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="Enter Results" />-->
-            <!--<JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="View Database" />-->
-            <!--<JFXButton prefHeight="160.0" prefWidth="228.0" stylesheets="@stylesheet.css" text="About" />-->
-         <!--</children>-->
-      <!--</VBox>-->
-   <!--</left>-->
-   <center>
-      <AnchorPane prefHeight="400.0" prefWidth="443.0" BorderPane.alignment="CENTER">
-         <children>
-            <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="41.0" prefHeight="329.0" prefWidth="750.0" text="Patient Details">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="290.0" prefWidth="676.0">
+<GridPane prefHeight="720.0" prefWidth="1411.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="784.0" minWidth="1.0" prefWidth="77.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1074.0" minWidth="10.0" prefWidth="746.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="287.0" minWidth="0.0" prefWidth="52.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.0" minWidth="10.0" prefWidth="330.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="657.0" minWidth="10.0" prefWidth="178.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="0.0" prefWidth="49.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="408.0" minHeight="10.0" prefHeight="357.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="369.0" minHeight="10.0" prefHeight="304.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="145.0" minHeight="0.0" prefHeight="39.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <TitledPane fx:id="titlepane" animated="false" collapsible="false" prefHeight="329.0" prefWidth="666.0" text="Patient Details" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="290.0" prefWidth="676.0">
+               <children>
+                  <Label layoutX="23.0" layoutY="22.0" text="No." />
+                  <JFXTextField disable="true" layoutX="115.0" layoutY="14.0" />
+                  <Label layoutX="23.0" layoutY="69.0" text="Name" />
+                  <JFXTextField layoutX="115.0" layoutY="60.0" />
+                  <Label layoutX="23.0" layoutY="112.0" text="Age" />
+                  <JFXTextField layoutX="115.0" layoutY="103.0" />
+                  <Label layoutX="19.0" layoutY="221.0" text="Address" />
+                  <JFXTextField layoutX="111.0" layoutY="203.0" prefHeight="44.0" prefWidth="292.0" />
+                  <Label layoutX="382.0" layoutY="35.0" text="Date" />
+                  <DatePicker layoutX="479.0" layoutY="29.0" prefHeight="38.0" prefWidth="216.0" />
+                  <Label layoutX="18.0" layoutY="169.0" text="Gender" />
+                  <RadioButton layoutX="115.0" layoutY="172.0" mnemonicParsing="false" text="Male" />
+                  <RadioButton layoutX="219.0" layoutY="172.0" mnemonicParsing="false" text="Female" />
+                  <Label layoutX="364.0" layoutY="107.0" text="Doctors Name" />
+                  <JFXTextField layoutX="510.0" layoutY="93.0" prefHeight="34.0" prefWidth="185.0" />
+               </children>
+            </AnchorPane>
+         </content>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" prefHeight="350.0" prefWidth="742.0" text="Test Details" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="297.0" prefWidth="720.0">
+               <children>
+                  <Pane layoutX="21.0" layoutY="24.0" prefHeight="167.0" prefWidth="192.0" style="-fx-background-color: #0f2a33;">
                      <children>
-                        <Label layoutX="23.0" layoutY="22.0" text="No." />
-                        <JFXTextField disable="true" layoutX="115.0" layoutY="14.0" />
-                        <Label layoutX="23.0" layoutY="69.0" text="Name" />
-                        <JFXTextField layoutX="115.0" layoutY="60.0" />
-                        <Label layoutX="23.0" layoutY="112.0" text="Age" />
-                        <JFXTextField layoutX="115.0" layoutY="103.0" />
-                        <Label layoutX="19.0" layoutY="221.0" text="Address" />
-                        <JFXTextField layoutX="111.0" layoutY="203.0" prefHeight="44.0" prefWidth="292.0" />
-                        <Label layoutX="382.0" layoutY="35.0" text="Date" />
-                        <DatePicker layoutX="510.0" layoutY="29.0" prefHeight="38.0" prefWidth="216.0" />
-                        <Label layoutX="18.0" layoutY="169.0" text="Gender" />
-                        <RadioButton layoutX="115.0" layoutY="172.0" mnemonicParsing="false" text="Male" />
-                        <RadioButton layoutX="219.0" layoutY="172.0" mnemonicParsing="false" text="Female" />
-                        <Label layoutX="382.0" layoutY="105.0" text="Doctors Name" />
-                        <JFXTextField layoutX="510.0" layoutY="93.0" prefHeight="34.0" prefWidth="217.0" />
+                        <JFXButton fx:id="selectTest" layoutX="14.0" layoutY="84.0" prefHeight="38.0" prefWidth="159.0" stylesheets="@stylesheet.css" text="Select Test" textFill="WHITE" />
+                        <Label layoutX="8.0" layoutY="27.0" prefHeight="26.0" prefWidth="175.0" text=" Tests Selecting tools " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
                      </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
-            <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="407.0" prefHeight="277.0" prefWidth="750.0" text="Test Details">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Pane layoutX="21.0" layoutY="24.0" prefHeight="201.0" prefWidth="234.0" style="-fx-background-color: #0f2a33;">
-                           <children>
-                              <JFXButton fx:id="selectTest" layoutX="21.0" layoutY="98.0" prefHeight="69.0" prefWidth="184.0" stylesheets="@stylesheet.css" text="Select Test" textFill="WHITE" />
-                              <Label layoutX="27.0" layoutY="24.0" text=" Tests Selecting tools " textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <TableView layoutX="286.0" layoutY="19.0" prefHeight="200.0" prefWidth="279.0">
-                          <columns>
-                            <TableColumn prefWidth="121.0" text="Main Test" />
-                            <TableColumn prefWidth="183.0" text="Sub Test" />
-                          </columns>
-                        </TableView>
-                        <JFXButton fx:id="selectTest" layoutX="600.0" layoutY="167.0" prefHeight="52.0" prefWidth="136.0" stylesheets="@stylesheet.css" text="View Database" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
-            <TitledPane animated="false" collapsible="false" layoutX="788.0" layoutY="41.0" prefHeight="543.0" prefWidth="467.0" text="Cost calculation">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="528.0" prefWidth="518.0">
-                     <children>
-                        <TableView layoutX="1.0" layoutY="-1.0" prefHeight="389.0" prefWidth="463.0">
-                          <columns>
-                            <TableColumn minWidth="3.0" prefWidth="104.0" text="Test ID" />
-                            <TableColumn prefWidth="215.0" text="Main Test Name" />
-                              <TableColumn prefWidth="142.0" text="Chargers" />
-                          </columns>
-                        </TableView>
-                        <TextField layoutX="280.0" layoutY="424.0" prefHeight="38.0" prefWidth="171.0" />
-                        <Label layoutX="168.0" layoutY="430.0" text="Total Cost" />
-                        <Button layoutX="43.0" layoutY="424.0" mnemonicParsing="false" text="Delete" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
-            <JFXButton fx:id="selectTest" layoutX="1105.0" layoutY="636.0" prefHeight="38.0" prefWidth="135.0" stylesheets="@stylesheet.css" text="Print Recipt" />
-         </children>
-      </AnchorPane>
-   </center>
-   <top>
-       <HBox prefHeight="55.0" prefWidth="1579.0" BorderPane.alignment="CENTER">
-           <children>
-               <AnchorPane prefHeight="55.0" prefWidth="1586.0">
-                   <children>
-                       <Pane fx:id="topPane" layoutX="306.0" layoutY="-1.0" prefHeight="55.0" prefWidth="1273.0" stylesheets="@stylesheet.css">
-                           <children>
-                               <Label layoutX="957.0" layoutY="8.0" text="Dispensary Management System" textFill="#cdcdcd">
-                                   <font>
-                                       <Font name="Brush Script MT Italic" size="28.0" />
-                                   </font>
-                               </Label>
-                           </children>
-                       </Pane>
-                       <Pane fx:id="labicon" prefHeight="55.0" prefWidth="307.0" stylesheets="@stylesheet.css">
-                           <children>
-                               <Label layoutX="84.0" layoutY="7.0" text="Laboratory" textFill="WHITE">
-                                   <graphic>
-                                       <FontAwesomeIconView glyphName="FLASK" size="40" />
-                                   </graphic>
-                                   <font>
-                                       <Font name="Segoe UI Light Italic" size="21.0" />
-                                   </font>
-                               </Label>
-                           </children>
-                       </Pane>
-                   </children></AnchorPane>
-           </children>
-       </HBox>
-   </top>
-</BorderPane>
+                  </Pane>
+                  <TableView layoutX="228.0" layoutY="19.0" prefHeight="200.0" prefWidth="480.0" AnchorPane.rightAnchor="12.0">
+                     <columns>
+                        <TableColumn prefWidth="121.0" text="Main Test" />
+                        <TableColumn prefWidth="183.0" text="Sub Test" />
+                     </columns>
+                  </TableView>
+                  <JFXButton fx:id="selectTest" layoutX="516.0" layoutY="231.0" prefHeight="38.0" prefWidth="192.0" stylesheets="@stylesheet.css" text="View Database" />
+               </children>
+            </AnchorPane>
+         </content>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" prefHeight="344.0" text="Cost calculation" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="1">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="528.0" prefWidth="518.0">
+               <children>
+                  <TableView layoutY="-1.0" prefHeight="308.0" prefWidth="553.0">
+                     <columns>
+                        <TableColumn minWidth="3.0" prefWidth="104.0" text="Test ID" />
+                        <TableColumn prefWidth="215.0" text="Main Test Name" />
+                        <TableColumn prefWidth="142.0" text="Chargers" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="43.0" layoutY="424.0" mnemonicParsing="false" text="Delete" />
+               </children>
+            </AnchorPane>
+         </content>
+         <GridPane.margin>
+            <Insets right="50.0" top="20.0" />
+         </GridPane.margin>
+      </TitledPane>
+      <JFXButton fx:id="printReciptBT" prefHeight="38.0" prefWidth="169.0" stylesheets="@stylesheet.css" text="Print Recipt" GridPane.columnIndex="4" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </JFXButton>
+      <TextField prefHeight="38.0" prefWidth="171.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+      <Label text="Total Cost" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="100.0" />
+         </GridPane.margin></Label>
+   </children>
+</GridPane>

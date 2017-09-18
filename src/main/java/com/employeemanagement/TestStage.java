@@ -37,10 +37,11 @@ public class TestStage extends Application {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Welcome New Dispensary");
-            stage.getIcons().add(new Image("/com/Images/Hospital-management-system.png"));
+//            stage.getIcons().add(new Image("/com/Images/Hospital-management-system.png"));
             stage.setMaximized(false);
             stage.setMinHeight(715.0);
             stage.setMinWidth(1299.0);
+            stage.setOnCloseRequest(event -> System.exit(0));
             stage.show();
         } catch (IOException ex) {
 //            Logger.getLogger(StoreKeeper.class.getName()).log(Level.SEVERE, null, ex);

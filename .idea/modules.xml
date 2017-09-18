@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/dispensary-management-system.iml" filepath="$PROJECT_DIR$/dispensary-management-system.iml" />
+      <module fileurl="file://C:/Users/Dilshanka/IdeaProjects/dispensary-management-system/dispensary-management-system.iml" filepath="C:/Users/Dilshanka/IdeaProjects/dispensary-management-system/dispensary-management-system.iml" />
     </modules>
   </component>
 </project>

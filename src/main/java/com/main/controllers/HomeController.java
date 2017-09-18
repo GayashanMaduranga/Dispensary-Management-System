@@ -21,6 +21,7 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -28,11 +29,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -44,7 +53,13 @@ public class HomeController implements ControlledScreen, Initializable{
     ScreenController controller;
 
     @FXML
+    private Button closebtn;
+
+    @FXML
     private Button patientBtn;
+
+    @FXML
+    private GridPane pane;
 
     @FXML
     private Button supplierBtn;
@@ -53,7 +68,7 @@ public class HomeController implements ControlledScreen, Initializable{
     private Button labBtn;
 
     @FXML
-    private Button financeBtn;
+    private Button adminBtn;
 
     @FXML
     private Button pharmacyBtn;
@@ -72,16 +87,17 @@ public class HomeController implements ControlledScreen, Initializable{
         translateXY(-300, 0, patientBtn);
         translateXY(300, 0, supplierBtn);
         translateXY(160, 280, labBtn);
-        translateXY(-160, -280, financeBtn);
+        translateXY(-160, -280, adminBtn);
         translateXY(160, -280, pharmacyBtn);
         translateXY(-160, 280, employeeBtn);
+        translateXY(0, 120, closebtn);
     }
 
     @FXML
     public void closeWindow(ActionEvent actionEvent){
         Stage s = (Stage) patientBtn.getScene().getWindow();
+        Main.createLogin(new Stage());
         s.close();
-        System.exit(0);
     }
 
     private void translateXY(double x, double y, Node node){
@@ -118,12 +134,12 @@ public class HomeController implements ControlledScreen, Initializable{
 
         switch (((Button)event.getSource()).getId()){
 
-            case "financeBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, FinanceScreens.FINANCE_MAIN_SCREEN);
+            case "adminBtn":
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, FinanceScreens.MAIN_DASHBOARD_SCREEN);
                 break;
 
             case "patientBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
                 break;
 
             case "supplierBtn":
@@ -135,16 +151,15 @@ public class HomeController implements ControlledScreen, Initializable{
                 break;
 
             case "employeeBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, MyScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, MyScreens.MAIN_SCREEN);
+                //loadEmployeeManagement();
                 break;
 
             case "pharmacyBtn":
                 ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PharmacyScreens.DASHBOARD_SCREEN);
                 break;
-
         }
     }
-
 
 
 }
