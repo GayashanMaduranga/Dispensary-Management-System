@@ -23,6 +23,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,6 +39,7 @@ import org.hibernate.Session;
 /**
  * Created by gayashan on 8/13/2017.
  */
+@SuppressWarnings("Duplicates")
 public class AddEmpoyeeController implements Initializable,SessionListener{
 
 
@@ -83,6 +86,9 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
     @FXML
     private JFXTextField zip;
+
+    @FXML
+    private JFXTextField jobRole;
 
     @FXML
     private TreeTableView<PreviousEmployment> priviousEmployementTable;
@@ -160,6 +166,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     private List<TreeItem<PreviousEmployment>> previouEmploymentList;
     private List<TreeItem<Education>> educationHistory;
     private BufferedImage employeeBufferedImage;
+    private MainScreenController mainScreenController;
 
 
 
@@ -170,6 +177,8 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
         //Initialize Table Previous Employment
         initTables();
+
+
 
 
     }
@@ -219,6 +228,8 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         s.setEmail(email.getText());
         s.setDateOfBirth(Date.valueOf(dob.getValue()));
         s.setContactNumber(contactNumber.getText());
+        s.setJobRole(jobRole.getText());
+        s.setNic(nic.getText());
         if(male.isSelected()) {
             s.setGender("M");
         }else {
@@ -277,6 +288,9 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         emplymemt.setSupervisor(supervisor.getText());
         emplymemt.setFromDate(Date.valueOf(jobFrom.getValue()));
         emplymemt.setToDate(Date.valueOf(jobTo.getValue()));
+        emplymemt.setStartingSalary(Double.parseDouble(startingSalary.getText()));
+        emplymemt.setEndingSalary(Double.parseDouble(endingSalary.getText()));
+
 
         previouEmploymentList.add(new TreeItem<>(emplymemt));
 
@@ -399,7 +413,11 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         jobTo.setUserData(employment.getToDate().toLocalDate());
 
 
+
+
     }
+
+
 
     @FXML
     void educationTableSelection(MouseEvent event) {
@@ -424,6 +442,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         employment.setCompany("company");
         employment.setJobTitle("Job Title");
         TreeItem<PreviousEmployment> root1 = new TreeItem<>();
+
 
         priviousEmployementTable.setRoot(root1);
         priviousEmployementTable.setShowRoot(false);
@@ -463,5 +482,13 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @Override
     public void setSession(Session session) {
         this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainScreenController = (MainScreenController)controller;
+
+
     }
 }
