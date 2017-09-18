@@ -30,25 +30,25 @@ import java.io.IOException;
 //            primaryStage.setScene(scene);
 //            primaryStage.show();
 
+//##################################
+//        try {
 //
-        try {
-
-
-    Parent root = FXMLLoader.load(getClass().getResource(LabScreens.HOME_SCREEN.getPath()));
-    Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Welcome Dispensary");
-//            stage.getIcons().add(new Image("/com/Images/Hospital-management-system.png"));
-            primaryStage.setMaximized(false);
-            primaryStage.setMinHeight(715.0);
-            primaryStage.setMinWidth(1299.0);
-            primaryStage.show();
-}
-
-catch (IOException ex) {
-        ex.printStackTrace();
-        }
-    }
+//
+//    Parent root = FXMLLoader.load(getClass().getResource(LabScreens.HOME_SCREEN.getPath()));
+//    Scene scene = new Scene(root);
+//            primaryStage.setScene(scene);
+//            primaryStage.setTitle("Welcome Dispensary");
+////            stage.getIcons().add(new Image("/com/Images/Hospital-management-system.png"));
+//            primaryStage.setMaximized(false);
+//            primaryStage.setMinHeight(715.0);
+//            primaryStage.setMinWidth(1299.0);
+//            primaryStage.show();
+//}
+//
+//catch (IOException ex) {
+//        ex.printStackTrace();
+//        }
+//    }
 
 
 
@@ -69,8 +69,8 @@ catch (IOException ex) {
 //       }
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+}}
 

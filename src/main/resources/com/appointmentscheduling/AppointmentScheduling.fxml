@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import jfxtras.scene.control.CalendarPicker?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.DoctorsAssistantController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.appointmentscheduling.controllers.AppointmentController">
     <center>
         <GridPane BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -171,7 +171,7 @@
                         <FontAwesomeIconView glyphName="DASHBOARD" size="20" />
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#logout" prefHeight="37.0" prefWidth="128.0" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+                <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#changeScene" prefHeight="37.0" prefWidth="128.0" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="9">
                     <graphic>
                         <MaterialDesignIconView glyphName="LOGOUT" size="25" />
                     </graphic>

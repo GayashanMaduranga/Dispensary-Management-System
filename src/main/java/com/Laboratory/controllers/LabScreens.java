@@ -20,11 +20,7 @@ public enum LabScreens implements BaseEnum{
 
 
 
-
     SELECT_TEST_SCREEN("selectTest", "/com/Laboratory/selectTest.fxml");
-
-
-
 
     String path;
     String id;

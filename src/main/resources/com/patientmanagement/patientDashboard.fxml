@@ -66,9 +66,9 @@
             </GridPane>
             <GridPane prefHeight="597.0" prefWidth="1300.0" style="-fx-background-color: #24248f;" GridPane.rowIndex="1" GridPane.rowSpan="2">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="283.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="699.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="283.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="157.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="986.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="152.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="208.0" vgrow="SOMETIMES" />
@@ -76,14 +76,18 @@
                 <RowConstraints minHeight="0.0" prefHeight="185.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" graphicTextGap="15.0" prefHeight="93.0" prefWidth="1032.0" text="Patient Management" textFill="WHITE" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="38.0" />
-                     </font>
-                     <graphic>
-                        <MaterialDesignIconView glyphName="ACCOUNT_MULTIPLE" size="80" />
-                     </graphic>
-                  </Label>
+                  <HBox alignment="CENTER" GridPane.columnIndex="1">
+                     <children>
+                        <Label alignment="CENTER" graphicTextGap="15.0" prefHeight="93.0" prefWidth="728.0" text="Patient Management" textFill="WHITE">
+                           <font>
+                              <Font size="38.0" />
+                           </font>
+                           <graphic>
+                              <MaterialDesignIconView glyphName="ACCOUNT_MULTIPLE" size="80" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="367.0" prefWidth="778.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <JFXButton fx:id="doctorPortalBtn" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="234.0" prefWidth="272.0" style="-fx-background-color: none;" text="Doctor Portal">
@@ -100,6 +104,14 @@
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="USER" size="80" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="apoointmentBtn" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="239.0" prefWidth="272.0" style="-fx-background-color: none;" text="Appointments">
+                           <font>
+                              <Font name="Verdana" size="26.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="LIST" size="80" />
                            </graphic>
                         </JFXButton>
                      </children>

@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 /**
  * Created by AmilaWC on 8/19/2017.
  */
-public class enterResultsController implements Initializable {
+public class enterResultsController implements Initializable, ControlledScreen {
 
 
 
@@ -43,7 +43,8 @@ public class enterResultsController implements Initializable {
 
         }
     }
-//    ScreenController controller;
+
+    ScreenController controller;
 //
 //    @FXML
 //    private JFXButton dashBoardBtn;
@@ -53,11 +54,11 @@ public class enterResultsController implements Initializable {
 //
 //
 //
-//    @Override
-//    public void setScreenParent(ScreenController screenParent) {
-//        controller = screenParent;
-//
-//    }
+    @Override
+    public void setScreenParent(ScreenController screenParent) {
+        controller = screenParent;
+
+    }
 //
 //    @Override
 //    public void initialize(URL location, ResourceBundle resources) {

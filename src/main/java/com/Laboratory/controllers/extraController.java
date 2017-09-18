@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 /**
  * Created by AmilaWC on 8/20/2017.
  */
-public class extraController implements Initializable {
+public class extraController implements Initializable, ControlledScreen {
 
 
 
@@ -43,7 +43,7 @@ public class extraController implements Initializable {
 
         }
     }
-//    ScreenController controller;
+    ScreenController controller;
 //
 //    @FXML
 //    private JFXButton dashBoardBtn;
@@ -53,12 +53,12 @@ public class extraController implements Initializable {
 //
 //
 //
-//    @Override
-//    public void setScreenParent(ScreenController screenParent) {
-//        controller = screenParent;
-//
-//    }
-//
+    @Override
+    public void setScreenParent(ScreenController screenParent) {
+        controller = screenParent;
+
+    }
+
 //    @Override
 //    public void initialize(URL location, ResourceBundle resources) {
 //
