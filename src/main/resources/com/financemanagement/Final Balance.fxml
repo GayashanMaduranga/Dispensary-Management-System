@@ -49,6 +49,7 @@
                         <JFXCheckBox layoutX="536.0" layoutY="94.0" text="Supplier Management" />
                         <JFXButton layoutX="431.0" layoutY="143.0" prefHeight="25.0" prefWidth="135.0" text="Calculate" />
                         <JFXButton fx:id="FBGenRepBtn" layoutX="633.0" layoutY="143.0" prefHeight="25.0" prefWidth="135.0" styleClass="report1-btn" stylesheets="@styles.css" text="Generate Report" />
+                        <JFXCheckBox layoutX="768.0" layoutY="94.0" prefHeight="17.0" prefWidth="158.0" text="Other" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="445.0" prefWidth="1025.0" GridPane.columnIndex="1" GridPane.rowIndex="2">

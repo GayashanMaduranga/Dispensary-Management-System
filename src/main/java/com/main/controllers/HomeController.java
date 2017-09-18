@@ -53,6 +53,9 @@ public class HomeController implements ControlledScreen, Initializable{
     ScreenController controller;
 
     @FXML
+    private Button closebtn;
+
+    @FXML
     private Button patientBtn;
 
     @FXML
@@ -65,7 +68,7 @@ public class HomeController implements ControlledScreen, Initializable{
     private Button labBtn;
 
     @FXML
-    private Button financeBtn;
+    private Button adminBtn;
 
     @FXML
     private Button pharmacyBtn;
@@ -84,16 +87,17 @@ public class HomeController implements ControlledScreen, Initializable{
         translateXY(-300, 0, patientBtn);
         translateXY(300, 0, supplierBtn);
         translateXY(160, 280, labBtn);
-        translateXY(-160, -280, financeBtn);
+        translateXY(-160, -280, adminBtn);
         translateXY(160, -280, pharmacyBtn);
         translateXY(-160, 280, employeeBtn);
+        translateXY(0, 120, closebtn);
     }
 
     @FXML
     public void closeWindow(ActionEvent actionEvent){
         Stage s = (Stage) patientBtn.getScene().getWindow();
+        Main.createLogin(new Stage());
         s.close();
-        System.exit(0);
     }
 
     private void translateXY(double x, double y, Node node){
@@ -130,12 +134,12 @@ public class HomeController implements ControlledScreen, Initializable{
 
         switch (((Button)event.getSource()).getId()){
 
-            case "financeBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, FinanceScreens.FINANCE_MAIN_SCREEN);
+            case "adminBtn":
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, FinanceScreens.MAIN_DASHBOARD_SCREEN);
                 break;
 
             case "patientBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
                 break;
 
             case "supplierBtn":
@@ -154,7 +158,6 @@ public class HomeController implements ControlledScreen, Initializable{
             case "pharmacyBtn":
                 ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PharmacyScreens.DASHBOARD_SCREEN);
                 break;
-
         }
     }
 

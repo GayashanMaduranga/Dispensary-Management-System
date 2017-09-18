@@ -5,7 +5,6 @@ import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.common.SessionListener;
-import com.financemanagement.controllers.MainController.MainController;
 import com.main.Main;
 import com.main.controllers.MainScreens;
 import com.patientmanagement.controllers.PatientScreens;

@@ -3,6 +3,7 @@ package com.PharmacyMgt.Controllers;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
+import com.main.controllers.MainScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
@@ -65,7 +66,6 @@ public class PharmacyController implements Initializable,ControlledScreen{
                 ScreenController.changeScreen(controller, PharmacyScreens.DASHBOARD_SCREEN, PharmacyScreens.PHARMACY_BILLING_SCREEN);
                 break;
 
-
             case "stockBtn":
 
                 ScreenController.changeScreen(controller, PharmacyScreens.DASHBOARD_SCREEN, PharmacyScreens.PHARMACY_STOCK_SCREEN);
@@ -77,19 +77,15 @@ public class PharmacyController implements Initializable,ControlledScreen{
                 ScreenController.changeScreen(controller, PharmacyScreens.DASHBOARD_SCREEN, PharmacyScreens.PHARMACY_MESSAGE_SCREEN);
                 break;
 
-//            case "logBtn":
-//
-//                ScreenController.changeScreen(controller, PharmacyScreens.DASHBOARD_SCREEN, PharmacyScreens.PHARMACY_LOG_SCREEN);
-//                break;
+            case "backHomeBtn":
+
+                ScreenController.changeScreen(controller, PharmacyScreens.DASHBOARD_SCREEN, MainScreens.HOME_SCREEN);
+                break;
+
             case "paymentBtn":
 
                 ScreenController.changeScreen(controller, PharmacyScreens.DASHBOARD_SCREEN, PharmacyScreens.PHARMACY_PAYMENT_SCREEN);
                 break;
-
-
-
-
-
 
         }
 

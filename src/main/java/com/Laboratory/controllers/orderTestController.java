@@ -56,4 +56,29 @@ public class orderTestController implements Initializable,ControlledScreen {
 
         }
     }
+//    @FXML
+//    void changePanel(MouseEvent event) {
+//        switch (((JFXButton) event.getSource()).getId()){
+//            case "dashboardBT":
+//                ScreenController.changeScreen(controller, LabScreens.ORDERTEST_SCREEN, LabScreens.DASHBOARD_SCREEN);
+//                break;
+//            case "ordertestBT":
+//                //ScreenController.changeScreen(controller, LabScreens.DASHBOARD_SCREEN, LabScreens.ORDERTEST_SCREEN);
+//                break;
+//            case "enter_resultBT":
+//                ScreenController.changeScreen(controller, LabScreens.ORDERTEST_SCREEN, LabScreens.ENTERRESULTS_SCREEN);
+//                break;
+//            case "viewDB_BT":
+//                ScreenController.changeScreen(controller, LabScreens.ORDERTEST_SCREEN, LabScreens.VIEWDB_SCREEN);
+//                break;
+//            case "extraBT":
+//                ScreenController.changeScreen(controller, LabScreens.ORDERTEST_SCREEN, LabScreens.EXTRA_SCREEN);
+//                break;
+//
+//        }
+//    }
 }
+
+
+//DASHBOARD_SCREEN, LabScreens.EXTRA_SCREEN);
+// current screen    |  yanna ona screen eka

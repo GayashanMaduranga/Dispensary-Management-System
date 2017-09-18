@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
@@ -61,15 +60,16 @@
                               <Font name="Segoe UI Semilight" size="15.0" />
                            </font>
                         </JFXTextField>
-                        <JFXCheckBox layoutX="593.0" layoutY="38.0" text="Pharmacy" />
-                        <JFXCheckBox layoutX="593.0" layoutY="70.0" text="Lab Inventory" />
-                        <JFXCheckBox layoutX="782.0" layoutY="70.0" text="Patient Management" />
-                        <JFXCheckBox layoutX="593.0" layoutY="102.0" text="Employee Management" />
-                        <JFXCheckBox layoutX="782.0" layoutY="38.0" text="Laboratary" />
-                        <JFXCheckBox layoutX="782.0" layoutY="102.0" text="Appointment Scheduling" />
-                        <JFXCheckBox layoutX="593.0" layoutY="135.0" text="Supplier Management" />
-                        <JFXButton layoutX="596.0" layoutY="194.0" prefHeight="25.0" prefWidth="135.0" text="Calculate" />
-                        <JFXButton layoutX="781.0" layoutY="194.0" prefHeight="25.0" prefWidth="135.0" styleClass="report1-btn" text="Generate Report" />
+                        <JFXButton layoutX="596.0" layoutY="222.0" prefHeight="25.0" prefWidth="135.0" text="Calculate" />
+                        <JFXButton layoutX="813.0" layoutY="220.0" prefHeight="25.0" prefWidth="135.0" text="Generate Report" />
+                        <JFXButton layoutX="596.0" layoutY="42.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Pharmacy " />
+                        <JFXButton layoutX="596.0" layoutY="84.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Laboratary" />
+                        <JFXButton layoutX="596.0" layoutY="125.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Employee" />
+                        <JFXButton layoutX="596.0" layoutY="165.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Appointment" />
+                        <JFXButton layoutX="813.0" layoutY="42.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Lab Inventory" />
+                        <JFXButton layoutX="813.0" layoutY="84.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Supplier Mgmt" />
+                        <JFXButton layoutX="813.0" layoutY="125.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Patient Mgmt" />
+                        <JFXButton layoutX="813.0" layoutY="165.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Other Revenue" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -151,6 +151,11 @@
                         <Font name="Verdana" size="18.0" />
                      </font>
                   </JFXButton>
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="266.0" text="Revenue Menu" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
          </left>
