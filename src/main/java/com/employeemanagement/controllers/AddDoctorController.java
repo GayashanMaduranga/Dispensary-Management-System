@@ -227,7 +227,9 @@ public class AddDoctorController implements Initializable,SessionListener{
         doctor.setEmail(email.getText());
         doctor.setDateOfBirth(Date.valueOf(dob.getValue()));
         doctor.setContactNumber(contactNumber.getText());
-
+        doctor.setChargePerVisit(Double.parseDouble(chargePerVisit.getText()));
+        doctor.setSLMCRegNO(slmcRegNumber.getText());
+        doctor.setNic(nic.getText());
 
         if(male.isSelected()) {
             doctor.setGender("M");

@@ -1,17 +1,13 @@
 package com.employeemanagement.controllers;
 
-import com.common.ConfirmDialog;
-import com.common.SessionListener;
+import com.common.*;
 import com.jfoenix.controls.JFXButton;
-import com.common.ControlledScreen;
-import com.common.ScreenController;
-import com.main.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.hibernate.Session;
 
 import java.net.URL;
@@ -39,6 +35,9 @@ public class DashBoardController implements Initializable,SessionListener {
     @FXML
     private JFXButton doctorDetailsBtn;
 
+    @FXML
+    private JFXButton webCam;
+
     private MainScreenController mainScreenController;
 
     @FXML
@@ -61,9 +60,13 @@ public class DashBoardController implements Initializable,SessionListener {
 
                 break;
             case "doctorDetailsBtn":
-                ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN,mainScreenController.getContent(),mainScreenController);
+                ScreenController.changeScreen(MyScreens.SEARCH_DOCTOR_SCREEN,mainScreenController.getContent(),mainScreenController);
 
 
+                break;
+
+            case "webCam":
+                initWebCam();
                 break;
 
         }
@@ -94,6 +97,47 @@ public class DashBoardController implements Initializable,SessionListener {
 //
 //
 //    }
+
+
+    public void initWebCam(){
+
+        System.out.println("OK");
+        final Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+
+                    try (QrCapture qr = new QrCapture()) {
+                        showMessage("QR code text is:\n" + qr.getResult() + "");
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+
+
+            };
+        });
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+
+    public void showInformation(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Information");
+        alert.setHeaderText(title);
+        alert.setContentText(message);
+
+        alert.showAndWait();
+    }
+
+    public void showMessage(String message){
+
+        showInformation("QR Information Dialog",message);
+
+        System.out.println(message);
+
+    }
 
 
 }

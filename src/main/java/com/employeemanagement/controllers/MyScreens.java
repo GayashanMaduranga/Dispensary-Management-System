@@ -11,10 +11,12 @@ public enum MyScreens implements BaseEnum{
     DASHBOARD_SCREEN("dashboard", "/com/employeemanagement/DashBoard.fxml"),
     ADDEMPLOYEE_SCREEN("addEmployee", "/com/employeemanagement/AddEmployee.fxml"),
     ATTENDENCE_SCREEN("attendence", "/com/employeemanagement/Attendence.fxml"),
-    SEARCH_EMPLOYEE_SCREEN("searchEmployee", "/com/employeemanagement/SearchEmployee.fxml"),//com/employeemanagement/SearchEmployee.fxml
+    SEARCH_EMPLOYEE_SCREEN("searchEmployee", "/com/employeemanagement/SearchEmployee.fxml"),
     PAYROLL_SCREEN("payroll", "/com/employeemanagement/Payroll.fxml"),
     VIEW_EMPLOYEE_SCREEN("payroll", "/com/employeemanagement/ViewEmployeeDetails.fxml"),
     ADD_DOCTOR_SCREEN("searchEmployee", "/com/employeemanagement/AddDoctor.fxml"),
+    SEARCH_DOCTOR_SCREEN("searchEmployee", "/com/employeemanagement/SearchDoctor.fxml"),
+    VIEW_DOCTOR_SCREEN("payroll", "/com/employeemanagement/ViewDoctorDetails.fxml"),
 
     LOAN_SCREEN("loan", "/com/employeemanagement/Loan.fxml");
 ///com/employeemanagement/views/Loan.fxml
