@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane prefHeight="721.0" prefWidth="1404.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1047.0" minWidth="10.0" prefWidth="857.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1211.0" minWidth="10.0" prefWidth="252.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1047.0" minWidth="10.0" prefWidth="71.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="696.0" minWidth="10.0" prefWidth="214.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="335.0" minWidth="0.0" prefWidth="0.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="323.0" minHeight="10.0" prefHeight="262.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="291.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <TextField prefHeight="38.0" prefWidth="667.0" promptText="patient ID or Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <tooltip>
+            <Tooltip text="Search by patient ID or name" />
+         </tooltip>
+         <GridPane.margin>
+            <Insets left="160.0" right="40.0" />
+         </GridPane.margin>
+      </TextField>
+      <JFXButton fx:id="enterResSearchBT" prefHeight="56.0" prefWidth="146.0" stylesheets="@stylesheet.css" text="Search" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <TableView fx:id="table" prefHeight="525.0" prefWidth="832.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="2">
+         <columns>
+            <TableColumn prefWidth="98.0" text="Patient ID" />
+            <TableColumn prefWidth="274.0" text="Patient Name" />
+            <TableColumn prefWidth="102.0" text="Test ID" />
+            <TableColumn prefWidth="210.0" text="Test Name" />
+            <TableColumn prefWidth="125.0" text="Status" />
+         </columns>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </TableView>
+      <JFXButton fx:id="enterResPrintBT" prefHeight="55.0" prefWidth="163.0" stylesheets="@stylesheet.css" text="Print" GridPane.columnIndex="4" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets bottom="180.0" />
+         </GridPane.margin></JFXButton>
+      <JFXButton fx:id="enterResDeleteBT" prefHeight="55.0" prefWidth="163.0" stylesheets="@stylesheet.css" text="Delete" GridPane.columnIndex="4" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets right="10.0" top="150.0" />
+         </GridPane.margin>
+      </JFXButton>
+      <Separator orientation="VERTICAL" prefHeight="529.0" prefWidth="6.0" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2">
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </Separator>
+   </children>
+</GridPane>
