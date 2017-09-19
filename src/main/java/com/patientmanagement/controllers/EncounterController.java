@@ -83,4 +83,9 @@ public class EncounterController implements Initializable,ControlledScreen {
         }
     }
 
+    @FXML
+    void fgfgfgfgf(){
+        System.out.println("hehehehe");
+    }
+
 }
