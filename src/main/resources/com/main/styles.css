@@ -1,0 +1,95 @@
+#leftPane{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);
+}
+
+#topPane{
+
+    -fx-background-color: #2b2e3c;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 7,0.01,0, 5);
+}
+
+#topPane .glyph-icon{
+
+    -fx-fill: #cdcdcd;
+}
+
+#leftPane .button{
+    -fx-border-color: none;
+    -fx-background-color: none;
+    -fx-effect: none;
+    -fx-text-fill: white;
+}
+
+#leftPane #titlebtn{
+
+    -fx-background-color: #154687;
+    -fx-effect: dropshadow(gaussian, #133667, 7, 0.01,0, 5);
+}
+
+#leftPane .button:hover{
+    -fx-background-color: #134a79;
+    -fx-text-fill: #ebeef3;
+}
+
+#leftPane .button:hover .glyph-icon{
+
+    -fx-fill: #134a79;
+}
+
+.whiteTextArea .content{
+    -fx-background-color: rgba(255,255,255,1);
+    -fx-background-insets:none ;
+    -fx-background-radius: 1px;
+    -fx-border-radius: 1px;
+    -fx-effect: none;
+    -fx-font-family: "verdana";
+    -fx-font-size: 18px;
+}
+
+.button{
+    -fx-background-color: none;
+    -fx-text-fill: #0e4f75;
+    -fx-border-color: #0e4f75;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+.button:hover{
+    -fx-background-color: #0e4f75;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 30px;
+}
+
+.button-blue{
+    -fx-padding: 5px;
+    -fx-background-color: none;
+    -fx-text-fill: #0e4f75;
+    -fx-border-color: #0e4f75;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+#leftPane .logout-btn{
+    -fx-background-color: #eba108;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+#leftPane .logout-btn:hover{
+    -fx-background-color: #eb7715;
+    -fx-font-size:16px;
+}
+
+.glyph-icon{
+
+    -fx-fill: white;
+
+}
+
+.button:hover .glyph-icon{
+
+    -fx-fill: #ebeef3;
+}
