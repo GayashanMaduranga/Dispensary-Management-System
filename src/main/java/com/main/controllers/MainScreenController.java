@@ -82,7 +82,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     }
 
     private JFXButton selectedBtn;
-//    private JFXButton btn2;
+
 
     @FXML
     void changeScene(MouseEvent event) {
@@ -110,10 +110,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 break;
             case "payrollBtn":
                 //ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
-
-                break;
-            case "reportsBtn":
-//                ScreenController.changeScreen(MyScreens.R,content);
                 break;
         }
 
@@ -134,10 +130,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
         selectedBtn = dashBoardBtn;
         selectedBtn.setDisable(true);
-
-
         ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content);
-
 
     }
 
