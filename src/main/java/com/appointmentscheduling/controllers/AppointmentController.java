@@ -47,8 +47,6 @@ public class AppointmentController implements Initializable, ControlledScreen {
             case "assistantPortalBtn":
 //                ScreenController.changeScreen(controller, PatientScreens.MAIN_DASHBOARD_SCREEN, PatientScreens.DASHBOARD_SCREEN);
                 break;
-
-
         }
     }
 
