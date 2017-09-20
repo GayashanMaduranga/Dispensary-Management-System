@@ -65,9 +65,7 @@ public class MessageController implements Initializable,ControlledScreen {
             case "paymentBtn":
                 ScreenController.changeScreen(controller, PharmacyScreens.PHARMACY_MESSAGE_SCREEN, PharmacyScreens.PHARMACY_PAYMENT_SCREEN);
                 break;
-            case "stockBtn":
-                ScreenController.changeScreen(controller, PharmacyScreens.PHARMACY_MESSAGE_SCREEN, PharmacyScreens.PHARMACY_STOCK_SCREEN);
-                break;
+            
 
 //            case "logNavBtn":
 //                ScreenController.changeScreen(controller, PharmacyScreens.PHARMACY_MESSAGE_SCREEN, PharmacyScreens.P);
