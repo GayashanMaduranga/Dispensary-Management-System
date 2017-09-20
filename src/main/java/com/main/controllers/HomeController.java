@@ -32,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -52,6 +53,9 @@ public class HomeController implements ControlledScreen, Initializable{
     ScreenController controller;
 
     @FXML
+    private Button closebtn;
+
+    @FXML
     private Button patientBtn;
 
     @FXML
@@ -64,7 +68,7 @@ public class HomeController implements ControlledScreen, Initializable{
     private Button labBtn;
 
     @FXML
-    private Button financeBtn;
+    private Button adminBtn;
 
     @FXML
     private Button pharmacyBtn;
@@ -83,16 +87,17 @@ public class HomeController implements ControlledScreen, Initializable{
         translateXY(-300, 0, patientBtn);
         translateXY(300, 0, supplierBtn);
         translateXY(160, 280, labBtn);
-        translateXY(-160, -280, financeBtn);
+        translateXY(-160, -280, adminBtn);
         translateXY(160, -280, pharmacyBtn);
         translateXY(-160, 280, employeeBtn);
+        translateXY(0, 120, closebtn);
     }
 
     @FXML
     public void closeWindow(ActionEvent actionEvent){
         Stage s = (Stage) patientBtn.getScene().getWindow();
+        Main.createLogin(new Stage());
         s.close();
-        System.exit(0);
     }
 
     private void translateXY(double x, double y, Node node){
@@ -129,12 +134,12 @@ public class HomeController implements ControlledScreen, Initializable{
 
         switch (((Button)event.getSource()).getId()){
 
-            case "financeBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, FinanceScreens.FINANCE_MAIN_SCREEN);
+            case "adminBtn":
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, FinanceScreens.MAIN_DASHBOARD_SCREEN);
                 break;
 
             case "patientBtn":
-                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PatientScreens.DASHBOARD_SCREEN);
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
                 break;
 
             case "supplierBtn":
@@ -146,43 +151,15 @@ public class HomeController implements ControlledScreen, Initializable{
                 break;
 
             case "employeeBtn":
-                //ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, MyScreens.DASHBOARD_SCREEN);
-                loadEmployeeManagement();
+                ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, MyScreens.MAIN_SCREEN);
+                //loadEmployeeManagement();
                 break;
 
             case "pharmacyBtn":
                 ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PharmacyScreens.DASHBOARD_SCREEN);
                 break;
-
         }
     }
-
-
-    private void loadEmployeeManagement(){
-        try {
-
-            Stage stage = (Stage) pane.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource(MyScreens.MAIN_SCREEN.getPath()));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Welcome New Dispensary");
-            stage.getIcons().add(new Image("/com/Images/Hospital-management-system.png"));
-            stage.setMaximized(true);
-            stage.setMinHeight(715.0);
-            stage.setMinWidth(1299.0);
-            stage.setOnCloseRequest(event -> System.exit(0));
-
-            stage.setFullScreen(true);
-
-            stage.show();
-
-
-        } catch (IOException ex) {
-//            Logger.getLogger(StoreKeeper.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
-    }
-
 
 
 }

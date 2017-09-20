@@ -107,6 +107,7 @@ public class LoginController implements ControlledScreen, Initializable{
             }); // code to be run on stage close ~ Damsith
 
             primaryStage.setFullScreen(true);
+            primaryStage.setFullScreenExitHint("");
             primaryStage.setMinHeight(750.0);
             primaryStage.setMinWidth(1380.0);
 

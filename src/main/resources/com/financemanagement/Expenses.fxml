@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -18,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemanagement.controllers.Expenses">
+<GridPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.financemanagement.controllers.Expenses">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -61,29 +59,26 @@
                                     <Font name="Segoe UI Semilight" size="15.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="AmountTxt" labelFloat="true" layoutX="94.0" layoutY="165.0" prefHeight="29.0" prefWidth="419.0" promptText="Amount" styleClass="text-area" stylesheets="@styles.css">
+                              <JFXTextField fx:id="AmountTxt" labelFloat="true" layoutX="94.0" layoutY="162.0" prefHeight="29.0" prefWidth="419.0" promptText="Amount" styleClass="text-area" stylesheets="@styles.css">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="15.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="RemarkTxt" labelFloat="true" layoutX="94.0" layoutY="232.0" prefHeight="29.0" prefWidth="419.0" promptText="Remark" styleClass="text-area" stylesheets="@styles.css">
+                              <JFXTextField fx:id="RemarkTxt" labelFloat="true" layoutX="94.0" layoutY="230.0" prefHeight="29.0" prefWidth="419.0" promptText="Remark" styleClass="text-area" stylesheets="@styles.css">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="15.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXCheckBox fx:id="ExpPharmacyBtn" layoutX="593.0" layoutY="38.0" text="Pharmacy" />
-                              <JFXCheckBox fx:id="ExpLIBtn" layoutX="593.0" layoutY="70.0" text="Lab Inventory" />
-                              <JFXCheckBox fx:id="ExpPMBtn" layoutX="782.0" layoutY="70.0" text="Patient Management" />
-                              <JFXCheckBox fx:id="ExpEMBtn" layoutX="593.0" layoutY="102.0" text="Employee Management" />
-                              <JFXCheckBox fx:id="ExpLabBtn" layoutX="782.0" layoutY="38.0" text="Laboratary" />
-                              <JFXCheckBox fx:id="ExpASBtn" layoutX="782.0" layoutY="102.0" text="Appointment Scheduling" />
-                              <JFXCheckBox fx:id="ExpSMBtn" layoutX="593.0" layoutY="135.0" text="Supplier Management" />
-                              <JFXButton fx:id="CalculateExpBtn" layoutX="596.0" layoutY="194.0" prefHeight="25.0" prefWidth="135.0" text="Calculate" />
-                              <JFXButton fx:id="ExpGenRepBtn" layoutX="776.0" layoutY="194.0" prefHeight="25.0" prefWidth="135.0" text="Generate Report">
-                                 <styleClass>
-                                    <String fx:value="report1-btn" />
-                                    <String fx:value="report1-btn" />
-                                 </styleClass></JFXButton>
+                              <JFXButton fx:id="CalculateExpBtn" layoutX="596.0" layoutY="214.0" prefHeight="25.0" prefWidth="135.0" styleClass="arrow-button" stylesheets="@styles.css" text="Calculate" />
+                              <JFXButton fx:id="ExpGenRepBtn" layoutX="819.0" layoutY="214.0" prefHeight="25.0" prefWidth="135.0" text="Generate Report" />
+                              <JFXButton layoutX="596.0" layoutY="42.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Pharmacy" />
+                              <JFXButton layoutX="596.0" layoutY="84.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Laboratary" />
+                              <JFXButton layoutX="596.0" layoutY="125.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Employee" />
+                              <JFXButton layoutX="596.0" layoutY="164.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Appointment" />
+                              <JFXButton layoutX="819.0" layoutY="42.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Lab Inventory" />
+                              <JFXButton layoutX="819.0" layoutY="84.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Supplier Mgmt" />
+                              <JFXButton layoutX="819.0" layoutY="125.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Load Patient Mgmt" />
+                              <JFXButton layoutX="819.0" layoutY="164.0" prefHeight="25.0" prefWidth="124.0" styleClass="report1-btn" text="Other Expenses" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -142,8 +137,8 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="125.0" minHeight="54.0" prefHeight="54.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="172.0" minHeight="8.0" prefHeight="34.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="125.0" minHeight="45.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="172.0" minHeight="8.0" prefHeight="41.0" vgrow="NEVER" />
                   <RowConstraints maxHeight="209.0" minHeight="0.0" prefHeight="17.0" vgrow="NEVER" />
                   <RowConstraints maxHeight="206.0" minHeight="0.0" prefHeight="21.0" vgrow="NEVER" />
                   <RowConstraints maxHeight="205.0" minHeight="0.0" prefHeight="47.0" vgrow="NEVER" />
@@ -180,6 +175,11 @@
                         <Font name="Verdana" size="18.0" />
                      </font>
                   </JFXButton>
+                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="261.0" text="Expenses Menu" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
          </left>

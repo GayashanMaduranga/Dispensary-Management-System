@@ -161,7 +161,7 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 
     @FXML
     void showHome(){
-        ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, MainScreens.HOME_SCREEN);
+        ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
     }
 
     @FXML

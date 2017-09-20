@@ -34,7 +34,11 @@ public class ScreenController extends StackPane{
 
     private static final Session session = UserSession.getSession();
 
+
+
     public ScreenController() {
+
+
     }
 
     public void addScreen(String name,Node screen){
@@ -56,7 +60,6 @@ public class ScreenController extends StackPane{
             myScreenController.setScreenParent(this);
             addScreen(name, loadScreen);
 
-
             return true;
 
         }catch(Exception e){
@@ -66,7 +69,6 @@ public class ScreenController extends StackPane{
         }
     }
 
-
     public boolean setScreen(final String name) {
         if (screens.get(name) != null) {
 
@@ -74,24 +76,8 @@ public class ScreenController extends StackPane{
 
             if (!getChildren().isEmpty()) {
 
-//                Timeline fade = new Timeline(
-//
-//                        new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-//                        new KeyFrame(new Duration(400), event ->  {
-
-
-                                getChildren().remove(0);
-                                getChildren().add(0, screens.get(name));
-
-//                                Timeline fadeIn = new Timeline(
-//
-//                                        new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-//                                        new KeyFrame(new Duration(300), new KeyValue(opacity, 1.0)));
-//                                fadeIn.play();
-//
-//                        }, new KeyValue(opacity, 0.0)));
-//
-//                fade.play();
+                getChildren().remove(0);
+                getChildren().add(0, screens.get(name));
 
             } else
                 {
@@ -135,22 +121,36 @@ public class ScreenController extends StackPane{
 
     public static void changeScreen(BaseEnum screen,Pane content){
 
-                    try {
-                        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource(screen.getPath()));
-                Parent root = loader.load();
-                SessionListener listener = (SessionListener)loader.getController();
-                listener.setSession(session);
+        try {
+
+            FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource(screen.getPath()));
+            Parent root = loader.load();
+
                 content.getChildren().clear();
                 content.getChildren().add(root);
-//
-//                        Parent loadScreen = loader.load();
-//                        ControlledScreen myScreenController = (ControlledScreen) loader.getController();
-//                        myScreenController.setScreenParent(this);
-//                        addScreen(name, loadScreen);
+
 
             } catch (IOException e) {
-            e.printStackTrace();
+                e.printStackTrace();
             }
+    }
+
+    public static void changeScreen(BaseEnum screen,Pane content,SessionListener controller){
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource(screen.getPath()));
+            Parent root = loader.load();
+            SessionListener listener = (SessionListener)loader.getController();
+
+            listener.setSession(session);
+            listener.setMainController(controller);
+            content.getChildren().clear();
+            content.getChildren().add(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

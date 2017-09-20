@@ -1,11 +1,14 @@
 package com.financemanagement.controllers;
 
+import com.EntityClasses.OtherExpenses;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.employeemanagement.controllers.MyScreens;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
+import javafx.beans.property.*;
+import com.patientmanagement.controllers.PatientScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,7 +45,13 @@ public class Expenses implements Initializable,ControlledScreen {
     @FXML
     private JFXButton logoutBtn;
 
+    @FXML
+    private JFXButton homeBtn;
 
+    @FXML
+    void showHome(){
+        ScreenController.changeScreen(controller, FinanceScreens.FINANCE_MAIN_SCREEN, FinanceScreens.MAIN_DASHBOARD_SCREEN);
+    }
 
     @FXML
     void changeScene(ActionEvent event) {
@@ -64,10 +73,11 @@ public class Expenses implements Initializable,ControlledScreen {
 
         if (ConfirmDialog.show("", "Are you sure you want to logout?")) {
             Main.createLogin(new Stage());
-            Stage s = (Stage) logoutBtn.getScene().getWindow();
+            Stage s = (Stage) homeBtn.getScene().getWindow();
             s.close();
         }
 }
+
     @Override
     public void setScreenParent(ScreenController screenParent) {
         controller = screenParent;
