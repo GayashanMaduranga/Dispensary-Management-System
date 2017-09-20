@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 /**
  * Created by AmilaWC on 8/19/2017.
  */
-public class dashBoardController implements Initializable {
+public class dashBoardController implements Initializable, ControlledScreen {
 
 
 
@@ -25,7 +25,12 @@ public class dashBoardController implements Initializable {
 
     }
 
-//    ScreenController controller;
+    @Override
+    public void setScreenParent(ScreenController screenParent) {
+        this.controller = screenParent;
+    }
+
+    ScreenController controller;
 //
 //    @FXML
 //    private JFXButton dashBoardBtn;
