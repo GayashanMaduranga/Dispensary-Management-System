@@ -3,8 +3,10 @@ package com.labinventory.controlers;
 import com.Laboratory.controllers.LabScreens;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.financemanagement.controllers.FinanceScreens;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import com.patientmanagement.controllers.PatientScreens;
 import com.sun.glass.ui.Screen;
 import javafx.fxml.Initializable;
 
@@ -71,6 +73,14 @@ public class LabEquipmentControl implements Initializable, ControlledScreen{
 
     @FXML
     private Label userLbl;
+
+    @FXML
+    private JFXButton homeBtn;
+
+    @FXML
+    void showHome(){
+        ScreenController.changeScreen(controller, LabInventoryScreens.LAB_EQUIPMENT_SCREEN, FinanceScreens.MAIN_DASHBOARD_SCREEN);
+    }
 
 
 

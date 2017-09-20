@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="380.0" y="538.0">com.common.ScreenController</node>
+    <node x="511.0" y="122.0">com.PharmacyMgt.Controllers.MessageController</node>
+    <node x="1553.0" y="122.0">com.PharmacyMgt.Controllers.ExpiryDateController</node>
+    <node x="2064.0" y="166.0">com.PharmacyMgt.Controllers.PharmacyController</node>
+    <node x="1400.5" y="0.0">com.common.ControlledScreen</node>
+    <node x="1022.0" y="111.0">com.PharmacyMgt.Controllers.StockController</node>
+    <node x="0.0" y="661.0">com.PharmacyMgt.Controllers.PharmacyScreens</node>
+    <node x="81.5" y="538.0">com.common.BaseEnum</node>
+    <node x="2495.0" y="122.0">com.PharmacyMgt.Controllers.BillingController</node>
+    <node x="0.0" y="122.0">com.PharmacyMgt.Controllers.InvoiceCheckController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.PharmacyMgt.Controllers.InvoiceCheckController" target="com.common.ControlledScreen">
+      <point x="0.0" y="-180.0" />
+      <point x="245.5" y="71.0" />
+      <point x="1423.4166666666665" y="71.0" />
+      <point x="-114.58333333333337" y="25.5" />
+    </edge>
+    <edge source="com.PharmacyMgt.Controllers.BillingController" target="com.common.ControlledScreen">
+      <point x="0.0" y="-180.0" />
+      <point x="2740.5" y="71.0" />
+      <point x="1652.583333333333" y="71.0" />
+      <point x="114.58333333333326" y="25.5" />
+    </edge>
+    <edge source="com.PharmacyMgt.Controllers.PharmacyController" target="com.common.ControlledScreen">
+      <point x="0.0" y="-136.0" />
+      <point x="2269.5" y="81.0" />
+      <point x="1606.75" y="81.0" />
+      <point x="68.75" y="25.5" />
+    </edge>
+    <edge source="com.PharmacyMgt.Controllers.MessageController" target="com.common.ControlledScreen">
+      <point x="0.0" y="-180.0" />
+      <point x="756.5" y="81.0" />
+      <point x="1469.25" y="81.0" />
+      <point x="-68.75" y="25.5" />
+    </edge>
+    <edge source="com.PharmacyMgt.Controllers.StockController" target="com.common.ControlledScreen">
+      <point x="0.0" y="-191.0" />
+      <point x="1277.5" y="91.0" />
+      <point x="1515.0833333333333" y="91.0" />
+      <point x="-22.91666666666663" y="25.5" />
+    </edge>
+    <edge source="com.PharmacyMgt.Controllers.ExpiryDateController" target="com.common.ControlledScreen">
+      <point x="0.0" y="-180.0" />
+      <point x="1798.5" y="91.0" />
+      <point x="1560.9166666666665" y="91.0" />
+      <point x="22.916666666666742" y="25.5" />
+    </edge>
+    <edge source="com.PharmacyMgt.Controllers.PharmacyScreens" target="com.common.BaseEnum">
+      <point x="0.0" y="-125.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="636.0" y="57.0" />
+  <SelectedNodes>
+    <node>com.PharmacyMgt.Controllers.InvoiceCheckController</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

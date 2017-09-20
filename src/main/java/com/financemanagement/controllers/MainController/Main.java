@@ -30,7 +30,7 @@ public class Main extends Application {
         stage.show();
 
 
-//        Parent root = FXMLLoader.load(getClass().getResource("/com/employeemanagement/views/DashBoard.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource(""));
 //
 //        Scene scene = new Scene(root);
 //

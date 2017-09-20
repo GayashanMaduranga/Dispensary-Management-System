@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<GridPane gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1500.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.ViewDoctorController">
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="ALWAYS" />
+    </rowConstraints>
+    <children>
+        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="221.0" GridPane.columnIndex="1">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="495.0" minWidth="10.0" prefWidth="289.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="808.0" minWidth="10.0" prefWidth="711.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Circle fx:id="empImage" fill="DODGERBLUE" radius="88.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.5" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="40.0" />
+                    </GridPane.margin>
+                </Circle>
+                <JFXButton onAction="#uplodePhoto" prefHeight="35.0" prefWidth="260.0" text="Uplode Photo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" valignment="TOP" vgrow="ALWAYS" />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+            <children>
+                <HBox alignment="CENTER" prefHeight="76.0" prefWidth="999.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                    <children>
+                        <JFXButton onAction="#addNewStaff" prefHeight="36.0" prefWidth="207.0" text="Add New Staff Member">
+                            <HBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </HBox.margin>
+                        </JFXButton>
+                        <JFXButton prefHeight="36.0" prefWidth="111.0" text="Reset">
+                            <HBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </HBox.margin>
+                        </JFXButton>
+                    </children>
+                </HBox>
+                <JFXTabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="554.0" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                    <tabs>
+                        <Tab text="Personal Information">
+                            <content>
+                                <ScrollPane>
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                                            <children>
+                                                <GridPane layoutX="63.0" layoutY="14.0" prefHeight="870.0" prefWidth="923.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="14.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="ALWAYS" percentWidth="30.0" />
+                                                        <ColumnConstraints hgrow="ALWAYS" maxWidth="659.0" minWidth="10.0" percentWidth="80.0" prefWidth="659.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="0.0" prefWidth="0.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="317.0" minHeight="10.0" prefHeight="235.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="198.0" minHeight="10.0" prefHeight="129.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label prefHeight="39.0" prefWidth="227.0" text="Full Name " GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <Label prefHeight="39.0" prefWidth="195.0" text="Date of Birth" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <Label prefHeight="39.0" prefWidth="213.0" text="NIC" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <Label prefHeight="39.0" prefWidth="217.0" text="contact Number" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <Label prefHeight="39.0" prefWidth="224.0" text="gender" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <JFXTextField fx:id="fullName" labelFloat="true" maxWidth="-Infinity" prefHeight="32.0" prefWidth="729.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </JFXTextField>
+                                                        <JFXDatePicker fx:id="dob" defaultColor="#4273a5" maxWidth="-Infinity" prefHeight="29.0" prefWidth="278.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </JFXDatePicker>
+                                                        <JFXTextField fx:id="nic" maxWidth="-Infinity" prefHeight="29.0" prefWidth="729.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </JFXTextField>
+                                                        <JFXTextField fx:id="contactNumber" maxWidth="-Infinity" prefHeight="29.0" prefWidth="729.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </JFXTextField>
+                                                        <HBox maxWidth="729.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                                                            <children>
+                                                                <JFXRadioButton fx:id="male" contentDisplay="CENTER" prefHeight="35.0" prefWidth="100.0" text="Male" textAlignment="CENTER">
+                                                                    <HBox.margin>
+                                                                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                                                                    </HBox.margin>
+                                                                </JFXRadioButton>
+                                                                <JFXRadioButton fx:id="female" contentDisplay="CENTER" prefHeight="32.0" prefWidth="128.0" text="Female" textAlignment="CENTER">
+                                                                    <HBox.margin>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                                    </HBox.margin>
+                                                                </JFXRadioButton>
+                                                            </children>
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </HBox>
+                                                        <Label layoutX="10.0" layoutY="103.0" prefHeight="39.0" prefWidth="217.0" text="Email" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <JFXTextField fx:id="email" maxWidth="729.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </JFXTextField>
+                                                        <Label layoutX="20.0" layoutY="200.0" prefHeight="39.0" prefWidth="224.0" text="Address" GridPane.rowIndex="10">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                            <children>
+                                                                <JFXTextField fx:id="unitNo" labelFloat="true" layoutX="10.0" layoutY="110.0" promptText="Appartment/Unit #" />
+                                                                <JFXTextField fx:id="streetAddress" labelFloat="true" promptText="Street Address">
+                                                                    <VBox.margin>
+                                                                        <Insets top="30.0" />
+                                                                    </VBox.margin>
+                                                                </JFXTextField>
+                                                                <JFXTextField fx:id="city" labelFloat="true" layoutX="10.0" layoutY="10.0" promptText="City">
+                                                                    <VBox.margin>
+                                                                        <Insets top="30.0" />
+                                                                    </VBox.margin>
+                                                                </JFXTextField>
+                                                                <JFXTextField fx:id="zip" labelFloat="true" layoutX="10.0" layoutY="39.0" promptText="Zip">
+                                                                    <VBox.margin>
+                                                                        <Insets top="30.0" />
+                                                                    </VBox.margin>
+                                                                </JFXTextField>
+                                                            </children>
+                                                        </VBox>
+                                                        <Label layoutX="20.0" layoutY="67.0" prefHeight="39.0" prefWidth="227.0" text="Employee ID" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <JFXTextField fx:id="empID" labelFloat="true" layoutX="272.0" layoutY="66.0" maxWidth="-Infinity" prefHeight="32.0" prefWidth="729.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </JFXTextField>
+                                                        <Label prefHeight="39.0" prefWidth="195.0" text="Date of Appointment" GridPane.rowIndex="3">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <JFXDatePicker fx:id="dateOfAppointment" defaultColor="#4273a5" maxWidth="-Infinity" prefHeight="29.0" prefWidth="278.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </JFXDatePicker>
+                                                        <Label layoutX="20.0" layoutY="382.0" prefHeight="39.0" prefWidth="224.0" text="SLMC Reg Number" GridPane.rowIndex="8">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </Label>
+                                                        <JFXTextField fx:id="slmcRegNumber" layoutX="272.0" layoutY="337.0" maxWidth="729.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                        </JFXTextField>
+                                          <Label layoutX="20.0" layoutY="421.0" prefHeight="39.0" prefWidth="224.0" text="Charge Per Visit" GridPane.rowIndex="9">
+                                             <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <JFXTextField fx:id="chargePerVisit" layoutX="272.0" layoutY="418.0" maxWidth="729.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                             <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </GridPane.margin>
+                                          </JFXTextField>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Privious Employement">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="999.0">
+                                    <children>
+                                        <TreeTableView fx:id="priviousEmployementTable" layoutX="28.0" layoutY="81.0" onMouseClicked="#previousEmployementTableSelections" prefHeight="341.0" prefWidth="472.0" AnchorPane.leftAnchor="28.0">
+                                            <columns>
+                                                <TreeTableColumn fx:id="colcompany" prefWidth="182.0" text="Company" />
+                                                <TreeTableColumn fx:id="coljobTitle" prefWidth="287.0" text="Job Title" />
+                                            </columns>
+                                        </TreeTableView>
+                                        <GridPane layoutX="509.0" layoutY="53.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="398.0" AnchorPane.leftAnchor="509.0" AnchorPane.rightAnchor="13.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="242.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="235.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <JFXTextField fx:id="company" labelFloat="true" prefHeight="46.0" prefWidth="378.0" promptText="Company" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="jobTitle" labelFloat="true" prefHeight="46.0" prefWidth="378.0" promptText="Job Title" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <HBox GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="35.0" prefWidth="99.0" text="From" />
+                                                        <JFXDatePicker fx:id="jobFrom" defaultColor="#4273a5" maxWidth="-Infinity" prefHeight="29.0" prefWidth="231.0" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </HBox>
+                                                <JFXTextField fx:id="phone" labelFloat="true" prefHeight="46.0" prefWidth="378.0" promptText="Phone" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="supervisor" labelFloat="true" prefHeight="46.0" prefWidth="378.0" promptText="Supervisor" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="startingSalary" labelFloat="true" prefHeight="46.0" prefWidth="378.0" promptText="Starting Salary" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="endingSalary" labelFloat="true" prefHeight="46.0" prefWidth="378.0" promptText="Ending Salary" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <HBox GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="35.0" prefWidth="99.0" text="To" />
+                                                        <JFXDatePicker fx:id="jobTo" defaultColor="#4273a5" maxWidth="-Infinity" prefHeight="29.0" prefWidth="231.0" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </HBox>
+                                                <JFXTextField fx:id="companyAddress" labelFloat="true" prefHeight="46.0" prefWidth="833.0" promptText="Address" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                            </children>
+                                        </GridPane>
+                                        <HBox alignment="CENTER" layoutX="1.0" layoutY="515.0" prefHeight="76.0" prefWidth="1009.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
+                                            <children>
+                                                <JFXButton onAction="#addPreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Add ">
+                                                    <HBox.margin>
+                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                    </HBox.margin>
+                                                </JFXButton>
+                                                <JFXButton layoutX="383.0" layoutY="30.0" onAction="#UpdatePreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Update" />
+                                                <JFXButton onAction="#RemovePreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Remove">
+                                                    <HBox.margin>
+                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                    </HBox.margin>
+                                                </JFXButton>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </AnchorPane>
+                            </content></Tab>
+                        <Tab text="Education">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="999.0">
+                                    <children>
+                                        <TreeTableView fx:id="SchoolTable" layoutX="60.0" layoutY="93.0" onMouseClicked="#educationTableSelection" prefHeight="329.0" prefWidth="404.0">
+                                            <columns>
+                                                <TreeTableColumn fx:id="colSchoolName" prefWidth="186.0" text="School Name" />
+                                                <TreeTableColumn fx:id="colSchoolAddress" prefWidth="214.0" text="Address" />
+                                            </columns>
+                                        </TreeTableView>
+                                        <GridPane layoutX="476.0" layoutY="93.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="509.0" AnchorPane.leftAnchor="476.0" AnchorPane.rightAnchor="14.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <JFXTextField fx:id="schoolName" labelFloat="true" prefHeight="46.0" prefWidth="378.0" promptText="School Name" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <HBox maxWidth="729.0" prefHeight="7.0" prefWidth="333.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                    <children>
+                                                        <JFXRadioButton fx:id="yes" contentDisplay="CENTER" prefHeight="35.0" prefWidth="100.0" text="Yes" textAlignment="CENTER">
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" right="10.0" top="10.0" />
+                                                            </HBox.margin>
+                                                        </JFXRadioButton>
+                                                        <JFXRadioButton fx:id="no" contentDisplay="CENTER" prefHeight="32.0" prefWidth="128.0" text="No" textAlignment="CENTER">
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </HBox.margin>
+                                                        </JFXRadioButton>
+                                                    </children>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                </HBox>
+                                                <HBox GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="35.0" prefWidth="99.0" text="From" />
+                                                        <JFXDatePicker fx:id="schoolFrom" defaultColor="#4273a5" maxWidth="-Infinity" prefHeight="29.0" prefWidth="231.0" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </HBox>
+                                                <JFXTextField fx:id="schoolPhone" labelFloat="true" prefHeight="46.0" prefWidth="378.0" promptText="Phone" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <HBox GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="35.0" prefWidth="99.0" text="To" />
+                                                        <JFXDatePicker fx:id="schoolTo" defaultColor="#4273a5" maxWidth="-Infinity" prefHeight="29.0" prefWidth="231.0" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </HBox>
+                                                <JFXTextField fx:id="schoolAddress" labelFloat="true" prefHeight="46.0" prefWidth="833.0" promptText="Address" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <Label prefHeight="46.0" prefWidth="389.0" text="Did You Graduated ?" GridPane.rowIndex="3">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </padding>
+                                                </Label>
+                                            </children>
+                                        </GridPane>
+                                        <HBox alignment="CENTER" layoutY="485.0" prefHeight="76.0" prefWidth="999.0">
+                                            <children>
+                                                <JFXButton onAction="#addEducationHistory" prefHeight="36.0" prefWidth="111.0" text="Add ">
+                                                    <HBox.margin>
+                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                    </HBox.margin>
+                                                </JFXButton>
+                                                <JFXButton layoutX="379.0" layoutY="30.0" onAction="#updateEducationHistory" prefHeight="36.0" prefWidth="111.0" text="Update" />
+                                                <JFXButton onAction="#removeEducationHistory" prefHeight="36.0" prefWidth="111.0" text="Remove">
+                                                    <HBox.margin>
+                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                    </HBox.margin>
+                                                </JFXButton>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                  <Tab text="Attendance">
+                     <content>
+                        <AnchorPane fx:id="attendanceAncor" minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="999.0">
+                            <children>
+                                <HBox layoutX="22.0" layoutY="40.0" prefHeight="677.0" prefWidth="958.0">
+                                    <children>
+                                        <VBox alignment="TOP_CENTER" prefHeight="448.0" prefWidth="914.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <HBox VBox.vgrow="NEVER">
+                                                    <children>
+                                                        <FontAwesomeIconView glyphName="SEARCH" size="30" />
+                                                        <JFXTextField prefHeight="29.0" prefWidth="392.0">
+                                                            <HBox.margin>
+                                                                <Insets left="20.0" />
+                                                            </HBox.margin>
+                                                        </JFXTextField>
+                                                    </children>
+                                                </HBox>
+                                          <TreeTableView prefHeight="474.0" prefWidth="456.0">
+                                            <columns>
+                                              <TreeTableColumn prefWidth="201.0" text="C1" />
+                                              <TreeTableColumn prefWidth="254.0" text="C2" />
+                                            </columns>
+                                          </TreeTableView>
+                                            </children>
+                                        </VBox>
+                                        <GridPane prefHeight="486.0" prefWidth="944.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="ALWAYS" percentWidth="30.0" />
+                                                <ColumnConstraints hgrow="ALWAYS" maxWidth="590.0" minWidth="10.0" percentWidth="80.0" prefWidth="590.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="5.0" minWidth="0.0" prefWidth="0.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="296.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="298.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="247.0" minHeight="0.0" prefHeight="247.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label prefHeight="39.0" prefWidth="227.0" text="Employee Name" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <Label prefHeight="39.0" prefWidth="195.0" text="Date" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <Label prefHeight="39.0" prefWidth="213.0" text="Arival time" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <JFXTextField labelFloat="true" maxWidth="-Infinity" prefHeight="32.0" prefWidth="729.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTextField>
+                                                <JFXDatePicker defaultColor="#4273a5" maxWidth="-Infinity" prefHeight="29.0" prefWidth="278.0" promptText="filter by date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXDatePicker>
+                                                <HBox GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                    <children>
+                                                        <JFXButton layoutX="181.0" layoutY="30.0" prefHeight="36.0" prefWidth="111.0" text="Add">
+                                                            <HBox.margin>
+                                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                            </HBox.margin>
+                                                        </JFXButton>
+                                                        <JFXButton prefHeight="36.0" prefWidth="111.0" text="Update">
+                                                            <HBox.margin>
+                                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                            </HBox.margin>
+                                                        </JFXButton>
+                                                        <JFXButton prefHeight="36.0" prefWidth="111.0" text="Delete">
+                                                            <HBox.margin>
+                                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                            </HBox.margin>
+                                                        </JFXButton>
+                                                    </children>
+                                                </HBox>
+                                                <Label layoutX="10.0" layoutY="103.0" prefHeight="39.0" prefWidth="217.0" text="Email" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <JFXTimePicker GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTimePicker>
+                                                <JFXTimePicker layoutX="146.0" layoutY="147.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </GridPane.margin>
+                                                </JFXTimePicker>
+                                            </children>
+                                        </GridPane>
+                                    <TreeTableView prefHeight="200.0" prefWidth="200.0">
+                                      <columns>
+                                        <TreeTableColumn prefWidth="75.0" text="C1" />
+                                        <TreeTableColumn prefWidth="75.0" text="C2" />
+                                      </columns>
+                                    </TreeTableView>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                    </tabs>
+                </JFXTabPane>
+            </children>
+        </GridPane>
+    </children>
+</GridPane>
