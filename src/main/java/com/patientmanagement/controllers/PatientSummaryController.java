@@ -9,7 +9,7 @@ import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.common.SessionListener;
-import com.employeemanagement.controllers.MainScreenController;
+import com.main.controllers.MainScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import com.main.controllers.MainScreens;
@@ -37,10 +37,6 @@ import java.util.function.Predicate;
  */
 
 public class PatientSummaryController implements Initializable,SessionListener {
-
-
-
-    ScreenController controller;
 
 
 // for medication table ************************************
@@ -136,8 +132,7 @@ public class PatientSummaryController implements Initializable,SessionListener {
     @FXML
     private Label lblPemail;
 
-    @FXML
-    private Label userLbl;
+
 
     @FXML
     public TitledPane pastVisitPane12;
@@ -417,7 +412,6 @@ public class PatientSummaryController implements Initializable,SessionListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userLbl.setText(LoginModel.getUser());
 
         session = Main.getSessionFactory().openSession();
 

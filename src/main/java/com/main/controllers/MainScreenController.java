@@ -8,24 +8,28 @@ import com.common.SessionListener;
 import com.employeemanagement.controllers.MyScreens;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
+import com.main.models.LoginModel;
+import com.patientmanagement.controllers.PatientScreens;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@SuppressWarnings("unchecked")
 public class MainScreenController implements Initializable,SessionListener,ControlledScreen {
+
+    @FXML
+    private Label userLbl;
 
     @FXML
     private GridPane leftPane;
@@ -34,31 +38,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     private TreeView<String> navigationTree;
 
     @FXML
-    private JFXButton addEmployeeBtn;
-
-    @FXML
-    private JFXButton updateEmployeeBtn;
-
-    @FXML
-    private JFXButton attendenceBtn;
-
-    @FXML
-    private JFXButton dashBoardBtn;
-
-    @FXML
     private JFXButton logoutBtn;
-
-    @FXML
-    private JFXButton payrollBtn;
-
-    @FXML
-    private JFXButton reportsBtn;
-
-    @FXML
-    private GridPane topPane;
-
-    @FXML
-    private HBox must;
 
     @FXML
     private StackPane content;
@@ -91,40 +71,9 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     private JFXButton selectedBtn;
 
 
-    @FXML
-    void changeScene(MouseEvent event) {
-
-        selectedBtn.setDisable(false);
-        leftPane.requestFocus();
-        selectedBtn = (JFXButton) event.getSource();
-        selectedBtn.setDisable(true);
-
-        switch (selectedBtn.getId()) {
-            case "dashBoardBtn":
-                ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content,this);
-                break;
-            case "addEmployeeBtn":
-                ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,content,this);
-                break;
-
-            case "updateEmployeeBtn":
-                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN,content,this);
-
-                break;
-            case "attendenceBtn":
-               // ScreenController.changeScreen(MyScreens.ATTENDENCE_SCREEN,content,this);
-
-                break;
-            case "payrollBtn":
-                //ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
-                break;
-        }
-
-
-    }
 
     @FXML
-    void logout(ActionEvent event) {
+    void logout() {
         if (ConfirmDialog.show("", "Are you sure you want to logout?")) {
             Main.createLogin(new Stage());
             Stage s = (Stage) logoutBtn.getScene().getWindow();
@@ -135,87 +84,128 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-//        selectedBtn = dashBoardBtn;
-//        selectedBtn.setDisable(true);
-//        ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content);
+        userLbl.setText(LoginModel.getUser());
 
+        //Icons for TreeItems
+        FontAwesomeIconView employeeIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        employeeIcon.setSize("20px");
+        FontAwesomeIconView patientIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        patientIcon.setSize("20px");
+        FontAwesomeIconView pharmacyIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        pharmacyIcon.setSize("20px");
+        FontAwesomeIconView laboratoryIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        laboratoryIcon.setSize("20px");
+        FontAwesomeIconView supplierIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        supplierIcon.setSize("20px");
+        FontAwesomeIconView appointmentIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        appointmentIcon.setSize("20px");
+        FontAwesomeIconView equipmentIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        equipmentIcon.setSize("20px");
+        FontAwesomeIconView financeIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        financeIcon.setSize("20px");
+
+        //list of TreeItems for navigation panel
         TreeItem<String> root, employeeTree, financeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree ;
 
-        root = new TreeItem<String>("");
+        //root TreeItem to contain all other TreeItems
+        root = new TreeItem<>("");
         root.setExpanded(true);
 
-        employeeTree = new TreeItem<String>("Employees");
-        patientTree = new TreeItem<String>("Patients");
-        pharmacyTree = new TreeItem<String>("Pharmacy");
-        laboratoryTree = new TreeItem<String>("Laboratory");
-        supplierTree = new TreeItem<String>("Suppliers");
-        appointmentTree = new TreeItem<String>("Appointments");
-        labInventoryTree = new TreeItem<String>("Equipment");
-        financeTree = new TreeItem<String>("Finances");
+        //Main Branches
+        employeeTree = new TreeItem<>("Employees", employeeIcon);
+        patientTree = new TreeItem<>("Patients", patientIcon);
+        pharmacyTree = new TreeItem<>("Pharmacy", pharmacyIcon);
+        laboratoryTree = new TreeItem<>("Laboratory", laboratoryIcon);
+        supplierTree = new TreeItem<>("Suppliers", supplierIcon);
+        appointmentTree = new TreeItem<>("Appointments", appointmentIcon);
+        labInventoryTree = new TreeItem<>("Equipment", equipmentIcon);
+        financeTree = new TreeItem<>("Finances", financeIcon);
 
-        FontAwesomeIconView ambulanceIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        //adding SubBranches
 
         employeeTree.getChildren().addAll(
-                new TreeItem<String>("Add Employee", ambulanceIcon),
-                new TreeItem<String>("Attendance"),
-                new TreeItem<String>("Loans")
+                new TreeItem<>("Add Employee"),
+                new TreeItem<>("Attendance"),
+                new TreeItem<>("Loans")
         );
 
         patientTree.getChildren().addAll(
-                new TreeItem<String>("Add Patient"),
-                new TreeItem<String>("Patient Summary"),
-                new TreeItem<String>("Doctor Portal")
+                new TreeItem<>("Add Patient"),
+                new TreeItem<>("Patient Summary"),
+                new TreeItem<>("Doctor Portal")
         );
 
         pharmacyTree.getChildren().addAll(
-                new TreeItem<String>("Add Pharmacy Item"),
-                new TreeItem<String>("Billing"),
-                new TreeItem<String>("Dashboard")
+                new TreeItem<>("Add Pharmacy Item"),
+                new TreeItem<>("Billing"),
+                new TreeItem<>("Dashboard")
         );
 
         laboratoryTree.getChildren().addAll(
-                new TreeItem<String>("Add Test"),
-                new TreeItem<String>("Enter Results"),
-                new TreeItem<String>("order Test")
+                new TreeItem<>("Add Test"),
+                new TreeItem<>("Enter Results"),
+                new TreeItem<>("order Test")
         );
 
         supplierTree.getChildren().addAll(
-                new TreeItem<String>("Purchase"),
-                new TreeItem<String>("Suppliers"),
-                new TreeItem<String>("Warehouse")
+                new TreeItem<>("Purchase"),
+                new TreeItem<>("Suppliers"),
+                new TreeItem<>("Warehouse")
         );
 
         appointmentTree.getChildren().addAll(
-                new TreeItem<String>("Schedule Appointment"),
-                new TreeItem<String>("Update Appointment"),
-                new TreeItem<String>("Doctors")
+                new TreeItem<>("Schedule Appointment"),
+                new TreeItem<>("Update Appointment"),
+                new TreeItem<>("Doctors")
         );
 
         labInventoryTree.getChildren().addAll(
-                new TreeItem<String>("Add Equipment"),
-                new TreeItem<String>("Machines")
+                new TreeItem<>("Add Equipment"),
+                new TreeItem<>("Machines")
         );
 
         financeTree.getChildren().addAll(
-                new TreeItem<String>("Expenses"),
-                new TreeItem<String>("Revenue"),
-                new TreeItem<String>("Final Balance")
+                new TreeItem<>("Expenses"),
+                new TreeItem<>("Revenue"),
+                new TreeItem<>("Final Balance")
         );
+
+        //adding main branches to root branch
 
         root.getChildren().addAll(employeeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree, financeTree);
 
+        //setting up TreeView
         navigationTree.setRoot(root);
         navigationTree.setShowRoot(false);
 
+        //Listener for change in selected Item
+        navigationTree.getSelectionModel().selectedItemProperty().addListener((treeItem, OldValue, NewValue) -> changeScene(NewValue.getValue()));
+
     }
 
-    private TreeItem<String> makeBranch(String title, TreeItem<String> parent){
+    private void changeScene(String ButtonName) {
 
-        TreeItem<String> item = new TreeItem<String>(title);
-        item.setExpanded(true);
-        parent.getChildren().add(item);
+        switch (ButtonName) {
+            case "Attendance":
+                ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content,this);
+                break;
+            case "Add Employee":
+                ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,content,this);
+                break;
 
-        return item;
+            case "updateEmployeeBtn":
+                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN,content,this);
+
+                break;
+            case "Patient Summary":
+                ScreenController.changeScreen(PatientScreens.PATIENT_SUMMARY_SCREEN,content, this);
+                break;
+            case "payrollBtn":
+                //ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
+                break;
+        }
+
+
     }
 
     @Override
@@ -234,7 +224,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     }
 
     @FXML
-    void showHome(ActionEvent event) {
+    void showHome() {
         ScreenController.changeScreen(controller, MyScreens.MAIN_SCREEN, MainScreens.HOME_SCREEN);
     }
 

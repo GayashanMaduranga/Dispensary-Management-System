@@ -27,14 +27,13 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="-Infinity" minHeight="100.0" prefHeight="100.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="NEVER" />
             <RowConstraints minHeight="45.0" prefHeight="405.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="62.0" prefHeight="62.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
         </rowConstraints>
         <children>
-            <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#showHome" prefHeight="37.0" prefWidth="128.0" ripplerFill="#ffffffcb" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#logout" prefHeight="37.0" prefWidth="128.0" ripplerFill="#ffffffcb" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                 <graphic>
                     <MaterialDesignIconView glyphName="LOGOUT" size="25" />
                 </graphic>
@@ -65,7 +64,7 @@
                              <Insets left="25.0" />
                          </HBox.margin>
                      </MaterialDesignIconView>
-                     <Label text="&lt;username&gt;" textFill="#cdcdcd">
+                     <Label fx:id="userLbl" text="&lt;username&gt;" textFill="#cdcdcd">
                          <HBox.margin>
                              <Insets left="5.0" />
                          </HBox.margin>
