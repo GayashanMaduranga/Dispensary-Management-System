@@ -8,6 +8,8 @@ import com.EntityClasses.Patient;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.common.SessionListener;
+import com.employeemanagement.controllers.MainScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import com.main.controllers.MainScreens;
@@ -34,14 +36,11 @@ import java.util.function.Predicate;
  * Created by Damsith on 8/1/2017.
  */
 
-public class PatientSummaryController implements Initializable,ControlledScreen {
+public class PatientSummaryController implements Initializable,SessionListener {
+
+
 
     ScreenController controller;
-
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-        controller = screenParent;
-    }
 
 
 // for medication table ************************************
@@ -141,6 +140,15 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
     private Label userLbl;
 
     @FXML
+    public TitledPane pastVisitPane12;
+
+    @FXML
+    public TitledPane pastVisitPane;
+
+    @FXML
+    public TitledPane pastVisitPane11;
+
+    @FXML
     private TextField txtGetpatient;
 
     @FXML
@@ -158,21 +166,23 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
     @FXML
     private Button addMedBtn;
 
+    private MainScreenController mainScreenController;
 
-    @FXML
-    void showHome(){
-        ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
-    }
 
-    @FXML
-    void logout(){
+//    @FXML
+//    void showHome(){
+//        ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
+//    }
 
-        if(ConfirmDialog.show("", "Are you sure you want to logout?")){
-            Main.createLogin(new Stage());
-            Stage s = (Stage)homeBtn.getScene().getWindow();
-            s.close();
-        }
-    }
+//    @FXML
+//    void logout(){
+//
+//        if(ConfirmDialog.show("", "Are you sure you want to logout?")){
+//            Main.createLogin(new Stage());
+//            Stage s = (Stage)homeBtn.getScene().getWindow();
+//            s.close();
+//        }
+//    }
 
     @FXML
     void addMedication(){
@@ -265,8 +275,6 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
         session.save(summaryPatient);
         session.getTransaction().commit();
 
-        int pid = summaryPatient.getpId();
-
         measuresList.add(new TreeItem<>(m));
         measuresTable.getRoot().getChildren().clear();
         measuresTable.getRoot().getChildren().addAll(measuresList);
@@ -311,15 +319,13 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
                 measuresList.add(new TreeItem<>(measure));
         }
 
-//for measure table**********************************************************************************************            //
+//for measure table**********************************************************************************************
 
-        measureCol.setCellValueFactory(param -> param.getValue().getValue().nameProperty());                                      //
-        lastUpdateCol.setCellValueFactory(param -> param.getValue().getValue().dateUpdatedProperty());                                //
-//        dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                            //
-//        frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());                            //
-        measureActionCol.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));                           //
+        measureCol.setCellValueFactory(param -> param.getValue().getValue().nameProperty());
+        lastUpdateCol.setCellValueFactory(param -> param.getValue().getValue().dateUpdatedProperty());
+        measureActionCol.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));
         measureActionCol.setCellFactory(param -> new MeasureActionCell(measuresTable));              //
-//for measure table**********************************************************************************************            //
+//for measure table**********************************************************************************************
 
         Measure m = new Measure();
         m.setName("null");
@@ -345,16 +351,16 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
             }
         }
 
-//for medication table**********************************************************************************************            //
+//for medication table**********************************************************************************************
 
-        date_col.setCellValueFactory(param -> param.getValue().getValue().dateProperty());                                      //
-        name_col.setCellValueFactory(param -> param.getValue().getValue().medicationProperty());                                //
-        dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());                            //
-        frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());                            //
-        action_col.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));                           //
-        action_col.setCellFactory(param -> new DiscontinueMedicationCell(medTable, discontinued_med_Table, true));              //
+        date_col.setCellValueFactory(param -> param.getValue().getValue().dateProperty());
+        name_col.setCellValueFactory(param -> param.getValue().getValue().medicationProperty());
+        dosage_col.setCellValueFactory(param -> param.getValue().getValue().dosageStringProperty());
+        frequency_col.setCellValueFactory(param -> param.getValue().getValue().frequencyProperty());
+        action_col.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));
+        action_col.setCellFactory(param -> new DiscontinueMedicationCell(medTable, discontinued_med_Table, true));
 
-//for medication table**********************************************************************************************            //
+//for medication table**********************************************************************************************
 
         Medication m = new Medication();
         m.setDosage(0);
@@ -434,18 +440,18 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 //###########################################################################################
 
 
-//for measures table******************************************************************************************//
-                                                                                                                //
-//        session.beginTransaction();                                                                             //
-//        measuresList = new ArrayList<>();                                                                           //
-//        Query measuresTableQuery = session.createQuery("select mes from Measure mes");            //
-//        List<Measure> measures = measuresTableQuery.list();                                                           //
-//        session.getTransaction().commit();                                                                      //
-                                                                                                                //
-                                                                                                                //
-//for measures table******************************************************************************************//
+//for measures table******************************************************************************************
 
-//##############################################################################################################//
+//        session.beginTransaction();
+//        measuresList = new ArrayList<>();
+//        Query measuresTableQuery = session.createQuery("select mes from Measure mes");
+//        List<Measure> measures = measuresTableQuery.list();
+//        session.getTransaction().commit();
+
+
+//for measures table******************************************************************************************
+
+//##############################################################################################################
 
 //
 //        for (Measure mes : measures){
@@ -454,18 +460,18 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 
 
 //##############   CELL FACTORIES   ############################################################################################//
-//for measures table********************************************************************************************                //
+//for measures table********************************************************************************************
 
-//        dateCol.setCellValueFactory(param -> param.getValue().getValue().dateProperty());                                       //
-//        weightCol.setCellValueFactory(param -> param.getValue().getValue().weightProperty());                                   //
-//        HeightCol.setCellValueFactory(param -> param.getValue().getValue().heightProperty());                                   //
-//        tempCol.setCellValueFactory(param -> param.getValue().getValue().tempProperty());                                       //
-//        BPCol.setCellValueFactory(param -> param.getValue().getValue().bpProperty());                                           //
-//        respRateCol.setCellValueFactory(param -> param.getValue().getValue().respRateProperty());                               //
+//        dateCol.setCellValueFactory(param -> param.getValue().getValue().dateProperty());
+//        weightCol.setCellValueFactory(param -> param.getValue().getValue().weightProperty());
+//        HeightCol.setCellValueFactory(param -> param.getValue().getValue().heightProperty());
+//        tempCol.setCellValueFactory(param -> param.getValue().getValue().tempProperty());
+//        BPCol.setCellValueFactory(param -> param.getValue().getValue().bpProperty());
+//        respRateCol.setCellValueFactory(param -> param.getValue().getValue().respRateProperty());
 //        pulseRateCol.setCellValueFactory(param -> param.getValue().getValue().pulseRateProperty());
 //        glucoseCol.setCellValueFactory(param -> param.getValue().getValue().bloodGlucoseProperty());
 
-//for measures table********************************************************************************************                //
+//for measures table********************************************************************************************
 //##############################################################################################################################//
 
 //
@@ -485,6 +491,19 @@ public class PatientSummaryController implements Initializable,ControlledScreen 
 //
 //        measuresTable.setRoot(root3);
 //        measuresTable.setShowRoot(false);
+    }
+
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainScreenController = (MainScreenController)controller;
+
+
     }
 
     private class MeasureActionCell extends TreeTableCell<Measure, Boolean> {

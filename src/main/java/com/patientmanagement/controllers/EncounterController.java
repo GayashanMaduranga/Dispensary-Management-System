@@ -4,6 +4,8 @@ package com.patientmanagement.controllers;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.common.SessionListener;
+import com.employeemanagement.controllers.MainScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import com.main.models.LoginModel;
@@ -12,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.hibernate.Session;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,14 +23,13 @@ import java.util.ResourceBundle;
  * Created by Damsith on 8/1/2017.
  */
 
-public class EncounterController implements Initializable,ControlledScreen {
+public class EncounterController implements Initializable,SessionListener {
 
     ScreenController controller;
 
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-        controller = screenParent;
-    }
+    private Session session;
+    private MainScreenController mainScreenController;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -83,9 +85,16 @@ public class EncounterController implements Initializable,ControlledScreen {
         }
     }
 
-    @FXML
-    void fgfgfgfgf(){
-        System.out.println("hehehehe");
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
     }
 
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainScreenController = (MainScreenController)controller;
+
+
+    }
 }

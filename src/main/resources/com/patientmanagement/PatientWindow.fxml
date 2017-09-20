@@ -78,7 +78,7 @@
             </GridPane>
             <HBox alignment="CENTER_RIGHT" spacing="30.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
-                  <JFXButton fx:id="sidebarRegisterBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#addPatient" prefHeight="40.0" prefWidth="130.0" ripplerFill="#ffffff88" styleClass="button-blue" text="Add Patient">
+                  <JFXButton fx:id="addPatientBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#addPatient" prefHeight="40.0" prefWidth="130.0" ripplerFill="#ffffff88" styleClass="button-blue" text="Add Patient">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
