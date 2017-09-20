@@ -480,8 +480,8 @@ public class ViewEmployeeController implements Initializable,SessionListener{
             attendanceTreeList.add(new TreeItem<>(a));
         }
 
-        attendanceTable.getRoot().getChildren().clear();
-        attendanceTable.getRoot().getChildren().addAll(attendanceTreeList);
+//        attendanceTable.getRoot().getChildren().clear();
+    //    attendanceTable.getRoot().getChildren().addAll(attendanceTreeList);
 
 //        Staff s = new Staff();
 //
