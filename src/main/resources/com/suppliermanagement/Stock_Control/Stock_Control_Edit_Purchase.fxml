@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1253.0" style="-fx-background-color: none;" stylesheets="@../styles_Sup.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.RegisterPatientController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="53.0" prefWidth="53.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="991.0" minWidth="706.0" prefWidth="969.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="-Infinity" prefWidth="156.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="608.0" minHeight="485.0" prefHeight="490.0" vgrow="NEVER" />
+    <RowConstraints maxHeight="150.0" minHeight="20.0" prefHeight="145.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane fx:id="leftPane" prefHeight="615.0" prefWidth="491.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="22.0" prefWidth="25.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="969.0" minWidth="10.0" prefWidth="966.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="22.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="74.0" minHeight="-Infinity" prefHeight="59.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="67.0" minHeight="32.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="55.0" minHeight="2.0" prefHeight="6.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="67.0" minHeight="37.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="104.0" minHeight="41.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="113.0" minHeight="22.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="133.0" minHeight="5.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="141.0" minHeight="18.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="91.0" minHeight="34.0" prefHeight="70.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="134.0" minHeight="60.0" prefHeight="95.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <children>
+            <GridPane prefHeight="34.0" prefWidth="479.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="802.0" minWidth="10.0" prefWidth="190.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="661.0" minWidth="10.0" prefWidth="263.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="661.0" minWidth="0.0" prefWidth="109.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="723.0" minWidth="10.0" prefWidth="181.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="661.0" minWidth="10.0" prefWidth="85.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField prefHeight="32.0" prefWidth="261.0" GridPane.columnIndex="1" />
+                  <Label prefHeight="30.0" prefWidth="189.0" text="Product Name" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="21.0" prefWidth="107.0" text="MRP Rate" textFill="WHITE" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="25.0" prefWidth="342.0" GridPane.columnIndex="4" />
+               </children>
+            </GridPane>
+            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="181.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="537.0" minWidth="10.0" prefWidth="451.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="289.0" minWidth="5.0" prefWidth="289.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="0.0" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="0.0" prefWidth="194.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="428.0" minWidth="10.0" prefWidth="258.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.0" minWidth="10.0" prefWidth="109.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.0" minWidth="10.0" prefWidth="181.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.0" minWidth="10.0" prefWidth="85.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="-Infinity" minHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="4" />
+                  <Label prefHeight="17.0" prefWidth="144.0" text="Qty" textFill="WHITE" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="160.0" text="Manu Date" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <DatePicker editable="false" prefHeight="31.0" prefWidth="195.0" style="-fx-background-color: none;" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane prefHeight="89.0" prefWidth="947.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="227.0" minWidth="0.0" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.0" minWidth="10.0" prefWidth="190.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.0" minWidth="10.0" prefWidth="258.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="723.0" minWidth="10.0" prefWidth="109.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="723.0" minWidth="10.0" prefWidth="181.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="723.0" minWidth="10.0" prefWidth="85.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <AnchorPane prefHeight="50.0" prefWidth="349.0" GridPane.columnIndex="2" />
+                  <Label prefHeight="21.0" prefWidth="151.0" text="Brand Name" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" />
+                  <Label prefHeight="21.0" prefWidth="105.0" text="Selling Price" textFill="#fffdfd" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="4" />
+               </children>
+            </GridPane>
+            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="0.0" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="534.0" minWidth="10.0" prefWidth="190.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.0" minWidth="10.0" prefWidth="263.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="444.0" minWidth="10.0" prefWidth="109.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="723.0" minWidth="10.0" prefWidth="181.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="424.0" minWidth="10.0" prefWidth="85.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.valignment="CENTER" />
+                  <Label prefHeight="30.0" prefWidth="189.0" text="Category " textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ComboBox prefHeight="25.0" prefWidth="231.0" GridPane.columnIndex="1" />
+                  <TextField GridPane.columnIndex="4" />
+                  <Label prefHeight="17.0" prefWidth="119.0" text="Purchase Price" textFill="WHITE" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <JFXButton fx:id="titlebtn" graphicTextGap="9.0" prefHeight="58.0" prefWidth="1032.0" text="Edit Purchase Order" GridPane.columnSpan="2147483647">
+               <font>
+                  <Font name="Segoe UI Light" size="21.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView glyphName="CART_PLUS" size="30" />
+               </graphic>
+            </JFXButton>
+            <GridPane prefHeight="34.0" prefWidth="944.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="113.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="491.0" minWidth="10.0" prefWidth="491.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="651.0" minWidth="10.0" prefWidth="118.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="487.0" minWidth="10.0" prefWidth="84.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="18.0" prefWidth="118.0" text="  TOTAL" textFill="WHITE" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="54.0" prefWidth="220.0" text="150,500" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="208.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="0.0" prefWidth="58.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="764.0" minWidth="10.0" prefWidth="395.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="764.0" minWidth="10.0" prefWidth="118.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="764.0" minWidth="10.0" prefWidth="179.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ComboBox prefHeight="35.0" prefWidth="219.0" promptText="Select Supplier" />
+                  <Label prefHeight="17.0" prefWidth="69.0" text="       Or" textFill="WHITE" GridPane.columnIndex="1" />
+                  <JFXButton prefHeight="39.0" prefWidth="142.0" text="Create a new supplier" GridPane.columnIndex="2" />
+                  <Label text="Order ID #" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="orderID" editable="false" prefHeight="52.0" prefWidth="87.0" style="-fx-background-color: none;" text="0001" GridPane.columnIndex="4">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="7">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="485.0" minWidth="10.0" prefWidth="128.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="828.0" minWidth="10.0" prefWidth="191.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="828.0" minWidth="0.0" prefWidth="259.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="828.0" minWidth="10.0" prefWidth="109.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="828.0" minWidth="10.0" prefWidth="193.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="828.0" minWidth="10.0" prefWidth="68.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="17.0" prefWidth="160.0" text="Expire Date" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <DatePicker editable="false" prefHeight="31.0" prefWidth="202.0" style="-fx-background-color: none;" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="9">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="665.0" minWidth="10.0" prefWidth="207.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="178.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="821.0" minWidth="0.0" prefWidth="28.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="161.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="0.0" prefWidth="28.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="821.0" minWidth="10.0" prefWidth="215.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="821.0" minWidth="10.0" prefWidth="155.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXButton prefHeight="49.0" prefWidth="197.0" styleClass="button-green" text="Ok" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="49.0" prefWidth="155.0" styleClass="button-blue" text="Reset" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="49.0" prefWidth="155.0" styleClass="button-red" text="Cancel" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</GridPane>
