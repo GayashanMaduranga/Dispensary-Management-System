@@ -16,14 +16,14 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1253.0" style="-fx-background-color: none;" stylesheets="@../styles_Sup.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.RegisterPatientController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="53.0" prefWidth="53.0" />
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="991.0" minWidth="706.0" prefWidth="969.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="-Infinity" prefWidth="156.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="30.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="969.0" />
+    <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="30.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
     <RowConstraints maxHeight="608.0" minHeight="485.0" prefHeight="490.0" vgrow="NEVER" />
-    <RowConstraints maxHeight="150.0" minHeight="20.0" prefHeight="145.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
       <GridPane fx:id="leftPane" prefHeight="615.0" prefWidth="491.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
