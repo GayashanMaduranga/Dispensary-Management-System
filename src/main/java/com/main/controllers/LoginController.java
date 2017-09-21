@@ -80,7 +80,7 @@ public class LoginController implements ControlledScreen, Initializable{
             if(users.get(0).getPassword().equals(txtPassword.getText())){
                 LoginModel.setUser(users.get(0).getUsername());
                 LoginModel.setAccessLevel(users.get(0).getAccessLevel());
-                makeStage(users.get(0).getAccessLevel());
+                makeStage();
 //                session.close();
                 Stage s = (Stage) txtUsername.getScene().getWindow();
                 s.close();
@@ -93,7 +93,7 @@ public class LoginController implements ControlledScreen, Initializable{
 
     }
 
-    private void makeStage(int AccessLevel){
+    private void makeStage(){
         try {
 
             Stage primaryStage = new Stage();

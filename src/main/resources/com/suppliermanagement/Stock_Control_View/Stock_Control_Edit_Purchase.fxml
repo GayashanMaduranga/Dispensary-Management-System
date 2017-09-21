@@ -16,20 +16,20 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1253.0" style="-fx-background-color: none;" stylesheets="@../styles_Sup.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.RegisterPatientController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="53.0" prefWidth="53.0" />
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="991.0" minWidth="706.0" prefWidth="969.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="-Infinity" prefWidth="156.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="30.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="969.0" />
+    <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="30.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="608.0" minHeight="485.0" prefHeight="490.0" vgrow="NEVER" />
-    <RowConstraints maxHeight="150.0" minHeight="20.0" prefHeight="145.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+    <RowConstraints maxHeight="-Infinity" minHeight="490.0" prefHeight="490.0" vgrow="NEVER" />
+    <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
       <GridPane fx:id="leftPane" prefHeight="615.0" prefWidth="491.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="22.0" prefWidth="25.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="969.0" minWidth="10.0" prefWidth="966.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="969.0" minWidth="10.0" prefWidth="966.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="0.0" prefWidth="0.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="22.0" />
         </columnConstraints>
@@ -216,7 +216,7 @@
                <children>
                   <ComboBox prefHeight="35.0" prefWidth="219.0" promptText="Select Supplier" />
                   <Label prefHeight="17.0" prefWidth="69.0" text="       Or" textFill="WHITE" GridPane.columnIndex="1" />
-                  <JFXButton prefHeight="39.0" prefWidth="142.0" text="Create a new supplier" GridPane.columnIndex="2" />
+                  <JFXButton prefHeight="39.0" prefWidth="182.0" styleClass="button-white" text="Create a new supplier" GridPane.columnIndex="2" />
                   <Label text="Order ID #" GridPane.columnIndex="3">
                      <font>
                         <Font size="23.0" />

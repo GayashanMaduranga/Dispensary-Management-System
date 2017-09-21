@@ -11,6 +11,7 @@ import com.sun.glass.ui.Screen;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -22,6 +23,10 @@ import javafx.scene.control.TreeTableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 
 /**
@@ -194,9 +199,59 @@ public class LabEquipmentControl implements Initializable, ControlledScreen{
         session.delete(equipmeny.getValue());
         session.getTransaction().commit();
 
-       // Equipment.remove(equipmeny)
+       // Equipment.remove(equipmeny);
         //table.getRoot().getChildren().clear();
        // table.getRoot().getChildren().addAll(itemList);
+    }
+
+
+
+    @FXML
+    void updateTable(MouseEvent event) {
+
+        TreeItem<Equipment> s = eqTable.getSelectionModel().getSelectedItem();
+        s.getValue().setName(name.getText());
+
+        session.beginTransaction();
+        session.update(s.getValue());
+        session.getTransaction().commit();
+
+
+    }
+
+
+    @FXML
+    void setFields(MouseEvent event) {
+        Equipment equipment = eqTable.getSelectionModel().getSelectedItem().getValue();
+        name.setText(equipment.getName());
+        id.setText(String.valueOf(equipment.getName()));
+        remaiquan.setText(String.valueOf(equipment.getRquant()));
+        addquan.setText(String.valueOf(equipment.getAddquantity()));
+        totalquan.setText(String.valueOf(equipment.getTotquantity()));
+        supplier.setText(equipment.getSupplier());
+       // lifetime.setText(equipment.getLifetime());
+        //today.setText(equipment.getToday());
+
+
+
+   // public void initialize(URL location, ResourceBundle resources) {
+
+
+        Configuration configuration = new Configuration().configure();
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        session = sessionFactory.openSession();
+
+        session.beginTransaction();
+
+
+
+
+    }
+
+
+
     }
 
 
@@ -206,4 +261,5 @@ public class LabEquipmentControl implements Initializable, ControlledScreen{
 
 
 
-}
+
+
