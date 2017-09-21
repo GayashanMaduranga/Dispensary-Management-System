@@ -49,7 +49,7 @@ public class DashboardController implements Initializable,SessionListener {
     public void initialize(URL location, ResourceBundle resources) {
 
         userLbl.setText(LoginModel.getUser());
-        session = Main.getSessionFactory().openSession();
+        //session = Main.getSessionFactory().openSession();
 
         session.beginTransaction();
         Query patientNameQuery = session.createQuery("select p from Patient p");

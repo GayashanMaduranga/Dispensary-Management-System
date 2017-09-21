@@ -38,6 +38,7 @@ public class ScreenController extends StackPane{
 
     public ScreenController() {
 
+        System.out.println("Hello");
 
     }
 
@@ -115,6 +116,9 @@ public class ScreenController extends StackPane{
 
         controller.loadScreen(newScreen.getId(),newScreen.getPath());
         controller.setScreen(newScreen.getId());
+        ((SessionListener)controller).setSession(session);
+//        System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCc");
+        System.out.println(controller.toString());
         controller.unloadScreen(oldScreen.getId());
 
     }
@@ -152,5 +156,10 @@ public class ScreenController extends StackPane{
             e.printStackTrace();
         }
     }
+
+    public Session getSession() {
+        return session;
+    }
+
 
 }
