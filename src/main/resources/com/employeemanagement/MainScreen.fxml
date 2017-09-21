@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.MainScreenController">
@@ -94,52 +93,60 @@
     </GridPane>
 </left>
 <center>
-    <VBox>
-        <!--    <children>-->
-        <GridPane fx:id="topPane" GridPane.columnSpan="2147483647">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="Dispensary Management System" textFill="#cdcdcd" GridPane.columnIndex="1">
-                    <GridPane.margin>
-                        <Insets right="20.0" />
-                    </GridPane.margin>
-                    <font>
-                        <Font name="Brush Script MT Italic" size="29.0" />
-                    </font>
-                </Label>
-                <HBox fx:id="must" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER">
-                    <children>
-                        <MaterialDesignIconView glyphName="ACCOUNT_CIRCLE" size="25">
-                            <HBox.margin>
-                                <Insets left="15.0" />
-                            </HBox.margin>
-                        </MaterialDesignIconView>
-                        <Label text="&lt;username&gt;" textFill="#cdcdcd">
-                            <HBox.margin>
-                                <Insets left="5.0" />
-                            </HBox.margin>
-                        </Label>
-                        <Label text="Logged in" textFill="#cdcdcd">
-                            <padding>
-                                <Insets left="5.0" />
-                            </padding>
-                        </Label>
-                    </children>
-                </HBox>
-            </children>
-        </GridPane>
-        <StackPane fx:id="content">
-            <children>
-               <BorderPane prefHeight="960.0" prefWidth="1026.0" />
-            </children>
-        </StackPane>
-        <!--</children>-->
-    </VBox>
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="685.0" minHeight="10.0" prefHeight="51.66666793823242" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="666.0" minHeight="10.0" prefHeight="663.3333320617676" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+           <!--    <children>-->
+           <GridPane fx:id="topPane" GridPane.columnSpan="2147483647">
+               <columnConstraints>
+                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                   <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                   <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="Dispensary Management System" textFill="#cdcdcd" GridPane.columnIndex="1">
+                       <GridPane.margin>
+                           <Insets right="20.0" />
+                       </GridPane.margin>
+                       <font>
+                           <Font name="Brush Script MT Italic" size="29.0" />
+                       </font>
+                   </Label>
+                   <HBox fx:id="must" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER">
+                       <children>
+                           <MaterialDesignIconView glyphName="ACCOUNT_CIRCLE" size="25">
+                               <HBox.margin>
+                                   <Insets left="15.0" />
+                               </HBox.margin>
+                           </MaterialDesignIconView>
+                           <Label text="&lt;username&gt;" textFill="#cdcdcd">
+                               <HBox.margin>
+                                   <Insets left="5.0" />
+                               </HBox.margin>
+                           </Label>
+                           <Label text="Logged in" textFill="#cdcdcd">
+                               <padding>
+                                   <Insets left="5.0" />
+                               </padding>
+                           </Label>
+                       </children>
+                   </HBox>
+               </children>
+           </GridPane>
+           <StackPane fx:id="content" GridPane.rowIndex="1">
+               <children>
+                  <BorderPane prefHeight="960.0" prefWidth="1026.0" />
+               </children>
+           </StackPane>
+         </children>
+      </GridPane>
 </center>
 </BorderPane>

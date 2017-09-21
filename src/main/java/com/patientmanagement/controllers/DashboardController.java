@@ -3,27 +3,23 @@ package com.patientmanagement.controllers;
 
 import com.EntityClasses.Patient;
 import com.common.ConfirmDialog;
-import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.common.SessionListener;
+import com.employeemanagement.controllers.MainScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.main.Main;
-import com.main.controllers.MainScreens;
 import com.main.models.LoginModel;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -31,13 +27,12 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 /**
  * Created by Damsith on 8/1/2017.
  */
 
-public class DashboardController implements Initializable,ControlledScreen {
+public class DashboardController implements Initializable,SessionListener {
 
     private Patient p;
 
@@ -47,13 +42,8 @@ public class DashboardController implements Initializable,ControlledScreen {
 
     TreeItem<Patient> root;
 
-    Session session;
-
-
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-        controller = screenParent;
-    }
+    private Session session;
+    private MainScreenController mainScreenController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -130,25 +120,7 @@ public class DashboardController implements Initializable,ControlledScreen {
     private JFXTreeTableView<Patient> patientTable;
 
     @FXML
-    private JFXButton sidebarRegisterBtn;
-
-    @FXML
-    private Button removePatientBtn;
-
-    @FXML
-    private JFXButton sidebarPrescriptionBtn;
-
-    @FXML
-    private JFXButton sidebarBillBtn;
-
-    @FXML
-    private JFXButton titlebtn;
-
-    @FXML
-    private JFXButton logoutBtn;
-
-    @FXML
-    private JFXButton homeBtn;
+    private JFXButton addPatientBtn;
 
     @FXML
     void showHome(){
@@ -160,7 +132,7 @@ public class DashboardController implements Initializable,ControlledScreen {
 
         switch(((JFXButton)event.getSource()).getId()) {
 
-//            case "sidebarRegisterBtn":
+//            case "addPatientBtn":
 //                Stage s = (Stage) logoutBtn.getScene().getWindow();
 //                if(!(Main.createFadedWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml"))){
 //                    System.out.println("added patient");
@@ -186,7 +158,7 @@ public class DashboardController implements Initializable,ControlledScreen {
     @FXML
     void addPatient(){
 
-        Stage s = (Stage) sidebarRegisterBtn.getScene().getWindow();
+        Stage s = (Stage) addPatientBtn.getScene().getWindow();
 
         if(!(Main.createFadedWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml"))){
 
@@ -282,8 +254,21 @@ public class DashboardController implements Initializable,ControlledScreen {
 
         if(ConfirmDialog.show("", "Are you sure you want to logout?")){
             Main.createLogin(new Stage());
-            Stage s = (Stage)logoutBtn.getScene().getWindow();
+            Stage s = (Stage) addPatientBtn.getScene().getWindow();
             s.close();
         }
+    }
+
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainScreenController = (MainScreenController)controller;
+
+
     }
 }
