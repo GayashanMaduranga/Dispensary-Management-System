@@ -15,7 +15,6 @@ import com.main.Main;
 import com.main.models.LoginModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -127,33 +126,6 @@ public class DashboardController implements Initializable,SessionListener {
         ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
     }
 
-    @FXML
-    void changeScene(Event event){
-
-        switch(((JFXButton)event.getSource()).getId()) {
-
-//            case "addPatientBtn":
-//                Stage s = (Stage) logoutBtn.getScene().getWindow();
-//                if(!(Main.createFadedWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml"))){
-//                    System.out.println("added patient");
-//                    Main.dialogCanceled = true;
-//                }else{
-//                    System.out.println("canceled");
-//                }
-//                break;
-
-            case "titlebtn":
-                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.PATIENT_SUMMARY_SCREEN);
-                break;
-            case "sidebarPrescriptionBtn":
-                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.MEDICATION_SCREEN);
-                break;
-            case "sidebarBillBtn":
-                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.BILL_SCREEN);
-                break;
-
-        }
-    }
 
     @FXML
     void addPatient(){
