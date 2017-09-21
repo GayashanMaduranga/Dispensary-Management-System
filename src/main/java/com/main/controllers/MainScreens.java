@@ -7,7 +7,7 @@ import com.common.BaseEnum;
  */
 public enum MainScreens implements BaseEnum{
 
-    HOME_SCREEN("home", "/com/main/Home.fxml"),
+    HOME_SCREEN("home", "/com/main/MainScreen.fxml"),
     LOGIN_SCREEN("login", "/com/main/Login.fxml");
 
     String path;
