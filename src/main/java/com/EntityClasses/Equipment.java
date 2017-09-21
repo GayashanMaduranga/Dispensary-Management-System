@@ -1,7 +1,9 @@
 package com.EntityClasses;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -11,19 +13,20 @@ import java.sql.Date;
  */
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Access(AccessType.PROPERTY)
-public abstract class Equipment {
+@Table(name = "Equipment")
+public class Equipment extends RecursiveTreeObject<Equipment> {
 
 
     private SimpleIntegerProperty equipmentID;
-    private Date purchaseDate;
-    private SimpleDoubleProperty cost;
+    private SimpleIntegerProperty stock;
+    private SimpleStringProperty equipmentName;
 
     public Equipment() {
 
         this.equipmentID = new SimpleIntegerProperty();
-        this.cost = new SimpleDoubleProperty();
+        this.stock = new SimpleIntegerProperty();
+        this.equipmentName = new SimpleStringProperty();
     }
 
     @Id
@@ -40,25 +43,29 @@ public abstract class Equipment {
         this.equipmentID.set(equipmentID);
     }
 
-    @Column(name = "purchaseDate")
-    public Date getPurchaseDate() {
-        return purchaseDate;
+    @Column(name = "stock")
+    public int getStock() {
+        return stock.get();
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
-        this.purchaseDate = purchaseDate;
+    public SimpleIntegerProperty stockProperty() {
+        return stock;
     }
 
-    @Column(name = "cost")
-    public double getCost() {
-        return cost.get();
+    public void setStock(int stock) {
+        this.stock.set(stock);
     }
 
-    public SimpleDoubleProperty costProperty() {
-        return cost;
+    @Column(name = "equipmentName")
+    public String getEquipmentName() {
+        return equipmentName.get();
     }
 
-    public void setCost(double cost) {
-        this.cost.set(cost);
+    public SimpleStringProperty equipmentNameProperty() {
+        return equipmentName;
+    }
+
+    public void setEquipmentName(String equipmentName) {
+        this.equipmentName.set(equipmentName);
     }
 }
