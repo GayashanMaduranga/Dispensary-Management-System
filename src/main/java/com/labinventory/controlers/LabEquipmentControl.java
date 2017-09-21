@@ -1,87 +1,127 @@
 package com.labinventory.controlers;
 
-import com.Laboratory.controllers.LabScreens;
-import com.common.ControlledScreen;
+import com.EntityClasses.Medication;
 import com.common.ScreenController;
+import com.common.SessionListener;
+import com.main.controllers.MainScreenController;
 import com.financemanagement.controllers.FinanceScreens;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
-import com.patientmanagement.controllers.PatientScreens;
-import com.sun.glass.ui.Screen;
+import com.jfoenix.controls.*;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.main.Main;
+import de.jensd.fx.glyphs.octicons.OctIconView;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
+import com.EntityClasses.Equipment;
+import javafx.scene.layout.HBox;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 
 /**
  * Created by chamara on 8/13/2017.
  */
-public class LabEquipmentControl implements Initializable, ControlledScreen{
+public class LabEquipmentControl implements Initializable,SessionListener {
 
     ScreenController controller;
+    private MainScreenController mainScreenController;
+    private Session session;
 
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-        this.controller = screenParent;
-    }
+    ObservableList<Equipment> equipmentList = FXCollections.observableArrayList();
+
+    TreeItem<Equipment> root;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        session = Main.getSessionFactory().openSession();
+
+        session.beginTransaction();
+        Query equipmentQuery = session.createQuery("select e from Equipment e");
+        List<Equipment> equipments = equipmentQuery.list();
+        session.getTransaction().commit();
+
+        for (Equipment p : equipments){
+
+            equipmentList.add(p);
+        }
+
+        //Create Table
+        //Create column
+
+        JFXTreeTableColumn<Equipment, String> nameCol =  new JFXTreeTableColumn<>("Name");
+        nameCol.setCellValueFactory(param -> param.getValue().getValue().equipmentNameProperty());
+
+        JFXTreeTableColumn<Equipment, Number> IDCol =  new JFXTreeTableColumn<>("ID");
+        IDCol.setCellValueFactory(param -> param.getValue().getValue().equipmentIDProperty());
+
+        JFXTreeTableColumn<Equipment, Number> stockCol =  new JFXTreeTableColumn<>("Stock");
+        stockCol.setCellValueFactory(param -> param.getValue().getValue().stockProperty());
+
+        JFXTreeTableColumn<Equipment, Boolean> actionCol = new JFXTreeTableColumn<>("Action");
+        actionCol.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));
+        actionCol.setCellFactory(param -> new LabEquipmentControl.ActionCell(equipmentTable));
+
+
+        root = new RecursiveTreeItem<Equipment>(equipmentList, RecursiveTreeObject::getChildren);
+
+        equipmentTable.getColumns().setAll(IDCol, nameCol, stockCol, actionCol);
+        equipmentTable.setRoot(root);
+        equipmentTable.setShowRoot(false);
+
+        //.....Search code
+
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> equipmentTable.setPredicate(patientTreeItem -> {
+            boolean flag = patientTreeItem.getValue().equipmentNameProperty().getValue().contains(newValue.toLowerCase());
+            return flag;
+        }));
     }
 
     @FXML
-    private JFXButton mtnBtn;
-
-
-    @FXML
-    private GridPane leftPane;
+    private JFXTreeTableView<Equipment> equipmentTable;
 
     @FXML
-    private JFXButton logoutBtn;
+    private TextField txtSearch;
 
     @FXML
-    private JFXButton sidebarRegisterBtn111;
+    private OctIconView searchGlyph;
 
     @FXML
-    private JFXButton sidebarRegisterBtn1111;
+    private TextField txtAddEquipment;
 
     @FXML
-    private JFXButton eqBtn;
-
-    @FXML
-    private JFXButton titlebtn;
-
-    @FXML
-    private GridPane topPane;
-
-    @FXML
-    private Label userLbl;
-
-    @FXML
-    private JFXButton homeBtn;
+    private JFXButton btnAddEquipment;
 
     @FXML
     void showHome(){
         ScreenController.changeScreen(controller, LabInventoryScreens.LAB_EQUIPMENT_SCREEN, FinanceScreens.MAIN_DASHBOARD_SCREEN);
     }
 
+    @FXML
+    void addEquipment(){
+
+        Equipment e = new Equipment();
+        e.setEquipmentName(txtAddEquipment.getText());
+        e.setStock(0);
+
+        session.beginTransaction();
+        session.save(e);
+        session.getTransaction().commit();
+
+        equipmentList.add(e);
+        equipmentTable.refresh();
+    }
 
 
     @FXML
@@ -109,150 +149,84 @@ public class LabEquipmentControl implements Initializable, ControlledScreen{
 
                 break;
 
-
-
         }
 
-
-    }
-
-    @FXML
-    private TreeTableView<Equipment>eqTable;
-
-    @FXML
-    private TreeTableColumn<Equipment,String> name;
-
-    @FXML
-    private TreeTableColumn<Equipment, Number> id;
-
-    @FXML
-    private TreeTableColumn<Equipment, Number> remaiquan;
-
-    @FXML
-    private TreeTableColumn<Equipment, Number> addquan;
-
-    @FXML
-    private TreeTableColumn<Equipment, Number> totalquan;
-
-    @FXML
-    private TreeTableColumn<Equipment, String> supplier;
-
-    @FXML
-    private TreeTableColumn<Equipment, Number> lifetime;
-
-    @FXML
-    private TreeTableColumn<Equipment, Number> today;
-
-
-    @FXML
-    private JFXTextField name1;
-
-    @FXML
-    private JFXTextField id1;
-
-    @FXML
-    private JFXTextField remaiquan1;
-
-    @FXML
-    private JFXTextField addquan1;
-
-    @FXML
-    private JFXTextField totalquan1;
-
-    @FXML
-    private JFXTextField supplier1;
-
-    @FXML
-    private JFXDatePicker lifetime1;
-
-    @FXML
-    private JFXDatePicker today1;
-
-    private Session session;
-
-
-    @FXML
-    void insertBTN(MouseEvent event) {
-
-        int sid = Integer.parseInt(id.getText());
-        String sname = name.getText();
-
-        Equipment equipment = new Equipment();
-        equipment.setName("abc");
-
-        session.beginTransaction();
-        session.save(equipment);
-        session.getTransaction().commit();
-
-
-
-       // table.getRoot().getChildren().clear();
-        //table.getRoot().getChildren().addAll(itemList);
-    }
-
-    @FXML
-    void deleteFromTable(MouseEvent event){
-
-        TreeItem<Equipment> equipmeny = eqTable.getSelectionModel().getSelectedItem();
-
-        session.beginTransaction();
-        session.delete(equipmeny.getValue());
-        session.getTransaction().commit();
-
-       // Equipment.remove(equipmeny);
-        //table.getRoot().getChildren().clear();
-       // table.getRoot().getChildren().addAll(itemList);
     }
 
 
-
-    @FXML
-    void updateTable(MouseEvent event) {
-
-        TreeItem<Equipment> s = eqTable.getSelectionModel().getSelectedItem();
-        s.getValue().setName(name.getText());
-
-        session.beginTransaction();
-        session.update(s.getValue());
-        session.getTransaction().commit();
-
-
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
     }
 
+    @Override
+    public void setMainController(SessionListener controller) { this.mainScreenController = (MainScreenController)controller; }
 
-    @FXML
-    void setFields(MouseEvent event) {
-        Equipment equipment = eqTable.getSelectionModel().getSelectedItem().getValue();
-        name.setText(equipment.getName());
-        id.setText(String.valueOf(equipment.getName()));
-        remaiquan.setText(String.valueOf(equipment.getRquant()));
-        addquan.setText(String.valueOf(equipment.getAddquantity()));
-        totalquan.setText(String.valueOf(equipment.getTotquantity()));
-        supplier.setText(equipment.getSupplier());
-       // lifetime.setText(equipment.getLifetime());
-        //today.setText(equipment.getToday());
+    private class ActionCell extends TreeTableCell<Equipment, Boolean> {
 
+        // a button for adding a new person.
+        private Button removeBtn = new Button("Remove");
+        // a button for adding a new person.
+        private Button editButton = new Button(" Edit ");
+        // pads and centers the buttons in the cell.
+        final HBox paddedButton = new HBox(10);//to give space between two buttions
 
+        /**
+         * EditMedicationCell constructor
+         * @param fromTable the Table in which button resides.
+         */
 
-   // public void initialize(URL location, ResourceBundle resources) {
+        ActionCell(final TreeTableView<Equipment> fromTable) {
 
+            //to remove buttion Colour
+            //to add buttion colour
 
-        Configuration configuration = new Configuration().configure();
+            editButton.getStyleClass().clear();
+            editButton.getStyleClass().add("button-blue");
 
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        session = sessionFactory.openSession();
+            removeBtn.getStyleClass().clear();
+            removeBtn.getStyleClass().add("button-red");
 
-        session.beginTransaction();
+            paddedButton.setPadding(new Insets(3));
+            paddedButton.setAlignment(Pos.CENTER);
+            paddedButton.getChildren().addAll(removeBtn, editButton);
 
+            removeBtn.setOnAction(actionEvent -> {
 
+                fromTable.getSelectionModel().select(getTreeTableRow().getIndex());
+                TreeItem<Equipment> m = fromTable.getSelectionModel().getSelectedItem();
 
+                session.beginTransaction();
+                session.delete(m.getValue());
+                session.getTransaction().commit();
 
+                String equipmentName = m.getValue().getEquipmentName();
+
+                equipmentList.removeIf(equipmentTreeItem -> {
+                    boolean flag = false;
+                    if(equipmentTreeItem.getEquipmentName() == equipmentName)
+                        flag = true;
+                    return flag;
+                });
+
+                fromTable.refresh();
+
+            });
+        }
+
+        /** places an add button in the row only if the row is not empty. */
+        @Override protected void updateItem(Boolean item, boolean empty) {
+            super.updateItem(item, empty);
+            if (!empty) {
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                setGraphic(paddedButton);
+            } else {
+                setGraphic(null);
+            }
+        }
     }
-
-
-
-    }
+    
+}
 
 
 

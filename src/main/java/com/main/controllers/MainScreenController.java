@@ -7,6 +7,7 @@ import com.common.ScreenController;
 import com.common.SessionListener;
 import com.employeemanagement.controllers.MyScreens;
 import com.jfoenix.controls.JFXButton;
+import com.labinventory.controlers.LabInventoryScreens;
 import com.main.Main;
 import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
@@ -160,7 +161,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         );
 
         labInventoryTree.getChildren().addAll(
-                new TreeItem<>("Add Equipment"),
+                new TreeItem<>("Lab Equipment"),
                 new TreeItem<>("Machines")
         );
 
@@ -193,8 +194,8 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,content,this);
                 break;
 
-            case "updateEmployeeBtn":
-                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN,content,this);
+            case "Lab Equipment":
+                ScreenController.changeScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN,content,this);
 
                 break;
             case "Patient Summary":

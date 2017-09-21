@@ -15,6 +15,7 @@
         <mapping class="com.EntityClasses.MeasureValue"/>
         <mapping class="com.EntityClasses.DoctorSession"/>
         <mapping class="com.EntityClasses.Doctor"/>
+        <mapping class="com.EntityClasses.Equipment"/>
         <mapping class="com.EntityClasses.Medication"/>
         <mapping class="com.EntityClasses.User"/>
         <mapping class="com.EntityClasses.Measure"/>

@@ -45,7 +45,6 @@ public class TestingMain extends Application {
             ex.printStackTrace();
         }
 
-
     }
 
     public static void main(String[] args) {
