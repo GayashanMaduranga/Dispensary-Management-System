@@ -1,13 +1,11 @@
 package com.labinventory.controlers;
 
-import com.EntityClasses.Medication;
 import com.common.ScreenController;
 import com.common.SessionListener;
 import com.main.controllers.MainScreenController;
 import com.financemanagement.controllers.FinanceScreens;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import com.main.Main;
 import de.jensd.fx.glyphs.octicons.OctIconView;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
@@ -45,7 +43,7 @@ public class LabEquipmentControl implements Initializable,SessionListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        session = Main.getSessionFactory().openSession();
+//        session = Main.getSessionFactory().openSession();
 
         session.beginTransaction();
         Query equipmentQuery = session.createQuery("select e from Equipment e");

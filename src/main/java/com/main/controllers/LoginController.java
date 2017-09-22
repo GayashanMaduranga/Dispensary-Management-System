@@ -3,15 +3,13 @@ package com.main.controllers;
 
 import com.EntityClasses.User;
 import com.appointmentscheduling.controllers.AppointmentScreens;
-import com.common.ControlledScreen;
-import com.common.ScreenController;
+import com.common.*;
 import com.employeemanagement.controllers.MyScreens;
-import com.common.AlertDialog;
-import com.common.ConfirmDialog;
 import com.main.Main;
 import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
 import com.suppliermanagement.controllers.SupplierScreens;
+import db.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,20 +28,20 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class LoginController implements ControlledScreen, Initializable{
+public class LoginController implements ControlledScreen, Initializable,SessionListener{
 
     private Session session;
 
-    ScreenController mainContainer = new ScreenController();
+    ScreenController mainContainer;
 
     @Override
     public void setScreenParent(ScreenController screenParent) {
+        this.mainContainer = screenParent;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        session = Main.getSessionFactory().openSession();
 
     }
 
@@ -66,7 +64,7 @@ public class LoginController implements ControlledScreen, Initializable{
     @FXML
     public void login(ActionEvent actionEvent){
 
-
+        session = mainContainer.getSession();
         session.beginTransaction();
         Query query = session.createQuery("from User where username ='"+txtUsername.getText()+"'");
         List<User> users = query.list();
@@ -95,6 +93,8 @@ public class LoginController implements ControlledScreen, Initializable{
 
     private void makeStage(){
         try {
+
+            mainContainer = new ScreenController();
 
             Stage primaryStage = new Stage();
 
@@ -173,6 +173,16 @@ public class LoginController implements ControlledScreen, Initializable{
         }
     }
 
+
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+    }
 
 
 }

@@ -46,6 +46,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
     private ScreenController controller;
 
+    private Session session;
 
     private MainScreenController mainScreenController;
 
@@ -211,7 +212,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
     @Override
     public void setSession(Session session) {
-
+        this.session = session;
     }
 
     @Override
@@ -228,5 +229,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     void showHome() {
         ScreenController.changeScreen(controller, MyScreens.MAIN_SCREEN, MainScreens.HOME_SCREEN);
     }
+
 
 }
