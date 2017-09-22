@@ -1,24 +1,17 @@
 package com.suppliermanagement.controllers.Suppliers_CTRL;
 
-import com.EntityClasses.Patient;
-import com.EntityClasses.Supplier;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
-import com.jfoenix.controls.JFXButton;
 import com.main.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.net.URL;
-import java.sql.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**

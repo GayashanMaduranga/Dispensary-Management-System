@@ -1,7 +1,5 @@
 package com.suppliermanagement.controllers.Suppliers_CTRL;
 
-import com.EntityClasses.Patient;
-import com.EntityClasses.Supplier;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.jfoenix.controls.JFXButton;
@@ -11,11 +9,8 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.main.Main;
 import com.main.models.LoginModel;
-import com.patientmanagement.controllers.RegisterPatientController;
-import com.suppliermanagement.controllers.SupplierScreens;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
