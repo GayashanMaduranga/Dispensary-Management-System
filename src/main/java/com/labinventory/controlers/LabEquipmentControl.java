@@ -212,6 +212,21 @@ public class LabEquipmentControl implements Initializable,SessionListener {
                 fromTable.refresh();
 
             });
+            editButton.setOnAction(actionEvent ->{
+
+                fromTable.getSelectionModel().select(getTreeTableRow().getIndex());
+                TreeItem<Equipment> z = fromTable.getSelectionModel().getSelectedItem();
+
+               // z.getValue().setEquipmentName();
+                session.beginTransaction();
+                session.update(z.getValue());
+                session.getTransaction().commit();
+
+                String equipmentName = z.getValue().getEquipmentName();
+
+
+
+            });
         }
 
         /** places an add button in the row only if the row is not empty. */
