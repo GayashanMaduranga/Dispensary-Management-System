@@ -155,7 +155,7 @@ public class ScreenController extends StackPane{
         }
     }
 
-    public Session getSession() {
+    public static Session getSession() {
         return session;
     }
 

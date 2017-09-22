@@ -413,7 +413,7 @@ public class PatientSummaryController implements Initializable,SessionListener {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        //session = Main.getSessionFactory().openSession();
+        session = ScreenController.getSession();
 
         patients = new ArrayList<>();
         mediList = new ArrayList<>();

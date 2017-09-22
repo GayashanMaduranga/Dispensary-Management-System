@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -54,11 +55,11 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TreeTableView layoutX="-0.40000000000000036" prefHeight="395.0" prefWidth="583.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0">
+                  <JFXTreeTableView layoutX="-2.0" layoutY="-7.0" prefHeight="202.0" prefWidth="492.0">
                      <columns>
-                        <TreeTableColumn maxWidth="450.0" prefWidth="418.8000244379043" text="Age" />
+                        <TreeTableColumn prefWidth="491.0" text="Ages" />
                      </columns>
-                  </TreeTableView>
+                  </JFXTreeTableView>
                </children>
             </AnchorPane>
          </content>
