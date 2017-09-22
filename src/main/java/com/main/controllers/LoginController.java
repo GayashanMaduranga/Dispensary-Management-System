@@ -12,6 +12,7 @@ import com.suppliermanagement.controllers.SupplierScreens;
 import db.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -111,9 +112,7 @@ public class LoginController implements ControlledScreen, Initializable,SessionL
             primaryStage.setMinHeight(750.0);
             primaryStage.setMinWidth(1380.0);
 
-            mainContainer.loadScreen(MainScreens.HOME_SCREEN.getId(), MainScreens.HOME_SCREEN.getPath());
-            mainContainer.setScreen(MainScreens.HOME_SCREEN.getId());
-            Parent layout = mainContainer.getScreen(MainScreens.HOME_SCREEN.getId()).getParent();
+            Parent layout = FXMLLoader.load(getClass().getResource(MainScreens.HOME_SCREEN.getPath()));
             primaryStage.setScene(new Scene(layout));
 
 //            if(AccessLevel == 1){

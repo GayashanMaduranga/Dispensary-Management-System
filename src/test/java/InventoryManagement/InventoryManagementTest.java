@@ -1,13 +1,6 @@
 package InventoryManagement;
 
-import com.EntityClasses.Machine;
-import com.EntityClasses.Supplier;
-import com.EntityClasses.UtilityEquipment;
-import db.UserSession;
-import org.hibernate.Session;
 import org.junit.Test;
-
-import java.sql.Date;
 
 /**
  * Created by gayashan on 9/13/2017.
