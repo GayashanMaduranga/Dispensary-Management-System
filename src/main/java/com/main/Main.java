@@ -1,7 +1,10 @@
 package com.main;
 
+import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.common.SessionListener;
 import com.main.controllers.MainScreens;
+import db.UserSession;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -14,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -23,15 +27,19 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    private static SessionFactory sessionFactory;
+//    private static SessionFactory sessionFactory;
     public static boolean dialogCanceled = true;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Configuration configuration = new Configuration().configure();
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+//        Configuration configuration = new Configuration().configure();
+//        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+//        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
+
+
         createLogin(primaryStage);
     }
 
@@ -39,9 +47,9 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static SessionFactory getSessionFactory(){
-        return sessionFactory;
-    }
+//    public static SessionFactory getSessionFactory(){
+//        return sessionFactory;
+//    }
 
     public static void createLogin(Stage primaryStage){
 
@@ -49,6 +57,8 @@ public class Main extends Application {
         mainContainer.loadScreen(MainScreens.LOGIN_SCREEN.getId(), MainScreens.LOGIN_SCREEN.getPath());
         mainContainer.setScreen(MainScreens.LOGIN_SCREEN.getId());
         Parent root = mainContainer.getScreen(MainScreens.LOGIN_SCREEN.getId()).getParent();
+
+        //((SessionListener)mainContainer).setSession(ScreenController.getSession());
 
         primaryStage.setTitle("Login");
         primaryStage.initStyle(StageStyle.UNDECORATED);

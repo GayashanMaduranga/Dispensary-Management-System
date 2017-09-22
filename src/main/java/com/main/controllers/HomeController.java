@@ -5,10 +5,7 @@ import com.EntityClasses.User;
 import com.Laboratory.controllers.LabScreens;
 import com.PharmacyMgt.Controllers.PharmacyScreens;
 import com.appointmentscheduling.controllers.AppointmentScreens;
-import com.common.AlertDialog;
-import com.common.ConfirmDialog;
-import com.common.ControlledScreen;
-import com.common.ScreenController;
+import com.common.*;
 import com.employeemanagement.controllers.MyScreens;
 import com.financemanagement.controllers.FinanceScreens;
 import com.main.Main;
@@ -46,7 +43,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HomeController implements ControlledScreen, Initializable{
+public class HomeController implements ControlledScreen, Initializable,SessionListener{
 
     private Session session;
 
@@ -159,6 +156,17 @@ public class HomeController implements ControlledScreen, Initializable{
                 ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PharmacyScreens.DASHBOARD_SCREEN);
                 break;
         }
+    }
+
+
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
     }
 
 
