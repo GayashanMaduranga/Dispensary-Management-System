@@ -1,5 +1,6 @@
 package com.suppliermanagement.controllers;
 
+import com.EntityClasses.Supplier;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;

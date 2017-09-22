@@ -1,5 +1,6 @@
 package com.suppliermanagement.controllers.Suppliers_CTRL;
 
+import com.EntityClasses.Supplier;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.main.Main;

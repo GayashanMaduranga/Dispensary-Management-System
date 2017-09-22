@@ -2,6 +2,7 @@ package SupplyManagement;
 
 import com.EntityClasses.PharmacyBatch;
 import com.EntityClasses.PharmacyItem;
+import com.EntityClasses.Supplier;
 import com.EntityClasses.SupplyOrder;
 import db.UserSession;
 import org.hibernate.Session;

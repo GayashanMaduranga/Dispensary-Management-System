@@ -1,5 +1,6 @@
 package com.suppliermanagement.controllers.Suppliers_CTRL;
 
+import com.EntityClasses.Supplier;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.jfoenix.controls.JFXButton;
@@ -97,7 +98,7 @@ public class Supplier_view_CTRL implements Initializable,  ControlledScreen{
     public void initialize(URL location, ResourceBundle resources) {
 
         userLbl.setText(LoginModel.getUser());
-        session = Main.getSessionFactory().openSession();
+//        session = Main.getSessionFactory().openSession();
 
         session.beginTransaction();
         Query supplierNameQuery = session.createQuery("select s from Supplier s");
