@@ -2,6 +2,7 @@ package com.Laboratory.controllers;
 
 
 import com.common.ConfirmDialog;
+import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.main.Main;
 import javafx.fxml.Initializable;
@@ -20,7 +21,13 @@ import java.util.ResourceBundle;
 /**
  * Created by AmilaWC on 9/16/2017.
  */
-public class homeController implements Initializable{
+public class homeController implements Initializable, ControlledScreen{
+
+    private ScreenController controller;
+    @Override
+    public void setScreenParent(ScreenController screenParent) {
+        controller = screenParent;
+    }
 
     @FXML
     private GridPane topPane;

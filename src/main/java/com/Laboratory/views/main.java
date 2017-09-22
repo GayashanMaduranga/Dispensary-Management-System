@@ -1,8 +1,5 @@
 package com.Laboratory.views;
 
-import com.Laboratory.controllers.LabScreens;
-import com.common.ScreenController;
-import com.main.controllers.MainScreens;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
