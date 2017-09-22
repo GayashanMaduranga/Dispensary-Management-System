@@ -35,7 +35,7 @@ public class DashboardController implements Initializable,SessionListener {
 
     private Patient p;
 
-    ScreenController controller;
+//    ScreenController controller;
 
     ObservableList<Patient> patientList = FXCollections.observableArrayList();
 
@@ -121,10 +121,10 @@ public class DashboardController implements Initializable,SessionListener {
     @FXML
     private JFXButton addPatientBtn;
 
-    @FXML
-    void showHome(){
-        ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
-    }
+//    @FXML
+//    void showHome(){
+//        ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
+//    }
 
 
     @FXML
