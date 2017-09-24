@@ -197,13 +197,18 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
             case "Lab Equipment":
                 ScreenController.changeScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN,content,this);
+                break;
 
-                break;
-            case "Patient Summary":
-                ScreenController.changeScreen(PatientScreens.PATIENT_SUMMARY_SCREEN,content, this);
-                break;
             case "payrollBtn":
                 //ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
+                break;
+
+            case "Patient Summary":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(PatientScreens.PATIENT_SUMMARY_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
                 break;
         }
 
