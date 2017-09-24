@@ -203,9 +203,17 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 //ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
                 break;
 
-            case "Patient Summary":
+            case "Doctor Portal":
                 if (LoginModel.getAccessLevel() <= 2) {
                     ScreenController.changeScreen(PatientScreens.PATIENT_SUMMARY_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Patient Summary":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(PatientScreens.DASHBOARD_SCREEN,content, this);
                 } else {
                     ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
                 }

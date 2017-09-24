@@ -37,10 +37,15 @@
 /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
 .mylistview .scroll-bar:horizontal .thumb,
 .mylistview .scroll-bar:vertical .thumb {
-    -fx-background-color:derive(black,90%);
-    -fx-background-insets: 2, 0, 0;
+    -fx-background-color:rgba(255, 255, 255, 0.5);
+    -fx-background-insets: 0, 0, 0;
     -fx-background-radius: 2em;
 
 }
+.mylistview .scroll-bar:horizontal,
+.mylistview .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
 
 
