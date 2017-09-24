@@ -1,5 +1,6 @@
 package com.EntityClasses;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -13,13 +14,14 @@ import java.sql.Date;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "Supplier")
-public class Supplier {
+public class Supplier extends RecursiveTreeObject<Supplier> {
 
 
     private SimpleIntegerProperty supId;
     private SimpleStringProperty supname;
     private SimpleStringProperty email;
     private SimpleStringProperty contactNumber;
+    private SimpleStringProperty address;
 
 
     public Supplier() {
@@ -27,6 +29,7 @@ public class Supplier {
         this.supname = new SimpleStringProperty();
         this.email = new SimpleStringProperty();
         this.contactNumber = new SimpleStringProperty();
+        this.address = new SimpleStringProperty();
     }
 
     @Id
@@ -81,5 +84,19 @@ public class Supplier {
 
     public void setContactNumber(String contactNumber) {
         this.contactNumber.set(contactNumber);
+    }
+
+
+    @Column(name = "Address")
+    public String getAddress() {
+        return address.get();
+    }
+
+    public SimpleStringProperty addressProperty() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address.set(address);
     }
 }

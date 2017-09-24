@@ -13,6 +13,7 @@
         <property name="hibernate.current_session_context_class">thread</property>
 
         <mapping class="com.EntityClasses.MeasureValue"/>
+        <mapping class="com.EntityClasses.Allergy"/>
         <mapping class="com.EntityClasses.DoctorSession"/>
         <mapping class="com.EntityClasses.Doctor"/>
         <mapping class="com.EntityClasses.Equipment"/>

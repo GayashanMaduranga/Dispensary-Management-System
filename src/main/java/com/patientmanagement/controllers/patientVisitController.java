@@ -185,7 +185,6 @@ public class patientVisitController implements Initializable,ControlledScreen {
 
         /**
          * EditMedicationCell constructor
-         * @param fromTable the Table in which button resides.
          */
 
         MeasureActionCell(final TreeTableView<Measure> fromTable /*, final TreeTableView<Medication> toTable, boolean discontinue*/ ) {
@@ -217,21 +216,9 @@ public class patientVisitController implements Initializable,ControlledScreen {
                 addButton.setDisable(true);
                 txtValue.setEditable(false);
 
-//                for (Measure mm: updatedMeasures) {
-//
-//                    List <MeasureValue>mesvals = mm.getValues();
-//
-//                    for(int i = 0; i < mesvals.size(); i++) {
-//                        System.out.println(mesvals.get(i).getValue());
-//                        System.out.println(mesvals.get(i).getDate());
-//                    }
-//                }
-
-
             });
         }
 
-        /** places an add button in the row only if the row is not empty. */
         @Override protected void updateItem(Boolean item, boolean empty) {
             super.updateItem(item, empty);
             if (!empty) {

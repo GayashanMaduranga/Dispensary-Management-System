@@ -16,9 +16,12 @@ import com.main.controllers.MainScreens;
 import com.main.models.LoginModel;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -26,6 +29,7 @@ import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +116,8 @@ public class PatientSummaryController implements Initializable,SessionListener {
     private List<Patient> patients;
 
     static Patient summaryPatient;
+
+    static Measure selectedMeasure;
 
 
     @FXML
@@ -228,24 +234,15 @@ public class PatientSummaryController implements Initializable,SessionListener {
             }
 
             session.save(summaryPatient);
+
+            int ID = summaryPatient.getpId();
+            summaryPatient = (Patient) session.get(Patient.class, ID);
+
             session.getTransaction().commit();
 
-            measuresTable.getRoot().getChildren().clear();
-            measuresTable.getRoot().getChildren().addAll(measuresList);
-
-//            Medication m = MedicationController.medication;
-//
-//            summaryPatient.getMedications().add(m);
-//
-//            session.beginTransaction();
-//            session.save(summaryPatient);
-//            session.getTransaction().commit();
-//
-//            int pid = summaryPatient.getpId();
-//
-//            mediList.add(new TreeItem<>(m));
-//            medTable.getRoot().getChildren().clear();
-//            medTable.getRoot().getChildren().addAll(mediList);
+            updateMedTable();
+            updateDiscTable();
+            updateMeasureTable();
 
             System.out.println("new session");
 
@@ -309,6 +306,8 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
         List<Measure> measures = summaryPatient.getMeasures();
 
+        measuresList.clear();
+
         for (Measure measure : measures){
 
                 measuresList.add(new TreeItem<>(measure));
@@ -338,6 +337,8 @@ public class PatientSummaryController implements Initializable,SessionListener {
 //for medication table******************************************************************************************//
 
         List<Medication> meds = summaryPatient.getMedications();
+
+        mediList.clear();
 
         for (Medication medication : meds){
 
@@ -377,6 +378,8 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
         List<Medication> discMeds = summaryPatient.getMedications();
 
+        discontinuedMediList.clear();
+
         for (Medication medication : discMeds){
 
             if(medication.isDiscontinued()){
@@ -412,18 +415,16 @@ public class PatientSummaryController implements Initializable,SessionListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-        //session = Main.getSessionFactory().openSession();
+        session = ScreenController.getSession();
 
         patients = new ArrayList<>();
         mediList = new ArrayList<>();
         measuresList = new ArrayList<>();
         discontinuedMediList = new ArrayList<>();
 
-        List<String> values;
-
 //############ POPULATING PATIENT SEARCH BAR ###############################################
 
+        List<String> values;
         session.beginTransaction();
         Query patientNameQuery = session.createQuery("select p.pname  from Patient p");
         values = patientNameQuery.list();
@@ -433,58 +434,6 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
 //###########################################################################################
 
-
-//for measures table******************************************************************************************
-
-//        session.beginTransaction();
-//        measuresList = new ArrayList<>();
-//        Query measuresTableQuery = session.createQuery("select mes from Measure mes");
-//        List<Measure> measures = measuresTableQuery.list();
-//        session.getTransaction().commit();
-
-
-//for measures table******************************************************************************************
-
-//##############################################################################################################
-
-//
-//        for (Measure mes : measures){
-//            measuresList.add(new TreeItem<>(mes));
-//        }
-
-
-//##############   CELL FACTORIES   ############################################################################################//
-//for measures table********************************************************************************************
-
-//        dateCol.setCellValueFactory(param -> param.getValue().getValue().dateProperty());
-//        weightCol.setCellValueFactory(param -> param.getValue().getValue().weightProperty());
-//        HeightCol.setCellValueFactory(param -> param.getValue().getValue().heightProperty());
-//        tempCol.setCellValueFactory(param -> param.getValue().getValue().tempProperty());
-//        BPCol.setCellValueFactory(param -> param.getValue().getValue().bpProperty());
-//        respRateCol.setCellValueFactory(param -> param.getValue().getValue().respRateProperty());
-//        pulseRateCol.setCellValueFactory(param -> param.getValue().getValue().pulseRateProperty());
-//        glucoseCol.setCellValueFactory(param -> param.getValue().getValue().bloodGlucoseProperty());
-
-//for measures table********************************************************************************************
-//##############################################################################################################################//
-
-//
-//        Measure meas = new Measure();
-//        meas.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
-//        meas.setBloodGlucose(0);
-//        meas.setBp(0);
-//        meas.setHeight(0);
-//        meas.setPulseRate(0);
-//        meas.setRespRate(0);
-//        meas.setTemp(0);
-//        meas.setWeight(0);
-//
-//        TreeItem<Measure> root3 = new TreeItem<>(meas);
-//
-//        root3.getChildren().addAll(measuresList);
-//
-//        measuresTable.setRoot(root3);
-//        measuresTable.setShowRoot(false);
     }
 
     @Override
@@ -522,6 +471,7 @@ public class PatientSummaryController implements Initializable,SessionListener {
             paddedButton.setPadding(new Insets(3));
             paddedButton.setAlignment(Pos.CENTER);
             paddedButton.getChildren().addAll(viewButton, removeButton);
+
             removeButton.setOnAction(actionEvent -> {
 
                 fromTable.getSelectionModel().select(getTreeTableRow().getIndex());
@@ -553,29 +503,18 @@ public class PatientSummaryController implements Initializable,SessionListener {
                 session.update(summaryPatient);
                 session.getTransaction().commit();
 
-//                if(discontinue){
-//                    m.getValue().setDiscontinued(true);
-//                }else{
-//                    m.getValue().setDiscontinued(false);
-//                }
-//
-//
+            });
 
-//
-//                toTable.getRoot().getChildren().clear();
-//                fromTable.getRoot().getChildren().clear();
-//
-//                if(discontinue){
-//                    mediList.remove(m);
-//                    discontinuedMediList.add(m);
-//                    fromTable.getRoot().getChildren().addAll(mediList);
-//                    toTable.getRoot().getChildren().addAll(discontinuedMediList);
-//                }else{
-//                    discontinuedMediList.remove(m);
-//                    mediList.add(m);
-//                    fromTable.getRoot().getChildren().addAll(discontinuedMediList);
-//                    toTable.getRoot().getChildren().addAll(mediList);
-//                }
+            viewButton.setOnAction(actionEvent -> {
+
+                fromTable.getSelectionModel().select(getTreeTableRow().getIndex());
+
+                TreeItem<Measure> m = fromTable.getSelectionModel().getSelectedItem();
+
+                selectedMeasure = m.getValue();
+
+                createMeasureChart();
+
 
             });
         }
@@ -665,6 +604,26 @@ public class PatientSummaryController implements Initializable,SessionListener {
             } else {
                 setGraphic(null);
             }
+        }
+    }
+
+    private void createMeasureChart(){
+
+        try {
+
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/patientmanagement/measureChart.fxml"));
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Welcome New Dispensary");
+            stage.setMaximized(false);
+            stage.setMinHeight(600.0);
+            stage.setMinWidth(1200.0);
+            stage.show();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }
