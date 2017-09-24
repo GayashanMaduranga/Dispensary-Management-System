@@ -29,7 +29,7 @@ public class TestingMain extends Application {
 
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/patientmanagement/PatientSummary.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/labinventory/labMachine.fxml"));
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
