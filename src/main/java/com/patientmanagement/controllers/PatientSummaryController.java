@@ -34,6 +34,7 @@ import java.util.function.Predicate;
  * Created by Damsith on 8/1/2017.
  */
 
+@SuppressWarnings("unchecked")
 public class PatientSummaryController implements Initializable,SessionListener {
 
 // for allergy table ************************************
@@ -487,8 +488,8 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
     private class MeasureActionCell extends TreeTableCell<Measure, Boolean> {
 
-        private Button viewButton = new Button(" Graph ");
-        private Button removeButton = new Button(" delete ");
+        private final Button viewButton = new Button(" Graph ");
+        private final Button removeButton = new Button(" delete ");
         final HBox paddedButton = new HBox(10);
 
         /**
@@ -568,9 +569,9 @@ public class PatientSummaryController implements Initializable,SessionListener {
     }
     private class DiscontinueMedicationCell extends TreeTableCell<Medication, Boolean> {
         // a button for adding a new person.
-        private Button discontinueButton = new Button("Stop");
+        private final Button discontinueButton = new Button("Stop");
         // a button for adding a new person.
-        private Button editButton = new Button(" Edit ");
+        private final Button editButton = new Button(" Edit ");
         // pads and centers the buttons in the cell.
         final HBox paddedButton = new HBox(10);
 

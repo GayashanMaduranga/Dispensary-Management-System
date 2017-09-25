@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class MainDashboardController implements ControlledScreen, Initializable {
 
-    ScreenController controller;
+    private ScreenController controller;
     @FXML
     private Label userLbl;
 

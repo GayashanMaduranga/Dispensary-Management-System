@@ -29,10 +29,10 @@ import java.util.ResourceBundle;
  */
 public class patientVisitController implements Initializable,ControlledScreen {
 
-    ScreenController controller;
+    private ScreenController controller;
 
 
-    static DoctorSession doctorSession;
+    private static DoctorSession doctorSession;
 
     static Measure measure;
 
@@ -170,8 +170,8 @@ public class patientVisitController implements Initializable,ControlledScreen {
 
     private class MeasureActionCell extends TreeTableCell<Measure, Boolean> {
 
-        private Button addButton = new Button("   Set   ");
-        private TextField txtValue = new TextField();
+        private final Button addButton = new Button("   Set   ");
+        private final TextField txtValue = new TextField();
         final HBox paddedButton = new HBox(15);
 
         /**

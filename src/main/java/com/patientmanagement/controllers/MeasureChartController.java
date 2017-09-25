@@ -21,9 +21,10 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@SuppressWarnings("unchecked")
 public class MeasureChartController implements ControlledScreen, Initializable {
 
-    ScreenController controller;
+    private ScreenController controller;
 
     @FXML
     private LineChart<?, ?> measuresChart;
