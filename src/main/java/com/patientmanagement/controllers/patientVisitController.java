@@ -101,15 +101,6 @@ public class patientVisitController implements Initializable,ControlledScreen {
     @FXML
     void completeSession(){
 
-
-//        patient.setDOB(Date.valueOf(txtDOB.getValue()));
-//        patient.setPname(txtName.getText().toLowerCase());
-//        patient.setGender(((RadioButton)genderGroup.getSelectedToggle()).getText());
-//        patient.setNIC(txtNIC.getText());
-//        patient.setContactNumber(txtPhone.getText());
-//        patient.setEmail(txtEmail.getText().toLowerCase());
-//        patient.setOccupation(txtOccupation.getText());
-
         Main.dialogCanceled = false;
         Stage s = (Stage)addMedBtn.getScene().getWindow();
         s.close();
@@ -209,6 +200,7 @@ public class patientVisitController implements Initializable,ControlledScreen {
 
                 Measure mes = m.getValue();
                 mes.getValues().add(mesVal);
+                mes.setDateUpdated(java.sql.Date.valueOf(java.time.LocalDate.now()));
 
                 updatedMeasures.add(mes);
 

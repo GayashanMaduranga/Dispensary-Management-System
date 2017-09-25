@@ -107,7 +107,15 @@
                                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <JFXTreeTableView fx:id="allergyTable" />
+                                                <TreeTableView fx:id="allergyTable" prefHeight="200.0" prefWidth="200.0">
+                                                  <columns>
+                                                    <TreeTableColumn fx:id="causeCol" maxWidth="-1.0" minWidth="182.0" prefWidth="212.0" text="Cause" />
+                                                    <TreeTableColumn fx:id="descriptionCol" maxWidth="1.7976931348623157E308" minWidth="283.0" prefWidth="387.0" text="Description" />
+                                                  </columns>
+                                                   <columnResizePolicy>
+                                                      <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                </TreeTableView>
                                              </children>
                                           </GridPane>
                                        </content>
@@ -349,8 +357,7 @@
                                                    <columns>
                                                       <TreeTableColumn fx:id="start_date_col" prefWidth="128.0" text="Start Date" />
                                                       <TreeTableColumn fx:id="discontinued_name_col" prefWidth="188.0" text="Medication" />
-                                                      <TreeTableColumn fx:id="discontinued_dosage_col" prefWidth="91.0" text="Dosage" />
-                                                      <TreeTableColumn fx:id="discontinued_frequency_col" minWidth="0.0" prefWidth="123.0" text="Frequency" />
+                                                      <TreeTableColumn fx:id="discontinued_reason_col" prefWidth="91.0" text="Reason" />
                                                       <TreeTableColumn fx:id="discontinued_action_col" prefWidth="185.0" text="Action" />
                                                    </columns>
                                                    <columnResizePolicy>
