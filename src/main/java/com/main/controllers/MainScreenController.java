@@ -11,6 +11,7 @@ import com.labinventory.controlers.LabInventoryScreens;
 import com.main.Main;
 import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
+import com.suppliermanagement.controllers.SupplierScreens;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
@@ -150,9 +151,9 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         );
 
         supplierTree.getChildren().addAll(
-                new TreeItem<>("Purchase"),
-                new TreeItem<>("Suppliers"),
-                new TreeItem<>("Warehouse")
+                new TreeItem<>("Inventory"),
+                new TreeItem<>("Stock Control"),
+                new TreeItem<>("Suppliers")
         );
 
         appointmentTree.getChildren().addAll(
@@ -204,6 +205,15 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 break;
             case "payrollBtn":
                 //ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
+                break;
+            case "Inventory":
+                ScreenController.changeScreen(SupplierScreens.INVENTORY_VIEW,content, this);
+                break;
+            case "Stock Control":
+                ScreenController.changeScreen(SupplierScreens.STOCK_CONTROL_VIEW,content, this);
+                break;
+            case "Suppliers":
+                ScreenController.changeScreen(SupplierScreens.SUPPLIER_SCREEN_VIEW,content, this);
                 break;
         }
 
