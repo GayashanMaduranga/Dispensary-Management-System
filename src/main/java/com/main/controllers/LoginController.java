@@ -12,6 +12,7 @@ import com.suppliermanagement.controllers.SupplierScreens;
 import db.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -110,62 +111,8 @@ public class LoginController implements ControlledScreen, Initializable,SessionL
             primaryStage.setFullScreenExitHint("");
             primaryStage.setMinHeight(750.0);
             primaryStage.setMinWidth(1380.0);
-
-            mainContainer.loadScreen(MainScreens.HOME_SCREEN.getId(), MainScreens.HOME_SCREEN.getPath());
-            mainContainer.setScreen(MainScreens.HOME_SCREEN.getId());
-            Parent layout = mainContainer.getScreen(MainScreens.HOME_SCREEN.getId()).getParent();
+            Parent layout = FXMLLoader.load(getClass().getResource(MainScreens.HOME_SCREEN.getPath()));
             primaryStage.setScene(new Scene(layout));
-
-//            if(AccessLevel == 1){
-//
-//                mainContainer.loadScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId(), PatientScreens.PATIENT_SUMMARY_SCREEN.getPath());
-//                mainContainer.setScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//
-//            }
-//            else if(AccessLevel == 2){
-//
-//                mainContainer.loadScreen(SupplierScreens.DASHBOARD_SCREEN.getId(), SupplierScreens.DASHBOARD_SCREEN.getPath());
-//                mainContainer.setScreen(SupplierScreens.DASHBOARD_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(SupplierScreens.DASHBOARD_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//
-//            }
-//
-//            else if(AccessLevel == 3){
-//
-//                mainContainer.loadScreen(MyScreens.DASHBOARD_SCREEN.getId(), MyScreens.DASHBOARD_SCREEN.getPath());
-//                mainContainer.setScreen(MyScreens.DASHBOARD_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(MyScreens.DASHBOARD_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//
-//            }
-//
-//            else if(AccessLevel == 4){
-//
-//                mainContainer.loadScreen(SupplierScreens.PURCHASE_SCREEN.getId(), SupplierScreens.PURCHASE_SCREEN.getPath());
-//                mainContainer.setScreen(SupplierScreens.PURCHASE_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(SupplierScreens.PURCHASE_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//            }
-//
-//            else if(AccessLevel == 5){
-//
-//                mainContainer.loadScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId(), AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getPath());
-//                mainContainer.setScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//            }
-//
-//            else if(AccessLevel == 6){
-//
-//                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
-//                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//            }
-
             primaryStage.show();
 
         } catch (Exception e) {

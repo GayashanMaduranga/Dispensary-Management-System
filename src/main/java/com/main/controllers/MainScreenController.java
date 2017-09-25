@@ -7,9 +7,11 @@ import com.common.ScreenController;
 import com.common.SessionListener;
 import com.employeemanagement.controllers.MyScreens;
 import com.jfoenix.controls.JFXButton;
+import com.labinventory.controlers.LabInventoryScreens;
 import com.main.Main;
 import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
+import com.suppliermanagement.controllers.SupplierScreens;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
@@ -149,9 +151,9 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         );
 
         supplierTree.getChildren().addAll(
-                new TreeItem<>("Purchase"),
-                new TreeItem<>("Suppliers"),
-                new TreeItem<>("Warehouse")
+                new TreeItem<>("Inventory"),
+                new TreeItem<>("Stock Control"),
+                new TreeItem<>("Suppliers")
         );
 
         appointmentTree.getChildren().addAll(
@@ -161,7 +163,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         );
 
         labInventoryTree.getChildren().addAll(
-                new TreeItem<>("Add Equipment"),
+                new TreeItem<>("Lab Equipment"),
                 new TreeItem<>("Machines")
         );
 
@@ -194,15 +196,37 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,content,this);
                 break;
 
-            case "updateEmployeeBtn":
-                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN,content,this);
+            case "Lab Equipment":
+                ScreenController.changeScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN,content,this);
+                break;
 
-                break;
-            case "Patient Summary":
-                ScreenController.changeScreen(PatientScreens.PATIENT_SUMMARY_SCREEN,content, this);
-                break;
             case "payrollBtn":
                 //ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN,content,this);
+                break;
+
+            case "Doctor Portal":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(PatientScreens.PATIENT_SUMMARY_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Patient Summary":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(PatientScreens.DASHBOARD_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+            case "Inventory":
+                ScreenController.changeScreen(SupplierScreens.INVENTORY_VIEW,content, this);
+                break;
+            case "Stock Control":
+                ScreenController.changeScreen(SupplierScreens.STOCK_CONTROL_VIEW,content, this);
+                break;
+            case "Suppliers":
+                ScreenController.changeScreen(SupplierScreens.SUPPLIER_SCREEN_VIEW,content, this);
                 break;
         }
 

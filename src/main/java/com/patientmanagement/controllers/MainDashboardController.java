@@ -1,16 +1,11 @@
 package com.patientmanagement.controllers;
 
 
-import com.Laboratory.controllers.LabScreens;
-import com.PharmacyMgt.Controllers.PharmacyScreens;
 import com.appointmentscheduling.controllers.AppointmentScreens;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
-import com.employeemanagement.controllers.MyScreens;
-import com.financemanagement.controllers.FinanceScreens;
 import com.jfoenix.controls.JFXButton;
 import com.main.controllers.MainScreens;
-import com.suppliermanagement.controllers.SupplierScreens;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class MainDashboardController implements ControlledScreen, Initializable {
 
-    ScreenController controller;
+    private ScreenController controller;
     @FXML
     private Label userLbl;
 

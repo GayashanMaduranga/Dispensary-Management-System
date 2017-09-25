@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@styles_Sup.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.suppliermanagement.controllers.Supplier_MainScreen_CTRL">
+<left>
+    <GridPane fx:id="leftPane" prefHeight="715.0" prefWidth="273.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="130.0" prefHeight="120.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <JFXButton fx:id="addEmployeeBtn" buttonType="RAISED" graphicTextGap="9.0" prefHeight="45.0" prefWidth="302.0" text="DEMO (NOT AVAILABLE)" GridPane.rowIndex="2">
+                <font>
+                    <Font name="Verdana" size="16.0" />
+                </font>
+            </JFXButton>
+            <JFXButton fx:id="updateEmployeeBtn" buttonType="RAISED" graphicTextGap="9.0" prefHeight="45.0" prefWidth="273.0" text="DEMO (NOT AVAILABLE)" GridPane.rowIndex="3">
+                <font>
+                    <Font name="Verdana" size="16.0" />
+                </font>
+            </JFXButton>
+            <JFXButton fx:id="attendenceBtn" buttonType="RAISED" graphicTextGap="9.0" prefHeight="45.0" prefWidth="273.0" text="DEMO (NOT AVAILABLE)" GridPane.rowIndex="4">
+                <font>
+                    <Font name="Verdana" size="16.0" />
+                </font>
+            </JFXButton>
+            <JFXButton fx:id="dashBoardBtn" graphicTextGap="9.0" prefHeight="98.0" prefWidth="390.0" text="Supplier Management">
+                <font>
+                    <Font name="Segoe UI Light" size="21.0" />
+                </font>
+                <graphic>
+                    <FontAwesomeIconView glyphName="DASHBOARD" size="20" />
+                </graphic>
+            </JFXButton>
+            <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#showHome" prefHeight="37.0" prefWidth="128.0" styleClass="logout-btn" text="Home" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+                <graphic>
+                    <MaterialDesignIconView glyphName="HOME" size="25" />
+                </graphic>
+                <font>
+                    <Font name="Verdana" size="16.0" />
+                </font>
+            </JFXButton>
+            <JFXButton fx:id="payrollBtn" buttonType="RAISED" graphicTextGap="9.0" layoutX="10.0" layoutY="285.0" prefHeight="45.0" prefWidth="273.0" text="DEMO (NOT AVAILABLE)" GridPane.rowIndex="5">
+                <font>
+                    <Font name="Verdana" size="16.0" />
+                </font>
+            </JFXButton>
+            <JFXButton fx:id="reportsBtn" buttonType="RAISED" graphicTextGap="9.0" layoutX="10.0" layoutY="330.0" prefHeight="45.0" prefWidth="273.0" text="DEMO (NOT AVAILABLE)" GridPane.rowIndex="6">
+                <font>
+                    <Font name="Verdana" size="16.0" />
+                </font>
+            </JFXButton>
+        </children>
+    </GridPane>
+</left>
+<center>
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="666.0" minHeight="10.0" prefHeight="663.3333320617676" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+           <StackPane fx:id="content">
+               <children>
+                  <BorderPane prefHeight="960.0" prefWidth="1026.0" />
+               </children>
+           </StackPane>
+         </children>
+      </GridPane>
+</center>
+</BorderPane>

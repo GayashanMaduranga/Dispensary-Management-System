@@ -5,6 +5,7 @@ package com.main;
  */
 
 
+import com.main.models.LoginModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,6 +30,9 @@ public class TestingMain extends Application {
 
 
         try {
+
+            LoginModel.setAccessLevel(1);
+
             Parent root = FXMLLoader.load(getClass().getResource("/com/main/MainScreen.fxml"));
 
             Scene scene = new Scene(root);
@@ -44,7 +48,6 @@ public class TestingMain extends Application {
 //            Logger.getLogger(StoreKeeper.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
         }
-
 
     }
 
