@@ -97,9 +97,10 @@ public class Supplier_view_CTRL implements Initializable,  ControlledScreen{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userLbl.setText(LoginModel.getUser());
-//        session = Main.getSessionFactory().openSession();
+       // userLbl.setText(LoginModel.getUser());
+         //session = Main.getSessionFactory().openSession();
 
+        session = ScreenController.getSession();
         session.beginTransaction();
         Query supplierNameQuery = session.createQuery("select s from Supplier s");
         List<Supplier> suppliers = supplierNameQuery.list();
