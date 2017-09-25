@@ -1,15 +1,15 @@
 package com.suppliermanagement.controllers.Suppliers_CTRL;
 
 import com.EntityClasses.Supplier;
-import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.common.SessionListener;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.main.Main;
-import com.main.models.LoginModel;
+import com.main.controllers.MainScreenController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Naveen Luke Fernando on 2017-09-20.
  */
-public class Supplier_view_CTRL implements Initializable,  ControlledScreen{
+public class Supplier_view_CTRL implements Initializable, SessionListener{
 
     Session session;
 
@@ -47,9 +47,7 @@ public class Supplier_view_CTRL implements Initializable,  ControlledScreen{
 
     @FXML
     private Label userLbl;
-
-
-
+    private MainScreenController mainScreenController;
 
 
     //Adding supplier to database
@@ -81,17 +79,6 @@ public class Supplier_view_CTRL implements Initializable,  ControlledScreen{
         }
     }
 
-
-
-
-
-
-
-
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-        controller = screenParent;
-    }
 
     // JFX SCENE LOAD
     @Override
@@ -136,6 +123,19 @@ public class Supplier_view_CTRL implements Initializable,  ControlledScreen{
 
         //**************************************************************************************
 
+
+    }
+
+    @Override
+    public void setSession(Session session) {
+
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainScreenController = (MainScreenController)controller;
 
     }
 }

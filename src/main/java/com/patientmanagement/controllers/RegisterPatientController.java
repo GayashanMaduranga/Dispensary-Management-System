@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  */
 public class RegisterPatientController implements Initializable,ControlledScreen {
 
-    ScreenController controller;
+    private ScreenController controller;
 
     static Patient patient;
 

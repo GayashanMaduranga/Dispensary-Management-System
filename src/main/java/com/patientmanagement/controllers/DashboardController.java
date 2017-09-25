@@ -5,7 +5,7 @@ import com.EntityClasses.Patient;
 import com.common.ConfirmDialog;
 import com.common.ScreenController;
 import com.common.SessionListener;
-import com.employeemanagement.controllers.MainScreenController;
+import com.main.controllers.MainScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -13,6 +13,7 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.main.Main;
 import com.main.models.LoginModel;
+import db.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,9 +38,9 @@ public class DashboardController implements Initializable,SessionListener {
 
 //    ScreenController controller;
 
-    ObservableList<Patient> patientList = FXCollections.observableArrayList();
+    private final ObservableList<Patient> patientList = FXCollections.observableArrayList();
 
-    TreeItem<Patient> root;
+    private TreeItem<Patient> root;
 
     private Session session;
     private MainScreenController mainScreenController;
@@ -47,11 +48,11 @@ public class DashboardController implements Initializable,SessionListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userLbl.setText(LoginModel.getUser());
-        //session = Main.getSessionFactory().openSession();
+        session = ScreenController.getSession();
 
         session.beginTransaction();
         Query patientNameQuery = session.createQuery("select p from Patient p");
+        //noinspection unchecked
         List<Patient> patients = patientNameQuery.list();
         session.getTransaction().commit();
 
@@ -80,6 +81,7 @@ public class DashboardController implements Initializable,SessionListener {
 
         root = new RecursiveTreeItem<Patient>(patientList, RecursiveTreeObject::getChildren);
 
+        //noinspection unchecked
         patientTable.getColumns().setAll(nameCol, NICCol, DOBCol, occuCol, phoneCol, emailCol);
         patientTable.setRoot(root);
         patientTable.setShowRoot(false);
@@ -120,11 +122,6 @@ public class DashboardController implements Initializable,SessionListener {
 
     @FXML
     private JFXButton addPatientBtn;
-
-//    @FXML
-//    void showHome(){
-//        ScreenController.changeScreen(controller, PatientScreens.DASHBOARD_SCREEN, PatientScreens.MAIN_DASHBOARD_SCREEN);
-//    }
 
 
     @FXML
@@ -233,7 +230,7 @@ public class DashboardController implements Initializable,SessionListener {
 
     @Override
     public void setSession(Session session) {
-        this.session = session;
+//        this.session = session;
     }
 
     @Override
