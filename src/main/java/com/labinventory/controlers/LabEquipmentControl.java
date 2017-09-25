@@ -1,5 +1,6 @@
 package com.labinventory.controlers;
 
+import com.EntityClasses.Item;
 import com.common.ScreenController;
 import com.common.SessionListener;
 import com.main.controllers.MainScreenController;
@@ -36,21 +37,20 @@ public class LabEquipmentControl implements Initializable,SessionListener {
     private MainScreenController mainScreenController;
     private Session session;
 
-    ObservableList<Equipment> equipmentList = FXCollections.observableArrayList();
+    ObservableList<Item> equipmentList = FXCollections.observableArrayList();
 
-    TreeItem<Equipment> root;
+    TreeItem<Item> root;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-//        session = Main.getSessionFactory().openSession();
-
+        session = ScreenController.getSession();
         session.beginTransaction();
-        Query equipmentQuery = session.createQuery("select e from Equipment e");
-        List<Equipment> equipments = equipmentQuery.list();
+        Query equipmentQuery = session.createQuery("select e from Item e where ITEM_TYPE = 'Equipment'");
+        List<Item> equipments = equipmentQuery.list();
         session.getTransaction().commit();
 
-        for (Equipment p : equipments){
+        for (Item p : equipments){
 
             equipmentList.add(p);
         }
@@ -58,21 +58,21 @@ public class LabEquipmentControl implements Initializable,SessionListener {
         //Create Table
         //Create column
 
-        JFXTreeTableColumn<Equipment, String> nameCol =  new JFXTreeTableColumn<>("Name");
-        nameCol.setCellValueFactory(param -> param.getValue().getValue().equipmentNameProperty());
+        JFXTreeTableColumn<Item, String> nameCol =  new JFXTreeTableColumn<>("Name");
+        nameCol.setCellValueFactory(param -> ((Equipment)param.getValue().getValue()).equipmentNameProperty());
 
-        JFXTreeTableColumn<Equipment, Number> IDCol =  new JFXTreeTableColumn<>("ID");
-        IDCol.setCellValueFactory(param -> param.getValue().getValue().equipmentIDProperty());
+        JFXTreeTableColumn<Item, Number> IDCol =  new JFXTreeTableColumn<>("ID");
+        IDCol.setCellValueFactory(param -> param.getValue().getValue().itemIDProperty());
 
-        JFXTreeTableColumn<Equipment, Number> stockCol =  new JFXTreeTableColumn<>("Stock");
+        JFXTreeTableColumn<Item, Number> stockCol =  new JFXTreeTableColumn<>("Stock");
         stockCol.setCellValueFactory(param -> param.getValue().getValue().stockProperty());
 
-        JFXTreeTableColumn<Equipment, Boolean> actionCol = new JFXTreeTableColumn<>("Action");
+        JFXTreeTableColumn<Item, Boolean> actionCol = new JFXTreeTableColumn<>("Action");
         actionCol.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));
         actionCol.setCellFactory(param -> new LabEquipmentControl.ActionCell(equipmentTable));
 
 
-        root = new RecursiveTreeItem<Equipment>(equipmentList, RecursiveTreeObject::getChildren);
+        root = new RecursiveTreeItem<>(equipmentList, RecursiveTreeObject::getChildren);
 
         equipmentTable.getColumns().setAll(IDCol, nameCol, stockCol, actionCol);
         equipmentTable.setRoot(root);
@@ -81,13 +81,13 @@ public class LabEquipmentControl implements Initializable,SessionListener {
         //.....Search code
 
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> equipmentTable.setPredicate(patientTreeItem -> {
-            boolean flag = patientTreeItem.getValue().equipmentNameProperty().getValue().contains(newValue.toLowerCase());
+            boolean flag = ((Equipment)patientTreeItem.getValue()).equipmentNameProperty().getValue().contains(newValue.toLowerCase());
             return flag;
         }));
     }
 
     @FXML
-    private JFXTreeTableView<Equipment> equipmentTable;
+    private JFXTreeTableView<Item> equipmentTable;
 
     @FXML
     private TextField txtSearch;
@@ -160,7 +160,7 @@ public class LabEquipmentControl implements Initializable,SessionListener {
     @Override
     public void setMainController(SessionListener controller) { this.mainScreenController = (MainScreenController)controller; }
 
-    private class ActionCell extends TreeTableCell<Equipment, Boolean> {
+    private class ActionCell extends TreeTableCell<Item, Boolean> {
 
         // a button for adding a new person.
         private Button removeBtn = new Button("Remove");
@@ -174,7 +174,7 @@ public class LabEquipmentControl implements Initializable,SessionListener {
          * @param fromTable the Table in which button resides.
          */
 
-        ActionCell(final TreeTableView<Equipment> fromTable) {
+        ActionCell(final TreeTableView<Item> fromTable) {
 
             //to remove buttion Colour
             //to add buttion colour
@@ -192,22 +192,37 @@ public class LabEquipmentControl implements Initializable,SessionListener {
             removeBtn.setOnAction(actionEvent -> {
 
                 fromTable.getSelectionModel().select(getTreeTableRow().getIndex());
-                TreeItem<Equipment> m = fromTable.getSelectionModel().getSelectedItem();
+                TreeItem<Item> m = fromTable.getSelectionModel().getSelectedItem();
 
                 session.beginTransaction();
                 session.delete(m.getValue());
                 session.getTransaction().commit();
 
-                String equipmentName = m.getValue().getEquipmentName();
+                String equipmentName = ((Equipment)m.getValue()).getEquipmentName();
 
                 equipmentList.removeIf(equipmentTreeItem -> {
                     boolean flag = false;
-                    if(equipmentTreeItem.getEquipmentName() == equipmentName)
+                    if(((Equipment)equipmentTreeItem).getEquipmentName() == equipmentName)
                         flag = true;
                     return flag;
                 });
 
                 fromTable.refresh();
+
+            });
+            editButton.setOnAction(actionEvent ->{
+
+//                fromTable.getSelectionModel().select(getTreeTableRow().getIndex());
+//                TreeItem<Equipment> z = fromTable.getSelectionModel().getSelectedItem();
+//
+//               // z.getValue().setEquipmentName();
+//                session.beginTransaction();
+//                session.update(z.getValue());
+//                session.getTransaction().commit();
+//
+//                String equipmentName = z.getValue().getEquipmentName();
+
+
 
             });
         }
