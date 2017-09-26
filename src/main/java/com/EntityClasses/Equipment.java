@@ -1,7 +1,9 @@
 package com.EntityClasses;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -11,54 +13,27 @@ import java.sql.Date;
  */
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Access(AccessType.PROPERTY)
-public abstract class Equipment {
+@DiscriminatorValue("Equipment")
+public class Equipment extends Item {
 
-
-    private SimpleIntegerProperty equipmentID;
-    private Date purchaseDate;
-    private SimpleDoubleProperty cost;
+    private SimpleStringProperty equipmentName;
 
     public Equipment() {
 
-        this.equipmentID = new SimpleIntegerProperty();
-        this.cost = new SimpleDoubleProperty();
+        this.equipmentName = new SimpleStringProperty();
     }
 
-    @Id
-    @GeneratedValue
-    public int getEquipmentID() {
-        return equipmentID.get();
+    @Column(name = "equipmentName")
+    public String getEquipmentName() {
+        return equipmentName.get();
     }
 
-    public SimpleIntegerProperty equipmentIDProperty() {
-        return equipmentID;
+    public SimpleStringProperty equipmentNameProperty() {
+        return equipmentName;
     }
 
-    public void setEquipmentID(int equipmentID) {
-        this.equipmentID.set(equipmentID);
-    }
-
-    @Column(name = "purchaseDate")
-    public Date getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public void setPurchaseDate(Date purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
-    @Column(name = "cost")
-    public double getCost() {
-        return cost.get();
-    }
-
-    public SimpleDoubleProperty costProperty() {
-        return cost;
-    }
-
-    public void setCost(double cost) {
-        this.cost.set(cost);
+    public void setEquipmentName(String equipmentName) {
+        this.equipmentName.set(equipmentName);
     }
 }

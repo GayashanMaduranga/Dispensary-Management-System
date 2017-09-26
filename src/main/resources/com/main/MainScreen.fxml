@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <GridPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controllers.MainScreenController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="287.0" minWidth="-Infinity" prefWidth="265.0" />
@@ -28,22 +27,24 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="-Infinity" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="337.0" minHeight="45.0" prefHeight="337.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="426.0" minHeight="10.0" prefHeight="142.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="NEVER" />
+            <RowConstraints minHeight="45.0" prefHeight="405.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="62.0" prefHeight="62.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
         </rowConstraints>
         <children>
-            <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#showHome" prefHeight="37.0" prefWidth="128.0" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <JFXButton fx:id="logoutBtn" buttonType="RAISED" onAction="#logout" prefHeight="37.0" prefWidth="128.0" ripplerFill="#ffffffcb" styleClass="logout-btn" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                 <graphic>
                     <MaterialDesignIconView glyphName="LOGOUT" size="25" />
                 </graphic>
                 <font>
-                    <Font name="Verdana" size="16.0" />
+                    <Font size="16.0" />
                 </font>
             </JFXButton>
-            <TreeView prefHeight="285.0" prefWidth="265.0" GridPane.rowIndex="1" />
+            <TreeView fx:id="navigationTree" prefHeight="285.0" prefWidth="265.0" style="-fx-background-color: none;" styleClass="mylistview" stylesheets="@scrollbar.css" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="30.0" right="5.0" />
+               </GridPane.margin></TreeView>
         </children>
     </GridPane>
      <!--    <children>-->
@@ -63,7 +64,7 @@
                              <Insets left="25.0" />
                          </HBox.margin>
                      </MaterialDesignIconView>
-                     <Label text="&lt;username&gt;" textFill="#cdcdcd">
+                     <Label fx:id="userLbl" text="&lt;username&gt;" textFill="#cdcdcd">
                          <HBox.margin>
                              <Insets left="5.0" />
                          </HBox.margin>

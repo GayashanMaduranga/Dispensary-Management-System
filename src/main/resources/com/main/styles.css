@@ -31,11 +31,6 @@
     -fx-text-fill: #ebeef3;
 }
 
-#leftPane .button:hover .glyph-icon{
-
-    -fx-fill: #134a79;
-}
-
 .whiteTextArea .content{
     -fx-background-color: rgba(255,255,255,1);
     -fx-background-insets:none ;
@@ -70,7 +65,7 @@
 }
 
 #leftPane .logout-btn{
-    -fx-background-color: #eba108;
+    -fx-background-color: #0e6793;
     -fx-text-fill: #ffffff;
     -fx-border-color: #ffffff;
     -fx-border-width: 2px;
@@ -79,7 +74,7 @@
 }
 
 #leftPane .logout-btn:hover{
-    -fx-background-color: #eb7715;
+    -fx-background-color: #0e4f75;
     -fx-font-size:16px;
 }
 
@@ -93,3 +88,16 @@
 
     -fx-fill: #ebeef3;
 }
+
+#navigationTree .tree-cell{
+    -fx-background-color: none;
+    -fx-text-fill: whitesmoke;
+    -fx-font-size: 19px;
+    -fx-padding: 0.5em 0em 0.5em 0em ;
+}
+
+#navigationTree .tree-cell:selected {
+    -fx-font-weight: bold ;
+}
+
+

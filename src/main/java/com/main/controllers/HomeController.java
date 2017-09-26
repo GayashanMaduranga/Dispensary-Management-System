@@ -1,18 +1,12 @@
 package com.main.controllers;
 
 
-import com.EntityClasses.User;
 import com.Laboratory.controllers.LabScreens;
 import com.PharmacyMgt.Controllers.PharmacyScreens;
-import com.appointmentscheduling.controllers.AppointmentScreens;
-import com.common.AlertDialog;
-import com.common.ConfirmDialog;
-import com.common.ControlledScreen;
-import com.common.ScreenController;
+import com.common.*;
 import com.employeemanagement.controllers.MyScreens;
 import com.financemanagement.controllers.FinanceScreens;
 import com.main.Main;
-import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
 import com.suppliermanagement.controllers.SupplierScreens;
 import javafx.animation.FadeTransition;
@@ -21,32 +15,18 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import org.hibernate.Query;
 import org.hibernate.Session;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-public class HomeController implements ControlledScreen, Initializable{
+public class HomeController implements ControlledScreen, Initializable,SessionListener{
 
     private Session session;
 
@@ -159,6 +139,17 @@ public class HomeController implements ControlledScreen, Initializable{
                 ScreenController.changeScreen(controller, MainScreens.HOME_SCREEN, PharmacyScreens.DASHBOARD_SCREEN);
                 break;
         }
+    }
+
+
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
     }
 
 
