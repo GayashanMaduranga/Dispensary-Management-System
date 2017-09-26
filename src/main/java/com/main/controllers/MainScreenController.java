@@ -1,6 +1,7 @@
 package com.main.controllers;
 
 import com.EntityClasses.Employee;
+import com.PharmacyMgt.Controllers.PharmacyScreens;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
@@ -227,6 +228,9 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 break;
             case "Suppliers":
                 ScreenController.changeScreen(SupplierScreens.SUPPLIER_SCREEN_VIEW,content, this);
+                break;
+            case "Billing":
+                ScreenController.changeScreen(PharmacyScreens.PHARMACY_BILLING_SCREEN,content, this);
                 break;
         }
 
