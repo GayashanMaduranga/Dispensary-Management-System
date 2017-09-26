@@ -7,6 +7,8 @@ package com.Laboratory.controllers;
 import com.EntityClasses.MainTest;
 import com.EntityClasses.TestField;
 import com.common.ScreenController;
+import com.common.SessionListener;
+import com.main.controllers.MainScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import db.UserSession;
@@ -23,8 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class addTestController implements Initializable{
+public class addTestController implements Initializable, SessionListener{
 
+    private Session session;
+    private MainScreenController mainScreenController;
 
     @FXML
     private JFXTextField id;
@@ -72,8 +76,6 @@ public class addTestController implements Initializable{
     private List<TreeItem<MainTest>> mainTestList;
 
     private List<TreeItem<TestField>> fieldList;
-
-    private Session session;
 
 
     @FXML
@@ -224,8 +226,16 @@ public class addTestController implements Initializable{
     }
 
 
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainScreenController = (MainScreenController)controller;
 
 
-
-
+    }
 }

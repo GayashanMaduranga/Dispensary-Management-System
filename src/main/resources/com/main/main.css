@@ -9,3 +9,18 @@
 #closebtn:hover{
     -fx-text-fill: linear-gradient(to top, #360500 0%, #c90700 40%);
 }
+
+.ask-logout-button{
+    -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #146bbe, #1bda99);
+    -fx-text-fill: #dadada;
+    -fx-border-color: #0e4f75;
+    -fx-background-radius: 30px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+}
+
+.ask-logout-button:hover{
+    -fx-background-color: linear-gradient(from 100% 100% to 0% 0%, #362ac2, #1ddfcc);
+    -fx-text-fill: #ffffff;
+
+}

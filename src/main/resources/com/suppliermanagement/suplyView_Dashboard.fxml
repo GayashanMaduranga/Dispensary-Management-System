@@ -5,6 +5,7 @@
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@Sup_styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.DoctorsAssistantController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@Sup_styles2.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.suppliermanagement.controllers.suplyView_Dashboard_CTRL">
     <center>
         <GridPane prefHeight="723.0" prefWidth="1323.0">
             <columnConstraints>
@@ -66,83 +67,71 @@
             </GridPane>
             <GridPane prefHeight="597.0" prefWidth="1300.0" style="-fx-background-color: #24248f;" GridPane.rowIndex="1" GridPane.rowSpan="2">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="283.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="699.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="283.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="157.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="986.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="152.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="208.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="160.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="0.0" prefHeight="166.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="0.0" prefHeight="132.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="217.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" prefHeight="185.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" prefHeight="93.0" prefWidth="1032.0" text="Supplier Management" textFill="WHITE" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="29.0" />
-                     </font>
-                     <graphic>
-                        <MaterialDesignIconView glyphName="CLIPBOARD_TEXT" size="40" />
-                     </graphic>
-                  </Label>
-                  <HBox prefHeight="367.0" prefWidth="778.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <HBox alignment="CENTER" GridPane.columnIndex="1">
                      <children>
-                        <JFXButton fx:id="sidebarRegisterBtn11111" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="246.0" prefWidth="212.0" style="-fx-background-color: none;" text="Message Portal">
+                        <Label alignment="CENTER" graphicTextGap="15.0" prefHeight="93.0" prefWidth="728.0" text="Supplier Management" textFill="WHITE">
                            <font>
-                              <Font name="Verdana" size="21.0" />
+                              <Font size="38.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIconView glyphName="ENVELOPE" size="50" />
+                              <MaterialDesignIconView glyphName="ACCOUNT_MULTIPLE" size="80" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="367.0" prefWidth="778.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <JFXButton fx:id="invent_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="234.0" prefWidth="272.0" style="-fx-background-color: none;" text="Inventory">
+                           <font>
+                              <Font name="Verdana" size="26.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="COGS" size="80" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip autoHide="true" text="View Stock Levels">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </JFXButton>
+                        <JFXButton fx:id="stock_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="239.0" prefWidth="272.0" style="-fx-background-color: none;" text="Stock Control">
+                           <font>
+                              <Font name="Verdana" size="26.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="CUBES" size="80" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="sidebarRegisterBtn" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="250.0" prefWidth="233.0" style="-fx-background-color: none;" text="Purchasing">
+                        <JFXButton fx:id="supplier_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="239.0" prefWidth="272.0" style="-fx-background-color: none;" text="Suppliers">
                            <font>
-                              <Font name="Verdana" size="21.0" />
+                              <Font name="Verdana" size="26.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIconView glyphName="SHOPPING_BAG" size="50" />
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets left="10.0" right="10.0" />
-                           </padding>
-                        </JFXButton>
-                        <JFXButton fx:id="sidebarRegisterBtn1" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="239.0" prefWidth="232.0" style="-fx-background-color: none;" text="Suppliers">
-                           <font>
-                              <Font name="Verdana" size="20.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="USERS" size="50" />
+                              <FontAwesomeIconView glyphName="USERS" size="80" />
                            </graphic>
                         </JFXButton>
                      </children>
                   </HBox>
-                  <HBox prefHeight="166.0" prefWidth="115.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <HBox alignment="CENTER" prefHeight="166.0" prefWidth="115.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <JFXButton fx:id="sidebarRegisterBtn11" alignment="CENTER" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="289.0" prefWidth="194.0" style="-fx-background-color: none;" text="Returns">
+                        <JFXButton fx:id="backToHomeBtn" alignment="CENTER" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="165.0" prefWidth="396.0" style="-fx-background-color: none;" text="Back to Homepage">
                            <font>
                               <Font name="Verdana" size="20.0" />
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="REPLY" size="50" />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="sidebarRegisterBtn111" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="166.0" prefWidth="231.0" style="-fx-background-color: none;" text="Warehouse">
-                           <font>
-                              <Font name="Verdana" size="21.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="CUBES" size="50" />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="sidebarRegisterBtn1111" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="166.0" prefWidth="279.0" style="-fx-background-color: none;" text="Reports">
-                           <font>
-                              <Font name="Verdana" size="20.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="LINE_CHART" size="50" />
                            </graphic>
                         </JFXButton>
                      </children>

@@ -7,10 +7,15 @@ import com.common.BaseEnum;
  */
 public enum SupplierScreens implements BaseEnum {
 
-    PURCHASE_SCREEN("purchase", "/com/suppliermanagement/supView_Purchase.fxml"),
     DASHBOARD_SCREEN("dashboard", "/com/suppliermanagement/suplyView_Dashboard.fxml"),
-    SUPPLIER_SCREEN("suppliers", "/com/suppliermanagement/supView_Suppliers.fxml");
-
+    SUPPLIER_SCREEN_VIEW("supplier_view", "/com/suppliermanagement/Suppliers_View/Supplier_view.fxml"),
+    SUPPLIER_SCREEN_NEW("new_supplier","/com/suppliermanagement/Suppliers_View/Add_Supplier.fxml"),
+    SUPPLIER_SCREEN_EDIT("edit_supplier","/com/suppliermanagement/Suppliers_View/Edit_Supplier.fxml"),
+    STOCK_CONTROL_VIEW("stock_control_view","/com/suppliermanagement/Stock_Control_View/Stock_Control.fxml"),
+    STOCK_CONTROL_NEW("stock_control_add","/com/suppliermanagement/Stock_Control_View/Stock_Control_New_Purchase.fxml"),
+    STOCK_CONTROL_EDIT("stock_control_edit","/com/suppliermanagement/Stock_Control_View/Stock_Control_Edit_Purchase.fxml"),
+    INVENTORY_VIEW("invent_view","/com/suppliermanagement/Inventory_View/Inventory_View.fxml"),
+    SUPPLIER_MAIN_VIEW("Main","/com/suppliermanagement/Supplier_MainScreen.fxml");
 
     String path;
     String id;

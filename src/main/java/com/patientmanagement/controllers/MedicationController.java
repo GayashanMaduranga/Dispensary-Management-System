@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
 
 public class MedicationController implements Initializable,ControlledScreen {
 
-    ScreenController controller;
+    private ScreenController controller;
 
     static Medication medication;
 
