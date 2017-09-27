@@ -1,10 +1,7 @@
 package com.PharmacyMgt.Controllers;
 
 
-import com.EntityClasses.Measure;
-import com.EntityClasses.Medication;
-import com.EntityClasses.Patient;
-import com.EntityClasses.PharmacyBatch;
+import com.EntityClasses.*;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.common.SessionListener;
@@ -35,6 +32,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -98,12 +96,23 @@ public class BillingController implements Initializable,SessionListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        List<PharmacyBatch> Pbatches = new ArrayList<>();
 
         session = ScreenController.getSession();
         session.beginTransaction();
-        Query pharmacyBatchQuery = session.createQuery("from PharmacyBatch");
-        List<PharmacyBatch> Pbatches = pharmacyBatchQuery.list();
+//        Query pharmacyBatchQuery = session.createQuery("from PharmacyBatch");
+//        List<PharmacyBatch> Pbatches = pharmacyBatchQuery.list();
+
+        Query drugQuery = session.createQuery("select e from Item e where ITEM_TYPE = 'Drug'");
+        List<Item> drugs = drugQuery.list();
+
         session.getTransaction().commit();
+
+        for (Item p : drugs){
+            for (PharmacyBatch batch:((PharmacyItem)p).getBatches()){
+                Pbatches.add(batch);
+            }
+        }
 
         for (PharmacyBatch pharmacyBatch : Pbatches){
 

@@ -49,6 +49,7 @@ public class PharmacyManagementTest {
         pharmacyBatch.setPharmacyItem(item);
 
         session.beginTransaction();
+        session.save(item);
         session.save(pharmacyBatch);
         session.getTransaction().commit();
 

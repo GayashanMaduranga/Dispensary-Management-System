@@ -15,12 +15,12 @@ import java.util.List;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "PharmacyItem")
-public class PharmacyItem extends RecursiveTreeObject<PharmacyItem> {
+@DiscriminatorValue("Drug")
+public class PharmacyItem extends Item {
 
-    private SimpleIntegerProperty phId;
+//    private SimpleIntegerProperty phId;
     private SimpleStringProperty itemName;
-    private SimpleIntegerProperty stock;
+//    private SimpleIntegerProperty stock;
     private SimpleIntegerProperty reorderLevel;
     private SimpleDoubleProperty MRP;
     private List<PharmacyBatch> batches;
@@ -28,29 +28,29 @@ public class PharmacyItem extends RecursiveTreeObject<PharmacyItem> {
 
     public PharmacyItem() {
 
-        this.phId = new SimpleIntegerProperty();
+//        this.phId = new SimpleIntegerProperty();
         this.itemName = new SimpleStringProperty();
-        this.stock = new SimpleIntegerProperty();
+//        this.stock = new SimpleIntegerProperty();
         this.reorderLevel = new SimpleIntegerProperty();
         this.MRP = new SimpleDoubleProperty();
         this.batches = new ArrayList<>();
 
     }
 
-    @Id
-    @Column(name = "phId")
-    @GeneratedValue
-    public int getPhId() {
-        return phId.get();
-    }
-
-    public SimpleIntegerProperty phIdProperty() {
-        return phId;
-    }
-
-    public void setPhId(int phId) {
-        this.phId.set(phId);
-    }
+//    @Id
+//    @Column(name = "phId")
+//    @GeneratedValue
+//    public int getPhId() {
+//        return phId.get();
+//    }
+//
+//    public SimpleIntegerProperty phIdProperty() {
+//        return phId;
+//    }
+//
+//    public void setPhId(int phId) {
+//        this.phId.set(phId);
+//    }
 
     @Column(name = "itemName")
     public String getItemName() {
@@ -65,18 +65,18 @@ public class PharmacyItem extends RecursiveTreeObject<PharmacyItem> {
         this.itemName.set(itemName);
     }
 
-    @Column(name = "stock")
-    public int getStock() {
-        return stock.get();
-    }
-
-    public SimpleIntegerProperty stockProperty() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock.set(stock);
-    }
+//    @Column(name = "stock")
+//    public int getStock() {
+//        return stock.get();
+//    }
+//
+//    public SimpleIntegerProperty stockProperty() {
+//        return stock;
+//    }
+//
+//    public void setStock(int stock) {
+//        this.stock.set(stock);
+//    }
 
     @Column(name = "reorderLevel")
     public int getReorderLevel() {

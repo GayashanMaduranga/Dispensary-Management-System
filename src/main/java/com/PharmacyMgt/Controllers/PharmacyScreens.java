@@ -12,6 +12,7 @@ public enum PharmacyScreens implements BaseEnum{
     DASHBOARD_SCREEN("MainView", "/com/PharmacyMgt/pharView_Dashboard.fxml"),
     PHARMACY_BILLING_SCREEN("BillingView", "/com/PharmacyMgt/pharView_billing_new.fxml"),
     PHARMACY_STOCK_SCREEN ("StockView", "/com/PharmacyMgt/pharView_Stock.fxml"),
+    PHARMACY_STOCK_SCREEN2 ("StockView", "/com/PharmacyMgt/example_stockView.fxml"),
     PHARMACY_MESSAGE_SCREEN ("MessageView", "/com/PharmacyMgt/pharView_Message.fxml"),
     PHARMACY_PAYMENT_SCREEN ("InvoiceCheckView", "/com/PharmacyMgt/pharView_InvoiceCheck.fxml"),
     PHARMACY_EXPIRY_DATE_SCREEN("ExpiryDateView", "/com/PharmacyMgt/pharView_ExpiryDate.fxml") ;
