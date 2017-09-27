@@ -172,21 +172,21 @@
 .button-green{
     -fx-padding: 5px;
     -fx-background-color: none;
-    -fx-text-fill: #008710;
-    -fx-border-color: #008710;
+    -fx-text-fill: #006915;
+    -fx-border-color: #006915;
     -fx-border-width: 2px;
     -fx-border-radius: 30px;
 }
 
 .button-green:hover{
-    -fx-background-color: #008710;
+    -fx-background-color: #006915;
     -fx-text-fill: #ffffff;
     -fx-background-radius: 30px;
 
 }
 
 #leftPane .button-green:hover{
-    -fx-background-color: #008710;
+    -fx-background-color: #006915;
     -fx-text-fill: #ebeef3;
     -fx-font-size: 23px;
 }
@@ -202,7 +202,7 @@
 }
 
 .accept-btn{
-    -fx-background-color: #008710;
+    -fx-background-color: #006915;
     -fx-text-fill: white;
 }
 
@@ -285,5 +285,5 @@
 }
 
 .glyph-icon-green{
-    -fx-fill: #008710;
+    -fx-fill: #006915;
 }
