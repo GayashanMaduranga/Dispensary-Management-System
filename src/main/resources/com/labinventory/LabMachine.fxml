@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.DropShadow?>
+
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.octicons.OctIconView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.TreeTableView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-
-<GridPane prefHeight="666.0" prefWidth="1035.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.labinventory.controlers.LabEquipmentControl">
+<GridPane prefHeight="666.0" prefWidth="1035.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.labinventory.controlers.LabMachineControl">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="1035.0" />
    </columnConstraints>
@@ -65,7 +61,15 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <JFXButton fx:id="btnAddMachine" onAction="#addEquipment" prefHeight="40.0" prefWidth="174.0" styleClass="button-green" text="Add New Machine">
+                  <Label text="Machine Name :" />
+                  <TextField fx:id="txtMachineName" prefHeight="25.0" prefWidth="291.0" promptText="Machine Name" />
+                  <Label text="Service Period :" />
+                  <Spinner fx:id="spinnerServicePeriod" prefHeight="31.0" prefWidth="68.0">
+                     <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory max="10" min="1"/>
+                     </valueFactory>
+                  </Spinner>
+                  <JFXButton fx:id="btnAddMachine" onAction="#addMachine" prefHeight="40.0" prefWidth="174.0" styleClass="button-green" text="Add New Machine">
                      <font>
                         <Font size="17.0" />
                      </font>

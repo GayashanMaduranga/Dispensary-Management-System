@@ -25,8 +25,6 @@ import java.util.ResourceBundle;
 
 public class DoctorsAssistantController implements Initializable,SessionListener {
 
-    ScreenController controller;
-
     private Session session;
     private MainScreenController mainScreenController;
 
@@ -59,18 +57,6 @@ public class DoctorsAssistantController implements Initializable,SessionListener
 
         switch(((JFXButton)event.getSource()).getId()){
 
-            case "sidebarRegisterBtn":
-                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.REGISTER_PATIENT_SCREEN);
-                break;
-//            case "titlebtn":
-//                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.PATIENT_SUMMARY_SCREEN);
-//                break;
-            case "sidebarPrescriptionBtn":
-                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.MEDICATION_SCREEN);
-                break;
-            case "sidebarBillBtn":
-                ScreenController.changeScreen(controller, PatientScreens.PATIENT_SUMMARY_SCREEN, PatientScreens.BILL_SCREEN);
-                break;
         }
     }
 

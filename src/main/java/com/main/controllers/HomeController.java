@@ -1,6 +1,7 @@
 package com.main.controllers;
 
 
+import com.Laboratory.controllers.LabScreens;
 import com.PharmacyMgt.Controllers.PharmacyScreens;
 import com.common.*;
 import com.employeemanagement.controllers.MyScreens;

@@ -14,46 +14,14 @@ import java.sql.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "Equipment")
-public class Equipment extends RecursiveTreeObject<Equipment> {
+@DiscriminatorValue("Equipment")
+public class Equipment extends Item {
 
-
-    private SimpleIntegerProperty equipmentID;
-    private SimpleIntegerProperty stock;
     private SimpleStringProperty equipmentName;
 
     public Equipment() {
 
-        this.equipmentID = new SimpleIntegerProperty();
-        this.stock = new SimpleIntegerProperty();
         this.equipmentName = new SimpleStringProperty();
-    }
-
-    @Id
-    @GeneratedValue
-    public int getEquipmentID() {
-        return equipmentID.get();
-    }
-
-    public SimpleIntegerProperty equipmentIDProperty() {
-        return equipmentID;
-    }
-
-    public void setEquipmentID(int equipmentID) {
-        this.equipmentID.set(equipmentID);
-    }
-
-    @Column(name = "stock")
-    public int getStock() {
-        return stock.get();
-    }
-
-    public SimpleIntegerProperty stockProperty() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock.set(stock);
     }
 
     @Column(name = "equipmentName")
