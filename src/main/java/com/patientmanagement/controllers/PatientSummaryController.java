@@ -158,6 +158,12 @@ public class PatientSummaryController implements Initializable,SessionListener {
     private TextField txtGetpatient;
 
     @FXML
+    private TextField txtAllergyCause;
+
+    @FXML
+    private TextField txtAllergyDescription;
+
+    @FXML
     private TextField txtAddMeasure;
 
     @FXML
@@ -275,6 +281,25 @@ public class PatientSummaryController implements Initializable,SessionListener {
         measuresList.add(new TreeItem<>(m));
         measuresTable.getRoot().getChildren().clear();
         measuresTable.getRoot().getChildren().addAll(measuresList);
+
+    }
+
+    @FXML
+    void addAllergy(){
+
+        Allergy m = new Allergy();
+        m.setCause(txtAllergyCause.getText());
+        m.setDescription(txtAllergyDescription.getText());
+
+        summaryPatient.getAllergies().add(m);
+
+        session.beginTransaction();
+        session.save(summaryPatient);
+        session.getTransaction().commit();
+
+        allergyList.add(new TreeItem<>(m));
+        allergyTable.getRoot().getChildren().clear();
+        allergyTable.getRoot().getChildren().addAll(allergyList);
 
     }
 

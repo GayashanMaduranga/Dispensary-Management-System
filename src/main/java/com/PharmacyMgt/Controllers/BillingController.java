@@ -1,12 +1,10 @@
 package com.PharmacyMgt.Controllers;
 
 
-import com.EntityClasses.Measure;
-import com.EntityClasses.Medication;
-import com.EntityClasses.Patient;
-import com.EntityClasses.PharmacyBatch;
+import com.EntityClasses.*;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.common.SessionListener;
 import com.jfoenix.controls.JFXButton;
 
 import com.jfoenix.controls.JFXTreeTableColumn;
@@ -14,6 +12,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.main.Main;
+import com.main.controllers.MainScreenController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,15 +32,16 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 /**
  * Created by Vikt0r on 10/09/2017.
  */
-public class BillingController implements Initializable,ControlledScreen {
+public class BillingController implements Initializable,SessionListener {
 
-    ScreenController controller;
+    private MainScreenController mainScreenController;
     Session session;
     ObservableList<PharmacyBatch> pBatchList = FXCollections.observableArrayList();
     TreeItem<PharmacyBatch> root;
@@ -88,60 +88,31 @@ public class BillingController implements Initializable,ControlledScreen {
     // for medication table ************************************
 
 
-
-    @FXML
-    void changeScene(ActionEvent event) {
-
-        switch (((JFXButton) event.getSource()).getId()) {
-            case "titlebtn":
-
-                ScreenController.changeScreen(controller, PharmacyScreens.PHARMACY_BILLING_SCREEN, PharmacyScreens.DASHBOARD_SCREEN);
-                break;
-
-            case "msgNavBtn":
-                ScreenController.changeScreen(controller, PharmacyScreens.PHARMACY_BILLING_SCREEN,PharmacyScreens.PHARMACY_MESSAGE_SCREEN);
-                break;
-            case "paymentNavBtn":
-                ScreenController.changeScreen(controller, PharmacyScreens.PHARMACY_BILLING_SCREEN, PharmacyScreens.PHARMACY_PAYMENT_SCREEN);
-                break;
-            case "stockNavBtn":
-                ScreenController.changeScreen(controller, PharmacyScreens.PHARMACY_BILLING_SCREEN, PharmacyScreens.PHARMACY_STOCK_SCREEN);
-                break;
-
-            case "backBtn":
-                ScreenController.changeScreen(controller, PharmacyScreens.PHARMACY_BILLING_SCREEN, PharmacyScreens.DASHBOARD_SCREEN);
-                break;
-
-
-
-
-        }
-    }
-
     @FXML
     void logout(ActionEvent event) {
 
     }
 
-
-
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-        controller = screenParent;
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        List<PharmacyBatch> Pbatches = new ArrayList<>();
 
-        Configuration configuration = new Configuration().configure();
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        session = sessionFactory.openSession();
+        session = ScreenController.getSession();
         session.beginTransaction();
-        Query pharmacyBatchQuery = session.createQuery("from PharmacyBatch");
-        List<PharmacyBatch> Pbatches = pharmacyBatchQuery.list();
+//        Query pharmacyBatchQuery = session.createQuery("from PharmacyBatch");
+//        List<PharmacyBatch> Pbatches = pharmacyBatchQuery.list();
+
+        Query drugQuery = session.createQuery("select e from Item e where ITEM_TYPE = 'Drug'");
+        List<Item> drugs = drugQuery.list();
+
         session.getTransaction().commit();
+
+        for (Item p : drugs){
+            for (PharmacyBatch batch:((PharmacyItem)p).getBatches()){
+                Pbatches.add(batch);
+            }
+        }
 
         for (PharmacyBatch pharmacyBatch : Pbatches){
 
@@ -170,6 +141,13 @@ public class BillingController implements Initializable,ControlledScreen {
     }
 
 
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
 
-
+    @Override
+    public void setMainController(SessionListener controller) {
+        this.mainScreenController = (MainScreenController) controller;
+    }
 }
