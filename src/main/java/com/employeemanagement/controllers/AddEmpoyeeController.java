@@ -5,8 +5,8 @@ import com.EntityClasses.Education;
 import com.EntityClasses.PreviousEmployment;
 import com.EntityClasses.Staff;
 import com.common.SessionListener;
-import db.UserSession;
-import javafx.application.Platform;
+import com.employeemanagement.models.AddEmployeeModel;
+import com.employeemanagement.models.InputOutputModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,15 +17,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-import com.main.controllers.MainScreenController;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -34,7 +31,6 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import org.controlsfx.control.Notifications;
 import org.hibernate.Session;
 
 /**
@@ -50,7 +46,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
     @FXML
     private JFXDatePicker dateOfAppointment;
-
 
     @FXML
     private Circle empImage;
@@ -168,6 +163,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     private List<TreeItem<Education>> educationHistory;
     private BufferedImage employeeBufferedImage;
     private MainScreenController mainScreenController;
+    File selectedFile;
 
 
 
@@ -178,9 +174,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
         //Initialize Table Previous Employment
         initTables();
-
-
-
 
     }
 
@@ -201,13 +194,9 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
             education.setIsGraduated("N");
         }
 
-
-
         educationHistory.add(new TreeItem<>(education));
-
         SchoolTable.getRoot().getChildren().clear();
         SchoolTable.getRoot().getChildren().addAll(educationHistory);
-
 
     }
 
@@ -225,7 +214,14 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         s.setName(fullName.getText());
         s.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
         s.setEmployeeid(Integer.parseInt(empID.getText()));
-        s.setImage(employeeBufferedImage);
+
+
+        if(selectedFile!=null)
+        s.setImageByte(InputOutputModel.readByteImage(selectedFile));
+        else {
+
+        }
+
         s.setEmail(email.getText());
         s.setDateOfBirth(Date.valueOf(dob.getValue()));
         s.setContactNumber(contactNumber.getText());
@@ -237,9 +233,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
             s.setGender("F");
         }
 
-        for ( TreeItem<Education> e: educationHistory
-                ) {
-
+        for ( TreeItem<Education> e: educationHistory) {
             s.getEducationList().add(e.getValue());
         }
 
@@ -251,31 +245,8 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
         s.setAddress(address);
 
-        new Thread(() ->
-        {
 
-
-            try {
-                session.beginTransaction();
-                session.save(s);
-                session.getTransaction().commit();
-
-                Platform.runLater(() ->  Notifications.create()
-                        .title("Inserted")
-                        .text("successfully Inserted To the Database")
-                        .showInformation());
-            }catch (Exception e){
-
-                Platform.runLater(() ->  Notifications.create()
-                        .title("Error Inserting Data")
-                        .text("please check and try to insert again")
-                        .darkStyle()
-                        .showError());
-
-
-            }
-        }).start();
-
+        AddEmployeeModel.addEmployee(s);
 
     }
 
@@ -294,13 +265,9 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
 
         previouEmploymentList.add(new TreeItem<>(emplymemt));
-
         priviousEmployementTable.getRoot().getChildren().clear();
         priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
     }
-
-
-
 
 
     @FXML
@@ -308,16 +275,12 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         fileChooser.setTitle("Select Employee Image");
 
 
-
-
 //        fileChooser.getExtensionFilters().addAll(
 //
 //                new FileChooser.ExtensionFilter("JPEG Files", "*.jpg"));
 
 
-
-        File selectedFile = fileChooser.showOpenDialog(null);
-
+        selectedFile = fileChooser.showOpenDialog(null);
 
         try {
 
@@ -328,7 +291,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         }catch (Exception e){
             e.printStackTrace();
         }
-
 
     }
 
@@ -347,11 +309,9 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
 //        previouEmploymentList.add(employment);
 
-
         priviousEmployementTable.getRoot().getChildren().clear();
         priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
     }
-
 
 
     @FXML
@@ -359,7 +319,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
 //        PreviousEmployment employment = priviousEmployementTable.getSelectionModel().getSelectedItem().getValue();
         previouEmploymentList.remove(priviousEmployementTable.getSelectionModel().getSelectedItem());
-
         priviousEmployementTable.getRoot().getChildren().clear();
         priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
 
@@ -372,7 +331,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     void removeEducationHistory(ActionEvent event) {
 
         educationHistory.remove(SchoolTable.getSelectionModel().getSelectedItem());
-
         SchoolTable.getRoot().getChildren().clear();
         SchoolTable.getRoot().getChildren().addAll(educationHistory);
 
@@ -382,7 +340,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     void updateEducationHistory(ActionEvent event) {
 
         TreeItem<Education> item = SchoolTable.getSelectionModel().getSelectedItem();
-
         item.getValue().setSchoolName(schoolName.getText());
         item.getValue().setAddress(schoolAddress.getText());
         item.getValue().setPhone(schoolPhone.getText());
@@ -393,7 +350,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         }else {
             item.getValue().setIsGraduated("N");
         }
-
 
         SchoolTable.getRoot().getChildren().clear();
         SchoolTable.getRoot().getChildren().addAll(educationHistory);
@@ -412,9 +368,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         endingSalary.setText(String.valueOf(employment.getEndingSalary()));
         jobFrom.setUserData(employment.getFromDate().toLocalDate());
         jobTo.setUserData(employment.getToDate().toLocalDate());
-
-
-
 
     }
 
@@ -473,10 +426,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         yes.setToggleGroup(yesNOGroup);
         no.setToggleGroup(yesNOGroup);
 
-//        new Thread(() ->
-//        {
-//            Platform.runLater(() -> session = UserSession.getSession());
-//        }).start();
     }
 
 
@@ -488,7 +437,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @Override
     public void setMainController(SessionListener controller) {
 
-        this.mainScreenController = (MainScreenController) controller;
+        this.mainScreenController = (MainScreenController)controller;
 
 
     }

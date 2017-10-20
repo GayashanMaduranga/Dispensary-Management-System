@@ -184,12 +184,12 @@ public abstract class Employee {
     }
 
     @Lob
-    @Column(name="IMAGE", columnDefinition="longblob")
-    private byte[] getImageByte() {
+    @Column(name="IMAGE",nullable = false, columnDefinition="mediumblob")
+    public byte[] getImageByte() {
         return imageByte;
     }
 
-    private void setImageByte(byte[] imageByte) {
+    public void setImageByte(byte[] imageByte) {
         this.imageByte = imageByte;
     }
 

@@ -4,6 +4,7 @@ import com.EntityClasses.Employee;
 import com.EntityClasses.Staff;
 import com.common.ConfirmDialog;
 import com.common.SessionListener;
+import com.employeemanagement.models.SearchEmployeeModel;
 import com.jfoenix.controls.JFXButton;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
@@ -11,6 +12,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.main.Main;
 import db.UserSession;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -135,18 +137,10 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
 
     private void initDB(){
 
-//        session = UserSession.getSession();
+        List<Staff> staffMemberList = SearchEmployeeModel.getEmployees();
 
 
-
-        session.beginTransaction();
-
-
-        Query query = session.createQuery("select s from Staff s");
-        List<Staff> staffMemberList = query.list();
-
-        session.getTransaction().commit();
-
+       // staffTable
         for (Staff s : staffMemberList){
             staffList.add(new TreeItem<>(s));
         }

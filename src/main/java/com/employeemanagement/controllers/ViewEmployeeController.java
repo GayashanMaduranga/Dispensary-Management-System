@@ -2,11 +2,13 @@ package com.employeemanagement.controllers;
 
 import com.EntityClasses.*;
 import com.common.SessionListener;
+import com.employeemanagement.models.ViewEmployeeModel;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,7 +24,10 @@ import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
 import org.hibernate.Session;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -180,7 +185,7 @@ public class ViewEmployeeController implements Initializable,SessionListener{
     private List<TreeItem<Education>> educationHistory;
     private List<TreeItem<Attendance>> attendanceTreeList;
     private BufferedImage employeeBufferedImage;
-
+    File selectedFile;
     private MainScreenController mainController;
 
 
@@ -189,12 +194,8 @@ public class ViewEmployeeController implements Initializable,SessionListener{
     public void initialize(URL location, ResourceBundle resources) {
 
         initMainComponents();
-
         //Initialize Table Previous Employment
         initTables();
-
-
-
 
     }
 
@@ -214,8 +215,6 @@ public class ViewEmployeeController implements Initializable,SessionListener{
         }else {
             education.setIsGraduated("N");
         }
-
-
 
         educationHistory.add(new TreeItem<>(education));
 
@@ -250,31 +249,25 @@ public class ViewEmployeeController implements Initializable,SessionListener{
 
     @FXML
     void uplodePhoto(ActionEvent event) {
-//        fileChooser.setTitle("Select Employee Image");
-//
-//
-//
-//
-////        fileChooser.getExtensionFilters().addAll(
-////
-////                new FileChooser.ExtensionFilter("JPEG Files", "*.jpg"));
-//
-//
-//
-//        File selectedFile = fileChooser.showOpenDialog(null);
-//
-//
-//        try {
-//
-//            empimage = new Image(selectedFile.toURI().toString());
-//            empImage.setFill(new ImagePattern(empimage));
-//            employeeBufferedImage = ImageIO.read(selectedFile);
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+        fileChooser.setTitle("Select Employee Image");
 
 
+//        fileChooser.getExtensionFilters().addAll(
+//
+//                new FileChooser.ExtensionFilter("JPEG Files", "*.jpg"));
+
+
+        selectedFile = fileChooser.showOpenDialog(null);
+
+        try {
+
+            empimage = new Image(selectedFile.toURI().toString());
+            empImage.setFill(new ImagePattern(empimage));
+            employeeBufferedImage = ImageIO.read(selectedFile);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -402,7 +395,6 @@ public class ViewEmployeeController implements Initializable,SessionListener{
         SchoolTable.setShowRoot(false);
 
 
-
     }
 
     private void initMainComponents(){
@@ -416,12 +408,6 @@ public class ViewEmployeeController implements Initializable,SessionListener{
 
         yes.setToggleGroup(yesNOGroup);
         no.setToggleGroup(yesNOGroup);
-
-//        new Thread(() ->
-//        {
-//            Platform.runLater(() -> session = UserSession.getSession());
-//        }).start();
-
 
     }
 
@@ -443,7 +429,6 @@ public class ViewEmployeeController implements Initializable,SessionListener{
         empID.setText(String.valueOf(staff.getEmployeeid()));
         fullName.setText(staff.getName());
         dateOfAppointment.setValue(staff.getDateOfAppointment().toLocalDate());
-        employeeBufferedImage=staff.getImage();
         email.setText(staff.getName());
         dob.setValue(staff.getDateOfBirth().toLocalDate());
         contactNumber.setText(staff.getContactNumber());
@@ -454,11 +439,16 @@ public class ViewEmployeeController implements Initializable,SessionListener{
         city.setText(staff.getAddress().getCity());
         zip.setText(staff.getAddress().getZip());
 
-        if(employeeBufferedImage==null){
-            System.out.println("Null");
+
+
+        try {
+            employeeBufferedImage = ImageIO.read(new ByteArrayInputStream(staff.getImageByte()));
+            Image image = SwingFXUtils.toFXImage(employeeBufferedImage, null);
+            empImage.setFill(new ImagePattern(image));
+        }catch (Exception e){
+            e.printStackTrace();
         }
-      //  empImage.setFill(new ImagePattern(SwingFXUtils.toFXImage(employeeBufferedImage, null )));
-//SwingFXUtils.toFXImage(tempCard, null )
+
 
 
         for(PreviousEmployment employment: staff.getPreviousEmploymentList()) {
@@ -524,69 +514,45 @@ public class ViewEmployeeController implements Initializable,SessionListener{
 
 
     @FXML
-    void addNewStaff(ActionEvent event) {
+    void updateStaff(ActionEvent event) {
 
-        Staff s = (Staff)mainController.getEmployee();
+        Staff staff = (Staff)mainController.getEmployee();
 
         for ( TreeItem<PreviousEmployment> p: previouEmploymentList
                 ) {
 
-            s.getPreviousEmploymentList().add(p.getValue());
+            staff.getPreviousEmploymentList().add(p.getValue());
         }
 
-        s.setName(fullName.getText());
-        s.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
-        s.setEmployeeid(Integer.parseInt(empID.getText()));
-//        s.setImage(employeeBufferedImage);
-        s.setEmail(email.getText());
-        s.setDateOfBirth(Date.valueOf(dob.getValue()));
-        s.setContactNumber(contactNumber.getText());
-        s.setJobRole(jobRole.getText());
-        s.setNic(nic.getText());
+        staff.setName(fullName.getText());
+        staff.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
+        staff.setEmployeeid(Integer.parseInt(empID.getText()));
+        staff.setEmail(email.getText());
+        staff.setDateOfBirth(Date.valueOf(dob.getValue()));
+        staff.setContactNumber(contactNumber.getText());
+        staff.setJobRole(jobRole.getText());
+        staff.setNic(nic.getText());
         if(male.isSelected()) {
-            s.setGender("M");
+            staff.setGender("M");
         }else {
-            s.setGender("F");
+            staff.setGender("F");
         }
 
         for ( TreeItem<Education> e: educationHistory
                 ) {
 
-            s.getEducationList().add(e.getValue());
+            staff.getEducationList().add(e.getValue());
         }
 
-        Address address = new Address();
+        Address address = staff.getAddress();
         address.setUnitNO(unitNo.getText());
         address.setStreetAddress(streetAddress.getText());
         address.setCity(city.getText());
         address.setZip(zip.getText());
 
-        s.setAddress(address);
+        staff.setAddress(address);
 
-        new Thread(() ->
-        {
-
-
-            try {
-                session.beginTransaction();
-                session.update(s);
-                session.getTransaction().commit();
-
-                Platform.runLater(() ->  Notifications.create()
-                        .title("Updated")
-                        .text("successfully Update To the Database")
-                        .showInformation());
-            }catch (Exception e){
-
-                Platform.runLater(() ->  Notifications.create()
-                        .title("Error Inserting Data")
-                        .text("please check and try to insert again")
-                        .darkStyle()
-                        .showError());
-
-
-            }
-        }).start();
+        ViewEmployeeModel.updateEmployee(staff);
 
     }
 

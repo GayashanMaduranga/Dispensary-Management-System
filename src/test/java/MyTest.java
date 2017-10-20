@@ -53,7 +53,7 @@ public class MyTest {
         User user = new User();
         user.setUsername("user");
         user.setPassword("pass");
-        user.setAccessLevel(6);
+        user.setAccessLevel(1);
 
 
         Configuration configuration = new Configuration().configure();
