@@ -7,7 +7,7 @@
 }
 
 /*Button*/
-#orderTestBT1 ,  #extraBT1 ,#viewDB_BT1,#DB1,#DB2,#selectTest,#printReciptBT,#addReferBT,#back_to_addTestBT{
+#orderTestBT1 ,  #extraBT1 ,#viewDB_BT1,#selectTest,#printReciptBT,#back_to_addTestBT{
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #154687, #10afd7);
     -fx-text-fill: white;
 }

@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 public class addTestController implements Initializable, SessionListener{
 
     private Session session;
-    private MainScreenController mainScreenController;
+    private homeController MainScreenController;
 
     @FXML
     private JFXTextField id;
@@ -81,7 +81,6 @@ public class addTestController implements Initializable, SessionListener{
     @FXML
     void addMainTest(ActionEvent event) {
 
-        session = UserSession.getSession();
 
         MainTest mainTest = new MainTest();
         //mainTest.settId(Integer.parseInt(id.getText()));
@@ -97,6 +96,7 @@ public class addTestController implements Initializable, SessionListener{
         mainTestTable.getRoot().getChildren().addAll(mainTestList);
 
 
+        System.out.println("Test if MainTest");
     }
 
     @FXML
@@ -151,21 +151,19 @@ public class addTestController implements Initializable, SessionListener{
 
 
 
-       session = UserSession.getSession();
-
+        session = ScreenController.getSession();
         mainTestList = new ArrayList<>();
         fieldList = new ArrayList<>();
 
         session.beginTransaction();
         Query query = session.createQuery("select s from MainTest s");
-        List<MainTest> students = query.list();
+        List<MainTest> list = query.list();
 
         session.getTransaction().commit();
 
-        for (MainTest s : students){
+        for (MainTest s : list){
             mainTestList.add(new TreeItem<>(s));
         }
-
 
 
         MainTest mainTest = new MainTest();
@@ -174,12 +172,6 @@ public class addTestController implements Initializable, SessionListener{
         mainTest.setTestPrice(0);
 
         TreeItem<MainTest> root = new TreeItem<>(mainTest);
-        root.getChildren().addAll(mainTestList);
-        mainTestTable.setRoot(root);
-        mainTestTable.setShowRoot(false);
-
-
-
         root.getChildren().addAll(mainTestList);
         mainTestTable.setRoot(root);
         mainTestTable.setShowRoot(false);
@@ -200,7 +192,6 @@ public class addTestController implements Initializable, SessionListener{
 
         testFieldTable.setRoot(root2);
         testFieldTable.setShowRoot(false);
-
 
 
     }
@@ -234,7 +225,7 @@ public class addTestController implements Initializable, SessionListener{
     @Override
     public void setMainController(SessionListener controller) {
 
-        this.mainScreenController = (MainScreenController)controller;
+        this.MainScreenController = (homeController) controller;
 
 
     }

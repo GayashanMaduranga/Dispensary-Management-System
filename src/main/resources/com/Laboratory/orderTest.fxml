@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="720.0" prefWidth="1411.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="720.0" prefWidth="1411.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Laboratory.controllers.orderTestController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="784.0" minWidth="1.0" prefWidth="77.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1074.0" minWidth="10.0" prefWidth="746.0" />
@@ -67,7 +67,7 @@
                <children>
                   <Pane layoutX="21.0" layoutY="24.0" prefHeight="167.0" prefWidth="192.0" style="-fx-background-color: #0f2a33;">
                      <children>
-                        <JFXButton fx:id="selectTest" layoutX="14.0" layoutY="84.0" prefHeight="38.0" prefWidth="159.0" stylesheets="@stylesheet.css" text="Select Test" textFill="WHITE" />
+                        <JFXButton layoutX="14.0" layoutY="84.0" onAction="#selectTest" prefHeight="38.0" prefWidth="159.0" stylesheets="@stylesheet.css" text="Select Test" textFill="WHITE" />
                         <Label layoutX="8.0" layoutY="27.0" prefHeight="26.0" prefWidth="175.0" text=" Tests Selecting tools " textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="17.0" />

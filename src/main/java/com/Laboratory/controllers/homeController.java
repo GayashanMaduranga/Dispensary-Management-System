@@ -4,7 +4,9 @@ package com.Laboratory.controllers;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
+import com.common.SessionListener;
 import com.main.Main;
+import com.main.controllers.MainScreenController;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
@@ -14,6 +16,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,13 +25,19 @@ import java.util.ResourceBundle;
 /**
  * Created by AmilaWC on 9/16/2017.
  */
-public class homeController implements Initializable, ControlledScreen{
+public class homeController implements Initializable,SessionListener {
+
+
+
+    private Session session;
+    private homeController mainScreenController;
 
     private ScreenController controller;
-    @Override
-    public void setScreenParent(ScreenController screenParent) {
-        controller = screenParent;
-    }
+
+//    @Override
+//    public void setScreenParent(ScreenController screenParent) {
+//        controller = screenParent;
+//    }
 
     @FXML
     private GridPane topPane;
@@ -37,6 +47,10 @@ public class homeController implements Initializable, ControlledScreen{
 
     @FXML
     private StackPane content;
+
+    public StackPane getContent() {
+        return content;
+    }
 
     @FXML
     private GridPane aside;
@@ -133,7 +147,21 @@ public class homeController implements Initializable, ControlledScreen{
 
             selectedBtn = dashboardBT;
             selectedBtn.setDisable(true);
+        session = ScreenController.getSession();
 
           ScreenController.changeScreen(LabScreens.DASHBOARD_SCREEN, content);
+    }
+
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+        this.mainScreenController = (homeController) controller;
+
+
     }
 }
