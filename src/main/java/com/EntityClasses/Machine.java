@@ -70,4 +70,10 @@ public class Machine extends Item{
         dateString.set(this.DateLastServiced.toString());
         return dateString;
     }
+
+
+    @Override
+    public String toString() {
+        return MachineName.getValue();
+    }
 }
