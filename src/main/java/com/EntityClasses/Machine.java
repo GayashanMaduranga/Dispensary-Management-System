@@ -23,13 +23,18 @@ public class Machine extends Item{
     private SimpleStringProperty MachineName;
     private Date DateLastServiced;
 
+    private List<Maintenance> maintenaces;
+
 
     public Machine() {
 
         this.servicePeriod = new SimpleIntegerProperty();
         this.MachineName = new SimpleStringProperty();
 
+        this.maintenaces = new ArrayList<>();
+
     }
+
 
 
     @Column(name = "servicePeriod")
@@ -70,6 +75,17 @@ public class Machine extends Item{
         dateString.set(this.DateLastServiced.toString());
         return dateString;
     }
+
+//    @OneToMany( mappedBy = "Machine")
+//    public List<Maintenance> getMaintenaces() {
+//        return maintenaces;
+//    }
+
+    public void setMaintenaces(List<Maintenance> maintenaces) {
+        this.maintenaces = maintenaces;
+    }
+
+
 
 
     @Override

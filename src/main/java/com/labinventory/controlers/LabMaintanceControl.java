@@ -106,20 +106,19 @@ public class LabMaintanceControl implements Initializable,SessionListener {
 
     @FXML
     void AddDetails(){
-        Machine mac = cmbMachine.getSelectionModel().getSelectedItem();
-        mac.get
-        m.setReason(txtMaintananceReason.getText());
-        m.setCost(Double.parseDouble(txtMaintananceCost.getText()));
-        m.setDateLastServiced(java.sql.Date.valueOf(java.time.LocalDate.now()));
-        //m.setStock(0);
-
-
-        session.beginTransaction();
-        session.save(m);
-        session.getTransaction().commit();
-
-        maintananceList.add(m);
-        MaintanceTable.refresh();
+//        Machine mac = cmbMachine.getSelectionModel().getSelectedItem();
+//        m.setReason(txtMaintananceReason.getText());
+//        m.setCost(Double.parseDouble(txtMaintananceCost.getText()));
+//        m.setDateLastServiced(java.sql.Date.valueOf(java.time.LocalDate.now()));
+//        //m.setStock(0);
+//
+//
+//        session.beginTransaction();
+//        session.save(m);
+//        session.getTransaction().commit();
+//
+//        maintananceList.add(m);
+//        MaintanceTable.refresh();
     }
 
 

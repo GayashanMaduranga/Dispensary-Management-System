@@ -13,10 +13,8 @@ import java.time.LocalDate;
  * Created by DAMMA on 8/31/2017.
  */
 
-//@Embeddable
-    @Entity                           //new
-    @Access(AccessType.PROPERTY)       //new
-    @DiscriminatorValue("Maintenance") //new
+@Entity
+@Access(AccessType.PROPERTY)
 public class Maintenance extends RecursiveTreeObject<Maintenance> {
 
 
@@ -24,11 +22,37 @@ public class Maintenance extends RecursiveTreeObject<Maintenance> {
     private Date Date;
     private SimpleDoubleProperty cost;
     private Date DateLastServiced;
+    private SimpleIntegerProperty mainId;
+    private Machine machine;
 
     public Maintenance() {
 
+        this.mainId = new SimpleIntegerProperty();
         this.reason = new SimpleStringProperty();
         this.cost = new SimpleDoubleProperty();
+    }
+
+    @Id
+    @Column(name = "mainID")
+    @GeneratedValue
+    public int getmainId() {
+        return mainId.get();
+    }
+
+    public void setmainId(int pId) {
+        this.mainId.set(pId);
+    }
+
+    public SimpleIntegerProperty pIdProperty() {
+        return mainId;
+    }
+
+    public Machine getMachine() {
+        return machine;
+    }
+
+    public void setMachine(Machine machine) {
+        this.machine = machine;
     }
 
     @Column(name = "reason")
