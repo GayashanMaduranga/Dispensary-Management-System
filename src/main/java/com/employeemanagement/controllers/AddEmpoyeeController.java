@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import com.main.controllers.MainScreenController;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -487,7 +488,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @Override
     public void setMainController(SessionListener controller) {
 
-        this.mainScreenController = (MainScreenController)controller;
+        this.mainScreenController = (MainScreenController) controller;
 
 
     }
