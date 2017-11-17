@@ -20,10 +20,12 @@ import java.util.ResourceBundle;
  */
 public class RegisterPatientController implements Initializable,ControlledScreen {
 
-    ScreenController controller;
+    private ScreenController controller;
 
     static Patient patient;
 
+    @FXML
+    private Label txtMsg;
     @FXML
     private TextField txtName;
 
@@ -62,20 +64,34 @@ public class RegisterPatientController implements Initializable,ControlledScreen
     }
 
     @FXML
+    void reset(){
+
+        txtName.clear();
+        txtPhone.clear();
+        txtEmail.clear();
+        txtNIC.clear();
+        txtDOB.setValue(null);
+        txtOccupation.clear();
+
+    }
+
+    @FXML
     void register(){
 
 
-        patient.setDOB(Date.valueOf(txtDOB.getValue()));
-        patient.setPname(txtName.getText().toLowerCase());
-        patient.setGender(((RadioButton)genderGroup.getSelectedToggle()).getText());
-        patient.setNIC(txtNIC.getText());
-        patient.setContactNumber(txtPhone.getText());
-        patient.setEmail(txtEmail.getText().toLowerCase());
-        patient.setOccupation(txtOccupation.getText());
+        if (fieldsAreComplete()) {
+            patient.setDOB(Date.valueOf(txtDOB.getValue()));
+            patient.setPname(txtName.getText().toLowerCase());
+            patient.setGender(((RadioButton)genderGroup.getSelectedToggle()).getText());
+            patient.setNIC(txtNIC.getText());
+            patient.setContactNumber(txtPhone.getText());
+            patient.setEmail(txtEmail.getText().toLowerCase());
+            patient.setOccupation(txtOccupation.getText());
 
-        Main.dialogCanceled = false;
-        Stage s = (Stage)registerBtn.getScene().getWindow();
-        s.close();
+            Main.dialogCanceled = false;
+            Stage s = (Stage)registerBtn.getScene().getWindow();
+            s.close();
+        }
     }
 
     @Override
@@ -87,5 +103,21 @@ public class RegisterPatientController implements Initializable,ControlledScreen
     public void initialize(URL location, ResourceBundle resources) {
 
         patient =  new Patient();
+
+    }
+
+    private boolean fieldsAreComplete(){
+
+        if(txtName.getText().isEmpty() | txtPhone.getText().isEmpty() |
+                txtEmail.getText().isEmpty() | txtNIC.getText().isEmpty() |
+                txtOccupation.getText().isEmpty()){
+
+            txtMsg.setText("*Complete all fields before registering");
+
+
+            return false;
+        }
+
+        return true;
     }
 }
