@@ -21,10 +21,12 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -70,12 +72,17 @@ public class LabMachineControl implements SessionListener, Initializable{
         e.setDateLastServiced(java.sql.Date.valueOf(java.time.LocalDate.now()));
         e.setStock(0);
 
+        if(txtMachineName.getText()==null || txtMachineName.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"--Enter Valid Machine Name--");
+            System.out.println("ok");
+        }else {
+
         session.beginTransaction();
         session.save(e);
         session.getTransaction().commit();
 
         machineList.add(e);
-        MachineTable.refresh();
+        MachineTable.refresh();   }
     }
 
     @Override
@@ -113,6 +120,22 @@ public class LabMachineControl implements SessionListener, Initializable{
         MachineTable.getColumns().setAll(IDCol, nameCol, servicePeriodCol, dateServicedCol, actionCol);
         MachineTable.setRoot(root);
         MachineTable.setShowRoot(false);
+
+        //Search
+
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> MachineTable.setPredicate(patientTreeItem -> {
+            boolean flag =((Machine)patientTreeItem.getValue()).machineNameProperty().getValue().contains(newValue.toLowerCase());
+            return flag;
+        }));
+    }
+
+    @FXML
+    void machineTableSelection(MouseEvent event) {
+
+        Machine machine = (Machine)MachineTable.getSelectionModel().getSelectedItem().getValue();
+        txtMachineName.setText(machine.getMachineName());
+        spinnerServicePeriod.getValueFactory().setValue(machine.getServicePeriod());
+
     }
 
     private class ActionCell extends TreeTableCell<Item, Boolean> {
@@ -176,6 +199,15 @@ public class LabMachineControl implements SessionListener, Initializable{
 //                session.getTransaction().commit();
 //
 //                String equipmentName = z.getValue().getEquipmentName();
+
+                Machine machine = (Machine)MachineTable.getSelectionModel().getSelectedItem().getValue();
+                machine.setMachineName(txtMachineName.getText());
+                machine.setServicePeriod(spinnerServicePeriod.getValue());
+                MachineTable.refresh();
+
+                session.beginTransaction();
+                session.update(machine);
+                session.getTransaction().commit();
 
 
 
