@@ -27,6 +27,8 @@ import javafx.scene.layout.HBox;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import javax.swing.*;
+
 
 /**
  * Created by chamara on 8/13/2017.
@@ -113,13 +115,32 @@ public class LabEquipmentControl implements Initializable,SessionListener {
         e.setEquipmentName(txtAddEquipment.getText());
         e.setStock(0);
 
-        session.beginTransaction();
-        session.save(e);
-        session.getTransaction().commit();
+        if(txtAddEquipment.getText()==null || txtAddEquipment.getText().trim().isEmpty() ){
+            JOptionPane.showMessageDialog(null,"---Please Enter Valid Equipment Name---");
+//            System.out.println("OK");
+        }else{
 
-        equipmentList.add(e);
-        equipmentTable.refresh();
+            session.beginTransaction();
+            session.save(e);
+            session.getTransaction().commit();
+
+            equipmentList.add(e);
+            equipmentTable.refresh();        }
+
     }
+
+
+    @FXML
+    void EquipmentTableSelection(MouseEvent event) {
+
+        Equipment itm = (Equipment)equipmentTable.getSelectionModel().getSelectedItem().getValue();
+        txtAddEquipment.setText(itm.getEquipmentName());
+
+
+    }
+
+
+
 
 
     @FXML
@@ -222,6 +243,13 @@ public class LabEquipmentControl implements Initializable,SessionListener {
 //
 //                String equipmentName = z.getValue().getEquipmentName();
 
+                Equipment itm = (Equipment)equipmentTable.getSelectionModel().getSelectedItem().getValue();
+                itm.setEquipmentName(txtAddEquipment.getText());
+                equipmentTable.refresh();
+
+                session.beginTransaction();
+                session.update(itm);
+                session.getTransaction().commit();
 
 
             });
