@@ -40,6 +40,8 @@ public class DashboardController implements Initializable,SessionListener {
 
     private final ObservableList<Patient> patientList = FXCollections.observableArrayList();
 
+
+
     private TreeItem<Patient> root;
 
     private Session session;
@@ -55,6 +57,8 @@ public class DashboardController implements Initializable,SessionListener {
         //noinspection unchecked
         List<Patient> patients = patientNameQuery.list();
         session.getTransaction().commit();
+
+
 
         for (Patient p : patients){
 

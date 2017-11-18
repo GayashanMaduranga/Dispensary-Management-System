@@ -23,7 +23,10 @@ public class PharmacyItem extends RecursiveTreeObject<PharmacyItem> {
     private SimpleIntegerProperty stock;
     private SimpleIntegerProperty reorderLevel;
     private SimpleDoubleProperty MRP;
+    private SimpleStringProperty brand;
     private List<PharmacyBatch> batches;
+
+
 
 
     public PharmacyItem() {
@@ -33,6 +36,7 @@ public class PharmacyItem extends RecursiveTreeObject<PharmacyItem> {
         this.stock = new SimpleIntegerProperty();
         this.reorderLevel = new SimpleIntegerProperty();
         this.MRP = new SimpleDoubleProperty();
+        this.brand = new SimpleStringProperty();
         this.batches = new ArrayList<>();
 
     }
@@ -64,6 +68,20 @@ public class PharmacyItem extends RecursiveTreeObject<PharmacyItem> {
     public void setItemName(String itemName) {
         this.itemName.set(itemName);
     }
+
+    @Column(name = "brand")
+    public String getBrand() {
+        return brand.get();
+    }
+
+    public SimpleStringProperty brandProperty() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand.set(brand);
+    }
+
 
     @Column(name = "stock")
     public int getStock() {

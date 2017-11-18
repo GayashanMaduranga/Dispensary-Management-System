@@ -6,9 +6,7 @@ import com.common.ScreenController;
 import com.main.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
@@ -50,6 +48,23 @@ public class Add_Supplier_CTRL implements Initializable,ControlledScreen {
     @FXML
     private TextArea sup_address;
 
+    @FXML
+    private RadioButton equip;
+
+    @FXML
+    private ToggleGroup type;
+
+    @FXML
+    private RadioButton pharm;
+
+    @FXML
+    private RadioButton both;
+
+    @FXML
+    private Label message_lbl;
+
+
+
 
     @FXML
     void cancel(){
@@ -62,15 +77,18 @@ public class Add_Supplier_CTRL implements Initializable,ControlledScreen {
     void register(){
 
 
+        if (textfieldcheck())
 
-        supplier.setSupname((sup_name.getText().toLowerCase()));
-        supplier.setContactNumber(sup_phone.getText());
-        supplier.setEmail(sup_mail.getText().toLowerCase());
-        supplier.setAddress(sup_address.getText());
-
-        Main.dialogCanceled = false;
-        Stage s = (Stage)create_sup.getScene().getWindow();
-        s.close();
+        {
+            supplier.setSupname((sup_name.getText().toLowerCase()));
+            supplier.setContactNumber(sup_phone.getText());
+            supplier.setEmail(sup_mail.getText().toLowerCase());
+            supplier.setAddress(sup_address.getText());
+            supplier.setType(((RadioButton) type.getSelectedToggle()).getText());
+            Main.dialogCanceled = false;
+            Stage s = (Stage) create_sup.getScene().getWindow();
+            s.close();
+        }
     }
 
 
@@ -84,21 +102,25 @@ public class Add_Supplier_CTRL implements Initializable,ControlledScreen {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         supplier =  new Supplier();
+        supplier = new Supplier();
+        //su_id.setText(String.valueOf(supplier.supIdProperty().getValue().intValue()));
+        //System.out.println(supplier.supIdProperty().getValue().intValue());
+    }
 
-        /*session.beginTransaction();
-        Query query1 = session.createQuery("FROM Supplier ORDER BY supId DESC ");
-        query1.setMaxResults(1);
+     private boolean textfieldcheck()
+    {
+        if(sup_name.getText().isEmpty() || sup_phone.getText().isEmpty() || sup_mail.getText().isEmpty()
+                || sup_address.getText().isEmpty() || ((RadioButton)type.getSelectedToggle()).getText().isEmpty() )       {
 
-        List<Supplier> oid = (List<Supplier>) query1.list();
+            message_lbl.setText("Please Complete all fields before adding.");
 
-        session.getTransaction().commit();
-
-        for (Supplier f: oid) {
-            su_id.setText(String.valueOf(f.getSupId()+1));
+            return false;
         }
-        */
+
+            return true;
+
+    }
 
 
     }
-}
+

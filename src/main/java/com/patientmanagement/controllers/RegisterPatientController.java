@@ -87,5 +87,8 @@ public class RegisterPatientController implements Initializable,ControlledScreen
     public void initialize(URL location, ResourceBundle resources) {
 
         patient =  new Patient();
+
     }
 }
+
+

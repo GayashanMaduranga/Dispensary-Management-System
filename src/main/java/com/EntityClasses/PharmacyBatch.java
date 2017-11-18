@@ -96,7 +96,6 @@ public class PharmacyBatch extends RecursiveTreeObject<PharmacyBatch> {
     public PharmacyItem getPharmacyItem() {
         return pharmacyItem;
     }
-
     public void setPharmacyItem(PharmacyItem pharmacyItem) {
         this.pharmacyItem = pharmacyItem;
     }

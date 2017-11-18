@@ -1,6 +1,7 @@
 package com.suppliermanagement.controllers.Suppliers_CTRL;
 
 import com.EntityClasses.Supplier;
+import com.common.ConfirmDialog;
 import com.common.ScreenController;
 import com.common.SessionListener;
 import com.jfoenix.controls.JFXButton;
@@ -12,6 +13,7 @@ import com.main.Main;
 import com.main.controllers.MainScreenController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -79,6 +81,72 @@ public class Supplier_view_CTRL implements Initializable, SessionListener{
         }
     }
 
+    @FXML
+    void setField() {
+
+        s = supplierTable.getSelectionModel().getSelectedItem().getValue();
+
+
+
+    }
+
+
+    @FXML
+    void removesupplier() {
+
+        if(ConfirmDialog.show("", "Are you sure?")){
+
+        session.beginTransaction();
+            session.delete(s);
+            session.getTransaction().commit();
+
+            supplierList.remove(s);
+
+            supplierTable.refresh();
+
+            s = null;
+        }
+
+
+
+
+
+    }
+
+
+    @FXML
+    void update(ActionEvent event) {
+
+        Stage s = (Stage) add_new.getScene().getWindow();
+
+        Edit_Supplier_CTRL.supplier = supplierTable.getSelectionModel().getSelectedItem().getValue();
+
+
+        if(!(Main.createFadedWindow(new Stage(), s,"/com/suppliermanagement/Suppliers_View/Edit_Supplier.fxml"))){
+
+            Supplier su = Edit_Supplier_CTRL.supplier;
+
+            session.beginTransaction();
+            session.update(su);
+            session.getTransaction().commit();
+
+            root = new RecursiveTreeItem<Supplier>(supplierList, RecursiveTreeObject::getChildren);
+
+            //supplierList.add(su);
+
+            supplierTable.refresh();
+
+
+            Main.dialogCanceled = true;
+
+        }else{
+
+            System.out.println("canceled");
+        }
+
+
+
+    }
 
     // JFX SCENE LOAD
     @Override
@@ -103,6 +171,9 @@ public class Supplier_view_CTRL implements Initializable, SessionListener{
         JFXTreeTableColumn<Supplier, Number> sup_ID =  new JFXTreeTableColumn<>("Supplier ID");
         sup_ID.setCellValueFactory(param -> param.getValue().getValue().supIdProperty());
 
+        JFXTreeTableColumn<Supplier, String> sup_type =  new JFXTreeTableColumn<>("Type");
+        sup_type.setCellValueFactory(param -> param.getValue().getValue().typeProperty());
+
         JFXTreeTableColumn<Supplier, String> supname =  new JFXTreeTableColumn<>("Name");
         supname.setCellValueFactory(param -> param.getValue().getValue().supnameProperty());
 
@@ -117,7 +188,7 @@ public class Supplier_view_CTRL implements Initializable, SessionListener{
 
         root = new RecursiveTreeItem<Supplier>(supplierList, RecursiveTreeObject::getChildren);
 
-        supplierTable.getColumns().setAll(sup_ID, supname, sup_phone, sup_email,sup_addr);
+        supplierTable.getColumns().setAll(sup_ID,sup_type, supname, sup_phone, sup_email,sup_addr);
         supplierTable.setRoot(root);
         supplierTable.setShowRoot(false);
 

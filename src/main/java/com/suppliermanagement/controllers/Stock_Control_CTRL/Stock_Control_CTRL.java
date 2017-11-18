@@ -4,6 +4,8 @@ import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.common.SessionListener;
 import com.main.controllers.MainScreenController;
+import com.suppliermanagement.controllers.SupplierScreens;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import org.hibernate.Session;
 
@@ -18,6 +20,8 @@ public class Stock_Control_CTRL implements SessionListener, Initializable {
 
     Session session;
     private MainScreenController mainScreenController;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -35,6 +39,13 @@ public class Stock_Control_CTRL implements SessionListener, Initializable {
     public void setMainController(SessionListener controller) {
 
         this.mainScreenController = (MainScreenController)controller;
+
+    }
+
+    @FXML
+    public void createPurchase(){
+
+        ScreenController.changeScreen(SupplierScreens.STOCK_CONTROL_NEW,mainScreenController.getContent(),mainScreenController);
 
     }
 }
