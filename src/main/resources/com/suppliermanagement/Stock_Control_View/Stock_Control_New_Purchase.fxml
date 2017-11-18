@@ -175,16 +175,16 @@
                                     <Spinner fx:id="qty_spin" editable="true" onMouseClicked="#qty_clicked" prefHeight="27.0" prefWidth="138.0" GridPane.columnIndex="3" />
                                     <Label prefHeight="35.0" prefWidth="73.0" text="Total" GridPane.columnIndex="8" />
                                     <TextField fx:id="tot" editable="false" prefHeight="26.0" prefWidth="183.0" GridPane.columnIndex="9" />
-                                    <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" styleClass="button-green" text="Add" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                    <Button fx:id="add_item_btn" mnemonicParsing="false" onAction="#addItemToOrder" prefHeight="31.0" prefWidth="99.0" styleClass="button-green" text="Add" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                     <Label prefHeight="33.0" prefWidth="38.0" text="Cost" GridPane.columnIndex="5" />
                                     <TextField fx:id="cost_p" onKeyReleased="#cost_cal" GridPane.columnIndex="6" />
-                                    <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="70.0" text="Clear" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                                    <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="59.0" styleClass="button-red" text="Remove" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+                                    <Button fx:id="clr_btn" mnemonicParsing="false" prefHeight="31.0" prefWidth="70.0" text="Clear" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                                    <Button fx:id="rm_btn" mnemonicParsing="false" prefHeight="27.0" prefWidth="59.0" styleClass="button-red" text="Remove" GridPane.columnIndex="9" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </content>
                         </TitledPane>
-                        <JFXTreeTableView GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <JFXTreeTableView fx:id="order_table" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </content>
@@ -233,7 +233,7 @@
                   <Insets />
                </GridPane.margin>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="107.0" styleClass="button-green" text="Create Order" />
+                  <Button fx:id="createOrderBtn" mnemonicParsing="false" onAction="#createOrder" prefHeight="35.0" prefWidth="107.0" styleClass="button-green" text="Create Order" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="107.0" styleClass="button-red" text="Cancel" />
                </children>
             </HBox>

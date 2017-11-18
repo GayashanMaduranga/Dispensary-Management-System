@@ -108,35 +108,35 @@ public class BillingController implements Initializable,SessionListener {
 
         session.getTransaction().commit();
 
-        for (Item p : drugs){
-            for (PharmacyBatch batch:((PharmacyItem)p).getBatches()){
-                Pbatches.add(batch);
-            }
-        }
-
-        for (PharmacyBatch pharmacyBatch : Pbatches){
-
-            pBatchList.add(pharmacyBatch);
-        }
-
-        JFXTreeTableColumn<PharmacyBatch, String> nameCol =  new JFXTreeTableColumn<>("Name");
-        nameCol.setCellValueFactory(param -> param.getValue().getValue().getPharmacyItem().itemNameProperty());
-
-        JFXTreeTableColumn<PharmacyBatch, Number> stockavCol =  new JFXTreeTableColumn<>("Stock");
-        stockavCol.setCellValueFactory(param -> param.getValue().getValue().getPharmacyItem().stockProperty());
-
-        JFXTreeTableColumn<PharmacyBatch, String> edCol =  new JFXTreeTableColumn<>("exp");
-        edCol.setCellValueFactory(param -> param.getValue().getValue().expiryDateProperty());
-
-        JFXTreeTableColumn<PharmacyBatch, Number> mrpCol =  new JFXTreeTableColumn<>("MRP");
-        mrpCol.setCellValueFactory(param -> param.getValue().getValue().purchasingPriceProperty());
-
-
-        root = new RecursiveTreeItem<PharmacyBatch>(pBatchList, RecursiveTreeObject::getChildren);
-
-        table1.getColumns().setAll(nameCol, stockavCol, edCol, mrpCol);
-        table1.setRoot(root);
-        table1.setShowRoot(false);
+//        for (Item p : drugs){
+//            for (PharmacyBatch batch:((PharmacyItem)p).getBatches()){
+//                Pbatches.add(batch);
+//            }
+//        }
+//
+//        for (PharmacyBatch pharmacyBatch : Pbatches){
+//
+//            pBatchList.add(pharmacyBatch);
+//        }
+//
+//        JFXTreeTableColumn<PharmacyBatch, String> nameCol =  new JFXTreeTableColumn<>("Name");
+//        nameCol.setCellValueFactory(param -> param.getValue().getValue().getPharmacyItem().itemNameProperty());
+//
+//        JFXTreeTableColumn<PharmacyBatch, Number> stockavCol =  new JFXTreeTableColumn<>("Stock");
+//        stockavCol.setCellValueFactory(param -> param.getValue().getValue().getPharmacyItem().stockProperty());
+//
+//        JFXTreeTableColumn<PharmacyBatch, String> edCol =  new JFXTreeTableColumn<>("exp");
+//        edCol.setCellValueFactory(param -> param.getValue().getValue().expiryDateProperty());
+//
+//        JFXTreeTableColumn<PharmacyBatch, Number> mrpCol =  new JFXTreeTableColumn<>("MRP");
+//        mrpCol.setCellValueFactory(param -> param.getValue().getValue().purchasingPriceProperty());
+//
+//
+//        root = new RecursiveTreeItem<PharmacyBatch>(pBatchList, RecursiveTreeObject::getChildren);
+//
+//        table1.getColumns().setAll(nameCol, stockavCol, edCol, mrpCol);
+//        table1.setRoot(root);
+//        table1.setShowRoot(false);
 
     }
 

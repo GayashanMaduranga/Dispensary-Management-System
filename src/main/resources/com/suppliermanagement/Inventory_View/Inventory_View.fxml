@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -107,7 +108,10 @@
                                     <OctIconView fx:id="searchGlyph1" glyphName="SEARCH" size="35" styleClass="searchGlyph" wrappingWidth="40.999974489212036" />
                                  </children>
                               </HBox>
-                              <JFXTreeTableView fx:id="equi_table" GridPane.rowIndex="1" />
+                              <JFXTreeTableView fx:id="equi_table" GridPane.rowIndex="1">
+                                 <columnResizePolicy>
+                                    <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy></JFXTreeTableView>
                            </children>
                         </GridPane>
                      </content>

@@ -12,6 +12,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.main.Main;
 import com.main.controllers.MainScreenController;
 import com.suppliermanagement.controllers.SupplierScreens;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -58,6 +59,9 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
     @FXML
     private JFXTreeTableView<PharmacyItem> product_table;
 
+    @FXML
+    private JFXTreeTableView<Item> equi_table;
+
 //    @FXML
 //    private JFXTreeTableView<Equipment> equi_table;
 
@@ -68,9 +72,11 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
 
 
     ObservableList<PharmacyItem> productlist = FXCollections.observableArrayList();
+    ObservableList<Item> equiList = FXCollections.observableArrayList();
     ObservableList<PharmacyBatch> productlist_batch = FXCollections.observableArrayList();
 
     TreeItem<PharmacyItem> root;
+    TreeItem<Item> root2;
 
 
 
@@ -85,6 +91,8 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
             Query productNameQuery = session.createQuery("select s from PharmacyItem  s");
             List<PharmacyItem> product = productNameQuery.list();
             session.getTransaction().commit();
+
+            session.clear();
 
 
             for (PharmacyItem s : product) {
@@ -114,6 +122,37 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
             product_table.getColumns().setAll(pro_name, pro_brand, pro_mrp, pro_reorder, pro_stock);
             product_table.setRoot(root);
             product_table.setShowRoot(false);
+
+        session = ScreenController.getSession();
+        session.beginTransaction();
+        Query equipmentQuery = session.createQuery("select e from Item e where ITEM_TYPE = 'Equipment'");
+        List<Item> equipments = equipmentQuery.list();
+        session.getTransaction().commit();
+
+        for (Item p : equipments){
+
+            equiList.add(p);
+        }
+
+        //Create Table
+        //Create column
+
+        JFXTreeTableColumn<Item, String> nameCol =  new JFXTreeTableColumn<>("Name");
+        nameCol.setCellValueFactory(param -> ((Equipment)param.getValue().getValue()).equipmentNameProperty());
+
+        JFXTreeTableColumn<Item, Number> IDCol =  new JFXTreeTableColumn<>("ID");
+        IDCol.setCellValueFactory(param -> param.getValue().getValue().itemIDProperty());
+
+        JFXTreeTableColumn<Item, Number> stockCol =  new JFXTreeTableColumn<>("Stock");
+        stockCol.setCellValueFactory(param -> param.getValue().getValue().stockProperty());
+
+
+        root2 = new RecursiveTreeItem<>(equiList, RecursiveTreeObject::getChildren);
+
+        equi_table.getColumns().setAll(IDCol, nameCol, stockCol);
+        equi_table.setRoot(root2);
+        equi_table.setShowRoot(false);
+
 
 
     }

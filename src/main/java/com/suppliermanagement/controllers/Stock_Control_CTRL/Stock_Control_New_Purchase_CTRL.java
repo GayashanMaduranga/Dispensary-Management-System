@@ -1,7 +1,6 @@
 package com.suppliermanagement.controllers.Stock_Control_CTRL;
 
-import com.EntityClasses.PharmacyItem;
-import com.EntityClasses.Supplier;
+import com.EntityClasses.*;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.common.SessionListener;
@@ -39,12 +38,18 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
 
     private PharmacyItem ph;
 
+    private double orderTotal;
+
+    SupplyOrder supplyOrder = new SupplyOrder();
+
     ObservableList<Supplier> pharmacySupplierList = FXCollections.observableArrayList();
     ObservableList<Supplier> equipmentSupplierList = FXCollections.observableArrayList();
     ObservableList<Supplier> bothSupplierList = FXCollections.observableArrayList();
 
     ObservableList<PharmacyItem> productlist = FXCollections.observableArrayList();
     TreeItem<PharmacyItem> root;
+
+    PharmacyBatch pB;
 
     @FXML
     private Label supplier_name;
@@ -61,6 +66,17 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
     @FXML
     private TextField tot;
 
+    @FXML
+    private Button add_item_btn;
+
+    @FXML
+    private Button clr_btn;
+
+    @FXML
+    private Button rm_btn;
+
+    @FXML
+    private JFXTreeTableView<PharmacyBatch> order_table;
 
 
 
@@ -176,6 +192,9 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
         }
     }
 
+    ObservableList<PharmacyBatch> orderList = FXCollections.observableArrayList();
+    TreeItem<PharmacyBatch> rootPharm;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -212,7 +231,22 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
 //        this.qty_spin.setValueFactory(qty);
 //        qty_spin.setEditable(true);
 
+        JFXTreeTableColumn<PharmacyBatch, String> OrderItemNameCol =  new JFXTreeTableColumn<>("Name");
+        OrderItemNameCol.setCellValueFactory(param -> (param.getValue().getValue()).getPharmacyItem().itemNameProperty());
 
+        JFXTreeTableColumn<PharmacyBatch, Number> OrderItemStockCol =  new JFXTreeTableColumn<>("ID");
+        OrderItemStockCol.setCellValueFactory(param -> param.getValue().getValue().quantityProperty());
+
+        JFXTreeTableColumn<PharmacyBatch, Number> OrderItemPrice =  new JFXTreeTableColumn<>("Stock");
+        OrderItemPrice.setCellValueFactory(param -> param.getValue().getValue().purchasingPriceProperty());
+
+        rootPharm = new RecursiveTreeItem<>(orderList, RecursiveTreeObject::getChildren);
+
+        order_table.getColumns().setAll(OrderItemNameCol, OrderItemStockCol, OrderItemPrice);
+        order_table.setRoot(rootPharm);
+        order_table.setShowRoot(false);
+
+        pB = new PharmacyBatch();
 
     }
 
@@ -231,7 +265,6 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
 
         populateSupplierCombo();
         System.out.println("iooooo");
-
 
     }
 
@@ -309,12 +342,40 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
         this.qty_spin.setValueFactory(qty);
         qty_spin.setEditable(true);
 
+    }
 
+    @FXML
+    void addItemToOrder(){
 
+        pB = new PharmacyBatch();
+        pB.setPharmacyItem(pick_item.getSelectionModel().getSelectedItem().getValue());
+        pB.setQuantity(Integer.parseInt(qty_spin.getValue().toString()));
+        pB.setPurchasingPrice(Double.parseDouble(cost_p.getText()));
 
+        orderList.add(pB);
+        order_table.refresh();
 
+        orderTotal += Double.parseDouble(tot.getText());
 
+        supplyOrder.getPharmacyBatches().add(pB);
+        supplyOrder.setTotal(orderTotal);
+        supplyOrder.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
+        supplyOrder.setSupplier(suppCombo.getSelectionModel().getSelectedItem());
 
     }
 
+    @FXML
+    void createOrder(){
+
+        session.flush();
+        session.clear();
+        session.beginTransaction();
+        session.save(supplyOrder);
+        session.getTransaction().commit();
+
+        supplyOrder = new SupplyOrder();
+        orderTotal = 0.0;
+        orderList.clear();
+        order_table.refresh();
+    }
 }
