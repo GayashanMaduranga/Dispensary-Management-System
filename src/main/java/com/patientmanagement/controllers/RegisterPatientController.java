@@ -79,17 +79,25 @@ public class RegisterPatientController implements Initializable,ControlledScreen
     void register(){
 
         if (fieldsAreComplete()) {
-            patient.setDOB(Date.valueOf(txtDOB.getValue()));
-            patient.setPname(txtName.getText().toLowerCase());
-            patient.setGender(((RadioButton)genderGroup.getSelectedToggle()).getText());
-            patient.setNIC(txtNIC.getText());
-            patient.setContactNumber(txtPhone.getText());
-            patient.setEmail(txtEmail.getText().toLowerCase());
-            patient.setOccupation(txtOccupation.getText());
+            if (isValidNIC()) {
+                if (isValidPhoneNumber()) {
+                    if (isValidEmail()) {
+                        if (isValidOccupation()) {
+                            patient.setDOB(Date.valueOf(txtDOB.getValue()));
+                            patient.setPname(txtName.getText().toLowerCase());
+                            patient.setGender(((RadioButton)genderGroup.getSelectedToggle()).getText());
+                            patient.setNIC(txtNIC.getText());
+                            patient.setContactNumber(txtPhone.getText());
+                            patient.setEmail(txtEmail.getText().toLowerCase());
+                            patient.setOccupation(txtOccupation.getText());
 
-            Main.dialogCanceled = false;
-            Stage s = (Stage)registerBtn.getScene().getWindow();
-            s.close();
+                            Main.dialogCanceled = false;
+                            Stage s = (Stage)registerBtn.getScene().getWindow();
+                            s.close();
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -119,4 +127,73 @@ public class RegisterPatientController implements Initializable,ControlledScreen
 
         return true;
     }
+
+    private boolean isValidPhoneNumber(){
+
+        boolean flag = false;
+
+        String regex = "^[0-9]{10}$";
+
+        if(txtPhone.getText().matches(regex)){
+
+            flag = true;
+        }else{
+
+            txtMsg.setText("*Please enter a 10 digit phone number");
+        }
+        return flag;
+    }
+    private boolean isValidNIC(){
+
+        boolean flag = false;
+
+        String regex = "^[0-9]{9}[a-zA-Z]$";
+
+        if(txtNIC.getText().matches(regex)){
+
+            flag = true;
+        }else{
+
+            txtMsg.setText("*Please enter a valid NIC number");
+        }
+        return flag;
+    }
+
+    private boolean isValidEmail(){
+
+        boolean flag = false;
+
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(txtEmail.getText());
+
+        if(m.matches()){
+
+            flag = true;
+
+        }else{
+
+            txtMsg.setText("*Please enter a valid email address");
+        }
+        return flag;
+    }
+
+    private boolean isValidOccupation(){
+
+        boolean flag = false;
+
+        String regex = "^[a-zA-Z]+$";
+
+        if(txtOccupation.getText().matches(regex)){
+
+            flag = true;
+        }else{
+
+            txtMsg.setText("*There cannot be any numbers or special characters in the occupation field");
+        }
+        return flag;
+    }
+
+
+
 }
