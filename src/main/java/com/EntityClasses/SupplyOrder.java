@@ -1,5 +1,7 @@
 package com.EntityClasses;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
@@ -15,12 +17,15 @@ import java.util.List;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "SupplyOrder")
-public class SupplyOrder {
+public class SupplyOrder extends RecursiveTreeObject<SupplyOrder> {
 
 
     private SimpleIntegerProperty orderID;
     private Date date;
     private SimpleDoubleProperty total;
+
+
+    private SimpleBooleanProperty isReceived;
 
     private List<PharmacyBatch> pharmacyBatches;
     private List<Equipment> equipmentList;
@@ -74,6 +79,19 @@ public class SupplyOrder {
 
     public void setTotal(double total) {
         this.total.set(total);
+    }
+
+    @Column(name = "isReceived")
+    public boolean isIsReceived() {
+        return isReceived.get();
+    }
+
+    public SimpleBooleanProperty isReceivedProperty() {
+        return isReceived;
+    }
+
+    public void setIsReceived(boolean isReceived) {
+        this.isReceived.set(isReceived);
     }
 
     //uni directional one to many
