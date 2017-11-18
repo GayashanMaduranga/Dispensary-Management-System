@@ -1,50 +1,57 @@
 package com.EntityClasses;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
  * Created by gayashan on 9/12/2017.
  */
-@Embeddable
+@Entity
+@Access(AccessType.FIELD)
 public class Attendance {
 
-    private Date date;
-    private Timestamp arrivalTime;
-    private Timestamp leaveTime;
-    private int OT_Hours;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private Timestamp startTime;
+    private Timestamp endTime;
+    @ManyToOne
+    private Staff staff;
 
-    public Date getDate() {
-        return date;
+
+    public int getId() {
+        return id;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Timestamp getArrivalTime() {
-        return arrivalTime;
+
+
+    public Timestamp getStartTime() {
+        return startTime;
     }
 
-    public void setArrivalTime(Timestamp arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
     }
 
-    public Timestamp getLeaveTime() {
-        return leaveTime;
+    public Timestamp getEndTime() {
+        return endTime;
     }
 
-    public void setLeaveTime(Timestamp leaveTime) {
-        this.leaveTime = leaveTime;
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
     }
 
-    public int getOT_Hours() {
-        return OT_Hours;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public void setOT_Hours(int OT_Hours) {
-        this.OT_Hours = OT_Hours;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
 }
 
