@@ -22,6 +22,10 @@ import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 import java.io.IOException;
 import java.net.URL;
@@ -272,14 +276,21 @@ public class PatientSummaryController implements Initializable,SessionListener {
         m.setName(txtAddMeasure.getText());
         m.setDateUpdated(java.sql.Date.valueOf(java.time.LocalDate.now()));
 
-        summaryPatient.getMeasures().add(m);
+        if (summaryPatient.getMeasures().isEmpty()) {
+            summaryPatient.setMeasures(new ArrayList<>());
+            summaryPatient.getMeasures().add(m);
+        } else {
+            summaryPatient.getMeasures().add(m);
+        }
 
         session.beginTransaction();
         session.save(summaryPatient);
         session.getTransaction().commit();
 
         measuresList.add(new TreeItem<>(m));
-        measuresTable.getRoot().getChildren().clear();
+        if (!(measuresTable.getRoot().getChildren().isEmpty())) {
+            measuresTable.getRoot().getChildren().clear();
+        }
         measuresTable.getRoot().getChildren().addAll(measuresList);
 
     }
@@ -310,6 +321,7 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
         patients.clear();
 
+        session.clear();
         session.beginTransaction();
         Query patientNameQuery = session.createQuery("select p from Patient p where p.pname = '"+patientName+"'");
         patients = patientNameQuery.list();
@@ -366,7 +378,13 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
 //for measure table******************************************************************************************//
 
-        List<Measure> measures = summaryPatient.getMeasures();
+        List<Measure> measures;
+        if (summaryPatient.getMeasures().isEmpty()) {
+            System.out.println("MEASURES IN PATIENT EMPTY");
+            measures = new ArrayList<>();
+        } else {
+            measures = summaryPatient.getMeasures();
+        }
 
         measuresList.clear();
 
@@ -374,6 +392,7 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
             measuresList.add(new TreeItem<>(measure));
         }
+
 
 //for measure table**********************************************************************************************
 
@@ -391,7 +410,6 @@ public class PatientSummaryController implements Initializable,SessionListener {
         root.getChildren().addAll(measuresList);
         measuresTable.setRoot(root);
         measuresTable.setShowRoot(false);
-
     }
 
     private void updateMedTable(){
@@ -477,6 +495,11 @@ public class PatientSummaryController implements Initializable,SessionListener {
     public void initialize(URL location, ResourceBundle resources) {
 
         session = ScreenController.getSession();
+//        Configuration configuration = new Configuration().configure();
+//
+//        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+//        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+//        session = sessionFactory.openSession();
 
         patients = new ArrayList<>();
         mediList = new ArrayList<>();

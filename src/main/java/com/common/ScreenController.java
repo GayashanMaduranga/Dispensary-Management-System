@@ -38,7 +38,7 @@ public class ScreenController extends StackPane{
 
     public ScreenController() {
 
-        System.out.println("Hello");
+//        System.out.println("Hello");
 
     }
 
@@ -52,7 +52,6 @@ public class ScreenController extends StackPane{
 
     public boolean loadScreen(String name, String resource){
 
-        System.out.println(resource);
         try{
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
