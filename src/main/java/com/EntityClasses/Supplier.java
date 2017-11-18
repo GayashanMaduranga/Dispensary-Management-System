@@ -22,6 +22,8 @@ public class Supplier extends RecursiveTreeObject<Supplier> {
     private SimpleStringProperty email;
     private SimpleStringProperty contactNumber;
     private SimpleStringProperty address;
+    private SimpleStringProperty type;
+
 
 
     public Supplier() {
@@ -30,6 +32,7 @@ public class Supplier extends RecursiveTreeObject<Supplier> {
         this.email = new SimpleStringProperty();
         this.contactNumber = new SimpleStringProperty();
         this.address = new SimpleStringProperty();
+        this.type = new SimpleStringProperty();
     }
 
     @Id
@@ -98,5 +101,25 @@ public class Supplier extends RecursiveTreeObject<Supplier> {
 
     public void setAddress(String address) {
         this.address.set(address);
+    }
+
+
+    @Column(name= "Type")
+    public String getType() {
+        return type.get();
+    }
+
+    public SimpleStringProperty typeProperty() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type.set(type);
+    }
+
+
+    @Override
+    public String toString() {
+        return supname.get();
     }
 }
