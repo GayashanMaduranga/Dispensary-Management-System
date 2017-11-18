@@ -159,14 +159,19 @@ public class DashboardController implements Initializable,SessionListener {
     @FXML
     void setFields() {
 
-        p = patientTable.getSelectionModel().getSelectedItem().getValue();
+        try {
+            p = patientTable.getSelectionModel().getSelectedItem().getValue();
 
-        txtName.setText(p.getPname());
-        txtID.setText(Integer.toString(p.getpId()));
-        txtEmail.setText(p.getEmail());
-        txtOccupation.setText(p.getOccupation());
-        txtPhone.setText(p.getContactNumber());
-        datePickerDOB.setValue(p.getDOB().toLocalDate());
+            txtName.setText(p.getPname());
+            txtID.setText(Integer.toString(p.getpId()));
+            txtEmail.setText(p.getEmail());
+            txtOccupation.setText(p.getOccupation());
+            txtPhone.setText(p.getContactNumber());
+            datePickerDOB.setValue(p.getDOB().toLocalDate());
+        } catch (Exception e) {
+
+            System.out.println("No row selected");
+        }
 
     }
     @FXML
