@@ -190,4 +190,4 @@ public class MyTest {
 
 }
 
-//method to get ada date -      java.sql.Date.valueOf(java.time.LocalDate.now())
+//method to get today's date -      java.sql.Date.valueOf(java.time.LocalDate.now())
