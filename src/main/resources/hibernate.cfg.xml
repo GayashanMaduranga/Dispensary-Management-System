@@ -11,7 +11,6 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.current_session_context_class">thread</property>
-
         <mapping class="com.EntityClasses.MeasureValue"/>
         <mapping class="com.EntityClasses.Allergy"/>
         <mapping class="com.EntityClasses.DoctorSession"/>
@@ -45,7 +44,7 @@
         <mapping class="com.EntityClasses.OtherExpenses"/>
         <mapping class="com.EntityClasses.Maintenance"/>
 
-        <!--<mapping class="com.EntityClasses.Attendance"/>-->
+        <mapping class="com.EntityClasses.Attendance"/>
 
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->

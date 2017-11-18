@@ -16,10 +16,9 @@ import java.util.List;
 public class Staff extends Employee {
 
 
-    private Date dateOfAppointment;
-    private StringProperty jobRole;
 
     private List<Attendance> attendanceList;
+
 
     private List<Leave> leaveList;
 
@@ -28,31 +27,15 @@ public class Staff extends Employee {
     private List<Payroll> payrolls;
 
     public Staff() {
-        this.attendanceList = new ArrayList<>();
         this.leaveList = new ArrayList<>();
         this.payrolls = new ArrayList<>();
-        this.jobRole = new SimpleStringProperty();
-    }
+        this.attendanceList = new ArrayList<>();
 
-    @Column(name = "DATE_OF_APPOINTMENT",nullable = false)
-
-    public Date getDateOfAppointment() {
-        return dateOfAppointment;
-    }
-
-    public void setDateOfAppointment(Date dateOfAppointment) {
-        this.dateOfAppointment = dateOfAppointment;
     }
 
 
-    @ElementCollection
-    public List<Attendance> getAttendanceList() {
-        return attendanceList;
-    }
 
-    public void setAttendanceList(List<Attendance> attendanceList) {
-        this.attendanceList = attendanceList;
-    }
+
 
     @ElementCollection
     public List<Leave> getLeaveList() {
@@ -83,17 +66,14 @@ public class Staff extends Employee {
         this.payrolls = payrolls;
     }
 
-    public String getJobRole() {
-        return jobRole.get();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Attendance> getAttendanceList() {
+        return attendanceList;
     }
 
-    public StringProperty occupationProperty() {
-        return jobRole;
+    public void setAttendanceList(List<Attendance> attendanceList) {
+        this.attendanceList = attendanceList;
     }
-
-    public void setJobRole(String occupation) {
-        this.jobRole.set(occupation);
-    }
-
 
 }

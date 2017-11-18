@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -33,19 +35,21 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="55.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="35.0" minHeight="23.0" prefHeight="23.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="88.0" minHeight="29.0" prefHeight="54.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="157.0" minHeight="60.0" prefHeight="62.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="150.0" minHeight="54.0" prefHeight="54.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="136.0" minHeight="58.0" prefHeight="58.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="130.0" minHeight="60.0" prefHeight="84.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="170.0" minHeight="60.0" prefHeight="170.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="35.0" minHeight="23.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="119.0" minHeight="9.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="119.0" minHeight="20.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="157.0" minHeight="39.0" prefHeight="68.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="157.0" minHeight="24.0" prefHeight="64.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="34.0" prefHeight="54.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="136.0" minHeight="46.0" prefHeight="69.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="58.0" prefHeight="64.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="170.0" minHeight="60.0" prefHeight="150.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
          <children>
-            <GridPane prefHeight="34.0" prefWidth="479.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <GridPane prefHeight="106.0" prefWidth="620.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="122.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="9.0" prefWidth="9.0" />
@@ -67,7 +71,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtName" prefHeight="39.0" prefWidth="322.0" promptText="Example" GridPane.columnIndex="3">
+                  <TextField fx:id="sup_name" prefHeight="39.0" prefWidth="322.0" promptText="Example" GridPane.columnIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -90,14 +94,14 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="sup_id" editable="false" prefHeight="65.0" prefWidth="139.0" style="-fx-background-color: none;" GridPane.columnIndex="3">
+                  <TextField fx:id="su_id" editable="false" prefHeight="65.0" prefWidth="139.0" style="-fx-background-color: none;" GridPane.columnIndex="3">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </TextField>
                </children>
             </GridPane>
-            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="122.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="0.0" prefWidth="7.0" />
@@ -109,7 +113,7 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="txtPhone" maxWidth="-Infinity" prefHeight="35.0" prefWidth="166.0" promptText="+94772321355" GridPane.columnIndex="3">
+                  <TextField fx:id="sup_phone" maxWidth="-Infinity" prefHeight="35.0" prefWidth="166.0" promptText="+94772321355" GridPane.columnIndex="3">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
@@ -126,7 +130,7 @@
                   </Label>
                </children>
             </GridPane>
-            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="10.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="181.0" />
@@ -137,7 +141,7 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="txtEmail" prefHeight="35.0" prefWidth="256.0" promptText="supplier@email.com" GridPane.columnIndex="2">
+                  <TextField fx:id="sup_mail" prefHeight="35.0" prefWidth="256.0" promptText="supplier@email.com" GridPane.columnIndex="2">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
@@ -149,19 +153,14 @@
                   </Label>
                </children>
             </GridPane>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                <children>
-                  <Button fx:id="registerBtn" mnemonicParsing="false" onAction="#register" prefHeight="48.0" prefWidth="134.0" styleClass="button-green" text="Ok">
+                  <Button fx:id="update_sup" mnemonicParsing="false" onAction="#update" prefHeight="48.0" prefWidth="134.0" styleClass="button-green" text="Update">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <Button fx:id="resetBtn" mnemonicParsing="false" prefHeight="48.0" prefWidth="134.0" styleClass="button-blue" text="     Reset     ">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" prefWidth="134.0" styleClass="button-red" text="    Cancel    ">
+                  <Button fx:id="cancel_sup" mnemonicParsing="false" onAction="#cancel" prefWidth="134.0" styleClass="button-red" text="    Cancel    ">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -173,10 +172,10 @@
                   <Font name="Segoe UI Light" size="21.0" />
                </font>
                <graphic>
-                  <FontAwesomeIconView glyphName="EDIT" size="30" />
+                  <MaterialDesignIconView glyphName="ACCOUNT_PLUS" size="30" />
                </graphic>
             </JFXButton>
-            <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <GridPane prefHeight="0.0" prefWidth="317.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="10.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="181.0" />
@@ -192,10 +191,70 @@
                         <Font name="Verdana" size="22.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="sup_address" prefHeight="200.0" prefWidth="200.0" promptText="Enter Address" GridPane.columnIndex="2" />
+                  <TextArea fx:id="sup_address" prefHeight="139.0" prefWidth="355.0" promptText="Enter Address" GridPane.columnIndex="2" />
                </children>
             </GridPane>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="226.0" text="Edit basic information on this Supplier" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="226.0" text="Provide basic information on this Supplier" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="41.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="44.0" minWidth="0.0" prefWidth="14.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="10.0" prefWidth="191.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.0" minWidth="10.0" prefWidth="112.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.0" minWidth="10.0" prefWidth="129.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="138.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="67.0" prefWidth="212.0" text="Supplier Type :" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="Verdana" size="22.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="equip" mnemonicParsing="false" prefHeight="67.0" prefWidth="148.0" text="Equipment" textFill="WHITE" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="type" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="pharm" mnemonicParsing="false" prefHeight="86.0" prefWidth="170.0" text="Pharmaceutical" textFill="WHITE" toggleGroup="$type" GridPane.columnIndex="4">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <Label prefHeight="67.0" prefWidth="13.0" text="*" textFill="#d70000" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="pharm1" layoutX="364.0" layoutY="10.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="170.0" text="Both" textFill="WHITE" toggleGroup="$type" GridPane.columnIndex="5">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="119.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="450.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="53.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="message_lbl" prefHeight="30.0" prefWidth="565.0" textFill="#ee0000" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
    </children>
