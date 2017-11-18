@@ -22,6 +22,8 @@ public class LabTestOrder {
 
     private Patient patient;
 
+
+
     List<Sample> samples;
 
 

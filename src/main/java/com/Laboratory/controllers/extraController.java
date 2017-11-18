@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class extraController implements Initializable,SessionListener {
 
     private Session session;
-    private homeController mainScreenController;
+    private MainScreenController mainScreenController;
 
 
     @Override
@@ -35,7 +35,7 @@ public class extraController implements Initializable,SessionListener {
     @Override
     public void setMainController(SessionListener controller) {
 
-        this.mainScreenController = (homeController)controller;
+        this.mainScreenController = (MainScreenController) controller;
 
 
     }

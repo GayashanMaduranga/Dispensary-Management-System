@@ -25,10 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
+@SuppressWarnings("Duplicates")
 public class addTestController implements Initializable, SessionListener{
 
     private Session session;
-    private homeController MainScreenController;
+    private MainScreenController mainScreenController;
 
     @FXML
     private JFXTextField id;
@@ -48,6 +50,9 @@ public class addTestController implements Initializable, SessionListener{
     @FXML
     private JFXTextField Units;
 
+
+
+
     @FXML
     private TreeTableView<MainTest> mainTestTable;
 
@@ -59,6 +64,11 @@ public class addTestController implements Initializable, SessionListener{
 
     @FXML
     private TreeTableColumn<MainTest, Number> mainPrice;
+
+
+
+
+
 
     @FXML
     private TreeTableView<TestField> testFieldTable;
@@ -72,6 +82,15 @@ public class addTestController implements Initializable, SessionListener{
     @FXML
     private TreeTableColumn<TestField, String > testUnits;
 
+
+
+
+
+    @FXML
+    private Button resetBT;
+
+    @FXML
+    private Button reset1;
 
     private List<TreeItem<MainTest>> mainTestList;
 
@@ -124,20 +143,68 @@ public class addTestController implements Initializable, SessionListener{
     @FXML
     void deleteMainTest(ActionEvent event) {
 
+        TreeItem<MainTest> m = mainTestTable.getSelectionModel().getSelectedItem();
+
+        session.beginTransaction();
+        session.delete(m.getValue());
+        session.getTransaction().commit();
+
+        mainTestList.remove(m);
+        mainTestTable.getRoot().getChildren().clear();
+        mainTestTable.getRoot().getChildren().addAll(mainTestList);
+
+
+
     }
 
     @FXML
     void deleteTestField(ActionEvent event) {
 
+
+        TreeItem<TestField> f = testFieldTable.getSelectionModel().getSelectedItem();
+
+        session.beginTransaction();
+        session.delete(f.getValue());
+        session.getTransaction().commit();
+
+        fieldList.remove(f);
+        testFieldTable.getRoot().getChildren().clear();
+        testFieldTable.getRoot().getChildren().addAll(fieldList);
+
+
+
+
     }
+
+
+
 
     @FXML
     void updateMainTest(ActionEvent event) {
 
+        TreeItem<MainTest> m = mainTestTable.getSelectionModel().getSelectedItem();
+        m.getValue().setTestName(testName.getText());
+        m.getValue().setTestPrice(Integer.parseInt(testPrice.getText()));
+
+        session.beginTransaction();
+        session.update(m.getValue());
+        session.getTransaction().commit();
     }
+
+
 
     @FXML
     void updateTestField(ActionEvent event) {
+
+        TreeItem<TestField> m = testFieldTable.getSelectionModel().getSelectedItem();
+        m.getValue().setFieldName(testName.getText());
+        m.getValue().setUnits(testPrice.getText());
+
+        session.beginTransaction();
+        session.update(m.getValue());
+        session.getTransaction().commit();
+
+
 
     }
 
@@ -213,8 +280,25 @@ public class addTestController implements Initializable, SessionListener{
         testFieldTable.getRoot().getChildren().clear();
         testFieldTable.getRoot().getChildren().addAll(fieldList);
 
+    }
+
+    @FXML
+    void reset(MouseEvent event) {
+
+        testName.setText("");
+        testPrice.setText("");
 
     }
+
+    @FXML
+    void reset2(MouseEvent event) {
+
+        fid.setText("");
+        fName.setText("");
+        Units.setText("");
+
+    }
+
 
 
     @Override
@@ -225,7 +309,7 @@ public class addTestController implements Initializable, SessionListener{
     @Override
     public void setMainController(SessionListener controller) {
 
-        this.MainScreenController = (homeController) controller;
+        this.mainScreenController = (MainScreenController) controller;
 
 
     }

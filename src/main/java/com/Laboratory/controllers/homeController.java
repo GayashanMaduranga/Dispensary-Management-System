@@ -114,7 +114,7 @@ public class homeController implements Initializable,SessionListener {
 
                 break;
             case "viewDB_BT":
-                ScreenController.changeScreen(LabScreens.VIEWDB_SCREEN, content);
+                ScreenController.changeScreen(LabScreens.INPUTRESULT_SCREEN, content);
 
                 break;
             case "extraBT":

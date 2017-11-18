@@ -2,11 +2,12 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -37,19 +38,19 @@
             <Insets left="160.0" right="40.0" />
          </GridPane.margin>
       </TextField>
-      <JFXButton fx:id="enterResSearchBT" prefHeight="56.0" prefWidth="146.0" stylesheets="@stylesheet.css" text="Search" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <TableView fx:id="table" prefHeight="525.0" prefWidth="832.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="2">
+      <JFXButton fx:id="enterResSearchBT" prefHeight="56.0" prefWidth="146.0" stylesheets="@stylesheet.css" text="Search" textFill="#252525" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <TreeTableView fx:id="patientTable" prefHeight="525.0" prefWidth="832.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.rowSpan="2">
          <columns>
-            <TableColumn prefWidth="98.0" text="Patient ID" />
-            <TableColumn prefWidth="274.0" text="Patient Name" />
-            <TableColumn prefWidth="102.0" text="Test ID" />
-            <TableColumn prefWidth="210.0" text="Test Name" />
-            <TableColumn prefWidth="125.0" text="Status" />
+            <TreeTableColumn fx:id="patientIdCol" prefWidth="98.0" text="Patient ID" />
+            <TreeTableColumn fx:id="patientNameCol" prefWidth="274.0" text="Patient Name" />
+            <TreeTableColumn fx:id="testIdCol" prefWidth="102.0" text="Test ID" />
+            <TreeTableColumn fx:id="testNameCol" prefWidth="210.0" text="Test Name" />
+            <TreeTableColumn fx:id="statusCol" prefWidth="180.0" text="Status" />
          </columns>
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
-      </TableView>
+      </TreeTableView>
       <JFXButton fx:id="enterResPrintBT" prefHeight="55.0" prefWidth="163.0" stylesheets="@stylesheet.css" text="Print" GridPane.columnIndex="4" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets bottom="180.0" />
@@ -64,5 +65,10 @@
             <Insets left="40.0" />
          </GridPane.margin>
       </Separator>
+      <Button mnemonicParsing="false" onAction="#insertResult" text="Insert Results" GridPane.columnIndex="4" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </Button>
    </children>
 </GridPane>

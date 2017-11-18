@@ -147,11 +147,10 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         laboratoryTree.getChildren().addAll(
 
                 new TreeItem<>("Order Test"),
-                new TreeItem<>("Select Test"),
                 new TreeItem<>("Enter Results"),
                 new TreeItem<>("Add Test"),
                 new TreeItem<>("Add Reference Values"),
-                new TreeItem<>("DataBase"),
+                new TreeItem<>("Fill Results"),
                 new TreeItem<>("Statistics")
 
         );
@@ -307,7 +306,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
             case "DataBase":
                 if (LoginModel.getAccessLevel() <= 2) {
-                    ScreenController.changeScreen(LabScreens.VIEWDB_SCREEN,content, this);
+                    ScreenController.changeScreen(LabScreens.INPUTRESULT_SCREEN,content, this);
                 } else {
                     ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
                 }

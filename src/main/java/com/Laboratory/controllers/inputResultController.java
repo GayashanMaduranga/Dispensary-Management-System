@@ -16,11 +16,11 @@ import java.util.ResourceBundle;
 /**
  * Created by AmilaWC on 8/19/2017.
  */
-public class viewDBController implements Initializable,SessionListener {
+public class inputResultController implements Initializable,SessionListener {
 
 
     private Session session;
-    private homeController mainScreenController;
+    private MainScreenController mainScreenController;
 
 
     ScreenController controller;
@@ -33,11 +33,7 @@ public class viewDBController implements Initializable,SessionListener {
 
 
 
-//    @Override
-//    public void setScreenParent(ScreenController screenParent) {
-//        controller = screenParent;
-//
-//    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,10 +48,43 @@ public class viewDBController implements Initializable,SessionListener {
     @Override
     public void setMainController(SessionListener controller) {
 
-        this.mainScreenController = (homeController)controller;
+        this.mainScreenController = (MainScreenController) controller;
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    @Override
 //    public void initialize(URL location, ResourceBundle resources) {
