@@ -6,17 +6,25 @@ import com.common.ScreenController;
 import com.common.SessionListener;
 import com.employeemanagement.controllers.MyScreens;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.main.Main;
 import com.main.controllers.MainScreenController;
+import com.patientmanagement.controllers.RegisterPatientController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -27,6 +35,7 @@ public class orderTestController implements Initializable,SessionListener {
 
     private List<Patient> patients;
     static Patient labSummaryPatient;
+    private List<String> values;
 
 
 
@@ -42,7 +51,26 @@ public class orderTestController implements Initializable,SessionListener {
     private TextField txtSearchPatient;
 
     @FXML
+    private JFXTextField txtGender;
+
+    @FXML
+    private JFXTextField txtNIC;
+
+    @FXML
     private JFXButton addEmployeeBtn;
+
+
+    @FXML
+    private JFXTextField txtAge;
+
+    @FXML
+    private JFXTextField txtAddress;
+
+    @FXML
+    private Button addPatientBtn;
+
+    @FXML
+    private Button getSearch;
 
 
 
@@ -56,7 +84,8 @@ public class orderTestController implements Initializable,SessionListener {
     public void initialize(URL location, ResourceBundle resources) {
         session = ScreenController.getSession();
 
-        List<String> values;
+        patients = new ArrayList<>();
+
         session.beginTransaction();
         Query patientNameQuery = session.createQuery("select p.pname  from Patient p");
         values = patientNameQuery.list();
@@ -93,6 +122,7 @@ public class orderTestController implements Initializable,SessionListener {
 
         patients.clear();
 
+        session.clear();
         session.beginTransaction();
         Query patientNameQuery = session.createQuery("select p from Patient p where p.pname = '"+patientName+"'");
         patients = patientNameQuery.list();
@@ -100,18 +130,62 @@ public class orderTestController implements Initializable,SessionListener {
 
         labSummaryPatient = patients.get(0);
 
-//        lblPid.setText(Integer.toString(labSummaryPatient.getpId()));
-//        lblPoccupation.setText(labSummaryPatient.getOccupation());
-//        lblPemail.setText(labSummaryPatient.getEmail());
-//        lblPphone.setText(labSummaryPatient.getContactNumber());
-//        lblPage.setText(labSummaryPatient.getDOB().toString());
-//        lblPname.setText(labSummaryPatient.getPname());
+        txtGender.setText(labSummaryPatient.getGender());
+        txtAddress.setText(labSummaryPatient.getAddress());
+        txtNIC.setText(labSummaryPatient.getNIC());
+
 
     }
+
+
+
+
+
+
+
+
+
+    @FXML
+    void addPatient(){
+
+        Stage s = (Stage) addPatientBtn.getScene().getWindow();
+
+        if(!(Main.createFadedWindow(new Stage(), s,"/com/patientmanagement/RegisterPatient.fxml"))){
+
+            Patient p = RegisterPatientController.patient ;
+
+            session.beginTransaction();
+            session.save(p);
+            session.getTransaction().commit();
+
+            session.flush();
+            session.clear();
+            session.beginTransaction();
+            Query patientNameQuery = session.createQuery("select p.pname  from Patient p");
+            values = patientNameQuery.list();
+            session.getTransaction().commit();
+
+            TextFields.bindAutoCompletion(txtSearchPatient, values);
+
+
+            Main.dialogCanceled = true;
+
+        }else{
+
+            System.out.println("canceled");
+        }
+    }
+
+
+
+
+
+
+
 
 
 }
 
 
 //DASHBOARD_SCREEN, LabScreens.EXTRA_SCREEN);
-// current screen    |  yanna ona screen eka
+// current screen    |  next screen

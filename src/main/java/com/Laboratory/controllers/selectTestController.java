@@ -5,16 +5,16 @@ import com.EntityClasses.TestField;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.common.SessionListener;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.main.controllers.MainScreenController;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -33,6 +33,7 @@ public class selectTestController  implements Initializable,SessionListener {
 
     private Session session;
     private MainScreenController mainScreenController;
+    private MainTest selectedMainTest= new MainTest();
 
 
 
@@ -55,6 +56,15 @@ public class selectTestController  implements Initializable,SessionListener {
 
     @FXML
     private JFXTextField Units;
+
+    @FXML
+    private TextField txtpId;
+
+    @FXML
+    private TextField txtpName;
+
+    @FXML
+    private Button searchBT;
 
 
 
@@ -94,9 +104,14 @@ public class selectTestController  implements Initializable,SessionListener {
 
     private List<TreeItem<MainTest>> mainTestList;
 
-    private List<TreeItem<TestField>> fieldList;
 
 
+
+    @FXML
+    private JFXTreeTableView<TestField> subTestTable;
+
+    @FXML
+    private JFXTreeTableView<?> selectedTestTable;
 
     @FXML
     private JFXButton backBT;
@@ -106,27 +121,22 @@ public class selectTestController  implements Initializable,SessionListener {
 
     }
 
+    ObservableList<TestField> fieldList = FXCollections.observableArrayList();
 
-
-
-
-
-
-
+    TreeItem<TestField> root2;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        session = ScreenController.getSession();
 
+        txtpId.setText(Integer.toString(orderTestController.labSummaryPatient.getpId()));
+        txtpName.setText(orderTestController.labSummaryPatient.getPname());
 
-
-
-
-
+        mainid.setCellValueFactory(param -> param.getValue().getValue().tIdProperty());
+        mainName.setCellValueFactory(param -> param.getValue().getValue().testNameProperty());
+        mainPrice.setCellValueFactory(param -> param.getValue().getValue().testPriceProperty());
 
         session = ScreenController.getSession();
         mainTestList = new ArrayList<>();
-        fieldList = new ArrayList<>();
 
         session.beginTransaction();
         Query query = session.createQuery("select s from MainTest s");
@@ -160,7 +170,17 @@ public class selectTestController  implements Initializable,SessionListener {
         TreeItem<TestField> root2 = new TreeItem<>(testField);
 
 
+        JFXTreeTableColumn<TestField, String> fieldNameCol =  new JFXTreeTableColumn<>("Name");
+        fieldNameCol.setCellValueFactory(param -> (param.getValue().getValue()).fieldNameProperty());
 
+        JFXTreeTableColumn<TestField, String> fieldUnitCol =  new JFXTreeTableColumn<>("ID");
+        fieldUnitCol.setCellValueFactory(param -> param.getValue().getValue().unitsProperty());
+
+        root2 = new RecursiveTreeItem<>(fieldList, RecursiveTreeObject::getChildren);
+
+        subTestTable.getColumns().setAll(fieldNameCol, fieldUnitCol);
+        subTestTable.setRoot(root2);
+        subTestTable.setShowRoot(false);
 
     }
 
@@ -183,7 +203,14 @@ public class selectTestController  implements Initializable,SessionListener {
       //  ScreenController.changeScreen(LabScreens.SELECT_TEST_SCREEN,homeController.getContent(),homeController);
     }
 
+    @FXML
+    void selectMainTest(){
 
+        selectedMainTest = mainTestTable.getSelectionModel().getSelectedItem().getValue();
 
+        fieldList.clear();
+        fieldList.addAll(selectedMainTest.getTestFields());
+        subTestTable.refresh();
+    }
 
 }

@@ -162,13 +162,7 @@ public class enterResultsController implements Initializable,SessionListener {
 
         ScreenController.changeScreen(LabScreens.INPUTRESULT_SCREEN,mainScreenController.getContent(),mainScreenController);
 
-
     }
-
-
-
-
-
 
 
     @Override

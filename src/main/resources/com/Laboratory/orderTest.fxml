@@ -39,19 +39,19 @@
                <children>
                   <Label layoutX="23.0" layoutY="22.0" prefHeight="26.0" prefWidth="70.0" text="Patient:" />
                   <Label layoutX="43.0" layoutY="77.0" text="Age:" />
-                  <JFXTextField editable="false" layoutX="98.0" layoutY="128.0" />
+                  <JFXTextField fx:id="txtGender" editable="false" layoutX="98.0" layoutY="128.0" />
                   <Label layoutX="11.0" layoutY="194.0" text="Address" />
-                  <JFXTextField editable="false" layoutX="103.0" layoutY="176.0" prefHeight="44.0" prefWidth="292.0" />
-                  <Label layoutX="454.0" layoutY="123.0" text="Date" />
+                  <JFXTextField fx:id="txtAddress" editable="false" layoutX="103.0" layoutY="176.0" prefHeight="44.0" prefWidth="292.0" />
+                  <Label layoutX="451.0" layoutY="77.0" text="Date" />
                   <Label layoutX="23.0" layoutY="136.0" text="Gender" />
-                  <Label layoutX="381.0" layoutY="77.0" text="Doctors Name" />
-                  <JFXTextField editable="false" layoutX="499.0" layoutY="73.0" prefHeight="34.0" prefWidth="185.0" />
-                  <TextField fx:id="txtSearchPatient" layoutX="93.0" layoutY="16.0" prefHeight="38.0" prefWidth="219.0" />
-                  <Button layoutX="333.0" layoutY="16.0" mnemonicParsing="false" text="GET" />
-                  <Label layoutX="403.0" layoutY="22.0" text="or" />
-                  <Button layoutX="435.0" layoutY="16.0" mnemonicParsing="false" text="ADD" />
-                  <JFXTextField editable="false" layoutX="93.0" layoutY="73.0" />
-                  <JFXTextField editable="false" layoutX="499.0" layoutY="119.0" prefHeight="34.0" prefWidth="185.0" />
+                  <TextField fx:id="txtSearchPatient" layoutX="93.0" layoutY="16.0" prefHeight="38.0" prefWidth="219.0" promptText="Patient Name" />
+                  <Button fx:id="getSearch" layoutX="333.0" layoutY="16.0" mnemonicParsing="false" onAction="#populateDetails" prefHeight="38.0" prefWidth="145.0" text="GET" />
+                  <Label layoutX="496.0" layoutY="22.0" text="or" />
+                  <Button fx:id="addPatientBtn" layoutX="530.0" layoutY="16.0" mnemonicParsing="false" onAction="#addPatient" prefHeight="38.0" prefWidth="145.0" text="ADD" />
+                  <JFXTextField fx:id="txtAge" editable="false" layoutX="93.0" layoutY="73.0" />
+                  <JFXTextField fx:id="txtDate" editable="false" layoutX="496.0" layoutY="73.0" prefHeight="34.0" prefWidth="185.0" />
+                  <JFXTextField fx:id="txtNIC" editable="false" layoutX="498.0" layoutY="139.0" />
+                  <Label layoutX="435.0" layoutY="147.0" text="NIC" />
                </children>
             </AnchorPane>
          </content>
@@ -78,8 +78,8 @@
                   </Pane>
                   <TableView layoutX="226.0" layoutY="14.0" prefHeight="267.0" prefWidth="480.0" AnchorPane.rightAnchor="14.0">
                      <columns>
-                        <TableColumn prefWidth="121.0" text="Main Test" />
-                        <TableColumn prefWidth="183.0" text="Sub Test" />
+                        <TableColumn prefWidth="236.99994504451752" text="Main Test" />
+                        <TableColumn prefWidth="243.00006103515625" text="Sub Test" />
                      </columns>
                   </TableView>
                </children>

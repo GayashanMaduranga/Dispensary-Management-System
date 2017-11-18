@@ -48,7 +48,7 @@ public class addTestController implements Initializable, SessionListener{
     private JFXTextField fName;
 
     @FXML
-    private JFXTextField Units;
+    private JFXTextField unitField;
 
 
 
@@ -125,7 +125,7 @@ public class addTestController implements Initializable, SessionListener{
 
         TestField field = new TestField();
         field.setFieldName(fName.getText());
-        field.setUnits(testUnits.getText());
+        field.setUnits(unitField.getText());
         treeItem.getValue().getTestFields().add(field);
 
         session.beginTransaction();
@@ -135,6 +135,7 @@ public class addTestController implements Initializable, SessionListener{
         fieldList.add(new TreeItem<TestField>(field));
         testFieldTable.getRoot().getChildren().clear();
         testFieldTable.getRoot().getChildren().addAll(fieldList);
+
 
 
 
@@ -295,7 +296,7 @@ public class addTestController implements Initializable, SessionListener{
 
         fid.setText("");
         fName.setText("");
-        Units.setText("");
+        unitField.setText("");
 
     }
 
