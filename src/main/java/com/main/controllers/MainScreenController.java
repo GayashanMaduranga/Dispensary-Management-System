@@ -1,6 +1,7 @@
 package com.main.controllers;
 
 import com.EntityClasses.Employee;
+import com.PharmacyMgt.Controllers.PharmacyScreens;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
@@ -32,9 +33,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
     @FXML
     private Label userLbl;
-
-    @FXML
-    private GridPane leftPane;
 
     @FXML
     private TreeView<String> navigationTree;
@@ -70,9 +68,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     public void setContent(StackPane content) {
         this.content = content;
     }
-
-    private JFXButton selectedBtn;
-
 
 
     @FXML
@@ -139,7 +134,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         );
 
         pharmacyTree.getChildren().addAll(
-                new TreeItem<>("Add Pharmacy Item"),
+                new TreeItem<>("Pharmacy Items"),
                 new TreeItem<>("Billing"),
                 new TreeItem<>("Dashboard")
         );
@@ -190,14 +185,26 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
         switch (ButtonName) {
             case "Attendance":
-                ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content,this);
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content,this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
                 break;
             case "Add Employee":
-                ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,content,this);
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,content,this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
                 break;
 
             case "Lab Equipment":
-                ScreenController.changeScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN,content,this);
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN,content,this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
                 break;
 
             case "payrollBtn":
@@ -220,13 +227,39 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 }
                 break;
             case "Inventory":
-                ScreenController.changeScreen(SupplierScreens.INVENTORY_VIEW,content, this);
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(SupplierScreens.INVENTORY_VIEW,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
                 break;
             case "Stock Control":
-                ScreenController.changeScreen(SupplierScreens.STOCK_CONTROL_VIEW,content, this);
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(SupplierScreens.STOCK_CONTROL_VIEW,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
                 break;
             case "Suppliers":
-                ScreenController.changeScreen(SupplierScreens.SUPPLIER_SCREEN_VIEW,content, this);
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(SupplierScreens.SUPPLIER_SCREEN_VIEW,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+            case "Billing":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(PharmacyScreens.PHARMACY_BILLING_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+            case "Pharmacy Items":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(PharmacyScreens.PHARMACY_STOCK_SCREEN2,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
                 break;
         }
 
@@ -247,11 +280,5 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     public void setScreenParent(ScreenController screenParent) {
         controller = screenParent;
     }
-
-    @FXML
-    void showHome() {
-        ScreenController.changeScreen(controller, MyScreens.MAIN_SCREEN, MainScreens.HOME_SCREEN);
-    }
-
 
 }
