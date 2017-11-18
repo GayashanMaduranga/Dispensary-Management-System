@@ -56,8 +56,8 @@
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <JFXButton prefHeight="40.0" prefWidth="150.0" styleClass="button-red" text="Delete" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-                  <JFXButton prefHeight="40.0" prefWidth="150.0" styleClass="button-green" text="Edit " GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                  <JFXButton onAction="#removesupplier" prefHeight="40.0" prefWidth="150.0" styleClass="button-red" text="Delete" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                  <JFXButton onAction="#update" prefHeight="40.0" prefWidth="150.0" styleClass="button-green" text="Edit " GridPane.columnIndex="7" GridPane.rowIndex="1" />
                   <JFXButton fx:id="add_new" onAction="#new_sup" prefHeight="40.0" prefWidth="108.0" text="New Supplier" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                   <AnchorPane maxHeight="71.0" minWidth="9.0" prefHeight="71.0" prefWidth="9.0" style="-fx-background-color: #47a0d3;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
@@ -71,7 +71,7 @@
                   <Font size="14.0" />
                </font>
                <content>
-                  <JFXTreeTableView fx:id="supplierTable" prefHeight="464.0" prefWidth="955.0" />
+                  <JFXTreeTableView fx:id="supplierTable" onMouseClicked="#setField" prefHeight="464.0" prefWidth="955.0" />
                </content>
             </TitledPane>
          </children>

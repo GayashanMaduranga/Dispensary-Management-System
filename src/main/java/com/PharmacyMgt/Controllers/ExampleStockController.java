@@ -83,28 +83,28 @@ public class ExampleStockController implements Initializable,SessionListener {
 
         }
 
-        JFXTreeTableColumn<Item, String> nameCol =  new JFXTreeTableColumn<>("Name");
-        nameCol.setCellValueFactory(param -> ((PharmacyItem)param.getValue().getValue()).itemNameProperty());
-
-        JFXTreeTableColumn<Item, Number> stockavCol =  new JFXTreeTableColumn<>("Stock");
-        stockavCol.setCellValueFactory(param -> param.getValue().getValue().stockProperty());
-
-        JFXTreeTableColumn<Item, Number> reorderCOl =  new JFXTreeTableColumn<>("reorder level");
-        reorderCOl.setCellValueFactory(param -> ((PharmacyItem)param.getValue().getValue()).reorderLevelProperty());
-
-        JFXTreeTableColumn<Item, Number> mrpCol =  new JFXTreeTableColumn<>("MRP");
-        mrpCol.setCellValueFactory(param -> ((PharmacyItem)param.getValue().getValue()).MRPProperty());
-
-        root = new RecursiveTreeItem<>(pItemList, RecursiveTreeObject::getChildren);
-
-        drugTable.getColumns().setAll(nameCol, stockavCol, reorderCOl, mrpCol);
-        drugTable.setRoot(root);
-        drugTable.setShowRoot(false);
-
-        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> drugTable.setPredicate(itemTreeItem -> {
-            boolean flag = ((PharmacyItem)itemTreeItem.getValue()).itemNameProperty().getValue().contains(newValue.toLowerCase());
-            return flag;
-        }));
+//        JFXTreeTableColumn<Item, String> nameCol =  new JFXTreeTableColumn<>("Name");
+//        nameCol.setCellValueFactory(param -> ((PharmacyItem)param.getValue().getValue()).itemNameProperty());
+//
+//        JFXTreeTableColumn<Item, Number> stockavCol =  new JFXTreeTableColumn<>("Stock");
+//        stockavCol.setCellValueFactory(param -> param.getValue().getValue().stockProperty());
+//
+//        JFXTreeTableColumn<Item, Number> reorderCOl =  new JFXTreeTableColumn<>("reorder level");
+//        reorderCOl.setCellValueFactory(param -> ((PharmacyItem)param.getValue().getValue()).reorderLevelProperty());
+//
+//        JFXTreeTableColumn<Item, Number> mrpCol =  new JFXTreeTableColumn<>("MRP");
+//        mrpCol.setCellValueFactory(param -> ((PharmacyItem)param.getValue().getValue()).MRPProperty());
+//
+//        root = new RecursiveTreeItem<>(pItemList, RecursiveTreeObject::getChildren);
+//
+//        drugTable.getColumns().setAll(nameCol, stockavCol, reorderCOl, mrpCol);
+//        drugTable.setRoot(root);
+//        drugTable.setShowRoot(false);
+//
+//        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> drugTable.setPredicate(itemTreeItem -> {
+//            boolean flag = ((PharmacyItem)itemTreeItem.getValue()).itemNameProperty().getValue().contains(newValue.toLowerCase());
+//            return flag;
+//        }));
 
     }
 
@@ -122,7 +122,7 @@ public class ExampleStockController implements Initializable,SessionListener {
             session.save(item);
             session.getTransaction().commit();
 
-            pItemList.add(item);
+//            pItemList.add(item);
             drugTable.refresh();
 
             txtDrugName.clear();

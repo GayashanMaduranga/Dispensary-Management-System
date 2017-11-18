@@ -15,42 +15,46 @@ import java.util.List;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@DiscriminatorValue("Drug")
-public class PharmacyItem extends Item {
+@Table(name = "PharmacyItem")
+public class PharmacyItem extends RecursiveTreeObject<PharmacyItem> {
 
-//    private SimpleIntegerProperty phId;
+    private SimpleIntegerProperty phId;
     private SimpleStringProperty itemName;
-//    private SimpleIntegerProperty stock;
+    private SimpleIntegerProperty stock;
     private SimpleIntegerProperty reorderLevel;
     private SimpleDoubleProperty MRP;
+    private SimpleStringProperty brand;
     private List<PharmacyBatch> batches;
+
+
 
 
     public PharmacyItem() {
 
-//        this.phId = new SimpleIntegerProperty();
+        this.phId = new SimpleIntegerProperty();
         this.itemName = new SimpleStringProperty();
-//        this.stock = new SimpleIntegerProperty();
+        this.stock = new SimpleIntegerProperty();
         this.reorderLevel = new SimpleIntegerProperty();
         this.MRP = new SimpleDoubleProperty();
+        this.brand = new SimpleStringProperty();
         this.batches = new ArrayList<>();
 
     }
 
-//    @Id
-//    @Column(name = "phId")
-//    @GeneratedValue
-//    public int getPhId() {
-//        return phId.get();
-//    }
-//
-//    public SimpleIntegerProperty phIdProperty() {
-//        return phId;
-//    }
-//
-//    public void setPhId(int phId) {
-//        this.phId.set(phId);
-//    }
+    @Id
+    @Column(name = "phId")
+    @GeneratedValue
+    public int getPhId() {
+        return phId.get();
+    }
+
+    public SimpleIntegerProperty phIdProperty() {
+        return phId;
+    }
+
+    public void setPhId(int phId) {
+        this.phId.set(phId);
+    }
 
     @Column(name = "itemName")
     public String getItemName() {
@@ -65,18 +69,32 @@ public class PharmacyItem extends Item {
         this.itemName.set(itemName);
     }
 
-//    @Column(name = "stock")
-//    public int getStock() {
-//        return stock.get();
-//    }
-//
-//    public SimpleIntegerProperty stockProperty() {
-//        return stock;
-//    }
-//
-//    public void setStock(int stock) {
-//        this.stock.set(stock);
-//    }
+    @Column(name = "brand")
+    public String getBrand() {
+        return brand.get();
+    }
+
+    public SimpleStringProperty brandProperty() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand.set(brand);
+    }
+
+
+    @Column(name = "stock")
+    public int getStock() {
+        return stock.get();
+    }
+
+    public SimpleIntegerProperty stockProperty() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock.set(stock);
+    }
 
     @Column(name = "reorderLevel")
     public int getReorderLevel() {

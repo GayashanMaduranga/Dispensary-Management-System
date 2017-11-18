@@ -15,6 +15,9 @@ public enum SupplierScreens implements BaseEnum {
     STOCK_CONTROL_NEW("stock_control_add","/com/suppliermanagement/Stock_Control_View/Stock_Control_New_Purchase.fxml"),
     STOCK_CONTROL_EDIT("stock_control_edit","/com/suppliermanagement/Stock_Control_View/Stock_Control_Edit_Purchase.fxml"),
     INVENTORY_VIEW("invent_view","/com/suppliermanagement/Inventory_View/Inventory_View.fxml"),
+    INVENTORY_VIEW_NEW_PRODUCT("invent_view","/com/suppliermanagement/Inventory_View/Inventory_view_New_product.fxml"),
+    INVENTORY_VIEW_NEW_EQUIPMENT("invent_view","/com/suppliermanagement/Inventory_View/Inventory_view_New_Equipment.fxml"),
+
     SUPPLIER_MAIN_VIEW("Main","/com/suppliermanagement/Supplier_MainScreen.fxml");
 
     String path;
