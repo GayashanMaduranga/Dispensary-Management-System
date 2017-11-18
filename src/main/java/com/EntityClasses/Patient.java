@@ -165,7 +165,7 @@ public class Patient extends RecursiveTreeObject<Patient> {
     }
 
     //contactNo
-    @Column(name = "contactNo", length = 10)
+    @Column(name = "contactNo")
     public String getContactNumber() {
         return contactNumber.get();
     }

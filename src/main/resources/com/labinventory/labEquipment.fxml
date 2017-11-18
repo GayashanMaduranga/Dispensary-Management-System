@@ -42,7 +42,7 @@
                   <Font size="15.0" />
                </font>
                <content>
-                  <JFXTreeTableView fx:id="equipmentTable">
+                  <JFXTreeTableView fx:id="equipmentTable" onMouseClicked="#EquipmentTableSelection">
                      <columnResizePolicy>
                         <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
