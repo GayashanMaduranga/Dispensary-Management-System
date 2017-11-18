@@ -78,7 +78,6 @@ public class RegisterPatientController implements Initializable,ControlledScreen
     @FXML
     void register(){
 
-
         if (fieldsAreComplete()) {
             patient.setDOB(Date.valueOf(txtDOB.getValue()));
             patient.setPname(txtName.getText().toLowerCase());
