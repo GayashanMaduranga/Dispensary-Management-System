@@ -25,7 +25,7 @@ public class SupplyOrder extends RecursiveTreeObject<SupplyOrder> {
     private SimpleDoubleProperty total;
 
 
-    private SimpleBooleanProperty isReceived;
+    private SimpleBooleanProperty hasArrived;
 
     private List<PharmacyBatch> pharmacyBatches;
     private List<Equipment> equipmentList;
@@ -36,6 +36,7 @@ public class SupplyOrder extends RecursiveTreeObject<SupplyOrder> {
     public SupplyOrder() {
         this.orderID = new SimpleIntegerProperty();
         this.total = new SimpleDoubleProperty();
+        this.hasArrived = new SimpleBooleanProperty();
         this.pharmacyBatches  = new ArrayList<>();
         this.equipmentList = new ArrayList<>();
     }
@@ -82,16 +83,16 @@ public class SupplyOrder extends RecursiveTreeObject<SupplyOrder> {
     }
 
     @Column(name = "isReceived")
-    public boolean isIsReceived() {
-        return isReceived.get();
+    public boolean getHasArrived() {
+        return hasArrived.get();
     }
 
-    public SimpleBooleanProperty isReceivedProperty() {
-        return isReceived;
+    public SimpleBooleanProperty hasArrivedProperty() {
+        return hasArrived;
     }
 
-    public void setIsReceived(boolean isReceived) {
-        this.isReceived.set(isReceived);
+    public void setHasArrived(boolean hasArrived) {
+        this.hasArrived.set(hasArrived);
     }
 
     //uni directional one to many
