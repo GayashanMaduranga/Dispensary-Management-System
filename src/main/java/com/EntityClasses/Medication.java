@@ -22,6 +22,7 @@ public class Medication {
     private SimpleIntegerProperty dosage;
     private SimpleStringProperty dosageType;
     private SimpleStringProperty frequency;
+    private SimpleStringProperty discontinuedReason;
     private SimpleBooleanProperty discontinued;
 
 
@@ -33,6 +34,7 @@ public class Medication {
         this.dosageType = new SimpleStringProperty();
         this.frequency = new SimpleStringProperty();
         this.discontinued = new SimpleBooleanProperty();
+        this.discontinuedReason = new SimpleStringProperty();
 
     }
 
@@ -141,6 +143,16 @@ public class Medication {
         this.discontinued.set(discontinued);
     }
 
+    @Column(name = "reason")
+    public String getDiscontinuedReason() {
+        return discontinuedReason.get();
+    }
 
+    public SimpleStringProperty discontinuedReasonProperty() {
+        return discontinuedReason;
+    }
 
+    public void setDiscontinuedReason(String discontinuedReason) {
+        this.discontinuedReason.set(discontinuedReason);
+    }
 }

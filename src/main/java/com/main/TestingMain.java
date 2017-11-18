@@ -29,7 +29,7 @@ public class TestingMain extends Application {
 
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/main/MainScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/labinventory/LabMaintance.fxml"));
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -44,7 +44,6 @@ public class TestingMain extends Application {
 //            Logger.getLogger(StoreKeeper.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
         }
-
 
     }
 

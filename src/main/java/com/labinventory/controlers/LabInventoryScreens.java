@@ -11,9 +11,9 @@ public enum LabInventoryScreens implements BaseEnum{
 
     LAB_EQUIPMENT_SCREEN("labEquipment","/com/labinventory/labEquipment.fxml"),
     LAB_INVENTORY_SCREENS("labinventory","/com/labinventory/LabInventory.fxml"),
-    LAB_MACHINE_SCREEN("labmachine","/com/labinventory/LabMachine.fxml");
-
-
+    LAB_MACHINE_SCREEN("labmachine", "/com/labinventory/LabMachine.fxml"),
+    LAB_MAINTENAANCE_SCREEN("labmaintance","/com/labinventory/LabMaintance.fxml"); //new added one 13/11
+    
 
     String path;
     String id;

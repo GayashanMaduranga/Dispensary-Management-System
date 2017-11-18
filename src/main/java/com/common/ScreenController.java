@@ -38,6 +38,7 @@ public class ScreenController extends StackPane{
 
     public ScreenController() {
 
+//        System.out.println("Hello");
 
     }
 
@@ -51,7 +52,6 @@ public class ScreenController extends StackPane{
 
     public boolean loadScreen(String name, String resource){
 
-        System.out.println(resource);
         try{
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));
@@ -115,6 +115,7 @@ public class ScreenController extends StackPane{
 
         controller.loadScreen(newScreen.getId(),newScreen.getPath());
         controller.setScreen(newScreen.getId());
+        ((SessionListener)controller).setSession(session);
         controller.unloadScreen(oldScreen.getId());
 
     }
@@ -152,5 +153,10 @@ public class ScreenController extends StackPane{
             e.printStackTrace();
         }
     }
+
+    public static Session getSession() {
+        return session;
+    }
+
 
 }

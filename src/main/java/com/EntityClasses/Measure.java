@@ -27,6 +27,7 @@ public class Measure {
 
         this.measureId = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty();
+        this.values = new ArrayList<>();
 
     }
 

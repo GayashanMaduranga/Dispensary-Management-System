@@ -29,10 +29,10 @@ import java.util.ResourceBundle;
  */
 public class patientVisitController implements Initializable,ControlledScreen {
 
-    ScreenController controller;
+    private ScreenController controller;
 
 
-    static DoctorSession doctorSession;
+    private static DoctorSession doctorSession;
 
     static Measure measure;
 
@@ -100,15 +100,6 @@ public class patientVisitController implements Initializable,ControlledScreen {
 
     @FXML
     void completeSession(){
-
-
-//        patient.setDOB(Date.valueOf(txtDOB.getValue()));
-//        patient.setPname(txtName.getText().toLowerCase());
-//        patient.setGender(((RadioButton)genderGroup.getSelectedToggle()).getText());
-//        patient.setNIC(txtNIC.getText());
-//        patient.setContactNumber(txtPhone.getText());
-//        patient.setEmail(txtEmail.getText().toLowerCase());
-//        patient.setOccupation(txtOccupation.getText());
 
         Main.dialogCanceled = false;
         Stage s = (Stage)addMedBtn.getScene().getWindow();
@@ -179,13 +170,12 @@ public class patientVisitController implements Initializable,ControlledScreen {
 
     private class MeasureActionCell extends TreeTableCell<Measure, Boolean> {
 
-        private Button addButton = new Button("   Set   ");
-        private TextField txtValue = new TextField();
+        private final Button addButton = new Button("   Set   ");
+        private final TextField txtValue = new TextField();
         final HBox paddedButton = new HBox(15);
 
         /**
          * EditMedicationCell constructor
-         * @param fromTable the Table in which button resides.
          */
 
         MeasureActionCell(final TreeTableView<Measure> fromTable /*, final TreeTableView<Medication> toTable, boolean discontinue*/ ) {
@@ -210,6 +200,7 @@ public class patientVisitController implements Initializable,ControlledScreen {
 
                 Measure mes = m.getValue();
                 mes.getValues().add(mesVal);
+                mes.setDateUpdated(java.sql.Date.valueOf(java.time.LocalDate.now()));
 
                 updatedMeasures.add(mes);
 
@@ -217,21 +208,9 @@ public class patientVisitController implements Initializable,ControlledScreen {
                 addButton.setDisable(true);
                 txtValue.setEditable(false);
 
-//                for (Measure mm: updatedMeasures) {
-//
-//                    List <MeasureValue>mesvals = mm.getValues();
-//
-//                    for(int i = 0; i < mesvals.size(); i++) {
-//                        System.out.println(mesvals.get(i).getValue());
-//                        System.out.println(mesvals.get(i).getDate());
-//                    }
-//                }
-
-
             });
         }
 
-        /** places an add button in the row only if the row is not empty. */
         @Override protected void updateItem(Boolean item, boolean empty) {
             super.updateItem(item, empty);
             if (!empty) {

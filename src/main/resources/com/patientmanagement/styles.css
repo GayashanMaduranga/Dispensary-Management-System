@@ -50,7 +50,7 @@
 #viewPatientPane{
     -fx-border-width: 1px;
     -fx-border-color: #6d6d6d;
-    -fx-background-color: #8bcbe9;
+    -fx-background-color: #b0c8e2;
     -fx-opacity: 70% ;
 }
 
@@ -67,18 +67,6 @@
     -jfx-selected-color: white;
     -jfx-unselected-color: white;
 }
-
-/*.text-field, .text-area .content{*/
-    /*-fx-background-color:   rgba(255,255,255,0.75),*/
-                            /*linear-gradient(to top left, #c2c2c2 0%, #dddddd 100%);*/
-    /*-fx-background-insets: 0, 1;*/
-    /*-fx-background-radius: 9px;*/
-    /*-fx-border-radius: 9px;*/
-    /*-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.75),1,0,1,1);*/
-    /*-fx-font-family: "verdana";*/
-    /*-fx-font-size: 18px;*/
-
-/*}*/
 
 .whiteTextArea .content{
     -fx-background-color:   rgba(255,255,255,1);
@@ -184,21 +172,21 @@
 .button-green{
     -fx-padding: 5px;
     -fx-background-color: none;
-    -fx-text-fill: #00be13;
-    -fx-border-color: #00be13;
+    -fx-text-fill: #006915;
+    -fx-border-color: #006915;
     -fx-border-width: 2px;
     -fx-border-radius: 30px;
 }
 
 .button-green:hover{
-    -fx-background-color: #00be13;
+    -fx-background-color: #006915;
     -fx-text-fill: #ffffff;
     -fx-background-radius: 30px;
 
 }
 
 #leftPane .button-green:hover{
-    -fx-background-color: #00be13;
+    -fx-background-color: #006915;
     -fx-text-fill: #ebeef3;
     -fx-font-size: 23px;
 }
@@ -214,7 +202,7 @@
 }
 
 .accept-btn{
-    -fx-background-color: #22a412;
+    -fx-background-color: #006915;
     -fx-text-fill: white;
 }
 
@@ -292,3 +280,10 @@
     -fx-background-radius: 30px;
 }
 
+.glyph-icon-temp{
+    -fx-fill: #1a1818;
+}
+
+.glyph-icon-green{
+    -fx-fill: #006915;
+}

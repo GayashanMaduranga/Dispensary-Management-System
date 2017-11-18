@@ -23,8 +23,8 @@
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="-Infinity" prefHeight="700.0" vgrow="NEVER" />
-    <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="635.0" minHeight="617.0" prefHeight="617.0" vgrow="NEVER" />
+    <RowConstraints prefHeight="18.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <GridPane fx:id="leftPane" prefHeight="615.0" prefWidth="491.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -36,13 +36,14 @@
         <rowConstraints>
           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="55.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="60.0" prefHeight="100.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="60.0" prefHeight="100.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <GridPane.margin>
@@ -60,12 +61,12 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="193.0" text="Date of Birth : " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="185.0" text="Date of Birth : " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                      <font>
-                        <Font name="Verdana" size="22.0" />
+                        <Font name="Verdana" size="19.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="txtDOB" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: none;" GridPane.columnIndex="2" GridPane.hgrow="NEVER">
+                  <DatePicker fx:id="txtDOB" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: none;" GridPane.columnIndex="2" GridPane.hgrow="NEVER">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -83,13 +84,13 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="txtName" prefHeight="35.0" prefWidth="256.0" GridPane.columnIndex="2">
+                  <TextField fx:id="txtName" minHeight="-Infinity" prefHeight="30.0" prefWidth="323.0" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font></TextField>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="410.0" text="Name : " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                      <font>
-                        <Font name="Verdana" size="22.0" />
+                        <Font name="Verdana" size="19.0" />
                      </font>
                   </Label>
                </children>
@@ -105,14 +106,14 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="txtPhone" maxWidth="-Infinity" prefHeight="35.0" prefWidth="138.0" GridPane.columnIndex="2">
+                  <TextField fx:id="txtPhone" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="138.0" GridPane.columnIndex="2">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
                   </TextField>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="410.0" text="Phone : " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                      <font>
-                        <Font name="Verdana" size="22.0" />
+                        <Font name="Verdana" size="19.0" />
                      </font>
                   </Label>
                </children>
@@ -128,14 +129,14 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="txtEmail" prefHeight="35.0" prefWidth="256.0" GridPane.columnIndex="2">
+                  <TextField fx:id="txtEmail" minHeight="-Infinity" prefHeight="30.0" prefWidth="256.0" GridPane.columnIndex="2">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
                   </TextField>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="410.0" text="Email : " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                      <font>
-                        <Font name="Verdana" size="22.0" />
+                        <Font name="Verdana" size="19.0" />
                      </font>
                   </Label>
                </children>
@@ -151,14 +152,14 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="txtNIC" maxWidth="-Infinity" prefHeight="35.0" prefWidth="142.0" GridPane.columnIndex="2">
+                  <TextField fx:id="txtNIC" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="142.0" GridPane.columnIndex="2">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
                   </TextField>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="410.0" text="NIC : " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                      <font>
-                        <Font name="Verdana" size="22.0" />
+                        <Font name="Verdana" size="19.0" />
                      </font>
                   </Label>
                </children>
@@ -176,7 +177,7 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="410.0" text="Gender : " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                      <font>
-                        <Font name="Verdana" size="22.0" />
+                        <Font name="Verdana" size="19.0" />
                      </font>
                   </Label>
                   <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.valignment="CENTER">
@@ -198,14 +199,14 @@
                   </HBox>
                </children>
             </GridPane>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                <children>
                   <Button fx:id="registerBtn" mnemonicParsing="false" onAction="#register" styleClass="button-green" text="   Register   ">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <Button fx:id="resetBtn" mnemonicParsing="false" styleClass="button-blue" text="     Reset     ">
+                  <Button fx:id="resetBtn" mnemonicParsing="false" onAction="#reset" styleClass="button-blue" text="     Reset     ">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -236,18 +237,23 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="txtOccupation" prefHeight="35.0" prefWidth="256.0" GridPane.columnIndex="2">
+                  <TextField fx:id="txtOccupation" minHeight="-Infinity" prefHeight="30.0" prefWidth="256.0" GridPane.columnIndex="2">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
                   </TextField>
-                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="410.0" text="Occupation :" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+                  <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="51.0" prefWidth="179.0" text="Occupation :" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                      <font>
-                        <Font name="Verdana" size="22.0" />
+                        <Font name="Verdana" size="19.0" />
                      </font>
                   </Label>
                </children>
             </GridPane>
+            <Label fx:id="txtMsg" alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="876.0" textFill="#b92d2d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="Verdana" size="19.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </children>

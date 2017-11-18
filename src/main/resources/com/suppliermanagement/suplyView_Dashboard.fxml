@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@Sup_styles2.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.MainDashboardController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@Sup_styles2.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.suppliermanagement.controllers.suplyView_Dashboard_CTRL">
     <center>
         <GridPane prefHeight="723.0" prefWidth="1323.0">
             <columnConstraints>
@@ -91,7 +91,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="367.0" prefWidth="778.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <JFXButton fx:id="invent_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" prefHeight="234.0" prefWidth="272.0" style="-fx-background-color: none;" text="Inventory">
+                        <JFXButton fx:id="invent_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="234.0" prefWidth="272.0" style="-fx-background-color: none;" text="Inventory">
                            <font>
                               <Font name="Verdana" size="26.0" />
                            </font>
@@ -106,7 +106,7 @@
                               </Tooltip>
                            </tooltip>
                         </JFXButton>
-                        <JFXButton fx:id="stock_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" prefHeight="239.0" prefWidth="272.0" style="-fx-background-color: none;" text="Stock Control">
+                        <JFXButton fx:id="stock_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="239.0" prefWidth="272.0" style="-fx-background-color: none;" text="Stock Control">
                            <font>
                               <Font name="Verdana" size="26.0" />
                            </font>
@@ -114,7 +114,7 @@
                               <FontAwesomeIconView glyphName="CUBES" size="80" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="supplier_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" prefHeight="239.0" prefWidth="272.0" style="-fx-background-color: none;" text="Suppliers">
+                        <JFXButton fx:id="supplier_button" buttonType="RAISED" contentDisplay="TOP" graphicTextGap="9.0" onAction="#changeScene" prefHeight="239.0" prefWidth="272.0" style="-fx-background-color: none;" text="Suppliers">
                            <font>
                               <Font name="Verdana" size="26.0" />
                            </font>
@@ -126,7 +126,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="166.0" prefWidth="115.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <JFXButton fx:id="backToHomeBtn" alignment="CENTER" buttonType="RAISED" graphicTextGap="9.0" prefHeight="165.0" prefWidth="396.0" style="-fx-background-color: none;" text="Back to Homepage">
+                        <JFXButton fx:id="backToHomeBtn" alignment="CENTER" buttonType="RAISED" graphicTextGap="9.0" onAction="#changeScene" prefHeight="165.0" prefWidth="396.0" style="-fx-background-color: none;" text="Back to Homepage">
                            <font>
                               <Font name="Verdana" size="20.0" />
                            </font>

@@ -3,17 +3,16 @@ package com.main.controllers;
 
 import com.EntityClasses.User;
 import com.appointmentscheduling.controllers.AppointmentScreens;
-import com.common.ControlledScreen;
-import com.common.ScreenController;
+import com.common.*;
 import com.employeemanagement.controllers.MyScreens;
-import com.common.AlertDialog;
-import com.common.ConfirmDialog;
 import com.main.Main;
 import com.main.models.LoginModel;
 import com.patientmanagement.controllers.PatientScreens;
 import com.suppliermanagement.controllers.SupplierScreens;
+import db.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,20 +29,20 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class LoginController implements ControlledScreen, Initializable{
+public class LoginController implements ControlledScreen, Initializable,SessionListener{
 
     private Session session;
 
-    ScreenController mainContainer = new ScreenController();
+    ScreenController mainContainer;
 
     @Override
     public void setScreenParent(ScreenController screenParent) {
+        this.mainContainer = screenParent;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        session = Main.getSessionFactory().openSession();
 
     }
 
@@ -66,7 +65,7 @@ public class LoginController implements ControlledScreen, Initializable{
     @FXML
     public void login(ActionEvent actionEvent){
 
-
+        session = mainContainer.getSession();
         session.beginTransaction();
         Query query = session.createQuery("from User where username ='"+txtUsername.getText()+"'");
         List<User> users = query.list();
@@ -96,6 +95,8 @@ public class LoginController implements ControlledScreen, Initializable{
     private void makeStage(){
         try {
 
+            mainContainer = new ScreenController();
+
             Stage primaryStage = new Stage();
 
             primaryStage.setOnCloseRequest(event -> {
@@ -110,62 +111,8 @@ public class LoginController implements ControlledScreen, Initializable{
             primaryStage.setFullScreenExitHint("");
             primaryStage.setMinHeight(750.0);
             primaryStage.setMinWidth(1380.0);
-
-            mainContainer.loadScreen(MainScreens.HOME_SCREEN.getId(), MainScreens.HOME_SCREEN.getPath());
-            mainContainer.setScreen(MainScreens.HOME_SCREEN.getId());
-            Parent layout = mainContainer.getScreen(MainScreens.HOME_SCREEN.getId()).getParent();
+            Parent layout = FXMLLoader.load(getClass().getResource(MainScreens.HOME_SCREEN.getPath()));
             primaryStage.setScene(new Scene(layout));
-
-//            if(AccessLevel == 1){
-//
-//                mainContainer.loadScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId(), PatientScreens.PATIENT_SUMMARY_SCREEN.getPath());
-//                mainContainer.setScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(PatientScreens.PATIENT_SUMMARY_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//
-//            }
-//            else if(AccessLevel == 2){
-//
-//                mainContainer.loadScreen(SupplierScreens.DASHBOARD_SCREEN.getId(), SupplierScreens.DASHBOARD_SCREEN.getPath());
-//                mainContainer.setScreen(SupplierScreens.DASHBOARD_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(SupplierScreens.DASHBOARD_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//
-//            }
-//
-//            else if(AccessLevel == 3){
-//
-//                mainContainer.loadScreen(MyScreens.DASHBOARD_SCREEN.getId(), MyScreens.DASHBOARD_SCREEN.getPath());
-//                mainContainer.setScreen(MyScreens.DASHBOARD_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(MyScreens.DASHBOARD_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//
-//            }
-//
-//            else if(AccessLevel == 4){
-//
-//                mainContainer.loadScreen(SupplierScreens.PURCHASE_SCREEN.getId(), SupplierScreens.PURCHASE_SCREEN.getPath());
-//                mainContainer.setScreen(SupplierScreens.PURCHASE_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(SupplierScreens.PURCHASE_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//            }
-//
-//            else if(AccessLevel == 5){
-//
-//                mainContainer.loadScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId(), AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getPath());
-//                mainContainer.setScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(AppointmentScreens.VIEW_APPOINTMENTS_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//            }
-//
-//            else if(AccessLevel == 6){
-//
-//                mainContainer.loadScreen(PatientScreens.DASHBOARD_SCREEN.getId(), PatientScreens.DASHBOARD_SCREEN.getPath());
-//                mainContainer.setScreen(PatientScreens.DASHBOARD_SCREEN.getId());
-//                Parent layout = mainContainer.getScreen(PatientScreens.DASHBOARD_SCREEN.getId()).getParent();
-//                primaryStage.setScene(new Scene(layout));
-//            }
-
             primaryStage.show();
 
         } catch (Exception e) {
@@ -173,6 +120,16 @@ public class LoginController implements ControlledScreen, Initializable{
         }
     }
 
+
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
+    public void setMainController(SessionListener controller) {
+
+    }
 
 
 }

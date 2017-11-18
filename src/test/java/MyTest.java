@@ -166,4 +166,28 @@ public class MyTest {
         session.close();
     }
 
+    @org.junit.Test
+    public void CanAddEquipment(){
+
+        //given
+        Equipment user = new Equipment();
+        user.setEquipmentName("equipment3");
+        user.setStock(9);
+
+        Configuration configuration = new Configuration().configure();
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        session.save(user);
+
+        session.getTransaction().commit();
+
+        session.close();
+    }
+
 }
+
+//method to get today's date -      java.sql.Date.valueOf(java.time.LocalDate.now())

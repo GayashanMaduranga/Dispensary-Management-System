@@ -39,6 +39,7 @@ public class Patient extends RecursiveTreeObject<Patient> {
     private List<Appointment> appointments;
     private List<Medication> medications;
     private List<Measure> measures;
+    private List<Allergy> allergies;
 
 
     public Patient() {
@@ -62,6 +63,7 @@ public class Patient extends RecursiveTreeObject<Patient> {
         this.prescriptions = new ArrayList<>();
         this.appointments = new ArrayList<>();
         this.measures = new ArrayList<>();
+        this.allergies = new ArrayList<>();
     }
 
     //pname
@@ -163,7 +165,7 @@ public class Patient extends RecursiveTreeObject<Patient> {
     }
 
     //contactNo
-    @Column(name = "contactNo", length = 10)
+    @Column(name = "contactNo")
     public String getContactNumber() {
         return contactNumber.get();
     }
@@ -300,6 +302,15 @@ public class Patient extends RecursiveTreeObject<Patient> {
         this.medications = medications;
     }
 
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Allergy> getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(List<Allergy> allergies) {
+        this.allergies = allergies;
+    }
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
     public List<Appointment> getAppointments() {
         return appointments;
@@ -308,4 +319,6 @@ public class Patient extends RecursiveTreeObject<Patient> {
     public void setAppointments(List<Appointment> appointments) {
         this.appointments = appointments;
     }
+
+
 }

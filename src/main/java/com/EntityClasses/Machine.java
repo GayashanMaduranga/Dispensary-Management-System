@@ -2,9 +2,11 @@ package com.EntityClasses;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,20 +16,26 @@ import java.util.List;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Machine extends Equipment{
-
+@DiscriminatorValue("Machine")
+public class Machine extends Item{
 
     private SimpleIntegerProperty servicePeriod;
+    private SimpleStringProperty MachineName;
     private Date DateLastServiced;
 
-    private List<Maintenance> maintenances;
+    private List<Maintenance> maintenaces;
+
 
     public Machine() {
 
         this.servicePeriod = new SimpleIntegerProperty();
-        this.maintenances = new ArrayList<>();
+        this.MachineName = new SimpleStringProperty();
+
+        this.maintenaces = new ArrayList<>();
 
     }
+
+
 
     @Column(name = "servicePeriod")
     public int getServicePeriod() {
@@ -42,6 +50,15 @@ public class Machine extends Equipment{
         this.servicePeriod.set(servicePeriod);
     }
 
+
+    @Column(name = "MachineName")
+
+    public String getMachineName() {  return MachineName.get();  }
+
+    public SimpleStringProperty machineNameProperty() { return MachineName; }
+
+    public void setMachineName(String machineName) { this.MachineName.set(machineName); }
+
     @Column(name = "DateLastServiced")
     public Date getDateLastServiced() {
         return DateLastServiced;
@@ -51,13 +68,28 @@ public class Machine extends Equipment{
         DateLastServiced = dateLastServiced;
     }
 
+    public LocalDate localDateLastServiced(){return DateLastServiced.toLocalDate();}
 
-    @ElementCollection
-    public List<Maintenance> getMaintenances() {
-        return maintenances;
+    public SimpleStringProperty DateServicedProperty(){
+        SimpleStringProperty dateString = new SimpleStringProperty();
+        dateString.set(this.DateLastServiced.toString());
+        return dateString;
     }
 
-    public void setMaintenances(List<Maintenance> maintenances) {
-        this.maintenances = maintenances;
+//    @OneToMany( mappedBy = "Machine")
+//    public List<Maintenance> getMaintenaces() {
+//        return maintenaces;
+//    }
+
+    public void setMaintenaces(List<Maintenance> maintenaces) {
+        this.maintenaces = maintenaces;
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        return MachineName.getValue();
     }
 }
