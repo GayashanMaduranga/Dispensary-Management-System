@@ -109,8 +109,8 @@ public class LabMaintanceControl implements Initializable,SessionListener {
         session.getTransaction().commit();
 //
 //
-//        maintananceList.add(m);
-//        MaintanceTable.refresh();
+        maintananceList.add(m);
+        MaintanceTable.refresh();
 
 
     }
@@ -162,8 +162,35 @@ public class LabMaintanceControl implements Initializable,SessionListener {
 
         cmbMachine.setItems(m);
 
+        JFXTreeTableColumn<Maintenance, Number> costCol =  new JFXTreeTableColumn<>("Name");
+        costCol.setCellValueFactory(param -> ((Maintenance)param.getValue().getValue()).costProperty());
 
+        JFXTreeTableColumn<Maintenance, String> reasonCol =  new JFXTreeTableColumn<>("service Period");
+        reasonCol.setCellValueFactory(param -> ((Maintenance)param.getValue().getValue()).reasonProperty());
+
+        JFXTreeTableColumn<Maintenance, String> dateServicedCol =  new JFXTreeTableColumn<>("Date Last Serviced");
+        dateServicedCol.setCellValueFactory(param -> ((Maintenance)param.getValue().getValue()).DateServicedProperty());
+
+        root = new RecursiveTreeItem<>(maintananceList, RecursiveTreeObject::getChildren);
+
+        MaintanceTable.getColumns().setAll( reasonCol, costCol, dateServicedCol);
+        MaintanceTable.setRoot(root);
+        MaintanceTable.setShowRoot(false);
     }
 
 
+    @FXML
+    void comboSelect(){
+
+        List<Maintenance> maint = cmbMachine.getSelectionModel().getSelectedItem().getMaintenaces();
+
+        maintananceList.clear();
+
+        for (Maintenance p : maint){
+
+            maintananceList.add(p);
+        }
+
+        MaintanceTable.refresh();
+    }
 }
