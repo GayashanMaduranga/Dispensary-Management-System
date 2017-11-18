@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable,SessionListener {
 
-    private Patient p;
+    private Patient p = new Patient();
 
 //    ScreenController controller;
 
@@ -177,51 +177,55 @@ public class DashboardController implements Initializable,SessionListener {
     @FXML
     void updatepatient(){
 
-        p.setPname(txtName.getText());
-        p.setOccupation(txtOccupation.getText());
-        p.setEmail(txtEmail.getText());
-        p.setContactNumber(txtPhone.getText());
-        p.setDOB(Date.valueOf(datePickerDOB.getValue()));
+        if (!(p.getPname() == null)) {
+            p.setPname(txtName.getText());
+            p.setOccupation(txtOccupation.getText());
+            p.setEmail(txtEmail.getText());
+            p.setContactNumber(txtPhone.getText());
+            p.setDOB(Date.valueOf(datePickerDOB.getValue()));
 
-        session.beginTransaction();
-        session.update(p);
-        session.getTransaction().commit();
+            session.beginTransaction();
+            session.update(p);
+            session.getTransaction().commit();
 
-        patientList.removeIf(patient -> {
-            boolean flag = false;
-                if(patient.getpId() == p.getpId())
-                    flag = true;
-            return flag;
-        });
+            patientList.removeIf(patient -> {
+                boolean flag = false;
+                    if(patient.getpId() == p.getpId())
+                        flag = true;
+                return flag;
+            });
 
-        patientList.add(p);
+            patientList.add(p);
 
-        patientTable.refresh();
+            patientTable.refresh();
+        }
 
     }
 
     @FXML
     void removePatient() {
 
-        if(ConfirmDialog.show("", "Are you sure?")){
+        if (!(p.getPname() == null)) {
+            if(ConfirmDialog.show("", "Are you sure?")){
 
-            session.beginTransaction();
-            session.delete(p);
-            session.getTransaction().commit();
+                session.beginTransaction();
+                session.delete(p);
+                session.getTransaction().commit();
 
-            patientList.remove(p);
+                patientList.remove(p);
 
-            patientTable.refresh();
+                patientTable.refresh();
 
-            p = null;
+                p = null;
 
-            txtName.setText("");
-            txtID.setText("");
-            txtEmail.setText("");
-            txtOccupation.setText("");
-            txtPhone.setText("");
-            datePickerDOB.setValue(null);
+                txtName.setText("");
+                txtID.setText("");
+                txtEmail.setText("");
+                txtOccupation.setText("");
+                txtPhone.setText("");
+                datePickerDOB.setValue(null);
 
+            }
         }
 
 
