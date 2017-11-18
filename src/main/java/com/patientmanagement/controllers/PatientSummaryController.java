@@ -331,12 +331,12 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
     }
 
-    private void updateAlelrgyTable(){
-
-//for allergy table******************************************************************************************//
+//    for allergy table******************************************************************************************//
 
         List<Allergy> allergies = summaryPatient.getAllergies();
+        private void updateAlelrgyTable(){
 
+//
         allergyList.clear();
 
         for (Allergy allergy : allergies){

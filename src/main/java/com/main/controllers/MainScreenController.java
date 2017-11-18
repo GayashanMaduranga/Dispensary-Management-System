@@ -159,7 +159,8 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
         labInventoryTree.getChildren().addAll(
                 new TreeItem<>("Lab Equipment"),
-                new TreeItem<>("Machines")
+                new TreeItem<>("Machines"),
+                new TreeItem<>("Maintenance")
         );
 
         financeTree.getChildren().addAll(
@@ -200,8 +201,24 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 break;
 
             case "Lab Equipment":
-                if (LoginModel.getAccessLevel() <= 2) {
+                if (LoginModel.getAccessLevel() == 4 || LoginModel.getAccessLevel() == 1) {
                     ScreenController.changeScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN,content,this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Machines":
+                if (LoginModel.getAccessLevel() == 4 || LoginModel.getAccessLevel() == 1) {
+                    ScreenController.changeScreen(LabInventoryScreens.LAB_MACHINE_SCREEN,content,this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Maintenance":
+                if (LoginModel.getAccessLevel() == 4 || LoginModel.getAccessLevel() == 1) {
+                    ScreenController.changeScreen(LabInventoryScreens.LAB_MAINTENAANCE_SCREEN,content,this);
                 } else {
                     ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
                 }

@@ -1,5 +1,6 @@
 package com.labinventory.controlers;
 
+import com.EntityClasses.Equipment;
 import com.EntityClasses.Item;
 import com.EntityClasses.Machine;
 import com.EntityClasses.Maintenance;
@@ -21,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -85,27 +87,48 @@ public class LabMaintanceControl implements Initializable,SessionListener {
     private ComboBox<Machine> cmbMachine;
 
 
-    //@FXML
-   // void addDetails() {
+    @FXML
+    void addMain() {
 
-//        Machine n = new Machine();
-//        Machine m = (Machine)Maintenance();
-//        m.setMachineName(txtMachineName.getText);
-//        // m.setServicePeriod(spinnerServicePeriod.getValue());
-//        m.setDateLastServiced(java.sql.Date.valueOf(java.time.LocalDate.now()));
-//         //m.setStock(0);
+
+       Machine machine= cmbMachine.getSelectionModel().getSelectedItem();
+
+        System.out.println(machine.machineNameProperty().toString());
+
+        Maintenance m = new Maintenance();
+        m.setReason(txtMaintananceReason.getText());
+        m.setCost(Integer.parseInt(txtMaintananceCost.getText()));
+        m.setDateLastServiced(java.sql.Date.valueOf(java.time.LocalDate.now()));
+
+        machine.getMaintenaces().add(m);
 //
-//        session.beginTransaction();
-//        session.save(m);
-//        session.getTransaction().commit();
+        session.flush();
+        session.clear();
+        session.beginTransaction();
+        session.update(machine);
+        session.getTransaction().commit();
 //
-//        MachineList.add(m);
-//        MachineTable.refresh();
-  //  }
+//
+//        maintananceList.add(m);
+//        MaintanceTable.refresh();
+
+
+    }
 
 
     @FXML
-    void AddDetails(){
+    void maintananceTableSelection(MouseEvent event) {
+
+        Maintenance itm = MaintanceTable.getSelectionModel().getSelectedItem().getValue();
+        Machine machine= cmbMachine.getSelectionModel().getSelectedItem();
+        txtMaintananceReason.setText(itm.getReason());
+        txtMaintananceCost.setText(itm.toString());
+
+    }
+
+
+ //   @FXML
+ //        void AddDetails(){
 //        Machine mac = cmbMachine.getSelectionModel().getSelectedItem();
 //        m.setReason(txtMaintananceReason.getText());
 //        m.setCost(Double.parseDouble(txtMaintananceCost.getText()));
@@ -119,7 +142,7 @@ public class LabMaintanceControl implements Initializable,SessionListener {
 //
 //        maintananceList.add(m);
 //        MaintanceTable.refresh();
-    }
+ //   }
 
 
 
@@ -133,71 +156,14 @@ public class LabMaintanceControl implements Initializable,SessionListener {
         Query maintananceQuery = session.createQuery("select m from Item m where ITEM_TYPE = 'Machine'");
         List<Machine> machines = maintananceQuery.list();
         session.getTransaction().commit();
+
         ObservableList<Machine> m = FXCollections.observableArrayList();
         m.addAll(machines);
 
         cmbMachine.setItems(m);
 
-        //to grt values
 
-      //  cmbMachine.getSelectionModel().getSelectedItem().getItemID()
-
-
-        for (Machine b : machines){
-
-         // maintananceList.add(b);
-   }
-
-      JFXTreeTableColumn<Maintenance, String> ReaCol =  new JFXTreeTableColumn<>("Reason");
-          ReaCol.setCellValueFactory(param -> param.getValue().getValue().reasonProperty());
-
-    //  JFXTreeTableColumn<Item, Number> IDCol =  new JFXTreeTableColumn<>("ID");
-     //   IDCol.setCellValueFactory(param -> param.getValue().getValue().itemIDProperty());
-
-        JFXTreeTableColumn<Maintenance,Number> CostCol = new JFXTreeTableColumn<>("Cost");
-        CostCol.setCellValueFactory(param ->param.getValue().getValue().costProperty());
-
-   //    JFXTreeTableColumn<Item, Number> servicePeriodCol =  new JFXTreeTableColumn<>("Maintanance Reason");
-   //     servicePeriodCol.setCellValueFactory(param -> (param.getValue().getValue()).servicePeriodProperty());
-
-      JFXTreeTableColumn<Maintenance, String> dateServicedCol =  new JFXTreeTableColumn<>("Date Serviced");
-       dateServicedCol.setCellValueFactory(param -> (param.getValue().getValue()).DateServicedProperty());
-//
-//    JFXTreeTableColumn<Item, Boolean> actionCol = new JFXTreeTableColumn<>("Action");
-//        actionCol.setCellValueFactory(param -> new SimpleBooleanProperty(param.getValue() != null));
-//        actionCol.setCellFactory(param -> new LabMaintanceControl.ActionCell(MachineTable));
-//
-    root = new RecursiveTreeItem<>(maintananceList, RecursiveTreeObject::getChildren);
-
-           MaintanceTable.getColumns().setAll(ReaCol, CostCol,dateServicedCol);
-           MaintanceTable.setRoot(root);
-           MaintanceTable.setShowRoot(false);
     }
 
-       private class ActionCell extends TreeTableCell<Item, Boolean> {
 
-           // a button for adding a new person.
-//        private Button removeBtn = new Button("Remove");
-//        // a button for adding a new person.
-//        private Button editButton = new Button(" Edit ");
-//        // pads and centers the buttons in the cell.
-//        final HBox paddedButton = new HBox(10);//to give space between two buttions
-//
-//        /**
-//         * EditMedicationCell constructor
-//         * @param fromTable the Table in which button resides.
-//         */
-//
-//        ActionCell(final TreeTableView<Item> fromTable) {
-//
-
-
-           }
-
-           @FXML
-           void addMachine(ActionEvent event) {
-
-           }
-
-
-       }
+}
