@@ -34,11 +34,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class SearchEmpoyeeController implements Initializable,SessionListener {
+public class SearchEmpoyeeController implements Initializable, SessionListener {
 
 
     @FXML
@@ -78,7 +77,6 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
     private MainScreenController mainController;
 
 
-
     @FXML
     void setSelectionDetails(MouseEvent event) {
 
@@ -97,7 +95,7 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
     @FXML
     void viewProfile(ActionEvent event) {
 
-        ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN,mainController.getContent(),mainController);
+        ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN, mainController.getContent(), mainController);
 //        System.out.println(mainController.getEmployee().getName());
 
     }
@@ -110,14 +108,14 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
         session.beginTransaction();
 
         Query query = session.createQuery("from Employee s where name like :keyword ");
-        query.setParameter("keyword","%" +name+ "%");
+        query.setParameter("keyword", "%" + name + "%");
 
         List<Employee> staffMemberList = query.list();
 
         session.getTransaction().commit();
 
         staffList.clear();
-        for (Employee s : staffMemberList){
+        for (Employee s : staffMemberList) {
             staffList.add(new TreeItem<>(s));
         }
 
@@ -135,28 +133,28 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
 
 
 //        initDB();
-          new Thread(() -> {
-                Platform.runLater(() ->initDB() );
+        new Thread(() -> {
+            Platform.runLater(() -> initDB());
 
-          }).start();
+        }).start();
 
 
     }
 
-    private void initDB(){
+    private void initDB() {
 
         List<Employee> staffMemberList = SearchEmployeeModel.getEmployees();
 
 
-       // staffTable
-        for (Employee s : staffMemberList){
+        // staffTable
+        for (Employee s : staffMemberList) {
             staffList.add(new TreeItem<>(s));
         }
 
         staffTable.getRoot().getChildren().addAll(staffList);
     }
 
-    private void initTable(){
+    private void initTable() {
         colId.setCellValueFactory(param -> param.getValue().getValue().employeeidProperty());
         colName.setCellValueFactory(param -> param.getValue().getValue().nameProperty());
 
@@ -170,6 +168,7 @@ public class SearchEmpoyeeController implements Initializable,SessionListener {
         staffTable.setShowRoot(false);
 
     }
+
     @FXML
     void calculatePayroll(ActionEvent event) {
 

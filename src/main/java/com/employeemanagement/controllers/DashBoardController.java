@@ -16,8 +16,7 @@ import java.util.ResourceBundle;
 /**
  * Created by gayashan on 8/13/2017.
  */
-public class DashBoardController implements Initializable,SessionListener {
-
+public class DashBoardController implements Initializable, SessionListener {
 
 
     @FXML
@@ -46,21 +45,21 @@ public class DashBoardController implements Initializable,SessionListener {
         JFXButton selectedBtn = (JFXButton) event.getSource();
         switch (selectedBtn.getId()) {
             case "addEmployeeBtn":
-                ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,mainScreenController.getContent(),mainScreenController);
+                ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN, mainScreenController.getContent(), mainScreenController);
 
                 break;
             case "employeeDetailsBtn":
-                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN,mainScreenController.getContent(),mainScreenController);
+                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN, mainScreenController.getContent(), mainScreenController);
 
                 break;
 
             case "addDoctorBtn":
-                ScreenController.changeScreen(MyScreens.ADD_DOCTOR_SCREEN,mainScreenController.getContent(),mainScreenController);
+                ScreenController.changeScreen(MyScreens.ADD_DOCTOR_SCREEN, mainScreenController.getContent(), mainScreenController);
 
 
                 break;
             case "doctorDetailsBtn":
-                ScreenController.changeScreen(MyScreens.SEARCH_DOCTOR_SCREEN,mainScreenController.getContent(),mainScreenController);
+                ScreenController.changeScreen(MyScreens.SEARCH_DOCTOR_SCREEN, mainScreenController.getContent(), mainScreenController);
 
 
                 break;
@@ -71,8 +70,8 @@ public class DashBoardController implements Initializable,SessionListener {
 
         }
 
-        if(mainScreenController==null)
-        System.out.println("ON");
+        if (mainScreenController == null)
+            System.out.println("ON");
     }
 
 
@@ -88,7 +87,7 @@ public class DashBoardController implements Initializable,SessionListener {
 
     @Override
     public void setMainController(SessionListener controller) {
-            mainScreenController=(MainScreenController)controller;
+        mainScreenController = (MainScreenController) controller;
     }
 
 //    @FXML
@@ -99,7 +98,7 @@ public class DashBoardController implements Initializable,SessionListener {
 //    }
 
 
-    public void initWebCam(){
+    public void initWebCam() {
 
         System.out.println("OK");
         final Thread thread = new Thread(new Runnable() {
@@ -107,14 +106,16 @@ public class DashBoardController implements Initializable,SessionListener {
             @Override
             public void run() {
 
-                    try (QrCapture qr = new QrCapture()) {
-                        showMessage("QR code text is:\n" + qr.getResult() + "");
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
+                try (QrCapture qr = new QrCapture()) {
+                    showMessage("QR code text is:\n" + qr.getResult() + "");
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
 
 
-            };
+            }
+
+            ;
         });
         thread.setDaemon(true);
         thread.start();
@@ -131,9 +132,9 @@ public class DashBoardController implements Initializable,SessionListener {
         alert.showAndWait();
     }
 
-    public void showMessage(String message){
+    public void showMessage(String message) {
 
-        showInformation("QR Information Dialog",message);
+        showInformation("QR Information Dialog", message);
 
         System.out.println(message);
 

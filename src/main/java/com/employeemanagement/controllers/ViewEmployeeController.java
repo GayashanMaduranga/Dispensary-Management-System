@@ -44,7 +44,7 @@ import java.util.ResourceBundle;
  */
 
 @SuppressWarnings("Duplicates")
-public class ViewEmployeeController implements Initializable,SessionListener {
+public class ViewEmployeeController implements Initializable, SessionListener {
 
 
     //////////##########################
@@ -245,8 +245,6 @@ public class ViewEmployeeController implements Initializable,SessionListener {
         initTables();
 
 
-
-
     }
 
 
@@ -439,9 +437,9 @@ public class ViewEmployeeController implements Initializable,SessionListener {
     public void setMainController(SessionListener controller) {
         this.mainController = (MainScreenController) controller;
         setData();
-        if(mainController.getEmployee().getJobRole().matches("doctor")) {
+        if (mainController.getEmployee().getJobRole().matches("doctor")) {
             attendanceAcPane.getChildren().clear();
-        }else {
+        } else {
             initAgenda();
         }
     }
@@ -784,11 +782,10 @@ public class ViewEmployeeController implements Initializable,SessionListener {
     }
 
 
-
     private void initAgenda() {
         try {
             updateAgenda();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
@@ -823,7 +820,7 @@ public class ViewEmployeeController implements Initializable,SessionListener {
         });
 
 
-        agenda.appointmentChangedCallbackProperty().set(param ->{
+        agenda.appointmentChangedCallbackProperty().set(param -> {
 
 
                     viewEmployeeModel.updateAppointment((AttendanceImpl) param);
@@ -834,11 +831,11 @@ public class ViewEmployeeController implements Initializable,SessionListener {
 
     }
 
-    private void updateAgenda(){
+    private void updateAgenda() {
         agenda.localDateTimeRangeCallbackProperty().set(param -> {
 
 
-                    List<AttendanceImpl> list = viewEmployeeModel.getAppointments(param.getStartLocalDateTime(), param.getEndLocalDateTime(),mainController.getEmployee());
+                    List<AttendanceImpl> list = viewEmployeeModel.getAppointments(param.getStartLocalDateTime(), param.getEndLocalDateTime(), mainController.getEmployee());
                     agenda.appointments().clear();
                     agenda.appointments().addAll(list);
                     return null;
@@ -849,4 +846,22 @@ public class ViewEmployeeController implements Initializable,SessionListener {
 
     }
 
+
+
+    @FXML
+    void addLoan(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void UpdateLoan(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void RemoveLoan(ActionEvent event) {
+
+    }
 }
