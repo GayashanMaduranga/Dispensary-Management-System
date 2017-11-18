@@ -60,4 +60,48 @@ public class SearchEmployeeModel {
 
         return staffMemberList;
     }
+
+
+    public static void deleteEmployee(Employee emp) {
+
+
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    session.flush();
+                    session.clear();
+
+                    session.beginTransaction();
+                   session.delete(emp);
+                    session.getTransaction().commit();
+
+
+                } catch (Exception e) {
+
+                    Platform.runLater(() -> Notifications.create()
+                            .title("Error Deleting Data")
+                            .text("please restart the programme")
+                            .darkStyle()
+                            .showError());
+
+
+                }
+                return null;
+            }
+        };
+
+        Thread addEmpThread = new Thread(task);
+        addEmpThread.setDaemon(true);
+        addEmpThread.start();
+        try {
+            addEmpThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
 }

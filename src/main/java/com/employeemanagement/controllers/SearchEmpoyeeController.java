@@ -177,6 +177,9 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
 
     @FXML
     void deleteProfile(ActionEvent event) {
+        Employee emp = staffTable.getSelectionModel().getSelectedItem().getValue();
+
+        SearchEmployeeModel.deleteEmployee(emp);
 
     }
 
