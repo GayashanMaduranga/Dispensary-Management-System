@@ -162,10 +162,10 @@ public class LabMaintanceControl implements Initializable,SessionListener {
 
         cmbMachine.setItems(m);
 
-        JFXTreeTableColumn<Maintenance, Number> costCol =  new JFXTreeTableColumn<>("Name");
+        JFXTreeTableColumn<Maintenance, Number> costCol =  new JFXTreeTableColumn<>("Cost");
         costCol.setCellValueFactory(param -> ((Maintenance)param.getValue().getValue()).costProperty());
 
-        JFXTreeTableColumn<Maintenance, String> reasonCol =  new JFXTreeTableColumn<>("service Period");
+        JFXTreeTableColumn<Maintenance, String> reasonCol =  new JFXTreeTableColumn<>("Reason");
         reasonCol.setCellValueFactory(param -> ((Maintenance)param.getValue().getValue()).reasonProperty());
 
         JFXTreeTableColumn<Maintenance, String> dateServicedCol =  new JFXTreeTableColumn<>("Date Last Serviced");
