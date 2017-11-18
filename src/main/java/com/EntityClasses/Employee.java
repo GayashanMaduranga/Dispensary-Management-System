@@ -1,9 +1,6 @@
 package com.EntityClasses;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.scene.image.Image;
 import org.hibernate.annotations.Type;
 
@@ -40,9 +37,11 @@ public abstract class Employee {
     private byte[] imageByte;
     private List<PreviousEmployment> previousEmploymentList;
     private List<Education> educationList;
+    private List<EmploymentDetails> employmentDetails;
 
 
-
+    private Date dateOfAppointment;
+    private StringProperty jobRole;
 
 
     public Employee() {
@@ -55,6 +54,8 @@ public abstract class Employee {
         this.previousEmploymentList = new ArrayList<>();
         this.educationList = new ArrayList<>();
         this.nic = new SimpleStringProperty();
+        this.employmentDetails = new ArrayList<>();
+        this.jobRole = new SimpleStringProperty();
 
     }
 
@@ -184,7 +185,7 @@ public abstract class Employee {
     }
 
     @Lob
-    @Column(name="IMAGE",nullable = false, columnDefinition="mediumblob")
+    @Column(name="IMAGE",nullable = true, columnDefinition="mediumblob")
     public byte[] getImageByte() {
         return imageByte;
     }
@@ -214,4 +215,38 @@ public abstract class Employee {
     public void setNic(String nic) {
         this.nic.set(nic);
     }
+
+    @ElementCollection
+    public List<EmploymentDetails> getEmploymentDetails() {
+        return employmentDetails;
+    }
+
+    public void setEmploymentDetails(List<EmploymentDetails> employmentDetails) {
+        this.employmentDetails = employmentDetails;
+    }
+
+    @Column(name = "DATE_OF_APPOINTMENT",nullable = false)
+
+    public Date getDateOfAppointment() {
+        return dateOfAppointment;
+    }
+
+    public void setDateOfAppointment(Date dateOfAppointment) {
+        this.dateOfAppointment = dateOfAppointment;
+    }
+
+    public String getJobRole() {
+        return jobRole.get();
+    }
+
+    public StringProperty occupationProperty() {
+        return jobRole;
+    }
+
+    public void setJobRole(String occupation) {
+        this.jobRole.set(occupation);
+    }
+
+
+
 }

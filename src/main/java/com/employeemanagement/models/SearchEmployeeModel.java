@@ -1,5 +1,6 @@
 package com.employeemanagement.models;
 
+import com.EntityClasses.Employee;
 import com.EntityClasses.Staff;
 import com.common.ScreenController;
 import javafx.application.Platform;
@@ -15,17 +16,20 @@ public class SearchEmployeeModel {
 
     private static Session session = ScreenController.getSession();
 
-    private static List<Staff> staffMemberList = null;
+    private static List<Employee> staffMemberList = null;
 
-    public static List<Staff> getEmployees() {
+    public static List<Employee> getEmployees() {
 
 
-        Task<List<Staff>> task = new Task<List<Staff>>() {
+        Task<List<Employee>> task = new Task<List<Employee>>() {
             @Override
-            protected List<Staff> call() throws Exception {
+            protected List<Employee> call() throws Exception {
                 try {
+                    session.flush();
+                    session.clear();
+
                     session.beginTransaction();
-                    Query query = session.createQuery("select s from Staff s");
+                    Query query = session.createQuery("select s from Employee s");
                     staffMemberList = query.list();
                     session.getTransaction().commit();
 

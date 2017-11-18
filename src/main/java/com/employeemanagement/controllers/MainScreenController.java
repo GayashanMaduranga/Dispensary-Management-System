@@ -8,6 +8,8 @@ import com.common.SessionListener;
 import com.main.Main;
 import com.main.controllers.MainScreens;
 import com.patientmanagement.controllers.PatientScreens;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
@@ -15,10 +17,13 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import org.controlsfx.control.MaskerPane;
+import org.controlsfx.control.Notifications;
 import org.hibernate.Session;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class MainScreenController implements Initializable,SessionListener,ControlledScreen {
 
@@ -85,12 +90,12 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
     @FXML
     void changeScene(MouseEvent event) {
+        //ScreenController.changeScreen(MyScreens.LOADING_SCREEN,content,this);
 
         selectedBtn.setDisable(false);
         leftPane.requestFocus();
         selectedBtn = (JFXButton) event.getSource();
         selectedBtn.setDisable(true);
-
         switch (selectedBtn.getId()) {
             case "dashBoardBtn":
                 ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content,this);

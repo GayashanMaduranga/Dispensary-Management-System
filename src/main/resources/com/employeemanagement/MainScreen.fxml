@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
+
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1299.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.MainScreenController">
 <left>
     <GridPane fx:id="leftPane" prefHeight="715.0" prefWidth="273.0" BorderPane.alignment="CENTER">
@@ -99,7 +100,7 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="51.66666793823242" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="666.0" minHeight="10.0" prefHeight="663.3333320617676" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="663.3333320617676" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
            <!--    <children>-->
@@ -146,7 +147,8 @@
                   <BorderPane prefHeight="960.0" prefWidth="1026.0">
                      <StackPane.margin>
                         <Insets top="20.0" />
-                     </StackPane.margin></BorderPane>
+                     </StackPane.margin>
+                  </BorderPane>
                </children>
            </StackPane>
          </children>

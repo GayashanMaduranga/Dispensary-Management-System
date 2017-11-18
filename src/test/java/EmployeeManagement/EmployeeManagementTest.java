@@ -1,6 +1,7 @@
 package EmployeeManagement;
 
 import com.EntityClasses.*;
+import com.employeemanagement.models.StaffID;
 import db.UserSession;
 import org.hibernate.Session;
 import org.junit.Test;
@@ -42,16 +43,18 @@ public class EmployeeManagementTest {
 
         Session session = UserSession.getSession();
 
-        Staff staff =(Staff)session.get(Staff.class,1);
-
+        Staff staff =(Staff) session.get(Staff.class,12345);
+//
         Attendance attendance = new Attendance();
-        attendance.setArrivalTime(new Timestamp(System.currentTimeMillis()));
-        attendance.setLeaveTime(new Timestamp(System.currentTimeMillis()));
-        attendance.setDate(new Date(System.currentTimeMillis()));
+//        attendance.setArrivalTime(new Timestamp(System.currentTimeMillis()));
+//        attendance.setLeaveTime(new Timestamp(System.currentTimeMillis()));
+//        attendance.setDate(new Date(System.currentTimeMillis()));
+
+
+        attendance.setStartTime(new Timestamp(System.currentTimeMillis()));
+        attendance.setEndTime(new Timestamp(System.currentTimeMillis()));
 
         staff.getAttendanceList().add(attendance);
-
-
 
 
         session.beginTransaction();
@@ -141,4 +144,10 @@ public class EmployeeManagementTest {
 
 
 
+    @Test
+    public void canCreateStaffID(){
+        java.util.Date d = new java.util.Date();
+        //StaffID id = new StaffID("123","kaiz","C:\\Users\\gayashan\\Downloads\\Tiana2.NEF.jpg", d);
+        //id.saveStraffIdImages();
+    }
 }
