@@ -2,6 +2,7 @@ package com.patientmanagement.controllers;
 
 
 import com.EntityClasses.*;
+import com.common.AlertDialog;
 import com.common.ScreenController;
 import com.common.SessionListener;
 import com.main.controllers.MainScreenController;
@@ -319,27 +320,41 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
         String patientName = txtGetpatient.getText();
 
-        patients.clear();
+        if (!(txtGetpatient.getText().equals(""))) {
 
-        session.clear();
-        session.beginTransaction();
-        Query patientNameQuery = session.createQuery("select p from Patient p where p.pname = '"+patientName+"'");
-        patients = patientNameQuery.list();
-        session.getTransaction().commit();
+            patients.clear();
 
-        summaryPatient = patients.get(0);
+            session.clear();
+            session.beginTransaction();
+            Query patientNameQuery = session.createQuery("select p from Patient p where p.pname = '"+patientName+"'");
+            patients = patientNameQuery.list();
+            session.getTransaction().commit();
 
-        lblPid.setText(Integer.toString(summaryPatient.getpId()));
-        lblPoccupation.setText(summaryPatient.getOccupation());
-        lblPemail.setText(summaryPatient.getEmail());
-        lblPphone.setText(summaryPatient.getContactNumber());
-        lblPage.setText(summaryPatient.getDOB().toString());
-        lblPname.setText(summaryPatient.getPname());
+            if (!(patients.isEmpty())) {
 
-        updateMedTable();
-        updateDiscTable();
-        updateMeasureTable();
-        updateAlelrgyTable();
+                summaryPatient = patients.get(0);
+
+                lblPid.setText(Integer.toString(summaryPatient.getpId()));
+                lblPoccupation.setText(summaryPatient.getOccupation());
+                lblPemail.setText(summaryPatient.getEmail());
+                lblPphone.setText(summaryPatient.getContactNumber());
+                lblPage.setText(summaryPatient.getDOB().toString());
+                lblPname.setText(summaryPatient.getPname());
+
+                updateMedTable();
+                updateDiscTable();
+                updateMeasureTable();
+                updateAlelrgyTable();
+            }else{
+
+                AlertDialog.show("Alert", "There is no such patient");
+
+            }
+
+        }else{
+
+            AlertDialog.show("Alert", "Please select a patient");
+        }
 
     }
 

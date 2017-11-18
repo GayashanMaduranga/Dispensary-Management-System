@@ -9,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.GridPane;
 import javafx.stage.StageStyle;
 import org.hibernate.Session;
-import com.main.controllers.MainScreenController;
 
 import java.net.URL;
 import java.util.ResourceBundle;

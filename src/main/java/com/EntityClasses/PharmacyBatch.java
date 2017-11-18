@@ -26,6 +26,9 @@ public class PharmacyBatch extends RecursiveTreeObject<PharmacyBatch> {
     private SimpleDoubleProperty purchasingPrice;
     private PharmacyItem pharmacyItem;
     private List<PharmacyLineItem> pharmacyLineItems;
+
+
+
     private IntegerProperty quantity;
 
     public PharmacyBatch() {
@@ -62,6 +65,19 @@ public class PharmacyBatch extends RecursiveTreeObject<PharmacyBatch> {
         this.manufacturingDate = manufacturingDate;
     }
 
+    @Column(name = "quantity")
+    public int getQuantity() {
+        return quantity.get();
+    }
+
+    public IntegerProperty quantityProperty() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity.set(quantity);
+    }
+
     @Column(name = "expiryDate")
     public Date getExpiryDate() {
         return expiryDate;
@@ -90,13 +106,11 @@ public class PharmacyBatch extends RecursiveTreeObject<PharmacyBatch> {
         this.purchasingPrice.set(purchasingPrice);
     }
 
-
     //One to One uni directional
     @ManyToOne(cascade = CascadeType.PERSIST)
     public PharmacyItem getPharmacyItem() {
         return pharmacyItem;
     }
-
     public void setPharmacyItem(PharmacyItem pharmacyItem) {
         this.pharmacyItem = pharmacyItem;
     }
@@ -109,6 +123,5 @@ public class PharmacyBatch extends RecursiveTreeObject<PharmacyBatch> {
     public void setPharmacyLineItems(List<PharmacyLineItem> pharmacyLineItems) {
         this.pharmacyLineItems = pharmacyLineItems;
     }
-
 
 }

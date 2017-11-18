@@ -20,14 +20,15 @@ public class Loan {
     private Date endDate;
     private DoubleProperty interestRate;
     private DoubleProperty collectedLoan;
-
+    private DoubleProperty collectedInterest;
 
     public Loan() {
         this.id = new SimpleIntegerProperty();
         this.reason = new SimpleStringProperty();
-        this.loanAmount = new SimpleDoubleProperty(0);
-        this.interestRate = new SimpleDoubleProperty(0);
-        this.collectedLoan = new SimpleDoubleProperty(0);
+        this.loanAmount = new SimpleDoubleProperty();
+        this.interestRate = new SimpleDoubleProperty();
+        this.collectedLoan = new SimpleDoubleProperty();
+        this.collectedInterest = new SimpleDoubleProperty();
 
     }
 
@@ -108,5 +109,17 @@ public class Loan {
 
     public void setCollectedLoan(double collectedLoan) {
         this.collectedLoan.set(collectedLoan);
+    }
+
+    public double getCollectedInterest() {
+        return collectedInterest.get();
+    }
+
+    public DoubleProperty collectedInterestProperty() {
+        return collectedInterest;
+    }
+
+    public void setCollectedInterest(double collectedInterest) {
+        this.collectedInterest.set(collectedInterest);
     }
 }
