@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane style="-fx-background-color: #dfdfdf;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.PatientSummaryController">
+<GridPane style="-fx-background-color: #dfdfdf;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.PatientSummaryController">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="32.0" prefWidth="32.0" />
       <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="311.0" />
@@ -586,7 +586,7 @@
             <Insets right="30.0" />
          </GridPane.margin>
       </JFXTabPane>
-      <TextField fx:id="txtGetpatient" prefHeight="31.0" prefWidth="818.0" promptText="Search" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="txtGetpatient" onAction="#populateDetails" prefHeight="31.0" prefWidth="818.0" promptText="Search" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <Button fx:id="getPatientBtn" mnemonicParsing="false" onAction="#populateDetails" prefWidth="133.0" styleClass="button-blue" text="  Get Patient  " GridPane.columnIndex="2" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="20.0" />
