@@ -122,9 +122,9 @@ public class PayrollController implements Initializable, SessionListener {
         Payslip payslip = new Payslip(file);
 
 
-       // payslip.setId(String.valueOf(emp.getEmployeeid()));
-       // payslip.setName(emp.getName());
-//        payslip.setDesignation(emp.getJobRole());
+        payslip.setId(String.valueOf(emp.getEmployeeid()));
+        payslip.setName(emp.getName());
+        payslip.setDesignation(emp.getJobRole());
         payslip.setRateOfRemuneration(txtRateOfRemuneration.getText());
 
 
@@ -136,9 +136,9 @@ public class PayrollController implements Initializable, SessionListener {
 //        payslip.setAllowances(alist);
 
 //        List<String> dlist= new ArrayList<>();
-        for(TreeItem<Allowance> a : allowanceList){
+        for(TreeItem<Decutions> d : deductionList){
 //            dlist.add(a.getValue().getAllowance());
-            payslip.getDeductions().add(a.getValue().getAllowance());
+            payslip.getDeductions().add(d.getValue().getDeduction());
         }
 //        payslip.setDeductions(dlist);
 
@@ -156,15 +156,26 @@ public class PayrollController implements Initializable, SessionListener {
                gross+=Double.parseDouble(t.getValue().getAllowance());
             }
             String g = String.valueOf(gross);
-            payslip.setGrossEarings("Hello Wolrd");
+            payslip.setGrossEarings(g);
 
-            double epfByEmployee = gross * Double.parseDouble(txtEPFbyEmployee.getText())/100;
+            double epfByEmployee = (gross * Double.parseDouble(txtEPFbyEmployee.getText()))/100;
             payslip.setEPFByEmployee(String.valueOf(epfByEmployee));
 
-            double epfByEmployer = gross * Double.parseDouble(txtEPFbyEmployer.getText())/100;
+            double epfByEmployer = (gross * Double.parseDouble(txtEPFbyEmployer.getText()))/100;
             payslip.setEPFByEmployer(String.valueOf(epfByEmployer));
 
+            double otpay = Double.parseDouble(txtHours.getText()) * Double.parseDouble(txtOTRate.getText());
+            payslip.setOtPay(String.valueOf(otpay));
+            double netSal = gross - epfByEmployee + otpay;
 
+            double deductions = 0;
+            for(TreeItem<Decutions> d : deductionList){
+                deductions+=Double.parseDouble(d.getValue().getDeduction());
+            }
+
+            netSal-=deductions;
+
+            payslip.setNetSal(String.valueOf(netSal));
 
         }catch (Exception e){
             e.printStackTrace();
