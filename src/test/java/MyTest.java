@@ -1,4 +1,6 @@
 import com.EntityClasses.*;
+import com.employeemanagement.models.Payslip;
+import com.employeemanagement.models.PayslipLoanDetail;
 import db.UserSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -6,10 +8,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.sql.Date;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -51,7 +52,7 @@ public class MyTest {
 
         //given
         User user = new User();
-        user.setUsername("user");
+        user.setUsername("cha1234");
         user.setPassword("pass");
         user.setAccessLevel(1);
 
@@ -188,6 +189,30 @@ public class MyTest {
         session.close();
     }
 
+    @Test
+    public void canGeneratePaySlip(){
+
+        Payslip p = new Payslip( new File("E:\\New2.pdf"));
+
+
+        p.setMonth("November");
+        p.setYear("2020");
+        p.setId("1234567");
+        p.setName("Kaizer kaiz");
+        p.getAllowances().add("1000");
+        p.getAllowances().add("2000");
+        p.getAllowances().add("3000");
+        p.getAllowances().add("4000");
+        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
+        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
+        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
+        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
+
+
+
+        p.genaratePayslip();
+
+    }
 }
 
 //method to get today's date -      java.sql.Date.valueOf(java.time.LocalDate.now())

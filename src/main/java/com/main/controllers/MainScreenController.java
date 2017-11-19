@@ -1,6 +1,7 @@
 package com.main.controllers;
 
 import com.EntityClasses.Employee;
+import com.Laboratory.controllers.LabScreens;
 import com.PharmacyMgt.Controllers.PharmacyScreens;
 import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
@@ -45,13 +46,14 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
     private ScreenController controller;
 
-    private Session session;
 
     private MainScreenController mainScreenController;
 
     public String test = "Hello";
 
     private Employee employee;
+
+    private Session session;
 
     public Employee getEmployee() {
         return employee;
@@ -69,6 +71,9 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         this.content = content;
     }
 
+    public Session getSession() {
+        return session;
+    }
 
     @FXML
     void logout() {
@@ -140,9 +145,14 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         );
 
         laboratoryTree.getChildren().addAll(
-                new TreeItem<>("Add Test"),
+
+                new TreeItem<>("Order Test"),
                 new TreeItem<>("Enter Results"),
-                new TreeItem<>("order Test")
+                new TreeItem<>("Add Test"),
+                new TreeItem<>("Add Reference Values"),
+                new TreeItem<>("Fill Results"),
+                new TreeItem<>("Statistics")
+
         );
 
         supplierTree.getChildren().addAll(
@@ -159,7 +169,8 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
         labInventoryTree.getChildren().addAll(
                 new TreeItem<>("Lab Equipment"),
-                new TreeItem<>("Machines")
+                new TreeItem<>("Machines"),
+                new TreeItem<>("Maintenance")
         );
 
         financeTree.getChildren().addAll(
@@ -200,8 +211,24 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 break;
 
             case "Lab Equipment":
-                if (LoginModel.getAccessLevel() <= 2) {
+                if (LoginModel.getAccessLevel() == 4 || LoginModel.getAccessLevel() == 1) {
                     ScreenController.changeScreen(LabInventoryScreens.LAB_EQUIPMENT_SCREEN,content,this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Machines":
+                if (LoginModel.getAccessLevel() == 4 || LoginModel.getAccessLevel() == 1) {
+                    ScreenController.changeScreen(LabInventoryScreens.LAB_MACHINE_SCREEN,content,this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Maintenance":
+                if (LoginModel.getAccessLevel() == 4 || LoginModel.getAccessLevel() == 1) {
+                    ScreenController.changeScreen(LabInventoryScreens.LAB_MAINTENAANCE_SCREEN,content,this);
                 } else {
                     ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
                 }
@@ -261,6 +288,71 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                     ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
                 }
                 break;
+
+            case "Add Test":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(LabScreens.ADDTEST_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Add Reference Values":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(LabScreens.REFER_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Enter Results":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(LabScreens.ENTERRESULTS_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Select Test":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(LabScreens.SELECT_TEST_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "DataBase":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(LabScreens.INPUTRESULT_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Statistics":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(LabScreens.EXTRA_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+            case "Order Test":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(LabScreens.ORDERTEST_SCREEN,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
+
+//            new TreeItem<>("Order Test"),
+//                    new TreeItem<>("Select Test"),
+//                    new TreeItem<>("Enter Results"),
+//                    new TreeItem<>("Add Test"),
+//                    new TreeItem<>("Add Reference Values"),
+//                    new TreeItem<>("DataBase"),
+//                    new TreeItem<>("Statistics")
         }
 
 

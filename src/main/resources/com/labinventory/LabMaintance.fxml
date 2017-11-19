@@ -44,7 +44,7 @@
                   <Font size="15.0" />
                </font>
                <content>
-                  <JFXTreeTableView fx:id="MaintanceTable">
+                  <JFXTreeTableView fx:id="MaintanceTable" onMouseClicked="#maintananceTableSelection">
                      <columnResizePolicy>
                         <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
@@ -68,12 +68,12 @@
             <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
                   <Label prefHeight="17.0" prefWidth="91.0" text="Machine" />
-                  <ComboBox fx:id="cmbMachine" prefHeight="25.0" prefWidth="167.0" promptText="Select Machine" />
+                  <ComboBox fx:id="cmbMachine" onAction="#comboSelect" prefHeight="25.0" prefWidth="167.0" promptText="Select Machine" />
                   <Label prefHeight="17.0" prefWidth="156.0" text="Maintance Reason :" />
                   <TextField fx:id="txtMaintananceReason" prefHeight="25.0" prefWidth="231.0" promptText="Maintance" />
                   <Label prefHeight="17.0" prefWidth="151.0" text="Maintance cost :" />
                   <TextField fx:id="txtMaintananceCost" promptText="Rs" />
-                  <JFXButton fx:id="btnAddDetails" onAction="#addMachine" prefHeight="40.0" prefWidth="155.0" styleClass="button-green" text="Add Record">
+                  <JFXButton fx:id="btnAddDetails" onAction="#addMain" prefHeight="40.0" prefWidth="155.0" styleClass="button-green" text="Add Record">
                      <font>
                         <Font size="17.0" />
                      </font>

@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-public class MainScreenController implements Initializable,SessionListener,ControlledScreen {
+public class MainScreenController implements Initializable, SessionListener, ControlledScreen {
 
     @FXML
     private GridPane leftPane;
@@ -98,18 +98,18 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         selectedBtn.setDisable(true);
         switch (selectedBtn.getId()) {
             case "dashBoardBtn":
-                ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content,this);
+                ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN, content, this);
                 break;
             case "addEmployeeBtn":
-                ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN,content,this);
+                ScreenController.changeScreen(MyScreens.ADDEMPLOYEE_SCREEN, content, this);
                 break;
 
             case "updateEmployeeBtn":
-                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN,content,this);
+                ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN, content, this);
 
                 break;
             case "attendenceBtn":
-               // ScreenController.changeScreen(MyScreens.ATTENDENCE_SCREEN,content,this);
+                // ScreenController.changeScreen(MyScreens.ATTENDENCE_SCREEN,content,this);
 
                 break;
             case "payrollBtn":
@@ -140,7 +140,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         selectedBtn.setDisable(true);
 
 
-        ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content);
+        ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN, content);
 
 
     }
@@ -153,7 +153,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
     @Override
     public void setMainController(SessionListener controller) {
-                mainScreenController = this;
+        mainScreenController = this;
     }
 
     @Override
