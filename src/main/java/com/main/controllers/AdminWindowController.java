@@ -3,6 +3,7 @@ package com.main.controllers;
 
 import com.EntityClasses.Patient;
 import com.EntityClasses.User;
+import com.common.AlertDialog;
 import com.common.ConfirmDialog;
 import com.common.ScreenController;
 import com.common.SessionListener;
@@ -24,6 +25,7 @@ import org.hibernate.Session;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -34,6 +36,7 @@ import java.util.ResourceBundle;
 public class AdminWindowController implements Initializable,SessionListener {
 
     private User p = new User();
+    private User temp = new User();
 
 //    ScreenController controller;
 
@@ -77,6 +80,18 @@ public class AdminWindowController implements Initializable,SessionListener {
     public void initialize(URL location, ResourceBundle resources) {
 
         session = ScreenController.getSession();
+
+        List<Integer> accessLevels = new ArrayList<>();
+        accessLevels.add(1);
+        accessLevels.add(2);
+        accessLevels.add(3);
+        accessLevels.add(4);
+        accessLevels.add(5);
+        accessLevels.add(6);
+        accessLevels.add(7);
+        accessLevels.add(8);
+
+        userAccessCombo.getItems().addAll(accessLevels);
 
         session.beginTransaction();
         Query userNameQuery = session.createQuery("select u from User u");
@@ -127,35 +142,75 @@ public class AdminWindowController implements Initializable,SessionListener {
     }
 
 
+    private boolean passwordsMatch(){
 
-
-    @FXML
-    void updatepatient(){
-
-        if (!(p.getUsername() == null)) {
-            p.setUsername(txtUsername.getText());
-            p.setPassword(txtPassword1.getText());
-
-            session.beginTransaction();
-            session.update(p);
-            session.getTransaction().commit();
-
-            userList.removeIf(user -> {
-                boolean flag = false;
-                    if(user.getUsername() == p.getUsername())
-                        flag = true;
-                return flag;
-            });
-
-            userList.add(p);
-
-            userTable.refresh();
+        if(txtPassword1.getText().equals(txtPassword2.getText())){
+            return true;
+        }else{
+            return false;
         }
 
     }
 
     @FXML
-    void removePatient() {
+    void addUser(){
+
+            if (passwordsMatch()) {
+
+                User u = new User();
+                u.setUsername(txtUsername.getText());
+                u.setPassword(txtPassword1.getText());
+                u.setAccessLevel(userAccessCombo.getSelectionModel().getSelectedItem());
+
+                session.beginTransaction();
+                session.save(u);
+                session.getTransaction().commit();
+
+                userList.add(u);
+                userTable.refresh();
+
+            } else {
+                AlertDialog.show("", "The passwords do not match");
+            }
+
+    }
+
+    @FXML
+    void updateUser(){
+
+        if (!(p.getUsername() == null)) {
+            if (passwordsMatch()) {
+
+                temp = p;
+
+                userList.removeIf(user -> {
+                    boolean flag = false;
+                    if(user.getUsername() == p.getUsername())
+                        flag = true;
+                    return flag;
+                });
+
+                p.setUsername(txtUsername.getText());
+                p.setPassword(txtPassword1.getText());
+                p.setAccessLevel(userAccessCombo.getSelectionModel().getSelectedItem());
+
+                session.beginTransaction();
+                session.delete(temp);
+                session.save(p);
+                session.getTransaction().commit();
+
+                userList.add(p);
+                userTable.refresh();
+
+            } else {
+                AlertDialog.show("", "The passwords do not match");
+            }
+        }
+
+    }
+
+    @FXML
+    void removeUser() {
 
         if (!(p.getUsername() == null)) {
             if(ConfirmDialog.show("", "Are you sure?")){
