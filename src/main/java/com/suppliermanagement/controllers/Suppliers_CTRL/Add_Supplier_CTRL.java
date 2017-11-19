@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import org.hibernate.Session;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -57,8 +58,7 @@ public class Add_Supplier_CTRL implements Initializable,ControlledScreen {
     @FXML
     private RadioButton pharm;
 
-    @FXML
-    private RadioButton both;
+
 
     @FXML
     private Label message_lbl;
@@ -77,19 +77,29 @@ public class Add_Supplier_CTRL implements Initializable,ControlledScreen {
     void register(){
 
 
-        if (textfieldcheck())
+        if (textfieldcheck()) {
+            if (isValidPhoneNumber()) {
+                if (isValidEmail()) {
+                    supplier.setSupname((sup_name.getText().toLowerCase()));
+                    supplier.setContactNumber(sup_phone.getText());
+                    supplier.setEmail(sup_mail.getText().toLowerCase());
+                    supplier.setAddress(sup_address.getText());
+                    supplier.setType(((RadioButton) type.getSelectedToggle()).getText());
+                    Main.dialogCanceled = false;
+                    Stage s = (Stage) create_sup.getScene().getWindow();
+                    s.close();
+                }
 
-        {
-            supplier.setSupname((sup_name.getText().toLowerCase()));
-            supplier.setContactNumber(sup_phone.getText());
-            supplier.setEmail(sup_mail.getText().toLowerCase());
-            supplier.setAddress(sup_address.getText());
-            supplier.setType(((RadioButton) type.getSelectedToggle()).getText());
-            Main.dialogCanceled = false;
-            Stage s = (Stage) create_sup.getScene().getWindow();
-            s.close();
+
+
+
+            }
         }
-    }
+
+
+
+
+   }
 
 
 
@@ -122,5 +132,62 @@ public class Add_Supplier_CTRL implements Initializable,ControlledScreen {
     }
 
 
+    private boolean isValidPhoneNumber(){
+
+        boolean flag = false;
+
+        String regex = "^[0-9]{10}$";
+
+        if(sup_phone.getText().matches(regex)){
+
+            flag = true;
+        }else{
+
+            message_lbl.setText("*Please enter a 10 digit phone number");
+        }
+        return flag;
     }
+
+
+    private boolean isValidEmail(){
+
+        boolean flag = false;
+
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(sup_mail.getText());
+
+        if(m.matches()){
+
+            flag = true;
+
+        }else{
+
+            message_lbl.setText("*Please enter a valid email address");
+        }
+        return flag;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
 
