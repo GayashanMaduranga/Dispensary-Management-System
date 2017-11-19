@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Loan {
 
     private IntegerProperty id;
-    private StringProperty reason;
+    private StringProperty description;
     private DoubleProperty loanAmount;
     private Date startDate;
     private Date endDate;
@@ -24,7 +24,7 @@ public class Loan {
 
     public Loan() {
         this.id = new SimpleIntegerProperty();
-        this.reason = new SimpleStringProperty();
+        this.description = new SimpleStringProperty();
         this.loanAmount = new SimpleDoubleProperty();
         this.interestRate = new SimpleDoubleProperty();
         this.collectedLoan = new SimpleDoubleProperty();
@@ -47,16 +47,16 @@ public class Loan {
         this.id.set(id);
     }
 
-    public String getReason() {
-        return reason.get();
+    public String getDescription() {
+        return description.get();
     }
 
     public StringProperty reasonProperty() {
-        return reason;
+        return description;
     }
 
-    public void setReason(String reason) {
-        this.reason.set(reason);
+    public void setDescription(String reason) {
+        this.description.set(reason);
     }
 
     public double getLoanAmount() {

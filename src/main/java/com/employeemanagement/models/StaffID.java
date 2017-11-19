@@ -84,7 +84,7 @@ public class StaffID {
 
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File("C:\\Reports\\LibCardFACE.png"));
+            img = ImageIO.read(getClass().getResource("/com/Images/LibCardFACE.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -119,7 +119,7 @@ public class StaffID {
 
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File("C:\\Reports\\LibCardBACK.png"));
+            img = ImageIO.read(getClass().getResource("/com/Images/LibCardBACK.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -156,8 +156,8 @@ public class StaffID {
                 BufferedImage idFront = createLibraryCardFront();
                 BufferedImage idBack = createLibraryCardBack(id);
 
-                String fileNameFront="C:/Reports/front.png";
-                String fileNameBack="C:/Reports/back.png";
+                String fileNameFront="front.png";
+                String fileNameBack="back.png";
 
                 FileOutputStream out = new FileOutputStream(fileNameFront);
                 javax.imageio.ImageIO.write(idFront, "png", out);
