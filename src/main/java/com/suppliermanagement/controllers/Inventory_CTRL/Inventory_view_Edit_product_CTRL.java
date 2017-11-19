@@ -188,6 +188,7 @@ public class Inventory_view_Edit_product_CTRL implements Initializable,Controlle
         stock.setText(Integer.toString(pharmacyItem.getStock()));
 
 
+
         session.beginTransaction();
         Query phbatch = session.createQuery("select  p from PharmacyBatch p where p.pharmacyItem.phId = :itemId");
         //noinspection uncheckedi
@@ -196,6 +197,14 @@ public class Inventory_view_Edit_product_CTRL implements Initializable,Controlle
         session.getTransaction().commit();
 //        session.close();
 
+        for (PharmacyBatch po : batch) {
+            System.out.println(po.getManufacturingDate());
+            System.out.println(po.getExpiryDate());
+            System.out.println(po.getPurchasingPrice());
+            exp_date.setValue(po.getExpiryDate().toLocalDate());
+            manu_date.setValue(po.getManufacturingDate().toLocalDate());
+            pur_price.setText(Double.toString(po.getPurchasingPrice()));
+        }
 
 
 

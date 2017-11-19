@@ -36,7 +36,7 @@
                   <Font size="15.0" />
                </font>
                <content>
-                  <JFXTreeTableView />
+                  <JFXTreeTableView fx:id="purchased" />
                </content>
             </TitledPane>
             <GridPane GridPane.columnIndex="1">
@@ -65,7 +65,7 @@
                      </font>
                   </TextField>
                   <JFXButton prefHeight="40.0" prefWidth="150.0" styleClass="button-red" text="Delete Order" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-                  <JFXButton prefHeight="40.0" prefWidth="150.0" styleClass="button-green" text="Edit Order" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                  <JFXButton prefHeight="40.0" prefWidth="150.0" styleClass="button-green" text="Received" GridPane.columnIndex="7" GridPane.rowIndex="1" />
                   <JFXButton fx:id="create_new" onAction="#createPurchase" prefHeight="40.0" prefWidth="156.0" text="Create a new Purchase" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                   <OctIconView fx:id="searchGlyph" glyphName="SEARCH" size="35" wrappingWidth="35.66663861274719" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>

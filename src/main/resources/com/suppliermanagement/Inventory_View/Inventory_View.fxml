@@ -54,9 +54,11 @@
                   <RowConstraints maxHeight="63.0" minHeight="0.0" prefHeight="15.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="new_pro" mnemonicParsing="false" onAction="#new_product" prefHeight="42.0" prefWidth="172.0" text="New Product" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <Button fx:id="new_pro" mnemonicParsing="false" onAction="#new_product" prefHeight="42.0" prefWidth="172.0" text="New  Pharmacy Item" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                   <Button fx:id="edit" mnemonicParsing="false" onAction="#update" prefHeight="42.0" prefWidth="165.0" styleClass="button-green" text="Edit Product" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#delete" prefHeight="110.0" prefWidth="138.0" styleClass="button-red" text="Delete Product" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                  <Button fx:id="delete" mnemonicParsing="false" onAction="#delete" prefHeight="110.0" prefWidth="138.0" styleClass="button-red" text="Delete Product" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                  <Button fx:id="equi_add" layoutX="632.0" layoutY="23.0" mnemonicParsing="false" onAction="#add_stock" prefHeight="42.0" prefWidth="165.0" styleClass="button-green" text="Add Stock" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                  <Button fx:id="eq_delete" layoutX="801.0" layoutY="23.0" mnemonicParsing="false" onAction="#delete_equip" prefHeight="110.0" prefWidth="138.0" styleClass="button-red" text="Delete Equipment" GridPane.columnIndex="9" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <JFXTabPane GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -74,7 +76,7 @@
                            <children>
                               <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: grey;">
                                  <children>
-                                    <TextField prefHeight="23.0" prefWidth="224.0" promptText="Search Products">
+                                    <TextField fx:id="searchp" prefHeight="23.0" prefWidth="224.0" promptText="Search Products">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -108,7 +110,7 @@
                                     <OctIconView fx:id="searchGlyph1" glyphName="SEARCH" size="35" styleClass="searchGlyph" wrappingWidth="40.999974489212036" />
                                  </children>
                               </HBox>
-                              <JFXTreeTableView fx:id="equi_table" GridPane.rowIndex="1">
+                              <JFXTreeTableView fx:id="equi_table" onMouseClicked="#equi_select" GridPane.rowIndex="1">
                                  <columnResizePolicy>
                                     <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy></JFXTreeTableView>
