@@ -39,6 +39,7 @@ public class SupplyOrder extends RecursiveTreeObject<SupplyOrder> {
         this.hasArrived = new SimpleBooleanProperty();
         this.pharmacyBatches  = new ArrayList<>();
         this.equipmentList = new ArrayList<>();
+
     }
 
 
