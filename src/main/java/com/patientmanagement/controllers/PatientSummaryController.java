@@ -149,6 +149,8 @@ public class PatientSummaryController implements Initializable,SessionListener {
     private Label lblPemail;
 
 
+    @FXML
+    private Button addNoteBtn;
 
     @FXML
     public TitledPane pastVisitPane12;
@@ -179,6 +181,9 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
     @FXML
     private JFXButton homeBtn;
+
+    @FXML
+    private Button addAllergyBtn;
 
     @FXML
     private Button addMedBtn;
@@ -345,8 +350,12 @@ public class PatientSummaryController implements Initializable,SessionListener {
                 updateDiscTable();
                 updateMeasureTable();
                 updateAlelrgyTable();
+
+                enableButtons();
+
             }else{
 
+                disableButtons();
                 AlertDialog.show("Alert", "There is no such patient");
 
             }
@@ -358,12 +367,32 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
     }
 
-//    for allergy table******************************************************************************************//
+    private void disableButtons(){
+
+        newSessionBtn.setDisable(true);
+        addNoteBtn.setDisable(true);
+        addMedBtn.setDisable(true);
+        addMeasureBtn.setDisable(true);
+        addAllergyBtn.setDisable(true);
+        System.out.println("");
+    }
+
+    private void enableButtons(){
+
+        newSessionBtn.setDisable(false);
+        addNoteBtn.setDisable(false);
+        addMedBtn.setDisable(false);
+        addMeasureBtn.setDisable(false);
+        addAllergyBtn.setDisable(false);
+    }
+
+
+    private void updateAlelrgyTable(){
+
+//for allergy table******************************************************************************************//
 
         List<Allergy> allergies = summaryPatient.getAllergies();
-        private void updateAlelrgyTable(){
 
-//
         allergyList.clear();
 
         for (Allergy allergy : allergies){
@@ -508,6 +537,8 @@ public class PatientSummaryController implements Initializable,SessionListener {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        disableButtons();
 
         session = ScreenController.getSession();
 //        Configuration configuration = new Configuration().configure();

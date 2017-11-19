@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 import org.controlsfx.control.MaskerPane;
 import org.hibernate.Query;
 import org.hibernate.Session;
-
+import com.main.controllers.MainScreenController;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -173,6 +173,9 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
     @FXML
     void calculatePayroll(ActionEvent event) {
 
+//        ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN, mainController.getContent(), mainController);
+
+        ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN, mainController.getContent(), mainController);
 
     }
 
