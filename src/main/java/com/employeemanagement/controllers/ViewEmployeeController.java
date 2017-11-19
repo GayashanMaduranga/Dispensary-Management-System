@@ -5,7 +5,6 @@ import com.common.SessionListener;
 import com.employeemanagement.models.AttendanceImpl;
 import com.employeemanagement.models.ViewEmployeeModel;
 import com.jfoenix.controls.*;
-import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +22,7 @@ import jfxtras.scene.control.agenda.Agenda;
 import org.controlsfx.control.MaskerPane;
 import org.controlsfx.control.Notifications;
 import org.hibernate.Session;
-
+import com.main.controllers.MainScreenController;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -44,7 +43,7 @@ import java.util.ResourceBundle;
  */
 
 @SuppressWarnings("Duplicates")
-public class ViewEmployeeController implements Initializable,SessionListener {
+public class ViewEmployeeController implements Initializable, SessionListener {
 
 
     //////////##########################
@@ -217,6 +216,9 @@ public class ViewEmployeeController implements Initializable,SessionListener {
     @FXML
     private AnchorPane attendanceAcPane;
 
+    @FXML
+    private AnchorPane loanAcPane;
+
     private ViewEmployeeModel viewEmployeeModel = new ViewEmployeeModel();
 
     ////////////#######################
@@ -232,6 +234,8 @@ public class ViewEmployeeController implements Initializable,SessionListener {
     private List<TreeItem<PreviousEmployment>> previouEmploymentList;
     private List<TreeItem<Education>> educationHistory;
     private List<TreeItem<EmploymentDetails>> employmentDetailsList;
+    private List<TreeItem<Loan>> loanList;
+
     private BufferedImage employeeBufferedImage;
     File selectedFile;
     private MainScreenController mainController;
@@ -243,8 +247,6 @@ public class ViewEmployeeController implements Initializable,SessionListener {
         initMainComponents();
         //Initialize Table Previous Employment
         initTables();
-
-
 
 
     }
@@ -412,6 +414,25 @@ public class ViewEmployeeController implements Initializable,SessionListener {
         empDetailTbl.setRoot(root3);
         empDetailTbl.setShowRoot(false);
 
+        colLoanID.setCellValueFactory(param -> param.getValue().getValue().idProperty());
+        colLoanAmount.setCellValueFactory(param -> param.getValue().getValue().loanAmountProperty());
+
+        TreeItem<Loan> root4 = new TreeItem<>();
+        loanTable.setRoot(root4);
+        loanTable.setShowRoot(false);
+
+
+    }
+
+    @FXML
+    void LoanTableSelections(MouseEvent event) {
+
+        Loan loan = loanTable.getSelectionModel().getSelectedItem().getValue();
+        txtLoanAmount.setText(String.valueOf(loan.getLoanAmount()));
+        txtInterest.setText(String.valueOf(loan.getInterestRate()));
+        txtLoanDescription.setText(loan.getDescription());
+        loanFrom.setValue(loan.getStartDate().toLocalDate());
+        loanFrom.setValue(loan.getEndDate().toLocalDate());
 
     }
 
@@ -421,6 +442,7 @@ public class ViewEmployeeController implements Initializable,SessionListener {
         previouEmploymentList = new ArrayList<>();
         educationHistory = new ArrayList<>();
         employmentDetailsList = new ArrayList<>();
+        loanList = new ArrayList<>();
         male.setToggleGroup(genderGroup);
         female.setToggleGroup(genderGroup);
 
@@ -439,9 +461,10 @@ public class ViewEmployeeController implements Initializable,SessionListener {
     public void setMainController(SessionListener controller) {
         this.mainController = (MainScreenController) controller;
         setData();
-        if(mainController.getEmployee().getJobRole().matches("doctor")) {
+        if (mainController.getEmployee().getJobRole().matches("doctor")) {
             attendanceAcPane.getChildren().clear();
-        }else {
+            loanAcPane.getChildren().clear();
+        } else {
             initAgenda();
         }
     }
@@ -463,10 +486,6 @@ public class ViewEmployeeController implements Initializable,SessionListener {
         city.setText(staff.getAddress().getCity());
         zip.setText(staff.getAddress().getZip());
 
-        if (staff.getJobRole().matches("doctor")) {
-            System.out.println("hello");
-            tabPane.getChildrenUnmodifiable().clear();
-        }
 
 
         if (staff.getGender().matches("M")) {
@@ -509,42 +528,17 @@ public class ViewEmployeeController implements Initializable,SessionListener {
         empDetailTbl.getRoot().getChildren().clear();
         empDetailTbl.getRoot().getChildren().addAll(employmentDetailsList);
 
+        if(!mainController.getEmployee().getJobRole().matches("doctor")) {
+            for (Loan l : ((Staff) staff).getLoanList()) {
+                loanList.add(new TreeItem<>(l));
+            }
 
-//        Staff s = new Staff();
-//
-//        for ( TreeItem<PreviousEmployment> p: previouEmploymentList
-//                ) {
-//
-//            s.getPreviousEmploymentList().add(p.getValue());
-//        }
-//
-//        s.setName(fullName.getText());
-//        s.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
-//        s.setEmployeeid(Integer.parseInt(empID.getText()));
-//        s.setImage(employeeBufferedImage);
-//        s.setEmail(email.getText());
-//        s.setDateOfBirth(Date.valueOf(dob.getValue()));
-//        s.setContactNumber(contactNumber.getText());
-//        s.setJobRole(jobRole.getText());
-//        if(male.isSelected()) {
-//            s.setGender("M");
-//        }else {
-//            s.setGender("F");
-//        }
-//
-//        for ( TreeItem<Education> e: educationHistory
-//                ) {
-//
-//            s.getEducationList().add(e.getValue());
-//        }
-//
-//        Address address = new Address();
-//        address.setUnitNO(unitNo.getText());
-//        address.setStreetAddress(streetAddress.getText());
-//        address.setCity(city.getText());
-//        address.setZip(zip.getText());
-//
-//        s.setAddress(address);
+
+            loanTable.getRoot().getChildren().clear();
+            loanTable.getRoot().getChildren().addAll(loanList);
+        }
+
+
     }
 
 
@@ -784,11 +778,10 @@ public class ViewEmployeeController implements Initializable,SessionListener {
     }
 
 
-
     private void initAgenda() {
         try {
             updateAgenda();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
@@ -823,7 +816,7 @@ public class ViewEmployeeController implements Initializable,SessionListener {
         });
 
 
-        agenda.appointmentChangedCallbackProperty().set(param ->{
+        agenda.appointmentChangedCallbackProperty().set(param -> {
 
 
                     viewEmployeeModel.updateAppointment((AttendanceImpl) param);
@@ -834,11 +827,11 @@ public class ViewEmployeeController implements Initializable,SessionListener {
 
     }
 
-    private void updateAgenda(){
+    private void updateAgenda() {
         agenda.localDateTimeRangeCallbackProperty().set(param -> {
 
 
-                    List<AttendanceImpl> list = viewEmployeeModel.getAppointments(param.getStartLocalDateTime(), param.getEndLocalDateTime(),mainController.getEmployee());
+                    List<AttendanceImpl> list = viewEmployeeModel.getAppointments(param.getStartLocalDateTime(), param.getEndLocalDateTime(), mainController.getEmployee());
                     agenda.appointments().clear();
                     agenda.appointments().addAll(list);
                     return null;
@@ -849,4 +842,55 @@ public class ViewEmployeeController implements Initializable,SessionListener {
 
     }
 
+
+
+    @FXML
+    void addLoan(ActionEvent event) {
+        try {
+            Loan loan = new Loan();
+            loan.setDescription(txtLoanDescription.getText());
+            loan.setInterestRate(Double.parseDouble(txtInterest.getText()));
+            loan.setStartDate(Date.valueOf(loanFrom.getValue()));
+            loan.setEndDate(Date.valueOf(loanTo.getValue()));
+
+            loanList.add(new TreeItem<>(loan));
+            loanTable.getRoot().getChildren().clear();
+            loanTable.getRoot().getChildren().addAll(loanList);
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Please check all required fields !");
+            alert.showAndWait();
+        }
+    }
+
+
+    @FXML
+    void UpdateLoan(ActionEvent event) {
+        try {
+        TreeItem<Loan> loan = loanTable.getSelectionModel().getSelectedItem();
+        loan.getValue().setDescription(txtLoanDescription.getText());
+        loan.getValue().setInterestRate(Double.parseDouble(txtInterest.getText()));
+        loan.getValue().setStartDate(Date.valueOf(loanFrom.getValue()));
+        loan.getValue().setEndDate(Date.valueOf(loanTo.getValue()));
+        loanTable.getRoot().getChildren().clear();
+        loanTable.getRoot().getChildren().addAll(loanList);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Please check all required fields !");
+            alert.showAndWait();
+        }
+    }
+
+
+    @FXML
+    void RemoveLoan(ActionEvent event) {
+        loanList.remove(loanTable.getSelectionModel().getSelectedItem());
+        loanTable.getRoot().getChildren().clear();
+        loanTable.getRoot().getChildren().addAll(loanList);
+    }
 }

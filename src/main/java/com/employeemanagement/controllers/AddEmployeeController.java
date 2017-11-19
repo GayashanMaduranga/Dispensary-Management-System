@@ -15,9 +15,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import org.controlsfx.control.MaskerPane;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import org.hibernate.Session;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -26,17 +28,17 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import com.main.controllers.MainScreenController;
 
 /**
  * Created by gayashan on 8/13/2017.
  */
 @SuppressWarnings("Duplicates")
-public class AddEmpoyeeController implements Initializable,SessionListener{
+public class AddEmployeeController implements Initializable, SessionListener {
 
 
-
-    @FXML
-    private TextField empID;
+//    @FXML
+//    private TextField empID;
 
     @FXML
     private DatePicker dateOfAppointment;
@@ -77,6 +79,8 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @FXML
     private JFXTextField zip;
 
+    @FXML
+    private MaskerPane testPane;
 
     @FXML
     private TreeTableView<PreviousEmployment> priviousEmployementTable;
@@ -166,8 +170,8 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     private final ToggleGroup genderGroup = new ToggleGroup();
     private final ToggleGroup yesNOGroup = new ToggleGroup();
 
-    private FileChooser fileChooser ;
-    private Image empimage =null;
+    private FileChooser fileChooser;
+    private Image empimage = null;
     private List<TreeItem<PreviousEmployment>> previouEmploymentList;
     private List<TreeItem<Education>> educationHistory;
     private List<TreeItem<EmploymentDetails>> employmentDetailsList;
@@ -176,17 +180,15 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     File selectedFile;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        //maskthis();
         initMainComponents();
-
         //Initialize Table Previous Employment
         initTables();
         validate();
-
-
+        //maskthis();
     }
 
 
@@ -201,16 +203,16 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
             education.setPhone(schoolPhone.getText());
             education.setFromDate(Date.valueOf(schoolFrom.getValue()));
             education.setToDate(Date.valueOf(schoolTo.getValue()));
-            if(yes.isSelected()) {
+            if (yes.isSelected()) {
                 education.setIsGraduated("Y");
-            }else {
+            } else {
                 education.setIsGraduated("N");
             }
 
             educationHistory.add(new TreeItem<>(education));
             SchoolTable.getRoot().getChildren().clear();
             SchoolTable.getRoot().getChildren().addAll(educationHistory);
-        }catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setHeaderText(null);
@@ -220,12 +222,12 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         }
 
 
-
     }
 
     @FXML
     void addNewStaff(ActionEvent event) {
 
+        testPane.setVisible(true);
         Employee s = null;
 
 
@@ -252,7 +254,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
             s.setName(fullName.getText());
             s.setDateOfAppointment(Date.valueOf(dateOfAppointment.getValue()));
-            s.setEmployeeid(Integer.parseInt(empID.getText()));
+//            s.setEmployeeid(Integer.parseInt(empID.getText()));
 
 
             if (selectedFile != null)
@@ -284,7 +286,10 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
             s.setAddress(address);
 
-        }catch (Exception e ){
+            AddEmployeeModel.addEmployee(s);
+
+
+        } catch (Exception e) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
@@ -297,8 +302,8 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         }
 
 
-        AddEmployeeModel.addEmployee(s);
-
+        testPane.setVisible(false);
+        resetAll();
     }
 
     @FXML
@@ -320,20 +325,20 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
             previouEmploymentList.add(new TreeItem<>(emplymemt));
             priviousEmployementTable.getRoot().getChildren().clear();
             priviousEmployementTable.getRoot().getChildren().addAll(previouEmploymentList);
-        }catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Please check all required fields !");
-
             alert.showAndWait();
         }
 
     }
 
     @FXML
-    void addEmpDetails(MouseEvent event) {
+    void addEmpDetails(ActionEvent event) {
 
+        System.out.println("HELLO");
         try {
             EmploymentDetails details = new EmploymentDetails();
             details.setField(txtField.getText());
@@ -342,7 +347,8 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
             employmentDetailsList.add(new TreeItem<>(details));
             empDetailTbl.getRoot().getChildren().clear();
             empDetailTbl.getRoot().getChildren().addAll(employmentDetailsList);
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setHeaderText(null);
@@ -352,13 +358,13 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         }
 
 
-
     }
 
     @FXML
     void uplodePhoto(ActionEvent event) {
-        fileChooser.setTitle("Select Employee Image");
 
+        testPane.setVisible(true);
+        fileChooser.setTitle("Select Employee Image");
 
 
         selectedFile = fileChooser.showOpenDialog(null);
@@ -369,10 +375,11 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
             empImage.setFill(new ImagePattern(empimage));
             employeeBufferedImage = ImageIO.read(selectedFile);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
+        testPane.setVisible(false);
     }
 
     @FXML
@@ -408,7 +415,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     }
 
 
-
     @FXML
     void removeEducationHistory(ActionEvent event) {
 
@@ -419,7 +425,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     }
 
     @FXML
-    void removeEmpDetails(MouseEvent event) {
+    void removeEmpDetails(ActionEvent event) {
 
         employmentDetailsList.remove(empDetailTbl.getSelectionModel().getSelectedItem());
         empDetailTbl.getRoot().getChildren().clear();
@@ -436,9 +442,9 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         item.getValue().setPhone(schoolPhone.getText());
         item.getValue().setFromDate(Date.valueOf(schoolFrom.getValue()));
         item.getValue().setToDate(Date.valueOf(schoolTo.getValue()));
-        if(yes.isSelected()) {
+        if (yes.isSelected()) {
             item.getValue().setIsGraduated("Y");
-        }else {
+        } else {
             item.getValue().setIsGraduated("N");
         }
 
@@ -461,7 +467,6 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
         jobTo.setUserData(employment.getToDate().toLocalDate());
 
     }
-
 
 
     @FXML
@@ -488,7 +493,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     }
 
 
-    private void initTables(){
+    private void initTables() {
 
         colcompany.setCellValueFactory(param -> param.getValue().getValue().companyProperty());
         coljobTitle.setCellValueFactory(param -> param.getValue().getValue().jobTitleProperty());
@@ -528,7 +533,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 
     }
 
-    private void initMainComponents(){
+    private void initMainComponents() {
         fileChooser = new FileChooser();
         empImage.setFill(new ImagePattern(new Image("/com/Images/user1600.png")));
         previouEmploymentList = new ArrayList<>();
@@ -551,15 +556,15 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @Override
     public void setMainController(SessionListener controller) {
 
-        this.mainScreenController = (MainScreenController)controller;
+        this.mainScreenController = (MainScreenController) controller;
 
 
     }
 
-    private void validate(){
+    private void validate() {
         ValidationSupport validationSupport = new ValidationSupport();
 
-        validationSupport.registerValidator(empID, Validator.createEmptyValidator("Text is required"));
+        //  validationSupport.registerValidator(empID, Validator.createEmptyValidator("Text is required"));
         validationSupport.registerValidator(fullName, Validator.createEmptyValidator("Text is required"));
         validationSupport.registerValidator(nic, Validator.createEmptyValidator("Text is required"));
         validationSupport.registerValidator(contactNumber, Validator.createEmptyValidator("Text is required"));
@@ -570,7 +575,7 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
 //        validationSupport.registerValidator(city, Validator.createEmptyValidator("Text is required"));
 //        validationSupport.registerValidator(zip, Validator.createEmptyValidator("Text is required"));
 
-        validationSupport.registerValidator(cmbJobRole, Validator.createEmptyValidator( "ComboBox Selection required"));
+        validationSupport.registerValidator(cmbJobRole, Validator.createEmptyValidator("ComboBox Selection required"));
 
         validationSupport.registerValidator(dob, Validator.createEmptyValidator("Text is required"));
         validationSupport.registerValidator(dateOfAppointment, Validator.createEmptyValidator("Text is required"));
@@ -580,5 +585,75 @@ public class AddEmpoyeeController implements Initializable,SessionListener{
     @FXML
     void resetFields(ActionEvent event) {
 
+        testPane.setVisible(true);
+
+        resetAll();
+
+        testPane.setVisible(false);
+
     }
+
+    private void resetAll() {
+//    empID.setText("");
+        fullName.setText("");
+        nic.setText("");
+        contactNumber.setText("");
+        email.setText("");
+        unitNo.setText("");
+        streetAddress.setText("");
+        city.setText("");
+        zip.setText("");
+        cmbJobRole.getSelectionModel().clearSelection();
+        dob.setValue(null);
+        dateOfAppointment.setValue(null);
+        selectedFile = null;
+        empImage.setFill(new ImagePattern(new Image("/com/Images/user1600.png")));
+
+
+        previouEmploymentList.clear();
+        priviousEmployementTable.getRoot().getChildren().clear();
+        company.setText("");
+        jobTitle.setText("");
+        companyAddress.setText("");
+        phone.setText("");
+        supervisor.setText("");
+        startingSalary.setText("");
+        endingSalary.setText("");
+        jobFrom.setUserData("");
+        jobTo.setUserData("");
+
+        educationHistory.clear();
+        SchoolTable.getRoot().getChildren().clear();
+        schoolName.setText("");
+        schoolAddress.setText("");
+        schoolPhone.setText("");
+        schoolFrom.setValue(null);
+        schoolTo.setValue(null);
+
+        employmentDetailsList.clear();
+        empDetailTbl.getRoot().getChildren().clear();
+
+        txtField.setText("");
+        txtDetails.setText("");
+    }
+
+    @FXML
+    void UpdateEmpDetails(ActionEvent event) {
+
+        TreeItem<EmploymentDetails> details = empDetailTbl.getSelectionModel().getSelectedItem();
+        details.getValue().setField(txtField.getText());
+        details.getValue().setDetails(txtDetails.getText());
+        empDetailTbl.getRoot().getChildren().clear();
+        empDetailTbl.getRoot().getChildren().addAll(employmentDetailsList);
+
+    }
+
+    @FXML
+    void RemoveEmpDetails(ActionEvent event) {
+        employmentDetailsList.remove(empDetailTbl.getSelectionModel().getSelectedItem());
+        empDetailTbl.getRoot().getChildren().clear();
+        empDetailTbl.getRoot().getChildren().addAll(employmentDetailsList);
+    }
+
+
 }

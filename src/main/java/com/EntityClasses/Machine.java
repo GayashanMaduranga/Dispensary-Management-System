@@ -3,8 +3,12 @@ package com.EntityClasses;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,6 +36,7 @@ public class Machine extends Item{
         this.MachineName = new SimpleStringProperty();
 
         this.maintenaces = new ArrayList<>();
+
 
     }
 
@@ -76,17 +81,24 @@ public class Machine extends Item{
         return dateString;
     }
 
-//    @OneToMany( mappedBy = "Machine")
-//    public List<Maintenance> getMaintenaces() {
-//        return maintenaces;
+
+//    @OneToOne(mappedBy = "machine")
+//    public Maintenance getMaintenace() {
+//        return maintenace;
 //    }
+//
+//    public void setMaintenace(Maintenance maintenace) {
+//        this.maintenace = maintenace;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Maintenance> getMaintenaces() {
+        return maintenaces;
+    }
 
     public void setMaintenaces(List<Maintenance> maintenaces) {
         this.maintenaces = maintenaces;
     }
-
-
-
 
     @Override
     public String toString() {
