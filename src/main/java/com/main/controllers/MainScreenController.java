@@ -46,8 +46,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
     private ScreenController controller;
 
-    private Session session;
-
     private MainScreenController mainScreenController;
 
     public String test = "Hello";
