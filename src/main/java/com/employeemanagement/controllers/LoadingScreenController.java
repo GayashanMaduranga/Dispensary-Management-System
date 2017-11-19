@@ -3,11 +3,11 @@ package com.employeemanagement.controllers;
 import com.common.SessionListener;
 import javafx.fxml.Initializable;
 import org.hibernate.Session;
-
+import com.main.controllers.MainScreenController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoadingScreenController implements Initializable,SessionListener {
+public class LoadingScreenController implements Initializable, SessionListener {
 
     private MainScreenController mainScreenController;
     private Session session;
@@ -20,7 +20,7 @@ public class LoadingScreenController implements Initializable,SessionListener {
     @Override
     public void setMainController(SessionListener controller) {
 
-        this.mainScreenController = (MainScreenController)controller;
+        this.mainScreenController = (MainScreenController) controller;
 
 
     }

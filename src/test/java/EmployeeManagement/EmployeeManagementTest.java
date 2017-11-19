@@ -1,7 +1,6 @@
 package EmployeeManagement;
 
 import com.EntityClasses.*;
-import com.employeemanagement.models.StaffID;
 import db.UserSession;
 import org.hibernate.Session;
 import org.junit.Test;
@@ -121,7 +120,7 @@ public class EmployeeManagementTest {
 
         Loan loan = new Loan();
         loan.setLoanAmount(1230345);
-        loan.setReason("Personal");
+        loan.setDescription("Personal");
         loan.setInterestRate(12.0);
 
         Date today = new Date(System.currentTimeMillis());

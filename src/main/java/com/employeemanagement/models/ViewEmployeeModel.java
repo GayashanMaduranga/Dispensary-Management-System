@@ -110,15 +110,19 @@ public class ViewEmployeeModel {
 
         for(Attendance entity:entityList){
 
-            Agenda.AppointmentImplLocal appointmentImplLocal= new AttendanceImpl()
-                    .withStartLocalDateTime(entity.getStartTime().toLocalDateTime())
-                    .withEndLocalDateTime(entity.getEndTime().toLocalDateTime())
-                    .withAppointmentGroup(new Agenda.AppointmentGroupImpl().withStyleClass("group1"));
+            try {
+                Agenda.AppointmentImplLocal appointmentImplLocal = new AttendanceImpl()
+                        .withStartLocalDateTime(entity.getStartTime().toLocalDateTime())
+                        .withEndLocalDateTime(entity.getEndTime().toLocalDateTime())
+                        .withAppointmentGroup(new Agenda.AppointmentGroupImpl().withStyleClass("group1"));
 
 
-            AttendanceImpl appointment = (AttendanceImpl)appointmentImplLocal;
-            appointment.setId(entity.getId());
-            attendanceList.add(appointment);
+                AttendanceImpl appointment = (AttendanceImpl) appointmentImplLocal;
+                appointment.setId(entity.getId());
+                attendanceList.add(appointment);
+            }catch (Exception ex){
+
+            }
 
 
         }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.AttendanceController">
+   <children>
+      <HBox alignment="CENTER" layoutX="69.0" layoutY="107.0" prefHeight="242.0" prefWidth="476.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="ariavalBtn" onAction="#setArival" prefHeight="155.0" prefWidth="186.0" style="-fx-background-color: #00ff00;" text="Arival" />
+            <JFXButton fx:id="departureBtn" alignment="CENTER" contentDisplay="CENTER" onAction="#setDeparture" prefHeight="155.0" prefWidth="186.0" style="-fx-background-color: #ff6666;" text="Departures">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
