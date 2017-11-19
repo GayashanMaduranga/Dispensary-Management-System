@@ -428,13 +428,13 @@
                                                 </GridPane>
                                                 <HBox alignment="CENTER" layoutX="1.0" layoutY="515.0" prefHeight="76.0" prefWidth="1009.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
                                                     <children>
-                                                        <JFXButton onAction="#addEmpDetails" prefHeight="36.0" prefWidth="111.0" text="Add ">
+                                                        <JFXButton onAction="#addPreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Add ">
                                                             <HBox.margin>
                                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                                             </HBox.margin>
                                                         </JFXButton>
-                                                        <JFXButton layoutX="383.0" layoutY="30.0" onAction="#UpdateEmpDetails" prefHeight="36.0" prefWidth="111.0" text="Update" />
-                                                        <JFXButton onAction="#RemoveEmpDetails" prefHeight="36.0" prefWidth="111.0" text="Remove">
+                                                        <JFXButton layoutX="383.0" layoutY="30.0" onAction="#UpdatePreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Update" />
+                                                        <JFXButton onAction="#RemovePreviousEmployment" prefHeight="36.0" prefWidth="111.0" text="Remove">
                                                             <HBox.margin>
                                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                                             </HBox.margin>
@@ -577,7 +577,7 @@
                                             <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="999.0">
                                                     <children>
-                                                        <TreeTableView fx:id="loanTable" layoutX="28.0" layoutY="81.0" onMouseClicked="#previousEmployementTableSelections" prefHeight="341.0" prefWidth="472.0" AnchorPane.leftAnchor="28.0">
+                                                        <TreeTableView fx:id="loanTable" layoutX="28.0" layoutY="81.0" onMouseClicked="#LoanTableSelections" prefHeight="341.0" prefWidth="472.0" AnchorPane.leftAnchor="28.0">
                                                             <columns>
                                                                 <TreeTableColumn fx:id="colLoanID" prefWidth="182.0" text="ID" />
                                                                 <TreeTableColumn fx:id="colLoanAmount" prefWidth="287.0" text="Amount" />

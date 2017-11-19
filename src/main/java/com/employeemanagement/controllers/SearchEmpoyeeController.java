@@ -145,12 +145,13 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
 
         List<Employee> staffMemberList = SearchEmployeeModel.getEmployees();
 
-
+        staffList.clear();
         // staffTable
         for (Employee s : staffMemberList) {
             staffList.add(new TreeItem<>(s));
         }
 
+        staffTable.getRoot().getChildren().clear();
         staffTable.getRoot().getChildren().addAll(staffList);
     }
 
@@ -180,6 +181,7 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
         Employee emp = staffTable.getSelectionModel().getSelectedItem().getValue();
 
         SearchEmployeeModel.deleteEmployee(emp);
+        initDB();
 
     }
 
