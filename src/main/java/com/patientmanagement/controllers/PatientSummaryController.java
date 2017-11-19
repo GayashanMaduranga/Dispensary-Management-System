@@ -345,6 +345,7 @@ public class PatientSummaryController implements Initializable,SessionListener {
                 updateDiscTable();
                 updateMeasureTable();
                 updateAlelrgyTable();
+
             }else{
 
                 AlertDialog.show("Alert", "There is no such patient");

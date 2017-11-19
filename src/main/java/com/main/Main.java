@@ -1,5 +1,7 @@
 package com.main;
 
+import com.EntityClasses.User;
+import com.common.ConfirmDialog;
 import com.common.ControlledScreen;
 import com.common.ScreenController;
 import com.common.SessionListener;
@@ -17,6 +19,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -24,32 +27,49 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Main extends Application {
 
 //    private static SessionFactory sessionFactory;
     public static boolean dialogCanceled = true;
+    private Session session = UserSession.getSession();
 
+
+    boolean firstLogin(Session session){
+
+        session.beginTransaction();
+        Query query = session.createQuery("from User u");
+        List<User> musers = query.list();
+        session.getTransaction().commit();
+
+        if(musers.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-//        Configuration configuration = new Configuration().configure();
-//        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-//        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        if (firstLogin(session)) {
+
+            System.out.println("first Login");
+            createFirstLogin(primaryStage);
+
+        }else{
+
+            createLogin(primaryStage);
+        }
 
 
-
-        createLogin(primaryStage);
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 
-//    public static SessionFactory getSessionFactory(){
-//        return sessionFactory;
-//    }
 
     public static void createLogin(Stage primaryStage){
 
@@ -62,6 +82,35 @@ public class Main extends Application {
 
         primaryStage.setTitle("Login");
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
+        //code to center the stage on-screen
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        primaryStage.setX((screenBounds.getWidth() - primaryStage.getWidth()) / 2);
+        primaryStage.setY((screenBounds.getHeight() - primaryStage.getHeight()) / 2);
+
+    }
+
+    private void createFirstLogin(Stage primaryStage){
+
+        ScreenController mainContainer = new ScreenController();
+        mainContainer.loadScreen(MainScreens.FIRST_ADMIN_SCREEN.getId(), MainScreens.FIRST_ADMIN_SCREEN.getPath());
+        mainContainer.setScreen(MainScreens.FIRST_ADMIN_SCREEN.getId());
+        Parent root = mainContainer.getScreen(MainScreens.FIRST_ADMIN_SCREEN.getId()).getParent();
+
+        //((SessionListener)mainContainer).setSession(ScreenController.getSession());
+
+        primaryStage.setOnCloseRequest(event -> {
+            event.consume(); // stop the close event from happening ~ Damsith
+            if(ConfirmDialog.show("Admin", "Are you sure?")){
+                primaryStage.close();
+                System.exit(0);
+            }
+        });
+
+        primaryStage.setTitle("Login");
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

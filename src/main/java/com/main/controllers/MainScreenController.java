@@ -101,9 +101,11 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         equipmentIcon.setSize("20px");
         FontAwesomeIconView financeIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
         financeIcon.setSize("20px");
+        FontAwesomeIconView adminIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        adminIcon.setSize("20px");
 
         //list of TreeItems for navigation panel
-        TreeItem<String> root, employeeTree, financeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree ;
+        TreeItem<String> root, employeeTree, financeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree, adminTree ;
 
         //root TreeItem to contain all other TreeItems
         root = new TreeItem<>("");
@@ -118,9 +120,9 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         appointmentTree = new TreeItem<>("Appointments", appointmentIcon);
         labInventoryTree = new TreeItem<>("Equipment", equipmentIcon);
         financeTree = new TreeItem<>("Finances", financeIcon);
+        adminTree = new TreeItem<>("Administration", adminIcon);
 
         //adding SubBranches
-
         employeeTree.getChildren().addAll(
                 new TreeItem<>("Add Employee"),
                 new TreeItem<>("Attendance"),
@@ -128,7 +130,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         );
 
         patientTree.getChildren().addAll(
-                new TreeItem<>("Add Patient"),
                 new TreeItem<>("Patient Summary"),
                 new TreeItem<>("Doctor Portal")
         );
@@ -168,9 +169,13 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 new TreeItem<>("Final Balance")
         );
 
+        adminTree.getChildren().addAll(
+                new TreeItem<>("Manage Users")
+        );
+
         //adding main branches to root branch
 
-        root.getChildren().addAll(employeeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree, financeTree);
+        root.getChildren().addAll(employeeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree, financeTree, adminTree);
 
         //setting up TreeView
         navigationTree.setRoot(root);
@@ -257,6 +262,13 @@ public class MainScreenController implements Initializable,SessionListener,Contr
             case "Pharmacy Items":
                 if (LoginModel.getAccessLevel() <= 2) {
                     ScreenController.changeScreen(PharmacyScreens.PHARMACY_STOCK_SCREEN2,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+            case "Manage Users":
+                if (LoginModel.getAccessLevel() <= 1) {
+                    ScreenController.changeScreen(MainScreens.ADMIN_PORTAL_SCREEN,content, this);
                 } else {
                     ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
                 }
