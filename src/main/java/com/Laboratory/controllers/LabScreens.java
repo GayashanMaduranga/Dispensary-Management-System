@@ -14,7 +14,7 @@ public enum LabScreens implements BaseEnum{
     ORDERTEST_SCREEN("orderTest", "/com/Laboratory/orderTest.fxml"),
     ENTERRESULTS_SCREEN("enterResults", "/com/Laboratory/enterResults.fxml"),
     ADDTEST_SCREEN("addTest","/com/Laboratory/addTest.fxml"),
-    VIEWDB_SCREEN("viewDB", "/com/Laboratory/viewDB.fxml"),
+    INPUTRESULT_SCREEN("inputResult", "/com/Laboratory/InputResults.fxml"),
     EXTRA_SCREEN("extra", "/com/Laboratory/extra.fxml"),
     REFER_SCREEN("refer","/com/Laboratory/AddReferenceValue.fxml"),
 
