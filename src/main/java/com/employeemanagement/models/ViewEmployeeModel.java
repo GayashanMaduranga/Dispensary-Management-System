@@ -3,6 +3,7 @@ package com.employeemanagement.models;
 import com.EntityClasses.Attendance;
 import com.EntityClasses.Employee;
 import com.EntityClasses.Staff;
+import com.EntityClasses.User;
 import com.common.ScreenController;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -110,15 +111,19 @@ public class ViewEmployeeModel {
 
         for(Attendance entity:entityList){
 
-            Agenda.AppointmentImplLocal appointmentImplLocal= new AttendanceImpl()
-                    .withStartLocalDateTime(entity.getStartTime().toLocalDateTime())
-                    .withEndLocalDateTime(entity.getEndTime().toLocalDateTime())
-                    .withAppointmentGroup(new Agenda.AppointmentGroupImpl().withStyleClass("group1"));
+            try {
+                Agenda.AppointmentImplLocal appointmentImplLocal = new AttendanceImpl()
+                        .withStartLocalDateTime(entity.getStartTime().toLocalDateTime())
+                        .withEndLocalDateTime(entity.getEndTime().toLocalDateTime())
+                        .withAppointmentGroup(new Agenda.AppointmentGroupImpl().withStyleClass("group1"));
 
 
-            AttendanceImpl appointment = (AttendanceImpl)appointmentImplLocal;
-            appointment.setId(entity.getId());
-            attendanceList.add(appointment);
+                AttendanceImpl appointment = (AttendanceImpl) appointmentImplLocal;
+                appointment.setId(entity.getId());
+                attendanceList.add(appointment);
+            }catch (Exception ex){
+
+            }
 
 
         }
@@ -163,5 +168,39 @@ public class ViewEmployeeModel {
 
     }
 
+    public static void  addOrUpdateUser(User user){
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+
+                    session.flush();
+                    session.clear();
+
+                    session.beginTransaction();
+                    session.saveOrUpdate(user);
+                    session.getTransaction().commit();
+
+                    Platform.runLater(() ->  Notifications.create()
+                            .title("Updated")
+                            .text("successfully Updated the recode")
+                            .showInformation());
+                }catch (Exception e){
+
+                    Platform.runLater(() ->  Notifications.create()
+                            .title("Error Update Data")
+                            .text("please check and try to update again")
+                            .darkStyle()
+                            .showError());
+
+                }
+                return null;
+            }
+        };
+
+        Thread addEmpThread = new Thread(task);
+        addEmpThread.setDaemon(true);
+        addEmpThread.start();
+    }
 
 }

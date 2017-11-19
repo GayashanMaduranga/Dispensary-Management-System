@@ -22,7 +22,7 @@ public class TestStage extends Application {
 
         try {
 
-            Parent root = FXMLLoader.load(getClass().getResource(MyScreens.MAIN_SCREEN.getPath()));
+            Parent root = FXMLLoader.load(getClass().getResource(MyScreens.PAYROLL_SCREEN.getPath()));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Welcome New Dispensary");
