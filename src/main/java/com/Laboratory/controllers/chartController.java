@@ -8,11 +8,9 @@ import com.main.controllers.MainScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import org.hibernate.Session;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,6 +30,13 @@ public class chartController implements Initializable,SessionListener {
     @FXML
     private BarChart<?, ?> testChart;
 
+
+
+
+
+    @FXML
+    private AreaChart<?, ?> area;
+
     @FXML
     private CategoryAxis x;
 
@@ -46,16 +51,44 @@ public class chartController implements Initializable,SessionListener {
 
         XYChart.Series set1 = new XYChart.Series<>();
         set1.getData().add(new XYChart.Data("Lipid", 50));
-        set1.getData().add(new XYChart.Data("Blood Glucose ", 66));
-        set1.getData().add(new XYChart.Data("calcium ", 20));
-        set1.getData().add(new XYChart.Data("Estrogens ", 36));
-        set1.getData().add(new XYChart.Data("Oral Glucose Tolerance Test ", 96));
-        set1.getData().add(new XYChart.Data("Pregnancy Test ", 236));
+
+        XYChart.Series set11 = new XYChart.Series<>();
+        set11.getData().add(new XYChart.Data("Blood Glucose ", 66));
+
+        XYChart.Series set12 = new XYChart.Series<>();
+        set12.getData().add(new XYChart.Data("calcium ", 20));
+
+        XYChart.Series set13 = new XYChart.Series<>();
+        set13.getData().add(new XYChart.Data("Estrogens ", 36));
+
+        XYChart.Series set14 = new XYChart.Series<>();
+        set14.getData().add(new XYChart.Data("Oral Glucose Tolerance Test ", 96));
 
 
 
-        testChart.getData().addAll(set1);
 
+        testChart.getData().addAll(set1,set11,set12,set13,set14);
+
+
+        XYChart.Series set2 = new XYChart.Series<>();
+        set2.getData().add(new XYChart.Data("dddd", 50));
+
+        XYChart.Series set21 = new XYChart.Series<>();
+        set21.getData().add(new XYChart.Data("Blodlucose ", 66));
+
+        XYChart.Series set22 = new XYChart.Series<>();
+        set22.getData().add(new XYChart.Data("calcium ", 20));
+        XYChart.Series set23 = new XYChart.Series<>();
+        set23.getData().add(new XYChart.Data("Estrogens ", 36));
+        XYChart.Series set24 = new XYChart.Series<>();
+        set24.getData().add(new XYChart.Data("Oral Glucose Tolerance Test ", 96));
+
+
+        XYChart.Series set3 = new XYChart.Series<>();
+        set3.getData().add(new XYChart.Data("xxxxxx ", 10));
+        set3.getData().add(new XYChart.Data("goo ", 446));
+
+        area.getData().addAll(set2,set3,set21,set22,set23,set24);
     }
 
 

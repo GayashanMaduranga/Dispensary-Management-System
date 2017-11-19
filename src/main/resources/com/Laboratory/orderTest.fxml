@@ -2,13 +2,13 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="720.0" prefWidth="1411.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Laboratory.controllers.orderTestController">
+<GridPane prefHeight="880.0" prefWidth="1411.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Laboratory.controllers.orderTestController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="784.0" minWidth="1.0" prefWidth="77.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1074.0" minWidth="10.0" prefWidth="746.0" />
@@ -38,20 +38,16 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="290.0" prefWidth="676.0">
                <children>
                   <Label layoutX="23.0" layoutY="22.0" prefHeight="26.0" prefWidth="70.0" text="Patient:" />
-                  <Label layoutX="43.0" layoutY="77.0" text="Age:" />
-                  <JFXTextField fx:id="txtGender" editable="false" layoutX="98.0" layoutY="128.0" />
-                  <Label layoutX="11.0" layoutY="194.0" text="Address" />
-                  <JFXTextField fx:id="txtAddress" editable="false" layoutX="103.0" layoutY="176.0" prefHeight="44.0" prefWidth="292.0" />
-                  <Label layoutX="451.0" layoutY="77.0" text="Date" />
+                  <JFXTextField fx:id="txtGender" editable="false" layoutX="110.0" layoutY="125.0" prefHeight="34.0" prefWidth="285.0" />
+                  <Label layoutX="23.0" layoutY="181.0" text="Address" />
+                  <JFXTextField fx:id="txtAddress" editable="false" layoutX="105.0" layoutY="170.0" prefHeight="44.0" prefWidth="292.0" />
                   <Label layoutX="23.0" layoutY="136.0" text="Gender" />
                   <TextField fx:id="txtSearchPatient" layoutX="93.0" layoutY="16.0" prefHeight="38.0" prefWidth="219.0" promptText="Patient Name" />
                   <Button fx:id="getSearch" layoutX="333.0" layoutY="16.0" mnemonicParsing="false" onAction="#populateDetails" prefHeight="38.0" prefWidth="145.0" text="GET" />
                   <Label layoutX="496.0" layoutY="22.0" text="or" />
                   <Button fx:id="addPatientBtn" layoutX="530.0" layoutY="16.0" mnemonicParsing="false" onAction="#addPatient" prefHeight="38.0" prefWidth="145.0" text="ADD" />
-                  <JFXTextField fx:id="txtAge" editable="false" layoutX="93.0" layoutY="73.0" />
-                  <JFXTextField fx:id="txtDate" editable="false" layoutX="496.0" layoutY="73.0" prefHeight="34.0" prefWidth="185.0" />
-                  <JFXTextField fx:id="txtNIC" editable="false" layoutX="498.0" layoutY="139.0" />
-                  <Label layoutX="435.0" layoutY="147.0" text="NIC" />
+                  <JFXTextField fx:id="txtNIC" editable="false" layoutX="109.0" layoutY="86.0" prefHeight="34.0" prefWidth="283.0" />
+                  <Label layoutX="27.0" layoutY="94.0" text="NIC" />
                </children>
             </AnchorPane>
          </content>
@@ -59,48 +55,16 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" prefHeight="350.0" prefWidth="742.0" text="Test Details" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="297.0" prefWidth="720.0">
-               <children>
-                  <Pane layoutX="9.0" layoutY="15.0" prefHeight="266.0" prefWidth="192.0" style="-fx-background-color: cccdce;" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="505.4" AnchorPane.topAnchor="1.3999999999999773">
-                     <children>
-                        <JFXButton layoutX="36.0" layoutY="90.0" onAction="#selectTest" prefHeight="162.0" prefWidth="157.0" stylesheets="@stylesheet.css" text="Select Test" />
-                        <Label layoutX="27.0" layoutY="30.0" prefHeight="26.0" prefWidth="175.0" text=" Tests Selecting tools ">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <opaqueInsets>
-                        <Insets right="5.0" />
-                     </opaqueInsets>
-                  </Pane>
-                  <TableView layoutX="226.0" layoutY="14.0" prefHeight="267.0" prefWidth="480.0" AnchorPane.rightAnchor="14.0">
-                     <columns>
-                        <TableColumn prefWidth="236.99994504451752" text="Main Test" />
-                        <TableColumn prefWidth="243.00006103515625" text="Sub Test" />
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-         </content>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
-      </TitledPane>
-      <TitledPane animated="false" collapsible="false" prefHeight="344.0" text="Cost calculation" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="1">
+      <TitledPane animated="false" collapsible="false" prefHeight="684.0" prefWidth="498.0" text="Cost calculation" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="2">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="528.0" prefWidth="518.0">
                <children>
-                  <TableView layoutY="-1.0" prefHeight="308.0" prefWidth="553.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0" AnchorPane.topAnchor="-15.0">
-                     <columns>
-                        <TableColumn minWidth="3.0" prefWidth="104.0" text="Test ID" />
-                        <TableColumn prefWidth="215.0" text="Main Test Name" />
-                        <TableColumn prefWidth="177.0" text="Chargers" />
-                     </columns>
-                  </TableView>
                   <Button layoutX="43.0" layoutY="424.0" mnemonicParsing="false" text="Delete" />
+                  <JFXTreeTableView fx:id="costTable" layoutX="19.6" layoutY="16.6" prefHeight="271.0" prefWidth="498.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0" AnchorPane.topAnchor="-15.0">
+                     <columnResizePolicy>
+                        <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </JFXTreeTableView>
                </children>
             </AnchorPane>
          </content>
@@ -108,11 +72,31 @@
             <Insets right="50.0" top="20.0" />
          </GridPane.margin>
       </TitledPane>
-      <TextField prefHeight="38.0" prefWidth="171.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-      <Label text="Total Cost" GridPane.columnIndex="3" GridPane.rowIndex="2">
+      <TextField fx:id="txtTotalPrice" prefHeight="38.0" prefWidth="171.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+      <Label text="Total Cost" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="100.0" />
-         </GridPane.margin></Label>
-      <Button fx:id="printReciptBT" mnemonicParsing="false" prefHeight="38.0" prefWidth="175.0" text="Print Recipt" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+         </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font></Label>
+      <Button fx:id="printReciptBT" mnemonicParsing="false" onAction="#printReceipt" prefHeight="38.0" prefWidth="175.0" text="Print Recipt" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="3">
+         <children>
+            <Pane layoutX="93.0" layoutY="96.0" prefHeight="266.0" prefWidth="556.0" style="-fx-background-color: cccdce;">
+               <children>
+                  <JFXButton fx:id="selectTestBtn" layoutX="191.0" layoutY="78.0" onAction="#selectTest" prefHeight="162.0" prefWidth="157.0" stylesheets="@stylesheet.css" text="Select Test" />
+                  <Label layoutX="167.0" layoutY="37.0" prefHeight="26.0" prefWidth="217.0" text=" Tests Selecting Window">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets right="5.0" />
+               </opaqueInsets>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </GridPane>
