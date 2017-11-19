@@ -16,19 +16,13 @@ import java.util.List;
 //@Table(name = "LabTestOrder")
 public class LabTestOrder {
 
-
     private SimpleIntegerProperty oId;
     private Date date;
-
     private Patient patient;
-
-
 
     List<Sample> samples;
 
-
     MainTest mainTest;
-
 
     private List<TestResults> testResults;
 

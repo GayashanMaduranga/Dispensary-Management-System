@@ -57,7 +57,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="478.0">
                <children>
-                  <TreeTableView fx:id="testFieldTable" layoutX="-1.0" prefHeight="263.0" prefWidth="552.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0">
+                  <TreeTableView fx:id="testFieldTable" layoutX="-1.0" onMouseClicked="#testFieldSelection" prefHeight="263.0" prefWidth="552.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0">
                     <columns>
                       <TreeTableColumn fx:id="TestFid" prefWidth="75.0" text="fid" />
                       <TreeTableColumn fx:id="TestName" prefWidth="224.0" text="fName" />
