@@ -40,7 +40,6 @@ public class PatientManagementTest {
 
     }
 
-
     @Test
     public void canComplaint(){
         Session session = UserSession.getSession();
@@ -60,7 +59,6 @@ public class PatientManagementTest {
 
 
     }
-
 
     @Test
     public void canAddPrescription(){
@@ -85,10 +83,6 @@ public class PatientManagementTest {
 
 
     }
-
-
-
-
 
 
 

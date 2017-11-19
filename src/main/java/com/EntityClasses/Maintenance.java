@@ -8,6 +8,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;  //add by me
 
 /**
  * Created by DAMMA on 8/31/2017.
@@ -23,7 +25,9 @@ public class Maintenance extends RecursiveTreeObject<Maintenance> {
     private SimpleDoubleProperty cost;
     private Date DateLastServiced;
     private SimpleIntegerProperty mainId;
-    private Machine machine;
+
+
+//    private Machine machine;//new added me
 
     public Maintenance() {
 
@@ -35,25 +39,18 @@ public class Maintenance extends RecursiveTreeObject<Maintenance> {
     @Id
     @Column(name = "mainID")
     @GeneratedValue
-    public int getmainId() {
+    public int getMainId() {
         return mainId.get();
     }
 
-    public void setmainId(int pId) {
-        this.mainId.set(pId);
-    }
-
-    public SimpleIntegerProperty pIdProperty() {
+    public SimpleIntegerProperty mainIdProperty() {
         return mainId;
     }
 
-    public Machine getMachine() {
-        return machine;
+    public void setMainId(int mainId) {
+        this.mainId.set(mainId);
     }
 
-    public void setMachine(Machine machine) {
-        this.machine = machine;
-    }
 
     @Column(name = "reason")
     public String getReason() {
@@ -103,4 +100,5 @@ public class Maintenance extends RecursiveTreeObject<Maintenance> {
         dateString.set(this.DateLastServiced.toString());
         return dateString;
     }
+
 }
