@@ -128,17 +128,19 @@ public class PayrollController implements Initializable, SessionListener {
         payslip.setRateOfRemuneration(txtRateOfRemuneration.getText());
 
 
-        List<String> alist= new ArrayList<>();
+//        List<String> alist= new ArrayList<>();
         for(TreeItem<Allowance> a : allowanceList){
-            alist.add(a.getValue().getAllowance());
+            payslip.getAllowances().add(a.getValue().getAllowance());
+           // alist.add(a.getValue().getAllowance());
         }
-        payslip.setAllowances(alist);
+//        payslip.setAllowances(alist);
 
-        List<String> dlist= new ArrayList<>();
+//        List<String> dlist= new ArrayList<>();
         for(TreeItem<Allowance> a : allowanceList){
-            dlist.add(a.getValue().getAllowance());
+//            dlist.add(a.getValue().getAllowance());
+            payslip.getDeductions().add(a.getValue().getAllowance());
         }
-        payslip.setDeductions(dlist);
+//        payslip.setDeductions(dlist);
 
         payslip.setOTHours(txtHours.getText());
         payslip.setEPFByEmployee(txtEPFbyEmployee.getText());
@@ -153,7 +155,8 @@ public class PayrollController implements Initializable, SessionListener {
             for(TreeItem<Allowance> t : allowanceList){
                gross+=Double.parseDouble(t.getValue().getAllowance());
             }
-            payslip.setGrossEarings(String.valueOf(gross));
+            String g = String.valueOf(gross);
+            payslip.setGrossEarings("Hello Wolrd");
 
             double epfByEmployee = gross * Double.parseDouble(txtEPFbyEmployee.getText())/100;
             payslip.setEPFByEmployee(String.valueOf(epfByEmployee));
