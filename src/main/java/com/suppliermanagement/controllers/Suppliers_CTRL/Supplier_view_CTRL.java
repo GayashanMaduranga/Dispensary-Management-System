@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.stage.Stage;
 import org.hibernate.Query;
@@ -46,6 +47,9 @@ public class Supplier_view_CTRL implements Initializable, SessionListener{
 
     @FXML
     private JFXButton add_new;
+
+    @FXML
+    private TextField searchbar;
 
     @FXML
     private Label userLbl;
@@ -193,7 +197,10 @@ public class Supplier_view_CTRL implements Initializable, SessionListener{
         supplierTable.setShowRoot(false);
 
         //**************************************************************************************
-
+        searchbar.textProperty().addListener((observable, oldValue, newValue) -> supplierTable.setPredicate(supplierTreeItem -> {
+            boolean flag = supplierTreeItem.getValue().supnameProperty().getValue().contains(newValue.toLowerCase());
+            return flag;
+        }));
 
     }
 

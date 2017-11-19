@@ -51,7 +51,7 @@
                   <RowConstraints maxHeight="63.0" minHeight="0.0" prefHeight="15.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField prefHeight="23.0" prefWidth="224.0" promptText="Search" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <TextField fx:id="searchbar" prefHeight="23.0" prefWidth="224.0" promptText="Search" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <font>
                         <Font size="17.0" />
                      </font>

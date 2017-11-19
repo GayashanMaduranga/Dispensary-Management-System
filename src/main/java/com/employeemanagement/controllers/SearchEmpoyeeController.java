@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 import org.controlsfx.control.MaskerPane;
 import org.hibernate.Query;
 import org.hibernate.Session;
-
+import com.main.controllers.MainScreenController;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -39,6 +39,9 @@ import java.util.ResourceBundle;
  */
 public class SearchEmpoyeeController implements Initializable, SessionListener {
 
+
+    @FXML
+    private JFXButton genarateStaffIdBtn;
 
     @FXML
     private JFXTextField searchtxt;
@@ -58,21 +61,6 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
 
     private List<TreeItem<Employee>> staffList;
     private Session session;
-//
-//    @FXML
-//    private JFXTextField fullName;
-//
-//    @FXML
-//    private JFXTextField nic;
-//
-//    @FXML
-//    private JFXTextField contactNumber;
-//
-//    @FXML
-//    private JFXTextField email;
-//
-//    @FXML
-//    private JFXTextField jobRole;
 
     private MainScreenController mainController;
 
@@ -173,6 +161,9 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
     @FXML
     void calculatePayroll(ActionEvent event) {
 
+//        ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN, mainController.getContent(), mainController);
+
+        ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN, mainController.getContent(), mainController);
 
     }
 
@@ -203,7 +194,7 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
         fileChooser.getExtensionFilters().add(extFilter);
 
         //Show save file dialog
-        File file = fileChooser.showSaveDialog(null);
+        File file = fileChooser.showSaveDialog(genarateStaffIdBtn.getScene().getWindow());
         id.saveStraffIdImages(file);
         maskerPane.setVisible(false);
 

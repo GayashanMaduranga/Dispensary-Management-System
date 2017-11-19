@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -42,13 +43,9 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
 
     private PharmacyItem ph;
     private PharmacyBatch pi;
+    private Item eq;
 
-    private Equipment equipment;
-    private Item item;
-    private Machine machine;
-    private Maintenance maintenance;
-    private UtilityEquipment utilityEquipment;
-    private SupplyOrder supplyOrder;
+
 
 
 
@@ -68,6 +65,20 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
     @FXML
     private Button edit;
 
+    @FXML
+    private Button equi_add;
+
+    @FXML
+    private Button eq_delete;
+
+
+    @FXML
+    private Button delete;
+
+    @FXML
+    private TextField searchp;
+
+
 
 
 
@@ -85,8 +96,13 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+            equi_add.setVisible(false);
+            eq_delete.setVisible(false);
 
             session = ScreenController.getSession();
+        session.flush();
+        session.clear();
+
             session.beginTransaction();
             Query productNameQuery = session.createQuery("select s from PharmacyItem  s");
             List<PharmacyItem> product = productNameQuery.list();
@@ -123,7 +139,18 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
             product_table.setRoot(root);
             product_table.setShowRoot(false);
 
+//        searchp.textProperty().addListener((observable, oldValue, newValue) -> equi_table.setPredicate(supplierTreeItem -> {
+//            boolean flag = supplierTreeItem.getValue().prop.getValue().contains(newValue.toLowerCase());
+//            return flag;
+////        }));
+
+
+
         session = ScreenController.getSession();
+
+        session.flush();
+        session.clear();
+
         session.beginTransaction();
         Query equipmentQuery = session.createQuery("select e from Item e where ITEM_TYPE = 'Equipment'");
         List<Item> equipments = equipmentQuery.list();
@@ -152,6 +179,8 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
         equi_table.getColumns().setAll(IDCol, nameCol, stockCol);
         equi_table.setRoot(root2);
         equi_table.setShowRoot(false);
+
+
 
 
 
@@ -188,7 +217,10 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
             PharmacyItem pi = Inventory_view_Edit_product_CTRL.pharmacyItem;
 //            PharmacyBatch pb = Inventory_view_New_product_CTRL.pharmacyBatch;
 
+            session.flush();
+            session.clear();
             session.beginTransaction();
+
             session.update(pi);
 //            session.update(pb);
 
@@ -221,6 +253,83 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
     void setField_pro()  {
 
         ph =product_table.getSelectionModel().getSelectedItem().getValue();
+        edit.setVisible(true);
+        equi_add.setVisible(false);
+        delete.setVisible(true);
+        eq_delete.setVisible(false);
+
+    }
+
+    @FXML
+    void delete_equip(ActionEvent event) {
+
+        if (ConfirmDialog.show("", "Are you sure?")) {
+
+            session.flush();
+            session.clear();
+            session.beginTransaction();
+            session.delete(eq);
+            session.getTransaction().commit();
+
+            productlist.remove(eq);
+
+            equi_table.refresh();
+
+            eq = null;
+        }
+
+
+
+    }
+
+
+    @FXML
+    void equi_select(MouseEvent event) {
+
+        eq = equi_table.getSelectionModel().getSelectedItem().getValue();
+        System.out.println("clicked");
+        edit.setVisible(false);
+        equi_add.setVisible(true);
+        delete.setVisible(false);
+        eq_delete.setVisible(true);
+        System.out.println(eq.getItemID());
+        System.out.println(eq.getStock());
+
+   }
+
+    @FXML
+    void add_stock(ActionEvent event) {
+        System.out.println("clicked");
+
+        Inventory_vieq_add_equi_stock_CTRL.eq = equi_table.getSelectionModel().getSelectedItem().getValue();
+
+
+        System.out.println("yoooooo");
+        Stage s = (Stage) equi_add.getScene().getWindow();
+
+        if(!(Main.createFadedWindow(new Stage(), s,"/com/suppliermanagement/Inventory_View/Inventory_vieq_add_equi_stock.fxml"))){
+
+
+
+            session.beginTransaction();
+            session.update(eq);
+            session.getTransaction().commit();
+            System.out.println("YESS DAMNNNN");
+
+
+            root2 = new RecursiveTreeItem<Item>(equiList, RecursiveTreeObject::getChildren);
+
+           //equiList.add(eq);
+
+           equi_table.refresh();
+            equi_table.setRoot(root2);
+            equi_table.setShowRoot(false);
+            Main.dialogCanceled = true;
+
+        }else{
+
+            System.out.println("doneeeeeee");
+        }
 
 
 
@@ -229,21 +338,26 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
     @FXML
     void delete() {
 
-        if(ConfirmDialog.show("", "Are you sure?")){
 
-            session.beginTransaction();
-            session.delete(ph);
-            session.getTransaction().commit();
+        if (ConfirmDialog.show("", "Are you sure?")) {
 
-            productlist.remove(ph);
+            session.flush();
+            session.clear();
+                session.beginTransaction();
+                session.delete(ph);
+                session.getTransaction().commit();
 
-            product_table.refresh();
+                productlist.remove(ph);
 
-            ph = null;
-        }
+                product_table.refresh();
+
+                ph = null;
+            }
 
 
     }
+
+
 
 
 

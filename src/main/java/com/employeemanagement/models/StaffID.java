@@ -1,13 +1,10 @@
 package com.employeemanagement.models;
 
 import com.EntityClasses.Employee;
-import com.employeemanagement.models.QrCode;
 import com.google.zxing.WriterException;
 import java.awt.Color;
-import java.awt.Desktop;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,18 +12,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 //import com.itextpdf.text.Image;
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 //import org.apache.poi.hslf.model.Slide;
 //import org.apache.poi.hslf.usermodel.SlideShow;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.application.Platform;
-import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
 
 public class StaffID {
@@ -84,7 +77,7 @@ public class StaffID {
 
         BufferedImage img = null;
         try {
-            img = ImageIO.read(getClass().getResource("/com/Images/LibCardFACE.png"));
+            img = ImageIO.read(getClass().getResource("/com/Images/StaffIDFACE.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -119,14 +112,14 @@ public class StaffID {
 
         BufferedImage img = null;
         try {
-            img = ImageIO.read(getClass().getResource("/com/Images/LibCardBACK.png"));
+            img = ImageIO.read(getClass().getResource("/com/Images/StaffIDBACK.png"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         g.drawImage(img, 0, 0, null);
 
-        //g.drawImage(ImageIO.read(getClass().getResource("/com/image/LibCardBACK.png")), 0, 0, null);
+        //g.drawImage(ImageIO.read(getClass().getResource("/com/image/StaffIDBACK.png")), 0, 0, null);
 
         //qrCode.encript("Test", id + ".png", 150, 150);
 

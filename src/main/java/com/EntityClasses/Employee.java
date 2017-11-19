@@ -38,6 +38,8 @@ public abstract class Employee {
     private List<PreviousEmployment> previousEmploymentList;
     private List<Education> educationList;
     private List<EmploymentDetails> employmentDetails;
+    private User user;
+
 
 
     private Date dateOfAppointment;
@@ -247,6 +249,17 @@ public abstract class Employee {
         this.jobRole.set(occupation);
     }
 
+    @OneToOne
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public StringProperty jobRoleProperty() {
+        return jobRole;
+    }
 
 }
