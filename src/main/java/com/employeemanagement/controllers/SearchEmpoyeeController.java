@@ -41,6 +41,9 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
 
 
     @FXML
+    private JFXButton genarateStaffIdBtn;
+
+    @FXML
     private JFXTextField searchtxt;
 
     @FXML
@@ -58,21 +61,6 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
 
     private List<TreeItem<Employee>> staffList;
     private Session session;
-//
-//    @FXML
-//    private JFXTextField fullName;
-//
-//    @FXML
-//    private JFXTextField nic;
-//
-//    @FXML
-//    private JFXTextField contactNumber;
-//
-//    @FXML
-//    private JFXTextField email;
-//
-//    @FXML
-//    private JFXTextField jobRole;
 
     private MainScreenController mainController;
 
@@ -206,7 +194,7 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
         fileChooser.getExtensionFilters().add(extFilter);
 
         //Show save file dialog
-        File file = fileChooser.showSaveDialog(null);
+        File file = fileChooser.showSaveDialog(genarateStaffIdBtn.getScene().getWindow());
         id.saveStraffIdImages(file);
         maskerPane.setVisible(false);
 
