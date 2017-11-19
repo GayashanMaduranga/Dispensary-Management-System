@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="819.0" prefWidth="1206.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Laboratory.controllers.inputResultController">
+   <children>
+      <TitledPane animated="false" collapsible="false" layoutX="35.0" layoutY="30.0" prefHeight="249.0" prefWidth="831.0" text="Patient Details" AnchorPane.bottomAnchor="461.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="30.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="849.0">
+               <children>
+                  <TextField disable="true" layoutX="162.0" layoutY="16.0" />
+                  <Label layoutX="35.0" layoutY="20.0" text="Patient ID" />
+                  <TextField disable="true" layoutX="162.0" layoutY="73.0" />
+                  <Label layoutX="35.0" layoutY="77.0" text="Patient Name" />
+                  <TextField disable="true" layoutX="697.0" layoutY="14.0" prefHeight="38.0" prefWidth="86.0" />
+                  <Label layoutX="634.0" layoutY="20.0" text="Age" />
+                  <Label layoutX="35.0" layoutY="130.0" text="Doctor Name" />
+                  <TextField disable="true" layoutX="162.0" layoutY="126.0" />
+                  <TextField layoutX="572.0" layoutY="124.0" />
+                  <Label layoutX="426.0" layoutY="132.0" text="Main Test Name" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="35.0" layoutY="369.0" prefHeight="371.0" prefWidth="1136.0" text="Enter Results" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="369.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="1088.0">
+               <children>
+                  <TreeTableView layoutX="-7.0" prefHeight="338.0" prefWidth="1136.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0" AnchorPane.topAnchor="-15.0">
+                     <columns>
+                        <TreeTableColumn prefWidth="101.00000154972076" text="TestID" />
+                        <TreeTableColumn prefWidth="216.99996185302734" text="Test Name" />
+                        <TreeTableColumn prefWidth="314.0000305175781" text="Result" />
+                        <TreeTableColumn prefWidth="216.99993896484375" text="Reference Range" />
+                        <TreeTableColumn prefWidth="288.0" text="Comments" />
+                     </columns>
+                  </TreeTableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <JFXButton fx:id="done" layoutX="964.0" layoutY="757.0" prefHeight="48.0" prefWidth="98.0" stylesheets="@stylesheet.css" text="Done" textFill="WHITE" />
+      <JFXButton fx:id="cancel" layoutX="1071.0" layoutY="757.0" prefHeight="48.0" prefWidth="106.0" stylesheets="@stylesheet.css" text="Cancel" textFill="WHITE" />
+      <JFXButton fx:id="print" layoutX="856.0" layoutY="757.0" prefHeight="48.0" prefWidth="98.0" stylesheets="@stylesheet.css" text="Print" textFill="WHITE" />
+      <TextField layoutX="918.0" layoutY="63.0" prefHeight="38.0" prefWidth="252.0" promptText="Search Range by test name" />
+      <Button layoutX="1065.0" layoutY="310.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="Add" />
+      <Label layoutX="900.0" layoutY="24.0" text="Reference Range" />
+      <Separator layoutX="885.0" layoutY="13.0" prefHeight="5.0" prefWidth="308.0" />
+      <Separator layoutX="884.0" layoutY="14.0" orientation="VERTICAL" prefHeight="345.0" prefWidth="6.0" />
+      <Separator layoutX="1191.0" layoutY="14.0" orientation="VERTICAL" prefHeight="345.0" prefWidth="6.0" />
+      <Separator layoutX="885.0" layoutY="356.0" prefHeight="5.0" prefWidth="308.0" />
+      <TreeTableView layoutX="884.0" layoutY="112.0" prefHeight="187.0" prefWidth="308.0">
+        <columns>
+          <TreeTableColumn prefWidth="154.0" text="Test name" />
+          <TreeTableColumn prefWidth="153.0" text="Range" />
+        </columns>
+      </TreeTableView>
+   </children>
+</AnchorPane>
