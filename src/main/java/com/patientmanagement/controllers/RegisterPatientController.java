@@ -22,7 +22,7 @@ public class RegisterPatientController implements Initializable,ControlledScreen
 
     private ScreenController controller;
 
-    static Patient patient;
+    public static Patient patient;
 
     @FXML
     private Label txtMsg;
