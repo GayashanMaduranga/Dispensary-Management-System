@@ -3,6 +3,7 @@ package com.employeemanagement.models;
 import com.EntityClasses.Attendance;
 import com.EntityClasses.Employee;
 import com.EntityClasses.Staff;
+import com.EntityClasses.User;
 import com.common.ScreenController;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -167,5 +168,39 @@ public class ViewEmployeeModel {
 
     }
 
+    public static void  addOrUpdateUser(User user){
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+
+                    session.flush();
+                    session.clear();
+
+                    session.beginTransaction();
+                    session.saveOrUpdate(user);
+                    session.getTransaction().commit();
+
+                    Platform.runLater(() ->  Notifications.create()
+                            .title("Updated")
+                            .text("successfully Updated the recode")
+                            .showInformation());
+                }catch (Exception e){
+
+                    Platform.runLater(() ->  Notifications.create()
+                            .title("Error Update Data")
+                            .text("please check and try to update again")
+                            .darkStyle()
+                            .showError());
+
+                }
+                return null;
+            }
+        };
+
+        Thread addEmpThread = new Thread(task);
+        addEmpThread.setDaemon(true);
+        addEmpThread.start();
+    }
 
 }
