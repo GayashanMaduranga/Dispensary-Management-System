@@ -575,7 +575,7 @@
                                     <content>
                                         <ScrollPane>
                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="999.0">
+                                                <AnchorPane fx:id="loanAcPane" minHeight="0.0" minWidth="0.0" prefHeight="1144.0" prefWidth="999.0">
                                                     <children>
                                                         <TreeTableView fx:id="loanTable" layoutX="28.0" layoutY="81.0" onMouseClicked="#LoanTableSelections" prefHeight="341.0" prefWidth="472.0" AnchorPane.leftAnchor="28.0">
                                                             <columns>

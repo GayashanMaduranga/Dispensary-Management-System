@@ -128,8 +128,8 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
         employeeTree.getChildren().addAll(
                 new TreeItem<>("Add Employee"),
-                new TreeItem<>("Attendance"),
-                new TreeItem<>("Loans")
+                new TreeItem<>("Search Employee"),
+                new TreeItem<>("Attendance")
         );
 
         patientTree.getChildren().addAll(
@@ -195,9 +195,17 @@ public class MainScreenController implements Initializable,SessionListener,Contr
     private void changeScene(String ButtonName) {
 
         switch (ButtonName) {
+            case "Search Employee":
+                if (LoginModel.getAccessLevel() <= 2) {
+                    ScreenController.changeScreen(MyScreens.SEARCH_EMPLOYEE_SCREEN,content,this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+
             case "Attendance":
                 if (LoginModel.getAccessLevel() <= 2) {
-                    ScreenController.changeScreen(MyScreens.DASHBOARD_SCREEN,content,this);
+                    ScreenController.changeScreen(MyScreens.ATTENDENCE_SCREEN,content,this);
                 } else {
                     ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
                 }

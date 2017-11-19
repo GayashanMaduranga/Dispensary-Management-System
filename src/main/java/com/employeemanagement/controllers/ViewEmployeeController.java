@@ -22,7 +22,7 @@ import jfxtras.scene.control.agenda.Agenda;
 import org.controlsfx.control.MaskerPane;
 import org.controlsfx.control.Notifications;
 import org.hibernate.Session;
-
+import com.main.controllers.MainScreenController;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -215,6 +215,9 @@ public class ViewEmployeeController implements Initializable, SessionListener {
 
     @FXML
     private AnchorPane attendanceAcPane;
+
+    @FXML
+    private AnchorPane loanAcPane;
 
     private ViewEmployeeModel viewEmployeeModel = new ViewEmployeeModel();
 
@@ -460,6 +463,7 @@ public class ViewEmployeeController implements Initializable, SessionListener {
         setData();
         if (mainController.getEmployee().getJobRole().matches("doctor")) {
             attendanceAcPane.getChildren().clear();
+            loanAcPane.getChildren().clear();
         } else {
             initAgenda();
         }
@@ -482,10 +486,6 @@ public class ViewEmployeeController implements Initializable, SessionListener {
         city.setText(staff.getAddress().getCity());
         zip.setText(staff.getAddress().getZip());
 
-        if (staff.getJobRole().matches("doctor")) {
-            System.out.println("hello");
-            tabPane.getChildrenUnmodifiable().clear();
-        }
 
 
         if (staff.getGender().matches("M")) {
@@ -528,14 +528,15 @@ public class ViewEmployeeController implements Initializable, SessionListener {
         empDetailTbl.getRoot().getChildren().clear();
         empDetailTbl.getRoot().getChildren().addAll(employmentDetailsList);
 
+        if(!mainController.getEmployee().getJobRole().matches("doctor")) {
+            for (Loan l : ((Staff) staff).getLoanList()) {
+                loanList.add(new TreeItem<>(l));
+            }
 
-        for (Loan l : ((Staff)staff).getLoanList()) {
-            loanList.add(new TreeItem<>(l));
+
+            loanTable.getRoot().getChildren().clear();
+            loanTable.getRoot().getChildren().addAll(loanList);
         }
-
-
-        loanTable.getRoot().getChildren().clear();
-        loanTable.getRoot().getChildren().addAll(loanList);
 
 
     }
