@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.MaskerPane?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeemanagement.controllers.SearchEmpoyeeController">
    <children>
       <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0" stylesheets="@styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -91,6 +90,6 @@
               </VBox>
           </center>
       </BorderPane>
-      <MaskerPane visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <MaskerPane fx:id="maskerPane" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
