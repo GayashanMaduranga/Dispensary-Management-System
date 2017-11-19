@@ -53,12 +53,12 @@
             </TitledPane>
             <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="txtSearch" prefHeight="38.0" prefWidth="251.0" promptText="Search">
+                  <TextField fx:id="txtSearch" prefHeight="38.0" prefWidth="251.0" promptText="Search" visible="false">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
-                  <OctIconView fx:id="searchGlyph" glyphName="SEARCH" size="35" text="" wrappingWidth="24.999974489212036" />
+                  <OctIconView fx:id="searchGlyph" glyphName="SEARCH" size="35" text="" visible="false" wrappingWidth="24.999974489212036" />
                   <Region prefHeight="66.0" prefWidth="89.0" HBox.hgrow="ALWAYS" />
                </children>
                <GridPane.margin>

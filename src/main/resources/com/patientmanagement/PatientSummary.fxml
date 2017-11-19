@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane style="-fx-background-color: #dfdfdf;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.PatientSummaryController">
+<GridPane style="-fx-background-color: #dfdfdf;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patientmanagement.controllers.PatientSummaryController">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="32.0" prefWidth="32.0" />
       <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="311.0" />
@@ -286,7 +286,7 @@
                                              </VBox.margin>
                                           </GridPane>
                                           <Region prefHeight="19.0" prefWidth="301.0" VBox.vgrow="ALWAYS" />
-                                          <Button mnemonicParsing="false" prefWidth="133.0" styleClass="button-temp" text="  Add Note  ">
+                                          <Button fx:id="addNoteBtn" mnemonicParsing="false" prefWidth="133.0" styleClass="button-temp" text="  Add Note  ">
                                              <font>
                                                 <Font name="System Bold" size="15.0" />
                                              </font>
