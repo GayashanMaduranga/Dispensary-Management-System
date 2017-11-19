@@ -2,6 +2,7 @@ package com.employeemanagement.controllers;
 
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import com.employeemanagement.models.AttendanceModel;
@@ -18,12 +19,14 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+
 
 import com.github.sarxos.webcam.Webcam;
 import javafx.stage.Stage;
@@ -182,8 +185,8 @@ public class ScannerController implements Initializable {
                                     try {
                                         code = qrCode.decript(grabbedImage);
                                         setUserArivalorDeparture(code);
-
                                         Thread.yield();
+                                        stopCamera(null);
 
                                     } catch (Exception e) {
 
@@ -246,11 +249,23 @@ public class ScannerController implements Initializable {
 
                 AttendanceModel.addArival(code);
 
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Time of arival");
+                alert.setHeaderText(AttendanceModel.getGreeting() + "  " + AttendanceModel.staff.getName());
+                alert.setContentText("Time of arival : " + LocalDateTime.now().toString());
+
+                alert.showAndWait();
 
             }else{
 
-                System.out.println(code +"departure");
+               AttendanceModel.addDeparture(code);
 
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Time of departure");
+                alert.setHeaderText(AttendanceModel.getGreeting() + "  " + AttendanceModel.staff.getName());
+                alert.setContentText("Time of departure : " +LocalDateTime.now().toString());
+
+                alert.showAndWait();
             }
         });
 

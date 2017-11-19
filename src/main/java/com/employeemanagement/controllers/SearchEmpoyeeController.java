@@ -173,6 +173,9 @@ public class SearchEmpoyeeController implements Initializable, SessionListener {
     @FXML
     void calculatePayroll(ActionEvent event) {
 
+//        ScreenController.changeScreen(MyScreens.VIEW_EMPLOYEE_SCREEN, mainController.getContent(), mainController);
+
+        ScreenController.changeScreen(MyScreens.PAYROLL_SCREEN, mainController.getContent(), mainController);
 
     }
 

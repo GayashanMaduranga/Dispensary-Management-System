@@ -6,18 +6,21 @@ import com.EntityClasses.Staff;
 import com.common.ScreenController;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.scene.control.Alert;
 import org.controlsfx.control.Notifications;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class AttendanceModel {
     private static Session session = ScreenController.getSession();
 
-
+    public static Staff staff;
 
     public static void addArival(String code) {
 
@@ -33,7 +36,7 @@ public class AttendanceModel {
 
                     session.flush();
                     session.clear();
-                    Staff staff = (Staff) session.get(Staff.class,Integer.parseInt(code));
+                    staff = (Staff) session.get(Staff.class,Integer.parseInt(code));
                     attendance.setStaff(staff);
                     staff.getAttendanceList().add(attendance);
 
@@ -44,6 +47,9 @@ public class AttendanceModel {
 
 
                     session.getTransaction().commit();
+
+
+
 
 
                 } catch (Exception e) {
@@ -87,9 +93,9 @@ public class AttendanceModel {
 
                     session.flush();
                     session.clear();
-                    Staff staff = (Staff) session.get(Staff.class,Integer.parseInt(code));
+                    staff = (Staff) session.get(Staff.class,Integer.parseInt(code));
 
-                    Query query = session.createQuery("select a from Staff s join Attendance a where s = :staff and a.endTime is null");
+                    Query query = session.createQuery("from  Attendance a where a.staff = :staff and a.endTime is null");
                     query.setParameter("staff",staff);
 
                     List <Attendance> list = query.list();
@@ -103,6 +109,9 @@ public class AttendanceModel {
 
 
                     session.getTransaction().commit();
+
+
+
 
 
                 } catch (Exception e) {
@@ -132,5 +141,25 @@ public class AttendanceModel {
 
     }
 
+    public static String getGreeting(){
+        String greet = null;
+        GregorianCalendar time = new GregorianCalendar();
+        int hour = time.get(Calendar.HOUR_OF_DAY);
 
-}
+        if (hour < 12)
+            greet = "Good Morning!";
+        else if (hour < 17 && !(hour == 12))
+            greet = "Good Afternoon";
+        else if (hour == 12)
+            greet = "Good Noon";
+        else
+            greet = "Good Evening";
+
+        return greet;
+    }
+
+
+    }
+
+
+
