@@ -192,7 +192,7 @@ public class MyTest {
     @Test
     public void canGeneratePaySlip(){
 
-        Payslip p = new Payslip( new File("E:\\New.pdf"));
+        Payslip p = new Payslip( new File("E:\\New2.pdf"));
 
 
         p.setMonth("November");
