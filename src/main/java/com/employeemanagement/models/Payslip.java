@@ -368,8 +368,8 @@ public class Payslip {
             allowanceTable.getDefaultCell().setBorderWidth(1);
 
             for(String a : deductions){
-                allowanceTable.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-                allowanceTable.addCell(new Phrase(a, font3));
+                deductionTable.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+                deductionTable.addCell(new Phrase(a, font3));
 
             }
 
@@ -406,16 +406,16 @@ public class Payslip {
 //            document.add(Chunk.NEWLINE);
 
 
-            PdfPTable finalTable = new PdfPTable(1);
-            finalTable.getDefaultCell().setBorder(1);
-            table1.getDefaultCell().setHorizontalAlignment(Element.ALIGN_LEFT);
-            table1.addCell(new Phrase("Net salary : " + this.getNetSal(), font3));
-
-            document.add(finalTable);
+//            PdfPTable finalTable = new PdfPTable(1);
+//            finalTable.getDefaultCell().setBorder(1);
+//            table1.getDefaultCell().setHorizontalAlignment(Element.ALIGN_LEFT);
+//            table1.addCell(new Phrase("Net salary : " + this.getNetSal(), font3));
+//
+//            document.add(finalTable);
             document.add(Chunk.NEWLINE);
             document.add(Chunk.NEWLINE);
             document.add(Chunk.NEWLINE);
-            para = new Paragraph("ITP-MET-WD-01",font1);
+            para = new Paragraph("Net salary : " + this.getNetSal(),font1);
             para.setAlignment(Element.ALIGN_CENTER);
             document.add(para);
             document.close();
