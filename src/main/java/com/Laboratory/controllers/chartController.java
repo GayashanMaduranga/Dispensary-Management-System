@@ -5,26 +5,72 @@ import com.common.ScreenController;
 import com.common.SessionListener;
 import com.jfoenix.controls.JFXButton;
 import com.main.controllers.MainScreenController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.chart.XYChart;
 import org.hibernate.Session;
-
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * Created by AmilaWC on 8/20/2017.
  */
-public class extraController implements Initializable,SessionListener {
+public class chartController implements Initializable,SessionListener {
 
     private Session session;
     private MainScreenController mainScreenController;
 
 
+
+
+
+
+    @FXML
+    private BarChart<?, ?> testChart;
+
+    @FXML
+    private CategoryAxis x;
+
+    @FXML
+    private NumberAxis y;
+
+
+
+
+    @FXML
+    void loadChart(ActionEvent event) {
+
+        XYChart.Series set1 = new XYChart.Series<>();
+        set1.getData().add(new XYChart.Data("Lipid", 50));
+        set1.getData().add(new XYChart.Data("Blood Glucose ", 66));
+        set1.getData().add(new XYChart.Data("calcium ", 20));
+        set1.getData().add(new XYChart.Data("Estrogens ", 36));
+        set1.getData().add(new XYChart.Data("Oral Glucose Tolerance Test ", 96));
+        set1.getData().add(new XYChart.Data("Pregnancy Test ", 236));
+
+
+
+        testChart.getData().addAll(set1);
+
+    }
+
+
+
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         session = ScreenController.getSession();
+
+
+
+
+
     }
 
     @Override

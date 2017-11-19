@@ -150,7 +150,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 new TreeItem<>("Enter Results"),
                 new TreeItem<>("Add Test"),
                 new TreeItem<>("Add Reference Values"),
-                new TreeItem<>("Fill Results"),
                 new TreeItem<>("Statistics")
 
         );

@@ -128,8 +128,8 @@ public class selectTestController  implements Initializable,SessionListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        txtpId.setText(Integer.toString(orderTestController.labSummaryPatient.getpId()));
-        txtpName.setText(orderTestController.labSummaryPatient.getPname());
+//        txtpId.setText(Integer.toString(orderTestController.labSummaryPatient.getpId()));
+//        txtpName.setText(orderTestController.labSummaryPatient.getPname());
 
         mainid.setCellValueFactory(param -> param.getValue().getValue().tIdProperty());
         mainName.setCellValueFactory(param -> param.getValue().getValue().testNameProperty());
@@ -196,6 +196,16 @@ public class selectTestController  implements Initializable,SessionListener {
 
 
     }
+
+
+    @FXML
+    void backToOrder(ActionEvent event) {
+
+        ScreenController.changeScreen(LabScreens.ORDERTEST_SCREEN,mainScreenController.getContent(),mainScreenController);
+
+    }
+
+
 
     @FXML
     void selectTest(ActionEvent event) {
