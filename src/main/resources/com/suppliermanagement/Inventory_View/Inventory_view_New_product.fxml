@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -63,11 +62,6 @@
                </rowConstraints>
                <children>
                   <TextField fx:id="pro_name" prefHeight="32.0" prefWidth="261.0" GridPane.columnIndex="1" />
-                  <Label fx:id="equip_name" prefHeight="30.0" prefWidth="189.0" text="Equipment Name" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="pr_name" prefHeight="30.0" prefWidth="189.0" text="Product Name" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
@@ -79,11 +73,6 @@
                      </font>
                   </Label>
                   <TextField fx:id="mrp_rate" prefHeight="25.0" prefWidth="342.0" GridPane.columnIndex="4" />
-                  <Label fx:id="life_time" prefHeight="21.0" prefWidth="107.0" text="Life Time" textFill="WHITE" GridPane.columnIndex="3">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
                </children>
             </GridPane>
             <GridPane prefHeight="48.0" prefWidth="401.0" style="-fx-background-color: none; -fx-background-radius: 20px;" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
@@ -121,16 +110,6 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="last_serv" prefHeight="17.0" prefWidth="160.0" text="Last Service Date" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="service_period" prefHeight="17.0" prefWidth="144.0" text="Service Period" textFill="WHITE" GridPane.columnIndex="3">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
                   <TextField fx:id="re_order" prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="4" />
                </children>
             </GridPane>
@@ -149,11 +128,6 @@
                <children>
                   <AnchorPane prefHeight="50.0" prefWidth="349.0" GridPane.columnIndex="2" />
                   <Label fx:id="manu" prefHeight="17.0" prefWidth="160.0" text="Manu Date" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="pur_date" prefHeight="17.0" prefWidth="160.0" text="Purchase Date" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -187,17 +161,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="use_state" prefHeight="21.0" prefWidth="151.0" text="Usable State" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="pur_p" prefHeight="17.0" prefWidth="119.0" text="Purchase Price" textFill="WHITE" GridPane.columnIndex="3">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="cost" prefHeight="45.0" prefWidth="155.0" text="Cost" textFill="WHITE" GridPane.columnIndex="3">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -232,11 +196,6 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="pro_type" onAction="#pro_view" prefHeight="35.0" prefWidth="140.0" promptText="Product Type">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </ComboBox>
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="7">
@@ -285,14 +244,6 @@
                   </JFXButton>
                </children>
             </GridPane>
-            <JFXButton fx:id="titlebtn1" graphicTextGap="9.0" layoutX="10.0" layoutY="11.0" prefHeight="58.0" prefWidth="1032.0" text="New Equipment Item" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Segoe UI Light" size="21.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView glyphName="EDIT" size="30" />
-               </graphic>
-            </JFXButton>
          </children>
       </GridPane>
    </children>

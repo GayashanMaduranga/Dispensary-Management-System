@@ -27,20 +27,18 @@ public class Payslip {
     String EPFByEmployer;
     String EPFByEmployee;
     String grossEarnings;
-    String deductions;
-
 
     String rateOfRemuneration;
     List<String> allowances;
     String grossEarings;
 
 
-    List<PayslipLoanDetail> loanDetails;
+    List<String> deductions;
     public Payslip(File filepath) {
 
         this. filepath =  filepath;
         this.allowances = new ArrayList<>();
-        this.loanDetails = new ArrayList<>();
+        this.deductions = new ArrayList<>();
     }
 
     public String getId() {
@@ -123,15 +121,10 @@ public class Payslip {
         this.grossEarnings = grossEarnings;
     }
 
-    public String getDeductions() {
-        return deductions;
-    }
 
-    public void setDeductions(String deductions) {
-        this.deductions = deductions;
-    }
 
     public void genaratePayslip(){
+
 
         try {
             OutputStream file = new FileOutputStream(filepath);
@@ -276,10 +269,29 @@ public class Payslip {
             table1.addCell(new Phrase("Gross Earnings ", font3));
             table1.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
             table1.addCell(new Phrase(grossEarnings, font3));
+            System.out.println(grossEarnings);
             table1.getDefaultCell().setHorizontalAlignment(Element.ALIGN_LEFT);
             table1.addCell(new Phrase("Other Deductions ", font3));
             table1.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-            table1.addCell(new Phrase(deductions, font3));
+           // table1.addCell(new Phrase(deductions, font3));
+
+            PdfPTable deductionTable = new PdfPTable(1);
+
+            allowanceTable.getDefaultCell().setBorderWidth(1);
+
+            for(String a : deductions){
+                allowanceTable.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+                allowanceTable.addCell(new Phrase(a, font3));
+
+            }
+
+
+
+
+            table1.addCell(deductionTable);
+
+
+
 
 //            table1.getDefaultCell().setHorizontalAlignment(Element.ALIGN_LEFT);
 //            table1.addCell(new Phrase(" ", font3));
@@ -293,7 +305,7 @@ public class Payslip {
 //
 //
 //
-//            for(PayslipLoanDetail l : loanDetails){
+//            for(PayslipLoanDetail l : deductions){
 //                loanNameTbl.addCell(new Phrase(l.description, font3));
 //
 //            }
@@ -377,15 +389,14 @@ public class Payslip {
 
     public void setGrossEarings(String grossEarings) {
         this.grossEarings = grossEarings;
+
     }
 
-    public List<PayslipLoanDetail> getLoanDetails() {
-        return loanDetails;
+    public List<String> getDeductions() {
+        return deductions;
     }
 
-    public void setLoanDetails(List<PayslipLoanDetail> loanDetails) {
-        this.loanDetails = loanDetails;
+    public void setDeductions(List<String> deductions) {
+        this.deductions = deductions;
     }
-
-
 }

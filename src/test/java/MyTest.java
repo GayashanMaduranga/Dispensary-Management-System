@@ -1,6 +1,5 @@
 import com.EntityClasses.*;
 import com.employeemanagement.models.Payslip;
-import com.employeemanagement.models.PayslipLoanDetail;
 import db.UserSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -203,10 +202,10 @@ public class MyTest {
         p.getAllowances().add("2000");
         p.getAllowances().add("3000");
         p.getAllowances().add("4000");
-        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
-        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
-        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
-        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
+//        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
+//        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
+//        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
+//        p.getLoanDetails().add(new PayslipLoanDetail("test","123","12"));
 
 
 
