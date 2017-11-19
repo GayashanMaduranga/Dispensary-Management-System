@@ -21,6 +21,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -64,6 +66,15 @@ public class LabMaintanceControl implements Initializable,SessionListener {
 
    // TreeItem<Item> root;
 
+
+    @FXML
+    private BarChart<?, ?> chart;
+
+//    @FXML
+//    private CategoryAxis x;
+//
+//    @FXML
+//    private NumberAxis y;
 
     @FXML
     private JFXTreeTableView<Maintenance> MaintanceTable;
@@ -178,6 +189,46 @@ public class LabMaintanceControl implements Initializable,SessionListener {
         MaintanceTable.setShowRoot(false);
     }
 
+
+    @FXML
+    void tableLoad(ActionEvent event) {
+
+
+        XYChart.Series set1 = new XYChart.Series<>();
+        cmbMachine.getSelectionModel().getSelectedItem();
+        set1.getData().add(new XYChart.Data("cddd", 500));
+        set1.getData().add(new XYChart.Data("feeeeeeeee", 100));
+        set1.getData().add(new XYChart.Data("dsa", 100));
+        set1.getData().add(new XYChart.Data("ger", 100));
+        chart.getData().addAll(set1);
+
+        XYChart.Series set2 = new XYChart.Series<>();
+        cmbMachine.getSelectionModel().getSelectedItem();
+        set1.getData().add(new XYChart.Data("ctc", 400));
+        set1.getData().add(new XYChart.Data("Damageing", 100));
+        chart.getData().addAll(set2);
+
+
+        XYChart.Series set3 = new XYChart.Series<>();
+        cmbMachine.getSelectionModel().getSelectedItem();
+        set1.getData().add(new XYChart.Data("x-ray", 600));
+        set1.getData().add(new XYChart.Data("Damaginr Light", 100));
+        set1.getData().add(new XYChart.Data("Damaging Display", 100));
+        chart.getData().addAll(set3);
+
+
+        XYChart.Series set4 = new XYChart.Series<>();
+        cmbMachine.getSelectionModel().getSelectedItem();
+        set1.getData().add(new XYChart.Data("Blood", 1000));
+        set1.getData().add(new XYChart.Data("a", 100));
+        set1.getData().add(new XYChart.Data("b", 100));
+        chart.getData().addAll(set4);
+
+
+
+
+
+    }
 
     @FXML
     void comboSelect(){
