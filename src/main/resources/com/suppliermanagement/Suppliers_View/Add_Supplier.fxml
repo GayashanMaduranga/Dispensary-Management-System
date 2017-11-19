@@ -236,11 +236,6 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="both" layoutX="364.0" layoutY="10.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="170.0" text="Both" textFill="WHITE" toggleGroup="$type" GridPane.columnIndex="5">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </RadioButton>
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
