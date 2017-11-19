@@ -44,6 +44,7 @@ public class LoginController implements ControlledScreen, Initializable,SessionL
     public void initialize(URL location, ResourceBundle resources) {
 
 
+
     }
 
     @FXML
@@ -65,30 +66,30 @@ public class LoginController implements ControlledScreen, Initializable,SessionL
     @FXML
     public void login(ActionEvent actionEvent){
 
-        session = mainContainer.getSession();
-        session.beginTransaction();
-        Query query = session.createQuery("from User where username ='"+txtUsername.getText()+"'");
-        List<User> users = query.list();
-        session.getTransaction().commit();
 
-        if(users.isEmpty()){
-            AlertDialog.show("", "No such user");
-        }
-        else{
+            session = UserSession.getSession();
+            session.beginTransaction();
+            Query query = session.createQuery("from User where username ='"+txtUsername.getText()+"'");
+            List<User> users = query.list();
+            session.getTransaction().commit();
 
-            if(users.get(0).getPassword().equals(txtPassword.getText())){
-                LoginModel.setUser(users.get(0).getUsername());
-                LoginModel.setAccessLevel(users.get(0).getAccessLevel());
-                makeStage();
-//                session.close();
-                Stage s = (Stage) txtUsername.getScene().getWindow();
-                s.close();
+            if(users.isEmpty()){
+                AlertDialog.show("", "No such user");
             }
-
             else{
-                AlertDialog.show("", "Password Incorrect");
+
+                if(users.get(0).getPassword().equals(txtPassword.getText())){
+                    LoginModel.setUser(users.get(0).getUsername());
+                    LoginModel.setAccessLevel(users.get(0).getAccessLevel());
+                    makeStage();
+                    Stage s = (Stage) txtUsername.getScene().getWindow();
+                    s.close();
+                }
+
+                else{
+                    AlertDialog.show("", "Password Incorrect");
+                }
             }
-        }
 
     }
 

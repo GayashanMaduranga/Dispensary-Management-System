@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane prefHeight="666.0" prefWidth="1035.0" style="-fx-background-color: #dfdfdf;" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controllers.FirstAdminController">
+      <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="32.0" />
+      </columnConstraints>
+      <rowConstraints>
+      <RowConstraints minHeight="-Infinity" prefHeight="501.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+   <children>
+      <VBox alignment="CENTER" spacing="20.0">
+         <children>
+            <Label text="Welcome to the Dispensary Management System! ">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Please create an administrator account to continue">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <TextField fx:id="txtAdminName" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="278.0" promptText="Username" />
+            <PasswordField fx:id="txtAdminPass" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="278.0" promptText="Password" />
+            <PasswordField fx:id="txtAdminPass2" layoutX="389.0" layoutY="382.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="278.0" promptText="Password" />
+            <HBox alignment="CENTER">
+               <children>
+                  <Button fx:id="createBtn" mnemonicParsing="false" onAction="#create" prefHeight="35.0" prefWidth="102.0" styleClass="ask-logout-button" text="Create" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Region prefHeight="35.0" prefWidth="45.0" />
+                  <Button fx:id="cancelBtn" layoutX="477.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="102.0" styleClass="ask-logout-button" text="Cancel" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+  </GridPane>

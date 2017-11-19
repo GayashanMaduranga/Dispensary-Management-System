@@ -46,7 +46,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
 
     private ScreenController controller;
 
-
     private MainScreenController mainScreenController;
 
     public String test = "Hello";
@@ -90,25 +89,25 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         userLbl.setText(LoginModel.getUser());
 
         //Icons for TreeItems
-        FontAwesomeIconView employeeIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        FontAwesomeIconView employeeIcon = new FontAwesomeIconView(FontAwesomeIcon.USER);
         employeeIcon.setSize("20px");
-        FontAwesomeIconView patientIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        FontAwesomeIconView patientIcon = new FontAwesomeIconView(FontAwesomeIcon.USER_MD);
         patientIcon.setSize("20px");
-        FontAwesomeIconView pharmacyIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        FontAwesomeIconView pharmacyIcon = new FontAwesomeIconView(FontAwesomeIcon.HEART);
         pharmacyIcon.setSize("20px");
-        FontAwesomeIconView laboratoryIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        FontAwesomeIconView laboratoryIcon = new FontAwesomeIconView(FontAwesomeIcon.FLASK);
         laboratoryIcon.setSize("20px");
-        FontAwesomeIconView supplierIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        FontAwesomeIconView supplierIcon = new FontAwesomeIconView(FontAwesomeIcon.DROPBOX);
         supplierIcon.setSize("20px");
-        FontAwesomeIconView appointmentIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        FontAwesomeIconView appointmentIcon = new FontAwesomeIconView(FontAwesomeIcon.LIST_ALT);
         appointmentIcon.setSize("20px");
-        FontAwesomeIconView equipmentIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
+        FontAwesomeIconView equipmentIcon = new FontAwesomeIconView(FontAwesomeIcon.COGS);
         equipmentIcon.setSize("20px");
-        FontAwesomeIconView financeIcon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
-        financeIcon.setSize("20px");
+        FontAwesomeIconView adminIcon = new FontAwesomeIconView(FontAwesomeIcon.USER_SECRET);
+        adminIcon.setSize("20px");
 
         //list of TreeItems for navigation panel
-        TreeItem<String> root, employeeTree, financeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree ;
+        TreeItem<String> root, employeeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree, adminTree ;
 
         //root TreeItem to contain all other TreeItems
         root = new TreeItem<>("");
@@ -122,10 +121,9 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         supplierTree = new TreeItem<>("Suppliers", supplierIcon);
         appointmentTree = new TreeItem<>("Appointments", appointmentIcon);
         labInventoryTree = new TreeItem<>("Equipment", equipmentIcon);
-        financeTree = new TreeItem<>("Finances", financeIcon);
+        adminTree = new TreeItem<>("Administration", adminIcon);
 
         //adding SubBranches
-
         employeeTree.getChildren().addAll(
                 new TreeItem<>("Add Employee"),
                 new TreeItem<>("Search Employee"),
@@ -133,7 +131,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         );
 
         patientTree.getChildren().addAll(
-                new TreeItem<>("Add Patient"),
                 new TreeItem<>("Patient Summary"),
                 new TreeItem<>("Doctor Portal")
         );
@@ -173,15 +170,13 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 new TreeItem<>("Maintenance")
         );
 
-        financeTree.getChildren().addAll(
-                new TreeItem<>("Expenses"),
-                new TreeItem<>("Revenue"),
-                new TreeItem<>("Final Balance")
+        adminTree.getChildren().addAll(
+                new TreeItem<>("Manage Users")
         );
 
         //adding main branches to root branch
 
-        root.getChildren().addAll(employeeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree, financeTree);
+        root.getChildren().addAll(employeeTree, patientTree, pharmacyTree, laboratoryTree, supplierTree, appointmentTree, labInventoryTree, adminTree);
 
         //setting up TreeView
         navigationTree.setRoot(root);
@@ -292,6 +287,13 @@ public class MainScreenController implements Initializable,SessionListener,Contr
             case "Pharmacy Items":
                 if (LoginModel.getAccessLevel() <= 2) {
                     ScreenController.changeScreen(PharmacyScreens.PHARMACY_STOCK_SCREEN2,content, this);
+                } else {
+                    ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
+                }
+                break;
+            case "Manage Users":
+                if (LoginModel.getAccessLevel() <= 1) {
+                    ScreenController.changeScreen(MainScreens.ADMIN_PORTAL_SCREEN,content, this);
                 } else {
                     ScreenController.changeScreen(MainScreens.NO_ACCESS_SCREEN,content, this);
                 }
