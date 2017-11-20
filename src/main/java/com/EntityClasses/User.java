@@ -21,7 +21,7 @@ public class User extends RecursiveTreeObject<User> {
     IntegerProperty accessLevel;
     StringProperty username;
     StringProperty password;
-
+    Employee employee;
 
     public User() {
         this.id = new SimpleIntegerProperty();
@@ -69,5 +69,26 @@ public class User extends RecursiveTreeObject<User> {
 
     public void setAccessLevel(int accessLevel) {
         this.accessLevel.set(accessLevel);
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

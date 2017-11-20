@@ -5,6 +5,7 @@ import com.common.ScreenController;
 import com.common.SessionListener;
 import com.jfoenix.controls.JFXButton;
 import com.main.controllers.MainScreenController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +34,12 @@ public class inputResultController implements Initializable,SessionListener {
 
 
 
+    @FXML
+    void backToEnterRes(ActionEvent event) {
+
+        ScreenController.changeScreen(LabScreens.ENTERRESULTS_SCREEN,mainScreenController.getContent(),mainScreenController);
+
+    }
 
 
     @Override

@@ -14,17 +14,10 @@ import java.util.List;
 @Access(AccessType.PROPERTY)
 public class TestResults {
 
-
-
     private int id;
-
     private DoubleProperty result;
 
-
     TestField testField;
-
-
-
     LabTestOrder labTestOrder;
 
     public TestResults() {

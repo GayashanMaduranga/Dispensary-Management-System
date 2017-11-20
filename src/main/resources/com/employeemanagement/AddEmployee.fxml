@@ -242,7 +242,12 @@
                                                <items>
                                                    <FXCollections fx:factory="observableArrayList">
                                                        <String fx:value="doctor" />
-                                                       <String fx:value="lab Tec" />
+                                                       <String fx:value="lab technician" />
+                                                       <String fx:value="pharmacist" />
+                                                       <String fx:value="nurse" />
+                                                       <String fx:value="other" />
+
+
                                                    </FXCollections>
                                                </items>
                                            </ComboBox>
