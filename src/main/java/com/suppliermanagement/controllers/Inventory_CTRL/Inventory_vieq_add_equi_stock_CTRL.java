@@ -13,10 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -60,6 +57,8 @@ public class Inventory_vieq_add_equi_stock_CTRL implements Initializable,Control
     @FXML
     private JFXButton cancel;
 
+    @FXML
+    private Label warn;
 
 
     @Override
@@ -100,8 +99,9 @@ public class Inventory_vieq_add_equi_stock_CTRL implements Initializable,Control
     @FXML
     void reset(ActionEvent event) {
 
-        st_amt.setText("");
-
+        if (textfieldcheck()) {
+            st_amt.setText("");
+        }
 
     }
 
@@ -122,6 +122,20 @@ public class Inventory_vieq_add_equi_stock_CTRL implements Initializable,Control
 
         System.out.println("Done stock");
 
+
+    }
+
+    private boolean textfieldcheck()
+    {
+        if(st_amt.getText().isEmpty())       {
+
+
+            warn.setText("Please Complete all fields before adding.");
+
+            return false;
+        }
+
+        return true;
 
     }
 

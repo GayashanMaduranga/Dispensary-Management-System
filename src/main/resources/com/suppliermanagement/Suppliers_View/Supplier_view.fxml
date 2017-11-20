@@ -5,6 +5,7 @@
 <?import de.jensd.fx.glyphs.octicons.OctIconView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -71,7 +72,10 @@
                   <Font size="14.0" />
                </font>
                <content>
-                  <JFXTreeTableView fx:id="supplierTable" onMouseClicked="#setField" prefHeight="464.0" prefWidth="955.0" />
+                  <JFXTreeTableView fx:id="supplierTable" onMouseClicked="#setField" prefHeight="464.0" prefWidth="955.0">
+                     <columnResizePolicy>
+                        <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy></JFXTreeTableView>
                </content>
             </TitledPane>
          </children>

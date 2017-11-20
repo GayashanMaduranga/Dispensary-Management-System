@@ -84,7 +84,10 @@
                                     <OctIconView fx:id="searchGlyph" glyphName="SEARCH" size="35" styleClass="searchGlyph" wrappingWidth="40.999974489212036" />
                                  </children>
                               </HBox>
-                              <JFXTreeTableView fx:id="product_table" onMouseClicked="#setField_pro" GridPane.rowIndex="1" />
+                              <JFXTreeTableView fx:id="product_table" onMouseClicked="#setField_pro" GridPane.rowIndex="1">
+                                 <columnResizePolicy>
+                                    <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy></JFXTreeTableView>
                            </children>
                         </GridPane>
                     </content>

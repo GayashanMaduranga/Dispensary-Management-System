@@ -89,11 +89,6 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Supplier ID #" textFill="WHITE" GridPane.columnIndex="2">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Label>
                   <TextField fx:id="su_id" editable="false" prefHeight="65.0" prefWidth="139.0" style="-fx-background-color: none;" GridPane.columnIndex="3">
                      <font>
                         <Font size="23.0" />
