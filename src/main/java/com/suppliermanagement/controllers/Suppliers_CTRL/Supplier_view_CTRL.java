@@ -111,10 +111,6 @@ public class Supplier_view_CTRL implements Initializable, SessionListener{
             s = null;
         }
 
-
-
-
-
     }
 
 

@@ -15,10 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -117,6 +114,9 @@ public class Inventory_view_Edit_product_CTRL implements Initializable,Controlle
 
     @FXML
     private JFXButton update;
+
+    @FXML
+    private Label warn;
 
 
 
@@ -256,36 +256,48 @@ public class Inventory_view_Edit_product_CTRL implements Initializable,Controlle
             session= ScreenController.getSession();
             session.beginTransaction();
 
-        pharmacyItem.setItemName((pro_name.getText().toLowerCase()));
-        pharmacyItem.setBrand(brand_name.getText());
-        pharmacyItem.setMRP(Double.parseDouble(mrp_rate.getText()));
-        pharmacyItem.setReorderLevel(Integer.parseInt(re_order.getText()));
-        pharmacyItem.setStock(Integer.parseInt(stock.getText()));
+        if (textfieldcheck()) {
 
-        Query phbatch = session.createQuery ("update PharmacyBatch p set p.manufacturingDate = :manudate , p.expiryDate = :expdate , p.purchasingPrice = :purprice " + " where p.pharmacyItem.phId= :itemId ");
-        //noinspection uncheckedi
+            pharmacyItem.setItemName((pro_name.getText().toLowerCase()));
+            pharmacyItem.setBrand(brand_name.getText());
+            pharmacyItem.setMRP(Double.parseDouble(mrp_rate.getText()));
+            pharmacyItem.setReorderLevel(Integer.parseInt(re_order.getText()));
+            pharmacyItem.setStock(Integer.parseInt(stock.getText()));
 
-        phbatch.setParameter("itemId",pharmacyItem.getPhId());
-        phbatch.setParameter("manudate",(Date.valueOf(manu_date.getValue())));
-        phbatch.setParameter("expdate",(Date.valueOf(exp_date.getValue())));
-        phbatch.setParameter("purprice",(Double.parseDouble(pur_price.getText())));
-        phbatch.executeUpdate();
+            Query phbatch = session.createQuery("update PharmacyBatch p set p.manufacturingDate = :manudate , p.expiryDate = :expdate , p.purchasingPrice = :purprice " + " where p.pharmacyItem.phId= :itemId ");
+            //noinspection uncheckedi
 
-
-        System.out.println(0+" ******");
-        session.getTransaction().commit();
+            phbatch.setParameter("itemId", pharmacyItem.getPhId());
+            phbatch.setParameter("manudate", (Date.valueOf(manu_date.getValue())));
+            phbatch.setParameter("expdate", (Date.valueOf(exp_date.getValue())));
+            phbatch.setParameter("purprice", (Double.parseDouble(pur_price.getText())));
+            phbatch.executeUpdate();
 
 
+            System.out.println(0 + " ******");
+            session.getTransaction().commit();
 
 
+            Main.dialogCanceled = false;
+            Stage s = (Stage) update.getScene().getWindow();
+            s.close();
+
+        }
 
 
-        Main.dialogCanceled = false;
-        Stage s = (Stage) update.getScene().getWindow();
-        s.close();
+    }
 
-        System.out.println("ADDEDDD FUCKKKKKKKK");
+    private boolean textfieldcheck()
+    {
+        if(pro_name.getText().isEmpty() || brand_name.getText().isEmpty() || mrp_rate.getText().isEmpty()
+                || re_order.getText().isEmpty() || stock.getText().isEmpty() || (pur_price.getText().isEmpty()) )      {
 
+            warn.setText("Please Complete all fields before adding.");
+
+            return false;
+        }
+
+        return true;
 
     }
 

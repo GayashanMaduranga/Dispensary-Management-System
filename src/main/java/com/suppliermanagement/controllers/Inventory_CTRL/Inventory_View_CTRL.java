@@ -367,7 +367,7 @@ public class Inventory_View_CTRL implements SessionListener, Initializable {
     @FXML
     public void new_product(){
 
-        System.out.println("FUCK 2222");
+
         Stage s = (Stage) new_pro.getScene().getWindow();
 
         if(!(Main.createFadedWindow(new Stage(), s,"/com/suppliermanagement/Inventory_View/Inventory_view_New_product.fxml"))){
