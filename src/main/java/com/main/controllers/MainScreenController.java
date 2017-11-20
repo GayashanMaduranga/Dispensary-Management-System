@@ -93,7 +93,7 @@ public class MainScreenController implements Initializable,SessionListener,Contr
         employeeIcon.setSize("20px");
         FontAwesomeIconView patientIcon = new FontAwesomeIconView(FontAwesomeIcon.USER_MD);
         patientIcon.setSize("20px");
-        FontAwesomeIconView pharmacyIcon = new FontAwesomeIconView(FontAwesomeIcon.HEART);
+        FontAwesomeIconView pharmacyIcon = new FontAwesomeIconView(FontAwesomeIcon.PLUS);
         pharmacyIcon.setSize("20px");
         FontAwesomeIconView laboratoryIcon = new FontAwesomeIconView(FontAwesomeIcon.FLASK);
         laboratoryIcon.setSize("20px");
@@ -147,7 +147,6 @@ public class MainScreenController implements Initializable,SessionListener,Contr
                 new TreeItem<>("Enter Results"),
                 new TreeItem<>("Add Test"),
                 new TreeItem<>("Add Reference Values"),
-                new TreeItem<>("Fill Results"),
                 new TreeItem<>("Statistics")
 
         );

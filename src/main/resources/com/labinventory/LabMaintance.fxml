@@ -4,6 +4,10 @@
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.octicons.OctIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -26,20 +30,20 @@
    <children>
       <GridPane prefHeight="666.0" prefWidth="1002.0" stylesheets="@../patientmanagement/styles.css">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="32.0" prefWidth="32.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="414.0" minWidth="0.0" prefWidth="43.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1228.0" prefWidth="1219.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="24.0" prefWidth="24.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1228.0" minWidth="519.0" prefWidth="559.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="30.0" prefWidth="451.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="611.0" minHeight="10.0" prefHeight="470.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="130.0" minHeight="21.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="611.0" minHeight="10.0" prefHeight="424.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="135.0" minHeight="21.0" prefHeight="109.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TitledPane animated="false" collapsible="false" prefHeight="523.0" prefWidth="972.0" text="Maintanance" textFill="#4f4e8a" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <TitledPane animated="false" collapsible="false" prefHeight="477.0" prefWidth="953.0" text="Maintanance" textFill="#4f4e8a" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="15.0" />
                </font>
@@ -51,7 +55,7 @@
                   </JFXTreeTableView>
                </content>
             </TitledPane>
-            <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <TextField fx:id="txtSearch" prefHeight="38.0" prefWidth="251.0" promptText="Search" visible="false">
                      <font>
@@ -59,18 +63,29 @@
                      </font>
                   </TextField>
                   <OctIconView fx:id="searchGlyph" glyphName="SEARCH" size="35" text="" visible="false" wrappingWidth="24.999974489212036" />
+
                   <Region prefHeight="66.0" prefWidth="89.0" HBox.hgrow="ALWAYS" />
                </children>
                <GridPane.margin>
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
                   <Label prefHeight="17.0" prefWidth="91.0" text="Machine" />
                   <ComboBox fx:id="cmbMachine" onAction="#comboSelect" prefHeight="25.0" prefWidth="167.0" promptText="Select Machine" />
                   <Label prefHeight="17.0" prefWidth="156.0" text="Maintance Reason :" />
-                  <TextField fx:id="txtMaintananceReason" prefHeight="25.0" prefWidth="231.0" promptText="Maintance" />
+                  <TextField fx:id="txtMaintananceReason" prefHeight="25.0" prefWidth="148.0" promptText="Maintance">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <children>
                   <Label prefHeight="17.0" prefWidth="151.0" text="Maintance cost :" />
                   <TextField fx:id="txtMaintananceCost" promptText="Rs" />
                   <JFXButton fx:id="btnAddDetails" onAction="#addMain" prefHeight="40.0" prefWidth="155.0" styleClass="button-green" text="Add Record">
@@ -81,6 +96,19 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                   </JFXButton>
+               </children>
+            </HBox>
+            <BarChart fx:id="chart" barGap="5.0" categoryGap="2.0" title="Maintance Chart" GridPane.columnIndex="2" GridPane.rowIndex="3">
+              <xAxis>
+                <CategoryAxis label="Name" prefHeight="21.0" prefWidth="279.0" side="BOTTOM" fx:id="x" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="y" label="Cost" prefWidth="49.0" side="LEFT" />
+              </yAxis>
+            </BarChart>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#tableLoad" text="Load Chart" />
                </children>
             </HBox>
          </children>

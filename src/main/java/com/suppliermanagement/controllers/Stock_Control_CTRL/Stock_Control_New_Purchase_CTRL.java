@@ -1,7 +1,7 @@
 package com.suppliermanagement.controllers.Stock_Control_CTRL;
 
 import com.EntityClasses.*;
-import com.common.ControlledScreen;
+import com.common.ConfirmDialog;
 import com.common.ScreenController;
 import com.common.SessionListener;
 import com.jfoenix.controls.JFXTreeTableColumn;
@@ -38,6 +38,8 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
 
     private PharmacyItem ph;
 
+
+
     private double orderTotal;
 
     SupplyOrder supplyOrder = new SupplyOrder();
@@ -45,9 +47,10 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
     ObservableList<Supplier> pharmacySupplierList = FXCollections.observableArrayList();
     ObservableList<Supplier> equipmentSupplierList = FXCollections.observableArrayList();
     ObservableList<Supplier> bothSupplierList = FXCollections.observableArrayList();
-
+    ObservableList<Item> equiList = FXCollections.observableArrayList();
     ObservableList<PharmacyItem> productlist = FXCollections.observableArrayList();
     TreeItem<PharmacyItem> root;
+    TreeItem<Item> root2;
 
     PharmacyBatch pB;
 
@@ -92,6 +95,9 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
     @FXML
     private JFXTreeTableView<PharmacyItem> pick_item;
 
+//    @FXML
+//    private JFXTreeTableView<Item> pick_item;
+
     @FXML
     private Label item_name;
 
@@ -130,25 +136,17 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
 
             suppCombo.setItems(pharmacySupplierList);
 
-//            for ( int i = 0; i<pick_item.getColumns().size(); i++) {
-//                pick_item.getchi.clear();
-//            }
-
-//            root = new RecursiveTreeItem<Supplier>(PRO, RecursiveTreeObject::getChildren);
-//
-//            //supplierList.add(su);
-//
-//            supplierTable.refresh();
-
-
 
             session = ScreenController.getSession();
+            session.flush();
             session.beginTransaction();
             Query productNameQuery = session.createQuery("select s from PharmacyItem  s");
             List<PharmacyItem> product = productNameQuery.list();
             session.getTransaction().commit();
 
 
+            productlist.clear();
+            pick_item.refresh();
             for (PharmacyItem s : product) {
 
                 productlist.add(s);
@@ -183,12 +181,48 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
             pick_item.setShowRoot(false);
 
 
-
-
-
         }else if(orderTypeCombo.getSelectionModel().getSelectedItem().equals("Equipment")){
 
             suppCombo.setItems(equipmentSupplierList);
+
+            session = ScreenController.getSession();
+            session.beginTransaction();
+            Query equipmentQuery = session.createQuery("select e from Item e where ITEM_TYPE = 'Equipment'");
+            List<Item> equipments = equipmentQuery.list();
+            session.getTransaction().commit();
+
+            equiList.clear();
+            pick_item.refresh();
+            for (Item p : equipments){
+
+                equiList.add(p);
+            }
+
+            //Create Table
+            //Create column
+
+            JFXTreeTableColumn<Item, String> nameCol =  new JFXTreeTableColumn<>("Name");
+            nameCol.setCellValueFactory(param -> ((Equipment)param.getValue().getValue()).equipmentNameProperty());
+
+            JFXTreeTableColumn<Item, Number> IDCol =  new JFXTreeTableColumn<>("ID");
+            IDCol.setCellValueFactory(param -> param.getValue().getValue().itemIDProperty());
+
+            JFXTreeTableColumn<Item, Number> stockCol =  new JFXTreeTableColumn<>("Stock");
+            stockCol.setCellValueFactory(param -> param.getValue().getValue().stockProperty());
+
+
+            root2 = new RecursiveTreeItem<Item>(equiList, RecursiveTreeObject::getChildren);
+
+           // pick_item.getColumns().setAll(IDCol, nameCol, stockCol);
+            pick_item.setRoot(root);
+            pick_item.setShowRoot(false);
+
+
+
+
+
+
+
         }
     }
 
@@ -367,15 +401,40 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
     @FXML
     void createOrder(){
 
-        session.flush();
-        session.clear();
-        session.beginTransaction();
-        session.save(supplyOrder);
-        session.getTransaction().commit();
 
-        supplyOrder = new SupplyOrder();
-        orderTotal = 0.0;
-        orderList.clear();
-        order_table.refresh();
+
+        if (ConfirmDialog.show("", " Do u want create this order?")) {
+
+            session.flush();
+            session.clear();
+            session.beginTransaction();
+            session.save(supplyOrder);
+            session.getTransaction().commit();
+
+            supplyOrder = new SupplyOrder();
+            orderTotal = 0.0;
+            orderList.clear();
+            order_table.refresh();
+
+
+            EmailSend f = new EmailSend("jjnlfernando@gmail.com","Hello ");
+
+
+        }
+
+
+
+
+
+//        session.flush();
+//        session.clear();
+//        session.beginTransaction();
+//        session.save(supplyOrder);
+//        session.getTransaction().commit();
+//
+//        supplyOrder = new SupplyOrder();
+//        orderTotal = 0.0;
+//        orderList.clear();
+//        order_table.refresh();
     }
 }

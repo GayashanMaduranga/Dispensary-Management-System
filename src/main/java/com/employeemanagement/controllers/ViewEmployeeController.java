@@ -219,6 +219,17 @@ public class ViewEmployeeController implements Initializable, SessionListener {
     @FXML
     private AnchorPane loanAcPane;
 
+
+    @FXML
+    private TextField txtUserName;
+
+    @FXML
+    private TextField txtPassword;
+
+    @FXML
+    private TextField txtUserLevel;
+
+
     private ViewEmployeeModel viewEmployeeModel = new ViewEmployeeModel();
 
     ////////////#######################
@@ -892,5 +903,15 @@ public class ViewEmployeeController implements Initializable, SessionListener {
         loanList.remove(loanTable.getSelectionModel().getSelectedItem());
         loanTable.getRoot().getChildren().clear();
         loanTable.getRoot().getChildren().addAll(loanList);
+    }
+
+    @FXML
+    void saveOrUpdatLogin(ActionEvent event) {
+            User user = new User();
+            user.setUsername(txtUserName.getText());
+            user.setPassword(txtPassword.getText());
+            user.setAccessLevel(Integer.parseInt(txtUserLevel.getText()));
+            user.setEmployee(mainController.getEmployee());
+            ViewEmployeeModel.addOrUpdateUser(user);
     }
 }

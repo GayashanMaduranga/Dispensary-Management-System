@@ -1,12 +1,14 @@
 package com.Laboratory.controllers;
 
 
+import com.EntityClasses.Range;
 import com.common.ScreenController;
 import com.common.SessionListener;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.main.Main;
 import com.main.controllers.MainScreenController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -36,53 +38,6 @@ public class AddReferenceValueController implements Initializable,SessionListene
 
     private Session session;
     private MainScreenController mainScreenController;
-
-
-
-//    @FXML
-//    private TreeTableView<?> referenceValueTab;
-//
-//    @FXML
-//    private TreeTableColumn<?, ?> upRange;
-//
-//    @FXML
-//    private TreeTableColumn<?, ?> lowRange;
-//
-//    @FXML
-//    private TableView<?> ageTable;
-//
-//    @FXML
-//    private TableColumn<?, ?> ageCol;
-//
-//    @FXML
-//    private TitledPane maintest;
-//
-//    @FXML
-//    private TreeTableView<?> mainTestTable;
-//
-//    @FXML
-//    private TreeTableColumn<?, ?> mainid;
-//
-//    @FXML
-//    private TreeTableColumn<?, ?> mainName;
-//
-//    @FXML
-//    private TreeTableColumn<?, ?> mainPrice;
-//
-//    @FXML
-//    private TitledPane testF;
-//
-//    @FXML
-//    private TreeTableView<?> testFieldTable;
-//
-//    @FXML
-//    private TreeTableColumn<?, ?> TestFid;
-//
-//    @FXML
-//    private TreeTableColumn<?, ?> TestName;
-//
-//    @FXML
-//    private TreeTableColumn<?, ?> testUnits;
 
 
 
@@ -152,7 +107,38 @@ public class AddReferenceValueController implements Initializable,SessionListene
 
     private List<TreeItem<TestField>> fieldList;
 
+    private List<TreeItem<Range>> rangeList;
 
+
+
+
+    @FXML
+    private TreeTableView<Range> referenceValueTab;
+
+    @FXML
+    private TreeTableColumn<Range, Number> colAgeLow;
+
+    @FXML
+    private TreeTableColumn<Range, Number> colAgeUp;
+
+    @FXML
+    private TreeTableColumn<Range, Number> lowRange;
+
+    @FXML
+    private TreeTableColumn<Range, Number> upRange;
+
+
+    @FXML
+    private JFXTextField lowTxt;
+
+    @FXML
+    private JFXTextField upperTxt;
+
+    @FXML
+    private JFXTextField ageUpTxt;
+
+    @FXML
+    private JFXTextField ageLowTxt;
 
 
 
@@ -174,6 +160,7 @@ public class AddReferenceValueController implements Initializable,SessionListene
         session = ScreenController.getSession();
         mainTestList = new ArrayList<>();
         fieldList = new ArrayList<>();
+        rangeList = new ArrayList<>();
 
         session.beginTransaction();
         Query query = session.createQuery("select s from MainTest s");
@@ -214,6 +201,25 @@ public class AddReferenceValueController implements Initializable,SessionListene
         testFieldTable.setShowRoot(false);
 
 
+       colAgeLow.setCellValueFactory(param -> param.getValue().getValue().minPatientAgeProperty());
+        colAgeUp.setCellValueFactory(param -> param.getValue().getValue().maxPatientAgeProperty());
+        lowRange.setCellValueFactory(param -> param.getValue().getValue().lowerBoundProperty());
+        upRange.setCellValueFactory(param -> param.getValue().getValue().upperBoundProperty());
+
+
+        Range range = new Range();
+        range.setLowerBound(0);
+        range.setUpperBound(0);
+        range.setMaxPatientAge(0);
+        range.setMinPatientAge(0);
+
+        TreeItem<Range> root3 = new TreeItem<>(range);
+
+        referenceValueTab.setRoot(root3);
+        referenceValueTab.setShowRoot(false);
+
+
+
     }
 
 
@@ -238,11 +244,25 @@ public class AddReferenceValueController implements Initializable,SessionListene
 
 
 
-
     @FXML
-    void ageClick(MouseEvent event) {
+    void testFieldSelect(MouseEvent event) {
+        TreeItem<TestField> treeItem = testFieldTable.getSelectionModel().getSelectedItem();
+
+        TestField field = treeItem.getValue();
+
+        rangeList.clear();
+
+        for (Range r : field.getRangeList()){
+            rangeList.add(new TreeItem<>(r));
+        }
+
+        referenceValueTab.getRoot().getChildren().clear();
+        referenceValueTab.getRoot().getChildren().addAll(rangeList);
 
     }
+
+
+
 
 
 
@@ -256,6 +276,33 @@ public class AddReferenceValueController implements Initializable,SessionListene
     public void setMainController(SessionListener controller) {
 
         this.mainScreenController = (MainScreenController) controller;
+
+
+    }
+
+    @FXML
+    void addReferenceValues(ActionEvent event) {
+
+        TreeItem<TestField> treeItem = testFieldTable.getSelectionModel().getSelectedItem();
+
+        TestField field = treeItem.getValue();
+
+        Range range = new Range();
+        range.setMinPatientAge(Integer.parseInt(ageLowTxt.getText()));
+        range.setMaxPatientAge(Integer.parseInt(ageUpTxt.getText()));
+        range.setLowerBound(Double.parseDouble(lowTxt.getText()));
+        range.setUpperBound(Double.parseDouble(upperTxt.getText()));
+
+        rangeList.add(new TreeItem<>(range));
+
+        referenceValueTab.getRoot().getChildren().clear();
+        referenceValueTab.getRoot().getChildren().addAll(rangeList);
+
+        field.getRangeList().add(range);
+
+        session.beginTransaction();
+        session.saveOrUpdate(field);
+        session.getTransaction().commit();
 
 
     }
