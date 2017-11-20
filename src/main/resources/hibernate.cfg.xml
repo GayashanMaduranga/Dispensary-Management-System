@@ -46,7 +46,6 @@
         <mapping class="com.EntityClasses.OtherRevenue"/>
         <mapping class="com.EntityClasses.OtherExpenses"/>
         <mapping class="com.EntityClasses.Maintenance"/>
-
         <mapping class="com.EntityClasses.Attendance"/>
 
         <!-- <property name="connection.username"/> -->
