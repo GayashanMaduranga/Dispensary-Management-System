@@ -15,7 +15,7 @@ public enum LabScreens implements BaseEnum{
     ENTERRESULTS_SCREEN("enterResults", "/com/Laboratory/enterResults.fxml"),
     ADDTEST_SCREEN("addTest","/com/Laboratory/addTest.fxml"),
     INPUTRESULT_SCREEN("inputResult", "/com/Laboratory/InputResults.fxml"),
-    EXTRA_SCREEN("extra", "/com/Laboratory/extra.fxml"),
+    EXTRA_SCREEN("extra", "/com/Laboratory/charts.fxml"),
     REFER_SCREEN("refer","/com/Laboratory/AddReferenceValue.fxml"),
 
 

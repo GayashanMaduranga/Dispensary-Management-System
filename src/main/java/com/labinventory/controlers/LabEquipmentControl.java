@@ -111,21 +111,25 @@ public class LabEquipmentControl implements Initializable,SessionListener {
     @FXML
     void addEquipment(){
 
-        Equipment e = new Equipment();
-        e.setEquipmentName(txtAddEquipment.getText());
-        e.setStock(0);
+
+            Equipment e = new Equipment();
+            e.setEquipmentName(txtAddEquipment.getText());
+            e.setStock(0);
+
 
         if(txtAddEquipment.getText()==null || txtAddEquipment.getText().trim().isEmpty() ){
             JOptionPane.showMessageDialog(null,"---Please Enter Valid Equipment Name---");
 //            System.out.println("OK");
-        }else{
+        }else {
+
 
             session.beginTransaction();
             session.save(e);
             session.getTransaction().commit();
 
             equipmentList.add(e);
-            equipmentTable.refresh();        }
+            equipmentTable.refresh();
+        }
 
     }
 

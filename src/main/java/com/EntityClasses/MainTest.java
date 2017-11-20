@@ -1,5 +1,7 @@
 package com.EntityClasses;
 
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,7 +17,7 @@ import java.util.List;
 @Entity
 @Access(AccessType.PROPERTY)
 //@Table(name = "Main_Test")
-public class MainTest {
+public class MainTest extends RecursiveTreeObject<MainTest> {
 
     private SimpleIntegerProperty tId;
     private SimpleStringProperty testName;

@@ -37,8 +37,6 @@ public class selectTestController  implements Initializable,SessionListener {
 
 
 
-
-
     @FXML
     private JFXTextField id;
 
@@ -111,7 +109,7 @@ public class selectTestController  implements Initializable,SessionListener {
     private JFXTreeTableView<TestField> subTestTable;
 
     @FXML
-    private JFXTreeTableView<?> selectedTestTable;
+    private JFXTreeTableView<MainTest> selectedTestTable;
 
     @FXML
     private JFXButton backBT;
@@ -124,10 +122,15 @@ public class selectTestController  implements Initializable,SessionListener {
     ObservableList<TestField> fieldList = FXCollections.observableArrayList();
 
     TreeItem<TestField> root2;
+    private TreeItem<MainTest> root3;
+    public static ObservableList<MainTest> selectedTestList = FXCollections.observableArrayList();
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        selectedTestList.clear();
         txtpId.setText(Integer.toString(orderTestController.labSummaryPatient.getpId()));
         txtpName.setText(orderTestController.labSummaryPatient.getPname());
 
@@ -182,6 +185,20 @@ public class selectTestController  implements Initializable,SessionListener {
         subTestTable.setRoot(root2);
         subTestTable.setShowRoot(false);
 
+//////////////////////////////////////////
+        JFXTreeTableColumn<MainTest, String> STnameCol =  new JFXTreeTableColumn<>("TestName");
+        STnameCol.setCellValueFactory(param -> param.getValue().getValue().testNameProperty());
+
+        JFXTreeTableColumn<MainTest, Number> STPriceCol =  new JFXTreeTableColumn<>("Price");
+        STPriceCol.setCellValueFactory(param -> param.getValue().getValue().testPriceProperty());
+
+        root3 = new RecursiveTreeItem<>(selectedTestList, RecursiveTreeObject::getChildren);
+
+        //noinspection unchecked
+        selectedTestTable.getColumns().setAll(STnameCol, STPriceCol);
+        selectedTestTable.setRoot(root3);
+        selectedTestTable.setShowRoot(false);
+
     }
 
     @Override
@@ -193,14 +210,23 @@ public class selectTestController  implements Initializable,SessionListener {
     public void setMainController(SessionListener controller) {
 
         this.mainScreenController = (MainScreenController) controller;
+    }
 
+
+    @FXML
+    void backToOrder(ActionEvent event) {
+
+        ScreenController.changeScreen(LabScreens.ORDERTEST_SCREEN,mainScreenController.getContent(),mainScreenController);
 
     }
+
+
 
     @FXML
     void selectTest(ActionEvent event) {
 
-      //  ScreenController.changeScreen(LabScreens.SELECT_TEST_SCREEN,homeController.getContent(),homeController);
+        selectedTestList.add(mainTestTable.getSelectionModel().getSelectedItem().getValue());
+        selectedTestTable.refresh();
     }
 
     @FXML

@@ -76,8 +76,6 @@ public class EmployeeManagementTest {
         doc.setGender("M");
         doc.setEmployeeid(1);
 
-
-
         session.beginTransaction();
         session.save(doc);
         session.getTransaction().commit();
