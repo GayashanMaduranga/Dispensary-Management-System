@@ -4,6 +4,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -23,7 +24,9 @@ public class SupplyOrder extends RecursiveTreeObject<SupplyOrder> {
     private SimpleIntegerProperty orderID;
     private Date date;
     private SimpleDoubleProperty total;
-
+    private SimpleStringProperty name;
+    private SimpleIntegerProperty qty;
+    private SimpleStringProperty supplyname;
 
     private SimpleBooleanProperty hasArrived;
 
@@ -37,6 +40,9 @@ public class SupplyOrder extends RecursiveTreeObject<SupplyOrder> {
         this.orderID = new SimpleIntegerProperty();
         this.total = new SimpleDoubleProperty();
         this.hasArrived = new SimpleBooleanProperty();
+        this.name = new SimpleStringProperty();
+        this.supplyname = new SimpleStringProperty();
+        this.qty = new SimpleIntegerProperty();
         this.pharmacyBatches  = new ArrayList<>();
         this.equipmentList = new ArrayList<>();
 
@@ -69,6 +75,55 @@ public class SupplyOrder extends RecursiveTreeObject<SupplyOrder> {
     public void setDate(Date date) {
         this.date = date;
     }
+
+
+
+    @Column(name = "ItemName")
+    public String getName() {
+        return name.get();
+    }
+
+    public SimpleStringProperty nameProperty() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+
+    @Column(name = "Qty")
+    public int getQty() {
+        return qty.get();
+    }
+
+    public SimpleIntegerProperty qtyProperty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty.set(qty);
+    }
+
+
+
+
+
+
+    @Column(name = "SupplyName")
+    public String getSupplyname() {
+        return supplyname.get();
+    }
+
+    public SimpleStringProperty supplynameProperty() {
+        return supplyname;
+    }
+
+    public void setSupplyname(String supplyname) {
+        this.supplyname.set(supplyname);
+    }
+
+
 
     @Column(name = "total")
     public double getTotal() {
