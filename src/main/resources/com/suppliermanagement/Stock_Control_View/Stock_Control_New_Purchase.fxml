@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -49,7 +50,10 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXTreeTableView fx:id="pick_item" onMouseClicked="#setField" GridPane.rowIndex="1" />
+                        <JFXTreeTableView fx:id="pick_item" onMouseClicked="#setField" GridPane.rowIndex="1">
+                           <columnResizePolicy>
+                              <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy></JFXTreeTableView>
                         <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: grey;">
                            <children>
                               <TextField prefHeight="23.0" prefWidth="224.0" promptText="Search Products">

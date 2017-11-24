@@ -181,10 +181,10 @@
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="142.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="14.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="167.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="0.0" prefWidth="46.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="764.0" minWidth="10.0" prefWidth="298.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="764.0" minWidth="10.0" prefWidth="118.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="36.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="0.0" prefWidth="31.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="764.0" minWidth="10.0" prefWidth="547.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="764.0" minWidth="9.0" prefWidth="9.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="764.0" minWidth="10.0" prefWidth="179.0" />
               </columnConstraints>
               <rowConstraints>
@@ -196,6 +196,7 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
+                  <Label fx:id="warn" alignment="CENTER" prefHeight="60.0" prefWidth="563.0" GridPane.columnIndex="4" />
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="7">

@@ -17,6 +17,9 @@
         <mapping class="com.EntityClasses.Doctor"/>
         <mapping class="com.EntityClasses.Equipment"/>
         <mapping class="com.EntityClasses.Medication"/>
+
+        <mapping class="com.EntityClasses.Email_account"/>
+
         <mapping class="com.EntityClasses.User"/>
         <mapping class="com.EntityClasses.Measure"/>
         <mapping class="com.EntityClasses.Sample"/>
@@ -43,7 +46,6 @@
         <mapping class="com.EntityClasses.OtherRevenue"/>
         <mapping class="com.EntityClasses.OtherExpenses"/>
         <mapping class="com.EntityClasses.Maintenance"/>
-
         <mapping class="com.EntityClasses.Attendance"/>
 
         <!-- <property name="connection.username"/> -->

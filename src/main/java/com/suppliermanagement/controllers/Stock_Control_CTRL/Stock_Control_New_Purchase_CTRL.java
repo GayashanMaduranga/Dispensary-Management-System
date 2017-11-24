@@ -1,6 +1,7 @@
 package com.suppliermanagement.controllers.Stock_Control_CTRL;
 
 import com.EntityClasses.*;
+import com.common.AlertDialog;
 import com.common.ConfirmDialog;
 import com.common.ScreenController;
 import com.common.SessionListener;
@@ -385,7 +386,7 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
         pB.setPharmacyItem(pick_item.getSelectionModel().getSelectedItem().getValue());
         pB.setQuantity(Integer.parseInt(qty_spin.getValue().toString()));
         pB.setPurchasingPrice(Double.parseDouble(cost_p.getText()));
-
+        //pB.setManufacturingDate(pick_item.getSelectionModel().getSelectedItem().getValue());
         orderList.add(pB);
         order_table.refresh();
 
@@ -395,6 +396,9 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
         supplyOrder.setTotal(orderTotal);
         supplyOrder.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));
         supplyOrder.setSupplier(suppCombo.getSelectionModel().getSelectedItem());
+        supplyOrder.setName(item_name.getText());
+        supplyOrder.setQty(Integer.parseInt(qty_spin.getValue().toString()));
+        supplyOrder.setSupplyname(supplier_name.getText());
 
     }
 
@@ -416,8 +420,9 @@ public class Stock_Control_New_Purchase_CTRL implements SessionListener, Initial
             orderList.clear();
             order_table.refresh();
 
-
-            EmailSend f = new EmailSend("jjnlfernando@gmail.com","Hello ");
+           // AlertDialog.show("Please Wait","Connecting with email server");
+            EmailSend f = new EmailSend(email.getText(),"PURCHASE ORDER FROM KANDY","Please contact manager of People Dispensary.");
+            AlertDialog.show("Purchase Succeed", "Purchase Succeed ! Email sent Successfully.");
 
 
         }

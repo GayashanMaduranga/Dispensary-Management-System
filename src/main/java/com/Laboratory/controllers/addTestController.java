@@ -190,6 +190,9 @@ public class addTestController implements Initializable, SessionListener{
         session.beginTransaction();
         session.update(m.getValue());
         session.getTransaction().commit();
+
+//        testFieldTable.getRoot().getChildren().clear();
+//        testFieldTable.getRoot().getChildren().addAll(fieldList);
     }
 
 
@@ -198,8 +201,8 @@ public class addTestController implements Initializable, SessionListener{
     void updateTestField(ActionEvent event) {
 
         TreeItem<TestField> m = testFieldTable.getSelectionModel().getSelectedItem();
-        m.getValue().setFieldName(testName.getText());
-        m.getValue().setUnits(testPrice.getText());
+        m.getValue().setFieldName(fName.getText());
+        m.getValue().setUnits(unitField.getText());
 
         session.beginTransaction();
         session.update(m.getValue());
@@ -264,13 +267,27 @@ public class addTestController implements Initializable, SessionListener{
 
     }
 
+    @FXML
+    void testFieldSelection(MouseEvent event) {
 
+        TestField ts = testFieldTable.getSelectionModel().getSelectedItem().getValue();
+        fid.setText(String.valueOf(ts.getfId()));
+        fName.setText(ts.getFieldName());
+        unitField.setText(ts.getUnits());
+
+
+    }
     @FXML
     void setTextFields(MouseEvent event) {
 
         TreeItem<MainTest> treeItem = mainTestTable.getSelectionModel().getSelectedItem();
 
         MainTest mainTest = treeItem.getValue();
+
+        testName.setText(mainTest.getTestName());
+        testPrice.setText(String.valueOf(mainTest.getTestPrice()));
+
+
         mainTest.getTestFields();
         fieldList.clear();
 
@@ -280,6 +297,8 @@ public class addTestController implements Initializable, SessionListener{
 
         testFieldTable.getRoot().getChildren().clear();
         testFieldTable.getRoot().getChildren().addAll(fieldList);
+
+
 
     }
 

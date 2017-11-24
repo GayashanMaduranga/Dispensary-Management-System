@@ -163,6 +163,8 @@ public class Inventory_view_New_product_CTRL implements Initializable,Controlled
     @FXML
     private JFXButton titlebtn1;
 
+    @FXML
+    private Label warn;
 
 //    @FXML
 //    public void populateSupplier(){
@@ -265,7 +267,7 @@ public class Inventory_view_New_product_CTRL implements Initializable,Controlled
 //        pro_type.getItems().setAll("Pharmacy","Equipment");
 //         pro_type.promptTextProperty();
 
-        System.out.println("fuck  1");
+
 
     }
 
@@ -304,7 +306,7 @@ public class Inventory_view_New_product_CTRL implements Initializable,Controlled
     @FXML
     void add_product(ActionEvent event) {
 
-
+    if (textfieldcheck()) {
         pharmacyItem.setItemName((pro_name.getText().toLowerCase()));
         pharmacyItem.setBrand(brand_name.getText());
         pharmacyItem.setMRP(Double.parseDouble(mrp_rate.getText()));
@@ -320,10 +322,26 @@ public class Inventory_view_New_product_CTRL implements Initializable,Controlled
         Main.dialogCanceled = false;
         Stage s = (Stage) add.getScene().getWindow();
         s.close();
-
+    }
 
     }
 
-}
 
+
+    private boolean textfieldcheck()
+    {
+        if(pro_name.getText().isEmpty() || brand_name.getText().isEmpty() || mrp_rate.getText().isEmpty()
+                || re_order.getText().isEmpty() || stock.getText().isEmpty() || (pur_price.getText().isEmpty()) )      {
+
+            warn.setText("Please Complete all fields before adding.");
+
+            return false;
+        }
+
+        return true;
+
+    }
+
+
+}
 

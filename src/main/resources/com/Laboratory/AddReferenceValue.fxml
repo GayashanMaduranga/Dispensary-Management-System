@@ -35,32 +35,21 @@
     <RowConstraints maxHeight="19.0" minHeight="4.0" prefHeight="4.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TitledPane animated="false" collapsible="false" prefHeight="332.0" prefWidth="613.0" text="Reference Normal Values" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowIndex="3">
+      <TitledPane animated="false" collapsible="false" prefHeight="332.0" prefWidth="613.0" text="Reference Normal Values" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="3">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TreeTableView fx:id="referenceValueTab" layoutX="12.6" prefHeight="252.0" prefWidth="640.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0" AnchorPane.topAnchor="-15.0">
                     <columns>
-                      <TreeTableColumn fx:id="lowRange" prefWidth="339.99999392032623" text="Lower Range" />
-                      <TreeTableColumn fx:id="upRange" prefWidth="304.0000305175781" text="Upper range" />
+                        <TreeTableColumn fx:id="colAgeLow" prefWidth="300.99999392032623" text="Age Lower" />
+                        <TreeTableColumn fx:id="colAgeUp" prefWidth="355.0000305175781" text="Age Upper" />
+                      <TreeTableColumn fx:id="lowRange" prefWidth="346.0" text="Lower Range" />
+                      <TreeTableColumn fx:id="upRange" prefWidth="353.0" text="Upper range" />
                     </columns>
                   </TreeTableView>
                </children>
             </AnchorPane>
         </content>
-      </TitledPane>
-      <TitledPane animated="false" collapsible="false" prefHeight="313.0" prefWidth="630.0" text="All Ages" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <TreeTableView fx:id="ageTable" layoutX="-0.40000000000000036" layoutY="1.5999999999999996" onMouseClicked="#ageClick" prefHeight="281.0" prefWidth="692.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0" AnchorPane.topAnchor="-15.0">
-                    <columns>
-                      <TreeTableColumn fx:id="ageCol" prefWidth="675.0000244379044" text="Age" />
-                    </columns>
-                  </TreeTableView>
-               </children>
-            </AnchorPane>
-         </content>
       </TitledPane>
       <JFXTextField fx:id="lowTxt" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
       <JFXTextField fx:id="upperTxt" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="6" />
@@ -85,7 +74,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                    <TreeTableView fx:id="testFieldTable" layoutX="3.5999999999999996" layoutY="-1.0" prefHeight="263.0" prefWidth="676.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0" AnchorPane.topAnchor="-15.0">
+                    <TreeTableView fx:id="testFieldTable" layoutX="3.5999999999999996" layoutY="-1.0" onMouseClicked="#testFieldSelect" prefHeight="263.0" prefWidth="676.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-15.0" AnchorPane.topAnchor="-15.0">
                         <columns>
                             <TreeTableColumn fx:id="TestFid" prefWidth="138.99999392032623" text="fid" />
                             <TreeTableColumn fx:id="TestName" minWidth="0.0" prefWidth="302.0" text="fName" />
@@ -95,8 +84,10 @@
                </children></AnchorPane>
         </content>
       </TitledPane>
-      <JFXButton prefHeight="38.0" prefWidth="145.0" text="Add range" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+      <JFXButton onAction="#addReferenceValues" prefHeight="38.0" prefWidth="145.0" text="Add range" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
       <JFXButton prefWidth="145.0" text="Update" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
       <JFXButton prefWidth="145.0" text="Delete" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+      <JFXTextField fx:id="ageUpTxt" labelFloat="true" promptText="age Upper" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <JFXTextField fx:id="ageLowTxt" labelFloat="true" promptText="Age Lower" GridPane.columnIndex="1" GridPane.rowIndex="6" />
    </children>
 </GridPane>
